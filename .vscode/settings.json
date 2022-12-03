@@ -1,0 +1,21 @@
+{
+  "cSpell.words": ["sabersprops"],
+  "editor.tabSize": 2,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.organizeImports": true
+  },
+  "editor.defaultFormatter": "rome.rome",
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.formatOnSave": true,
+  "editor.wordWrap": "wordWrapColumn",
+  "editor.wordWrapColumn": 120,
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "cSpell.ignoreRegExpList": ["/from\\\\s+(['\\\"]).*\\\\1/"]
+}

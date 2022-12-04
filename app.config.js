@@ -28,6 +28,7 @@ export default {
     supportsTablet: true,
   },
   web: {
+    bundler: 'metro',
     favicon: './assets/favicon.png',
   },
   extra: {

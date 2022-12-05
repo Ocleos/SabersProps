@@ -1,11 +1,15 @@
-import { Link } from 'expo-router';
-import { Text, View } from 'react-native';
+import { useLink } from 'expo-router';
+import { Box, Button, Text } from 'native-base';
+import React from 'react';
 
 export default function Home() {
+  const link = useLink();
+
   return (
-    <View>
-      <Text>First page</Text>
-      <Link href="/stats">Stats</Link>
-    </View>
+    <Box flex={1} bg="#fff" alignItems="center" justifyContent="center">
+      <Text>Home</Text>
+
+      <Button onPress={() => link.push('stats')}>Stats</Button>
+    </Box>
   );
 }

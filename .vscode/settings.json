@@ -17,5 +17,6 @@
   "editor.wordWrapColumn": 120,
   "files.eol": "\n",
   "files.insertFinalNewline": true,
-  "cSpell.ignoreRegExpList": ["/from\\\\s+(['\\\"]).*\\\\1/"]
+  "cSpell.ignoreRegExpList": ["/from\\\\s+(['\\\"]).*\\\\1/"],
+  "cSpell.ignoreWords": ["dayjs"]
 }

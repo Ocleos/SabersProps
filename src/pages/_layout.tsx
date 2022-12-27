@@ -1,14 +1,18 @@
-import { Children } from 'expo-router';
-import { NativeBaseProvider } from 'native-base';
+import { Stack } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
+import { NativeBaseProvider, useColorMode } from 'native-base';
 import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import '../i18n.config';
 
 export default function Layout() {
+  const { colorMode } = useColorMode();
+
   return (
     <SafeAreaProvider>
       <NativeBaseProvider>
-        <Children />
+        <StatusBar style={colorMode === 'dark' ? 'light' : 'dark'} />
+        <Stack />
       </NativeBaseProvider>
     </SafeAreaProvider>
   );

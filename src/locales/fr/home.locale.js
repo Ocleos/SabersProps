@@ -1,5 +1,7 @@
 const homeFr = {
-  HOME: {},
+  HOME: {
+    TITLE: 'Accueil',
+  },
 };
 
 export default homeFr;

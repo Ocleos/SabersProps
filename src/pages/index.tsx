@@ -1,9 +1,9 @@
+import { MaterialIcons } from '@expo/vector-icons';
 import dayjs from 'dayjs';
-import { useLink } from 'expo-router';
-import { Box, Button, Text } from 'native-base';
-import React from 'react';
+import { Stack, useRouter } from 'expo-router';
+import { changeLanguage } from 'i18next';
+import { Button, Icon, IconButton, ScrollView, Text } from 'native-base';
 import { useTranslation } from 'react-i18next';
-import { changeLanguage } from '../i18n.config';
 import {
   CURRENCY_EUROS,
   formatDate,
@@ -14,15 +14,24 @@ import {
 } from '../utils/format.utils';
 
 export default function Home() {
-  const link = useLink();
   const { t } = useTranslation(['common', 'home']);
+  const router = useRouter();
 
   return (
-    <Box flex={1} bg="#fff" alignItems="center" justifyContent="center">
-      <Text>Home</Text>
-
-      <Text>{t('common:COMMON.ADD')}</Text>
-      <Text>{t('common:COMMON.DELETE')}</Text>
+    <ScrollView>
+      <Stack.Screen
+        options={{
+          title: t('home:HOME.TITLE') ?? '',
+          headerRight: () => (
+            <IconButton
+              onPress={() => router.push('settings')}
+              icon={<Icon as={MaterialIcons} name="settings" />}
+              size="lg"
+              borderRadius={'full'}
+            />
+          ),
+        }}
+      />
       <Text>{formatDate(dayjs(), FORMAT_FULL_DATE_TIME)}</Text>
       <Text>{formatNumber(1234567890)}</Text>
       <Text>{formatNumber(12.6766735906654)}</Text>
@@ -31,8 +40,6 @@ export default function Home() {
 
       <Button onPress={() => changeLanguage('fr')}>Français</Button>
       <Button onPress={() => changeLanguage('en')}>English</Button>
-
-      <Button onPress={() => link.push('stats')}>Stats</Button>
-    </Box>
+    </ScrollView>
   );
 }

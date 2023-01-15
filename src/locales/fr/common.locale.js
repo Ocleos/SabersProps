@@ -26,11 +26,6 @@ const commonFr = {
   ERRORS: {
     UNKNOWN_ERROR: 'Une erreur inconnue est survenue.',
   },
-  LABELS: {
-    FIRST_NAME: 'Prénom',
-    LAST_NAME: 'Nom',
-    EMAIL: 'E-mail',
-  },
   VALIDATION: {
     EMAIL: "Le format de l'e-mail est invalide",
     MAX: 'Le nombre doit être inférieur à {{max}}',

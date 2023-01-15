@@ -1,14 +1,27 @@
-import { Stack } from 'expo-router';
-import { ScrollView, Text } from 'native-base';
+import { Button, useColorMode } from 'native-base';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import PageLayout from '../components/layout/pageLayout.component';
+import { changeLanguage } from '../i18n.config';
 
-export default function Settings() {
+const Settings: React.FC = () => {
   const { t } = useTranslation(['common', 'settings']);
+  const { toggleColorMode } = useColorMode();
+
   return (
-    <ScrollView>
-      <Stack.Screen options={{ title: t('settings:SETTINGS.TITLE') ?? '' }} />
-      <Text>Settings</Text>
-    </ScrollView>
+    <PageLayout stackOptions={{ title: t('settings:SETTINGS.TITLE') ?? '' }} isScrollable>
+      <Button onPress={() => changeLanguage('fr')} colorScheme='primary'>
+        Français
+      </Button>
+      <Button onPress={() => changeLanguage('en')} colorScheme='secondary'>
+        English
+      </Button>
+
+      <Button onPress={toggleColorMode} colorScheme='tertiary'>
+        Theme
+      </Button>
+    </PageLayout>
   );
-}
+};
+
+export default Settings;

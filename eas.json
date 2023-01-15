@@ -1,6 +1,7 @@
 {
   "cli": {
-    "version": ">= 2.8.0"
+    "version": ">= 2.8.0",
+    "appVersionSource": "remote"
   },
   "build": {
     "base": {
@@ -19,7 +20,9 @@
       "releaseChannel": "preview"
     },
     "production": {
-      "releaseChannel": "production"
+      "extends": "base",
+      "releaseChannel": "production",
+      "autoIncrement": true
     }
   },
   "submit": {

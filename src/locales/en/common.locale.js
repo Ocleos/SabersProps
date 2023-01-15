@@ -26,27 +26,6 @@ const commonEn = {
   ERRORS: {
     UNKNOWN_ERROR: 'An unknown error has occurred.',
   },
-  FORMAT: {
-    DATE: '{{value, date}}',
-    DATE_MONTH_YEAR: '{{value, custom_date, MMMM YYYY}}',
-    DATE_YEAR: '{{value, custom_date, YYYY}}',
-    DATE_TIME: '{{value, date_time}}',
-    FULL_DATE_TIME: '{{value, custom_date, HH:mm - dddd D MMMM YYYY}}',
-    INPUT_TYPE_DATE: '{{value, custom_date, YYYY-MM-DD}}',
-    INPUT_TYPE_MONTH: '{{value, custom_date, YYYY-MM}}',
-    NUMBER: '{{value, number}}',
-    PRICE: '{{value, price}}',
-    SHORT_DAYS: '{{days}}j',
-    SHORT_HOURS: '{{hours}}h',
-    SHORT_HOURS_MINUTES: '{{hours}}h {{minutes}}m',
-    SHORT_MINUTES: '{{minutes}}min',
-    TIME: '{{value, time}}',
-  },
-  LABELS: {
-    FIRST_NAME: 'First name',
-    LAST_NAME: 'Last name',
-    EMAIL: 'E-mail',
-  },
   VALIDATION: {
     EMAIL: 'The email format is invalid',
     MAX: 'The number must be lower than {{max}}',

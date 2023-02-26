@@ -1,5 +1,5 @@
+import i18n from '@src/i18n.config';
 import dayjs from 'dayjs';
-import i18n from '../i18n.config';
 
 export const FORMAT_TIME = 'LT';
 export const FORMAT_TIME_SECONDS = 'LTS';

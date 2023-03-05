@@ -4,7 +4,7 @@ import { Button, useColorMode } from 'native-base';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-const Settings: React.FC = () => {
+export default () => {
   const { t } = useTranslation(['common', 'settings']);
   const { toggleColorMode } = useColorMode();
 
@@ -23,5 +23,3 @@ const Settings: React.FC = () => {
     </PageLayout>
   );
 };
-
-export default Settings;

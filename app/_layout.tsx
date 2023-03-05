@@ -28,7 +28,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import '@src/i18n.config';
 
-const RootLayout: React.FC = () => {
+export default () => {
   let [isFontsLoaded] = useFonts({
     Exo2_100Thin,
     Exo2_200ExtraLight,
@@ -54,7 +54,9 @@ const RootLayout: React.FC = () => {
     <SafeAreaProvider>
       <NativeBaseProvider theme={extendedTheme}>
         <Stack
+          initialRouteName='/collection'
           screenOptions={{
+            headerShown: false,
             headerTitle: (props) => <HeaderTitle title={props.children} />,
           }}
         />
@@ -64,5 +66,3 @@ const RootLayout: React.FC = () => {
     <SplashScreen />
   );
 };
-
-export default RootLayout;

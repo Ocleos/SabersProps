@@ -3269,7 +3269,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-native-aria/checkbox@npm:^0.2.2":
+"@react-native-aria/checkbox@npm:^0.2.3":
   version: 0.2.3
   resolution: "@react-native-aria/checkbox@npm:0.2.3"
   dependencies:
@@ -7949,12 +7949,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next@npm:^22.4.10":
-  version: 22.4.10
-  resolution: "i18next@npm:22.4.10"
+"i18next@npm:^22.4.11":
+  version: 22.4.11
+  resolution: "i18next@npm:22.4.11"
   dependencies:
     "@babel/runtime": ^7.20.6
-  checksum: 731423e3fafe4ecaf0fc3c5867b69ae5c35c9021f7b5aad8392a9bf5cf56fbf1503376ba5aa935f2b21e12a97862fa31be0e4b35e98eefb747e2008b5808e35c
+  checksum: 7f68c6801eb1eff240953066841d507cb00ce3eb6e2a8a6446f9a16453aab168352a36fdfe62c88e04795b1bc0a47439b2d463ed67e1c6bf19e0fb3a57fa457a
   languageName: node
   linkType: hard
 
@@ -10120,13 +10120,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"native-base@npm:^3.4.26":
-  version: 3.4.26
-  resolution: "native-base@npm:3.4.26"
+"native-base@npm:^3.4.28":
+  version: 3.4.28
+  resolution: "native-base@npm:3.4.28"
   dependencies:
     "@react-aria/visually-hidden": ^3.2.1
     "@react-native-aria/button": ^0.2.4
-    "@react-native-aria/checkbox": ^0.2.2
+    "@react-native-aria/checkbox": ^0.2.3
     "@react-native-aria/combobox": ^0.2.4-alpha.0
     "@react-native-aria/focus": ^0.2.6
     "@react-native-aria/interactions": ^0.2.2
@@ -10167,7 +10167,7 @@ __metadata:
     react-native: "*"
     react-native-safe-area-context: "*"
     react-native-svg: "*"
-  checksum: f36bcd54d75d93ed0087672eeaec92f7463160e837297f4f0659fcab173a1532dd6543a03847e9c1a40c71fa782c3af29fc672f57c2c99f96ede2e72d3dbf981
+  checksum: 68d3b2c56c23b2bc25296162dfbd586530df6bc3a3e0a577ab383cdfc014e4e436604edb5aa33312055226c375e170ca942e686d43b23372d075dd7aa613fa8d
   languageName: node
   linkType: hard
 
@@ -11855,9 +11855,9 @@ __metadata:
     expo-router: ^1.2.1
     expo-status-bar: ~1.4.4
     husky: ^8.0.3
-    i18next: ^22.4.10
+    i18next: ^22.4.11
     lodash: ^4.17.21
-    native-base: ^3.4.26
+    native-base: ^3.4.28
     react: 18.2.0
     react-dom: 18.2.0
     react-i18next: ^12.2.0
@@ -11868,6 +11868,7 @@ __metadata:
     react-native-web: ~0.18.12
     rome: ^11.0.0
     typescript: ^4.9.5
+    zustand: ^4.3.6
   languageName: unknown
   linkType: soft
 
@@ -13300,7 +13301,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"use-sync-external-store@npm:^1.0.0, use-sync-external-store@npm:^1.2.0":
+"use-sync-external-store@npm:1.2.0, use-sync-external-store@npm:^1.0.0, use-sync-external-store@npm:^1.2.0":
   version: 1.2.0
   resolution: "use-sync-external-store@npm:1.2.0"
   peerDependencies:
@@ -13750,5 +13751,22 @@ __metadata:
   version: 0.1.0
   resolution: "yocto-queue@npm:0.1.0"
   checksum: f77b3d8d00310def622123df93d4ee654fc6a0096182af8bd60679ddcdfb3474c56c6c7190817c84a2785648cdee9d721c0154eb45698c62176c322fb46fc700
+  languageName: node
+  linkType: hard
+
+"zustand@npm:^4.3.6":
+  version: 4.3.6
+  resolution: "zustand@npm:4.3.6"
+  dependencies:
+    use-sync-external-store: 1.2.0
+  peerDependencies:
+    immer: ">=9.0"
+    react: ">=16.8"
+  peerDependenciesMeta:
+    immer:
+      optional: true
+    react:
+      optional: true
+  checksum: 4d3cec03526f04ff3de6dc45b6f038c47f091836af9660fbf5f682cae1628221102882df20e4048dfe699a43f67424e5d6afc1116f3838a80eea5dd4f95ddaed
   languageName: node
   linkType: hard

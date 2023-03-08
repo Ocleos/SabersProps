@@ -27,9 +27,13 @@ const PageLayout: React.FC<Props> = (props) => {
         }}
       />
       {props.isScrollable ? (
-        <ScrollView {...props.scrollViewProps}>{props.children}</ScrollView>
+        <ScrollView h={'full'} {...props.scrollViewProps}>
+          {props.children}
+        </ScrollView>
       ) : (
-        <View {...props.viewProps}>{props.children}</View>
+        <View h={'full'} {...props.viewProps}>
+          {props.children}
+        </View>
       )}
     </Box>
   );

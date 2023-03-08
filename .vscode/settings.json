@@ -18,5 +18,5 @@
   "files.eol": "\n",
   "files.insertFinalNewline": true,
   "cSpell.ignoreRegExpList": ["/from\\\\s+(['\\\"]).*\\\\1/"],
-  "cSpell.ignoreWords": ["dayjs"]
+  "cSpell.ignoreWords": ["commitlint", "dayjs", "zustand"]
 }

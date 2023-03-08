@@ -1,8 +1,17 @@
 const routingFr = {
   ROUTING: {
-    COLLECTION: 'Collection',
-    STATS: 'Stats',
-    SETTINGS: 'Paramètres',
+    COLLECTION: {
+      ADD: 'Ajouter',
+      DETAIL: 'Détail',
+      EDIT: 'Éditer',
+      INITIAL: 'Collection',
+    },
+    STATS: {
+      INITIAL: 'Stats',
+    },
+    SETTINGS: {
+      INITIAL: 'Paramètres',
+    },
   },
 };
 

@@ -1,16 +1,33 @@
 import { AntDesign } from '@expo/vector-icons';
 import PageLayout from '@src/components/layout/pageLayout.component';
+import { useCollectionStore } from '@src/store/collection.store';
+import { isPending } from '@src/utils/status.utils';
 import { useRouter } from 'expo-router';
-import { Button, Fab, Icon, Text, VStack } from 'native-base';
+import { Box, Fab, Icon, Spinner, Text, VStack } from 'native-base';
+import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default () => {
+  const { t } = useTranslation(['routing']);
   const router = useRouter();
+
+  const { collection, status, fetchCollection } = useCollectionStore();
+
+  useEffect(() => {
+    fetchCollection();
+  }, []);
+
   return (
-    <PageLayout>
+    <PageLayout stackOptions={{ title: t('routing:ROUTING.COLLECTION.INITIAL') ?? '' }}>
       <VStack space={4}>
-        <Button onPress={() => router.push('/collection/1')}>Id 1</Button>
-        <Button onPress={() => router.push('/collection/1')}>Id 2</Button>
-        <Text>Collection Liste</Text>
+        {isPending(status) ? <Spinner size="lg" /> : null}
+        {collection.map((item) => (
+          <Box key={item.id}>
+            <Text>
+              {item.name} - {item.character}
+            </Text>
+          </Box>
+        ))}
       </VStack>
       <Fab
         renderInPortal={false}

@@ -1,8 +1,17 @@
 const routingEn = {
   ROUTING: {
-    COLLECTION: 'Collection',
-    STATS: 'Stats',
-    SETTINGS: 'Settings',
+    COLLECTION: {
+      ADD: 'Add',
+      DETAIL: 'Detail',
+      EDIT: 'Edit',
+      INITIAL: 'Collection',
+    },
+    STATS: {
+      INITIAL: 'Stats',
+    },
+    SETTINGS: {
+      INITIAL: 'Settings',
+    },
   },
 };
 

@@ -16,7 +16,7 @@ export default () => {
         tabBarInactiveBackgroundColor: useToken('colors', useColorModeValue('light.50', 'dark.50')),
         tabBarLabel: (props) => <TabTitle title={props.children} color={props.color} />,
         tabBarStyle: {
-          height: '64px',
+          height: useToken('sizes', 16),
         },
       }}
     >

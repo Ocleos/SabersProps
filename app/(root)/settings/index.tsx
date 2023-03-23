@@ -1,6 +1,6 @@
 import PageLayout from '@src/components/layout/pageLayout.component';
 import { changeLanguage } from '@src/i18n.config';
-import { HStack, Radio, Switch, Text, useColorMode, VStack } from 'native-base';
+import { HStack, Radio, Switch, Text, VStack, useColorMode } from 'native-base';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -15,19 +15,15 @@ export default () => {
     toggleColorMode();
   };
   return (
-    <PageLayout stackOptions={{ title: t('settings:SETTINGS.TITLE') ?? '' }} isScrollable>
+    <PageLayout stackOptions={{ title: t('settings:SETTINGS.TITLE') ?? '' }} isScrollable={true}>
       <VStack space={4}>
         <HStack space={4}>
-          <Text fontSize='lg' w={'2/3'}>
-            {t('settings:SETTINGS.DARK_THEME')}
-          </Text>
+          <Text w={'2/3'}>{t('settings:SETTINGS.DARK_THEME')}</Text>
           <Switch size='lg' isChecked={isDarkTheme} onToggle={onToggleTheme} m='auto' />
         </HStack>
 
         <HStack>
-          <Text fontSize="lg" w={'2/3'}>
-            {t('settings:SETTINGS.LANGUAGES.DESCRIPTION')}
-          </Text>
+          <Text w={'2/3'}>{t('settings:SETTINGS.LANGUAGES.DESCRIPTION')}</Text>
           <Radio.Group name="language" size='lg' onChange={changeLanguage} defaultValue='fr'>
             <Radio value='fr' m={1}>
               {t('settings:SETTINGS.LANGUAGES.FRENCH')}

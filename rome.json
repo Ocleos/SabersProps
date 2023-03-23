@@ -3,6 +3,9 @@
   "files": {
     "ignore": ["**/node_modules/*.*"]
   },
+  "organizeImports": {
+    "enabled": true
+  },
   "formatter": {
     "enabled": true,
     "formatWithErrors": false,
@@ -12,8 +15,10 @@
   },
   "javascript": {
     "formatter": {
+      "semicolons": "always",
       "quoteStyle": "single",
-      "trailingComma": "all"
+      "trailingComma": "all",
+      "quoteProperties": "asNeeded"
     }
   },
   "linter": {
@@ -24,7 +29,7 @@
         "noUnusedVariables": "error"
       },
       "style": {
-        "noImplicitBoolean": "off"
+        "noImplicitBoolean": "error"
       }
     }
   }

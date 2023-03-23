@@ -1,6 +1,6 @@
 import type { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 import { Stack } from 'expo-router';
-import { Box, IScrollViewProps, ScrollView, useColorModeValue, useToken, View } from 'native-base';
+import { Box, IScrollViewProps, ScrollView, View, useColorModeValue, useToken } from 'native-base';
 import { IViewProps } from 'native-base/lib/typescript/components/basic/View/types';
 
 interface Props {

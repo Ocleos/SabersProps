@@ -3,20 +3,14 @@
   "editor.tabSize": 2,
   "editor.codeActionsOnSave": {
     "source.fixAll": true,
-    "source.organizeImports": true
+    "source.organizeImports.rome": true
   },
   "editor.defaultFormatter": "rome.rome",
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "editor.formatOnSave": true,
   "editor.wordWrap": "wordWrapColumn",
   "editor.wordWrapColumn": 120,
   "files.eol": "\n",
   "files.insertFinalNewline": true,
   "cSpell.ignoreRegExpList": ["/from\\\\s+(['\\\"]).*\\\\1/"],
-  "cSpell.ignoreWords": ["commitlint", "dayjs", "zustand"]
+  "cSpell.ignoreWords": ["commitlint", "dayjs", "shopify", "zustand"]
 }

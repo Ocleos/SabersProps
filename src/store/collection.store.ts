@@ -19,7 +19,7 @@ export const useCollectionStore = create<ICollectionState>()(
       set((state) => ({ ...state, status: Status.PENDING }));
 
       try {
-        const collection = await getCollection();
+        const collection: ItemCollection[] = await getCollection();
         set(() => ({ collection: collection, status: Status.RESOLVED }));
       } catch (error) {
         console.error(error);

@@ -29,7 +29,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import '@src/i18n.config';
 
 export default () => {
-  let [isFontsLoaded] = useFonts({
+  const [isFontsLoaded] = useFonts({
     Exo2_100Thin,
     Exo2_200ExtraLight,
     Exo2_300Light,

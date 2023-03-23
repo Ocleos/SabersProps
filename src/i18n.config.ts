@@ -1,8 +1,8 @@
+import en from './locales/en/_en.locale';
+import fr from './locales/fr/_fr.locale';
 import dayjs from 'dayjs';
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import en from './locales/en/_en.locale';
-import fr from './locales/fr/_fr.locale';
 
 import localizedFormat from 'dayjs/plugin/localizedFormat';
 import utc from 'dayjs/plugin/utc';

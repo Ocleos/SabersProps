@@ -26,6 +26,7 @@ import { NativeBaseProvider } from 'native-base';
 import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
+import { StarWarsGlyphicons } from '@src/assets/sabersProps.icon';
 import '@src/i18n.config';
 
 export default () => {
@@ -48,6 +49,7 @@ export default () => {
     Exo2_700Bold_Italic,
     Exo2_800ExtraBold_Italic,
     Exo2_900Black_Italic,
+    StarWarsGlyphicons,
   });
 
   return isFontsLoaded ? (

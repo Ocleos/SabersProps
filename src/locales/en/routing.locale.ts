@@ -12,6 +12,9 @@ const routingEn = {
     SETTINGS: {
       INITIAL: 'Settings',
     },
+    TOOLS: {
+      INITIAL: 'Tools',
+    },
   },
 };
 

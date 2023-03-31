@@ -3,6 +3,7 @@ const commonFr = {
     ADD: 'Ajouter',
     BACK: 'Retour',
     CANCEL: 'Annuler',
+    CLOSE: 'Fermer',
     CONFIRM: 'Confirmer',
     DELETE: 'Supprimer',
     DESCRIPTION: 'Description',

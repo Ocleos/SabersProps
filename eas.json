@@ -20,7 +20,10 @@
       "releaseChannel": "preview"
     },
     "production": {
-      "extends": "base",
+      "distribution": "store",
+      "android": {
+        "buildType": "app-bundle"
+      },
       "releaseChannel": "production",
       "autoIncrement": true
     }

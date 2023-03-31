@@ -11,8 +11,8 @@
     "start": "expo start",
     "lint": "rome check . --apply",
     "format": "rome format . --write",
-    "build": "npx eas build --platform android --profile preview",
     "build:dev": "npx eas build --platform android --profile development",
+    "build:preview": "npx eas build --platform android --profile preview",
     "build:prod": "npx eas build --platform android --profile production",
     "prepare": "husky install"
   },

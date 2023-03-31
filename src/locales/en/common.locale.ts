@@ -3,6 +3,7 @@ const commonEn = {
     ADD: 'Add',
     BACK: 'Back',
     CANCEL: 'Cancel',
+    CLOSE: 'Close',
     CONFIRM: 'Confirm',
     DELETE: 'Delete',
     DESCRIPTION: 'Description',

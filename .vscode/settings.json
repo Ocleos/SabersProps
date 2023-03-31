@@ -1,16 +1,24 @@
 {
-  "cSpell.words": ["sabersprops"],
+  "cSpell.words": ["aurebesh", "sabersprops"],
   "editor.tabSize": 2,
   "editor.codeActionsOnSave": {
     "source.fixAll": true,
+    "source.organizeImports": true,
     "source.organizeImports.rome": true
   },
   "editor.defaultFormatter": "rome.rome",
+  "[jsonc]": {
+    "editor.defaultFormatter": "rome.rome"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "rome.rome"
+  },
   "editor.formatOnSave": true,
   "editor.wordWrap": "wordWrapColumn",
   "editor.wordWrapColumn": 120,
   "files.eol": "\n",
   "files.insertFinalNewline": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
   "cSpell.ignoreRegExpList": ["/from\\\\s+(['\\\"]).*\\\\1/"],
   "cSpell.ignoreWords": ["Glyphicons", "commitlint", "dayjs", "shopify", "zustand"]
 }

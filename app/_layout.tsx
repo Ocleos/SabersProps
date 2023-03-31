@@ -26,8 +26,8 @@ import { NativeBaseProvider } from 'native-base';
 import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import { StarWarsGlyphicons } from '@src/assets/sabersProps.icon';
 import '@src/i18n.config';
+import { Aurebesh, StarWarsGlyphicons } from '@src/theme/fonts.theme';
 
 export default () => {
   const [isFontsLoaded] = useFonts({
@@ -50,6 +50,7 @@ export default () => {
     Exo2_800ExtraBold_Italic,
     Exo2_900Black_Italic,
     StarWarsGlyphicons,
+    Aurebesh,
   });
 
   return isFontsLoaded ? (

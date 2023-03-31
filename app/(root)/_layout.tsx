@@ -35,6 +35,13 @@ export default () => {
         }}
       />
       <Tabs.Screen
+        name="tools"
+        options={{
+          title: t('routing:ROUTING.TOOLS.INITIAL') ?? '',
+          tabBarIcon: (props) => <Icon as={MaterialCommunityIcons} name="tools" color={props.color} size={8} />,
+        }}
+      />
+      <Tabs.Screen
         name="settings"
         options={{
           title: t('routing:ROUTING.SETTINGS.INITIAL') ?? '',

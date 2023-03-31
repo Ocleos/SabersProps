@@ -44,3 +44,6 @@ export const fonts = {
   body: 'Exo2',
   mono: 'Exo2',
 };
+
+export const Aurebesh = require('@assets/fonts/Aurebesh.otf');
+export const StarWarsGlyphicons = require('@assets/fonts/StarWarsGlyphicons.ttf');

@@ -12,6 +12,9 @@ const routingFr = {
     SETTINGS: {
       INITIAL: 'Paramètres',
     },
+    TOOLS: {
+      INITIAL: 'Outils',
+    },
   },
 };
 

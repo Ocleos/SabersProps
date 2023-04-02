@@ -25,7 +25,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     icon: './assets/icon.png',
     adaptiveIcon: {
       foregroundImage: './assets/adaptiveIconForeground.png',
-      backgroundColor: './assets/adaptiveIconBackground.png',
+      backgroundImage: './assets/adaptiveIconBackground.png',
     },
   },
   ios: {

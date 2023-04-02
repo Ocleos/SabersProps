@@ -26,9 +26,7 @@ const AurebeshTranslatorModal: React.FC<IModalProps> = (props) => {
                 <Text fontFamily={'Aurebesh'} {...textProps} textTransform={'lowercase'}>
                   {character}
                 </Text>
-                <Text {...textProps} mt={-2}>
-                  {character}
-                </Text>
+                <Text {...textProps}>{character}</Text>
               </HStack>
             ))}
           </VStack>

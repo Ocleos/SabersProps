@@ -10,7 +10,7 @@ export default {
   splash: {
     image: './assets/splash.png',
     resizeMode: 'contain',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#000000',
   },
   updates: {
     fallbackToCacheTimeout: 0,
@@ -18,9 +18,10 @@ export default {
   assetBundlePatterns: ['**/*'],
   android: {
     package: 'fr.ocleos.sabersprops',
+    icon: './assets/icon.png',
     adaptiveIcon: {
-      foregroundImage: './assets/adaptive-icon.png',
-      backgroundColor: '#FFFFFF',
+      foregroundImage: './assets/adaptiveIconForeground.png',
+      backgroundColor: './assets/adaptiveIconBackground.png',
     },
   },
   ios: {

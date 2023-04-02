@@ -23,11 +23,12 @@ import HeaderTitle from '@src/components/header/headerTitle.component';
 import extendedTheme from '@src/theme/_extendedTheme.theme';
 import { SplashScreen, Stack } from 'expo-router';
 import { NativeBaseProvider } from 'native-base';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import '@src/i18n.config';
 import { Aurebesh, StarWarsGlyphicons } from '@src/theme/fonts.theme';
+import { initAxios } from '@src/utils/axiosInterceptors.utils';
 
 export default () => {
   const [isFontsLoaded] = useFonts({
@@ -52,6 +53,10 @@ export default () => {
     StarWarsGlyphicons,
     Aurebesh,
   });
+
+  useEffect(() => {
+    initAxios();
+  }, [isFontsLoaded]);
 
   return isFontsLoaded ? (
     <SafeAreaProvider>

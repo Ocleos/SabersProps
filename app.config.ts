@@ -1,4 +1,8 @@
-export default {
+import 'dotenv/config';
+import { ConfigContext, ExpoConfig } from 'expo/config';
+
+export default ({ config }: ConfigContext): ExpoConfig => ({
+  ...config,
   name: 'SabersProps',
   slug: 'SabersProps',
   version: '0.0.1',
@@ -33,8 +37,10 @@ export default {
     favicon: './assets/favicon.png',
   },
   extra: {
+    apiUrl: 'https://sabersprops-32e4.restdb.io/rest',
+    apiKey: process.env.apiKey,
     eas: {
       projectId: 'c10d5799-2d0f-4239-bf9a-f9278fa20c1c',
     },
   },
-};
+});

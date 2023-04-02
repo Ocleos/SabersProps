@@ -1,4 +1,5 @@
 export enum State {
+  NONE = 0,
   PRODUCTION = 1,
   DESIGN = 2,
   READY = 3,

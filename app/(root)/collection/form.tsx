@@ -1,10 +1,10 @@
 import PageLayout from '@src/components/layout/pageLayout.component';
-import { Text } from 'native-base';
+import ItemFormComponent from '@src/modules/collection/itemForm.component';
 
 export default () => {
   return (
     <PageLayout>
-      <Text>Formulaire</Text>
+      <ItemFormComponent />
     </PageLayout>
   );
 };

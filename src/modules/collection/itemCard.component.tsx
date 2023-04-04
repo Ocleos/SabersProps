@@ -23,7 +23,7 @@ const ItemCardComponent: React.FC<IItemCardProps> = ({ item }) => {
         size={24}
       />
 
-      <VStack space={4}>
+      <VStack space={2}>
         <Heading>{item.name}</Heading>
         <Heading size='sm'>{item.character}</Heading>
         <HStack space={2}>

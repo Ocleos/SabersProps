@@ -20,5 +20,5 @@
   "files.insertFinalNewline": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "cSpell.ignoreRegExpList": ["/from\\\\s+(['\\\"]).*\\\\1/"],
-  "cSpell.ignoreWords": ["Glyphicons", "commitlint", "dayjs", "shopify", "zustand"]
+  "cSpell.ignoreWords": ["Glyphicons", "Ionicons", "commitlint", "dayjs", "hookform", "shopify", "zustand"]
 }

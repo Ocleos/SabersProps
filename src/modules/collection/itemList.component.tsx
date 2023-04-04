@@ -3,6 +3,7 @@ import { FlashList } from '@shopify/flash-list';
 import EmptyComponent from '@src/components/empty/empty.component';
 import { useCollectionStore } from '@src/store/collection.store';
 import { isPending } from '@src/utils/status.utils';
+import { useToken } from 'native-base';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -19,7 +20,7 @@ const ItemListComponent: React.FC = () => {
     <FlashList
       data={collection}
       renderItem={({ item }) => <ItemCardComponent item={item} />}
-      estimatedItemSize={160}
+      estimatedItemSize={useToken('sizes', 40)}
       ListEmptyComponent={() => <EmptyComponent title={t('common:COMMON.NO_DATA')} />}
       keyExtractor={(item) => item.id}
       onRefresh={() => fetchCollection()}

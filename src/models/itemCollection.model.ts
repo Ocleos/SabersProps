@@ -8,7 +8,7 @@ export type ItemCollection = {
   character?: string;
   type: ItemType;
   manufacturer: string;
-  chassisDesigner: string;
+  chassisDesigner?: string;
   state: State;
   soundboard?: string;
   prices?: ItemPrice;

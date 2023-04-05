@@ -1,29 +1,50 @@
-import { ItemCollection } from '@src/models/itemCollection.model';
-import { getCollection } from '@src/services/collection.api';
+import { Prop } from '@src/models/prop.model';
+import { getProps, postProps } from '@src/services/props.api';
 import { Status } from '@src/utils/status.utils';
+import { sortBy } from 'lodash';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 
 interface ICollectionState {
-  collection: ItemCollection[];
+  props: Prop[];
   status: Status;
-  fetchCollection: () => void;
+  submitStatus: Status;
+  fetchProps: () => void;
+  submitProp: (prop: Prop, onSuccessCallback: Function) => void;
 }
 
 export const useCollectionStore = create<ICollectionState>()(
   devtools((set) => ({
-    collection: [],
+    props: [],
     status: Status.IDLE,
+    submitStatus: Status.RESOLVED,
 
-    fetchCollection: async () => {
+    fetchProps: async () => {
       set((state) => ({ ...state, status: Status.PENDING }));
 
       try {
-        const collection: ItemCollection[] = await getCollection();
-        set(() => ({ collection: collection, status: Status.RESOLVED }));
+        const props: Prop[] = await getProps();
+        set((state) => ({ ...state, props: sortBy(props, ['name']), status: Status.RESOLVED }));
       } catch (error) {
         console.error(error);
-        set(() => ({ collection: [], status: Status.REFUSED }));
+        set((state) => ({ ...state, props: [], status: Status.REFUSED }));
+      }
+    },
+
+    submitProp: async (prop: Prop, onSuccessCallback: Function) => {
+      set((state) => ({ ...state, submitStatus: Status.PENDING }));
+
+      try {
+        await postProps(prop);
+
+        if (onSuccessCallback) {
+          onSuccessCallback();
+        }
+
+        set((state) => ({ ...state, submitStatus: Status.RESOLVED }));
+      } catch (error) {
+        console.error(error);
+        set((state) => ({ ...state, submitStatus: Status.REFUSED }));
       }
     },
   })),

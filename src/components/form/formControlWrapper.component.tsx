@@ -10,11 +10,11 @@ interface IFormControlWrapperProps extends IFormControlProps {
 
 const FormControlWrapper = <T extends FieldValues>(props: IFormControlWrapperProps & UseControllerProps<T>) => {
   const {
-    fieldState: { invalid, error, isDirty },
+    fieldState: { invalid, error },
   } = useController({ control: props.control, name: props.name });
 
   return (
-    <FormControl isInvalid={isDirty && invalid} {...props}>
+    <FormControl isInvalid={invalid} {...props}>
       <FormControl.Label>{props.label}</FormControl.Label>
       {props.children}
       {props.helperText && <FormControl.HelperText>{props.helperText}</FormControl.HelperText>}

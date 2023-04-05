@@ -24,10 +24,15 @@ const commonFr = {
     START: 'Démarrer',
     YES: 'Oui',
   },
+  FORMS: {
+    ADD_SUCCESS: 'Ajouté avec succès',
+    EDIT_SUCCESS: 'Édité avec succès',
+  },
   ERRORS: {
     UNKNOWN_ERROR: 'Une erreur inconnue est survenue.',
   },
   VALIDATION: {
+    DEFAULT: 'Le champ est invalide',
     EMAIL: "Le format de l'e-mail est invalide",
     MAX: 'Le nombre doit être inférieur à {{max}}',
     MIN: 'Le nombre doit être supérieur à {{min}}',

@@ -1,6 +1,6 @@
 import { AntDesign } from '@expo/vector-icons';
 import PageLayout from '@src/components/layout/pageLayout.component';
-import ItemListComponent from '@src/modules/collection/itemList.component';
+import PropListComponent from '@src/modules/collection/propList.component';
 import { useRouter } from 'expo-router';
 import { Fab, Icon } from 'native-base';
 import { useTranslation } from 'react-i18next';
@@ -11,7 +11,7 @@ export default () => {
 
   return (
     <PageLayout stackOptions={{ title: t('routing:ROUTING.COLLECTION.INITIAL') ?? '' }}>
-      <ItemListComponent />
+      <PropListComponent />
       <Fab
         renderInPortal={false}
         placement={'bottom-right'}

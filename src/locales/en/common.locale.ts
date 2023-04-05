@@ -24,10 +24,15 @@ const commonEn = {
     START: 'Start',
     YES: 'Yes',
   },
+  FORMS: {
+    ADD_SUCCESS: 'Added with success',
+    EDIT_SUCCESS: 'Updated with success',
+  },
   ERRORS: {
     UNKNOWN_ERROR: 'An unknown error has occurred.',
   },
   VALIDATION: {
+    DEFAULT: 'The field is invalid',
     EMAIL: 'The email format is invalid',
     MAX: 'The number must be lower than {{max}}',
     MIN: 'The number must be higher than {{min}}',

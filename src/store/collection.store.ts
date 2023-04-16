@@ -1,5 +1,5 @@
 import { Prop } from '@src/models/prop.model';
-import { getProps, postProps } from '@src/services/props.api';
+import { getProps, postProp, propsUrlEndpoint } from '@src/services/props.api';
 import { Status } from '@src/utils/status.utils';
 import { sortBy } from 'lodash';
 import { create } from 'zustand';
@@ -35,7 +35,7 @@ export const useCollectionStore = create<ICollectionState>()(
       set((state) => ({ ...state, submitStatus: Status.PENDING }));
 
       try {
-        await postProps(prop);
+        await postProp(propsUrlEndpoint, { arg: prop });
 
         if (onSuccessCallback) {
           onSuccessCallback();

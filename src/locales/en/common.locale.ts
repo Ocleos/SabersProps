@@ -7,6 +7,7 @@ const commonEn = {
     CONFIRM: 'Confirm',
     DELETE: 'Delete',
     DESCRIPTION: 'Description',
+    ERROR: 'Error',
     FILTER: 'Filter',
     NO: 'No',
     NO_DATA: 'No data',

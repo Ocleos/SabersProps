@@ -7,6 +7,7 @@ const commonFr = {
     CONFIRM: 'Confirmer',
     DELETE: 'Supprimer',
     DESCRIPTION: 'Description',
+    ERROR: 'Erreur',
     FILTER: 'Filtrer',
     NO: 'Non',
     NO_DATA: 'Aucune donnée',

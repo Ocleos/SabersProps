@@ -1,20 +1,21 @@
 import PropCardComponent from './propCard.component';
 import { FlashList } from '@shopify/flash-list';
 import EmptyComponent from '@src/components/empty/empty.component';
-import { useCollectionStore } from '@src/store/collection.store';
-import { isPending } from '@src/utils/status.utils';
+import { getProps, propsUrlEndpoint } from '@src/services/props.api';
 import { useToken } from 'native-base';
-import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import useSWR from 'swr';
 
 const PropListComponent: React.FC = () => {
   const { t } = useTranslation('common');
 
-  const { props, status, fetchProps } = useCollectionStore();
-
-  useEffect(() => {
-    fetchProps();
-  }, []);
+  const {
+    isLoading,
+    data: props,
+    mutate,
+  } = useSWR(propsUrlEndpoint, getProps, {
+    onSuccess: (data) => data.sort((a, b) => a.name.localeCompare(b.name)),
+  });
 
   return (
     <FlashList
@@ -23,8 +24,8 @@ const PropListComponent: React.FC = () => {
       estimatedItemSize={useToken('sizes', 40)}
       ListEmptyComponent={() => <EmptyComponent title={t('common:COMMON.NO_DATA')} />}
       keyExtractor={(item) => item.id}
-      onRefresh={() => fetchProps()}
-      refreshing={isPending(status)}
+      onRefresh={() => mutate()}
+      refreshing={isLoading}
     />
   );
 };

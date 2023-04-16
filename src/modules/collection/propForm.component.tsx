@@ -6,22 +6,22 @@ import SelectWrapper from '@src/components/form/selectWrapper.component';
 import { Prop } from '@src/models/prop.model';
 import { PropType } from '@src/models/propType.model';
 import { State } from '@src/models/state.model';
-import { useCollectionStore } from '@src/store/collection.store';
-import { isPending } from '@src/utils/status.utils';
-import { showToaster } from '@src/utils/toaster.utils';
+import { postProp, propsUrlEndpoint } from '@src/services/props.api';
+import { showErrorToaster, showSuccessToaster } from '@src/utils/toaster.utils';
 import { MAX_LENGTH } from '@src/utils/validator.utils';
 import { randomUUID } from 'expo-crypto';
 import { useRouter } from 'expo-router';
 import { Button, Icon, Select, VStack } from 'native-base';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
+import useSWRMutation from 'swr/mutation';
 import * as Yup from 'yup';
 
 const PropFormComponent: React.FC = () => {
   const { t } = useTranslation(['common', 'collection']);
   const router = useRouter();
 
-  const { submitStatus, submitProp, fetchProps } = useCollectionStore();
+  const { trigger, isMutating } = useSWRMutation(propsUrlEndpoint, postProp);
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().required().max(MAX_LENGTH),
@@ -39,20 +39,16 @@ const PropFormComponent: React.FC = () => {
     resolver: yupResolver(validationSchema),
   });
 
-  const onSuccessCallback = () => {
-    showToaster({
-      status: 'success',
-      title: t('common:COMMON.SUCCESS'),
-      description: t('common:FORMS.ADD_SUCCESS') ?? '',
-    });
-    fetchProps();
-    router.back();
-  };
-
-  const onSubmit = (values: Prop) => {
+  const onSubmit = async (values: Prop) => {
     values.id = randomUUID();
 
-    submitProp(values, onSuccessCallback);
+    try {
+      await trigger(values);
+      showSuccessToaster(t('common:FORMS.ADD_SUCCESS') ?? '');
+      router.back();
+    } catch (error) {
+      showErrorToaster(error);
+    }
   };
 
   return (
@@ -119,8 +115,8 @@ const PropFormComponent: React.FC = () => {
         size={'lg'}
         onPress={handleSubmit(onSubmit)}
         startIcon={<Icon as={MaterialCommunityIcons} name="content-save" size={'md'} />}
-        isLoading={isPending(submitStatus)}
-        isDisabled={isPending(submitStatus)}
+        isLoading={isMutating}
+        isDisabled={isMutating}
       >
         {t('common:COMMON.SAVE')}
       </Button>

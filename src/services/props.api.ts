@@ -1,13 +1,14 @@
 import { Prop } from '@src/models/prop.model';
 import axios from 'axios';
 
+export const propsUrlEndpoint = '/props';
+
 export const getProps = async () => {
-  const url = '/props';
-  const response = await axios.get<Prop[]>(url);
+  const response = await axios.get<Prop[]>(propsUrlEndpoint);
   return response.data;
 };
 
-export const postProps = async (prop: Prop) => {
-  const url = '/props';
-  await axios.post(url, prop);
+export const postProp = async (url: string, { arg }: { arg: Prop }) => {
+  const response = await axios.post<Prop>(url, arg);
+  return response.data;
 };

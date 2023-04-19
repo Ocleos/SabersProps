@@ -13,18 +13,18 @@
     "development": {
       "developmentClient": true,
       "extends": "base",
-      "releaseChannel": "development"
+      "channel": "development"
     },
     "preview": {
       "extends": "base",
-      "releaseChannel": "preview"
+      "channel": "preview"
     },
     "production": {
       "distribution": "store",
       "android": {
         "buildType": "app-bundle"
       },
-      "releaseChannel": "production",
+      "channel": "production",
       "autoIncrement": true
     }
   },

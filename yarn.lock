@@ -5214,14 +5214,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^1.3.5":
-  version: 1.3.5
-  resolution: "axios@npm:1.3.5"
+"axios@npm:^1.3.6":
+  version: 1.3.6
+  resolution: "axios@npm:1.3.6"
   dependencies:
     follow-redirects: ^1.15.0
     form-data: ^4.0.0
     proxy-from-env: ^1.1.0
-  checksum: 4d6bcf933b1cdff86d4993752aaeeeedc4a7f7a4b1c942847f6884bb13fc6106610ff826b076acf0b08d8ced55dee9344bb9a11f3624c3e70ab1da1a40bb5506
+  checksum: c90497ebf738723654a6e80147dc294186ad9d7b08f95f5a22fd48f826c7e06a576229b8dff3137195ca627349a4312e00fa78e4f1c499250b9860596adef44a
   languageName: node
   linkType: hard
 
@@ -6683,9 +6683,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eas-cli@npm:^3.9.2":
-  version: 3.9.2
-  resolution: "eas-cli@npm:3.9.2"
+"eas-cli@npm:^3.9.3":
+  version: 3.9.3
+  resolution: "eas-cli@npm:3.9.3"
   dependencies:
     "@expo/apple-utils": 1.2.0
     "@expo/code-signing-certificates": 0.0.5
@@ -6763,7 +6763,7 @@ __metadata:
     wrap-ansi: 7.0.0
   bin:
     eas: bin/run
-  checksum: 029e8b1d6a5c680ad16d6906743088f405cbdf1026da9b1b8d5ce736806713b30f2fa8011c56358cf93d879af0b0248befbd8a8826690a42ec9361e3ac6d55a2
+  checksum: b526e43f82a217998a9668bc0118c46d01a21adb1d2f051a1f49b6ac8651f8c27beb910c8fc3f1e409d0e7ffe1e5bd71c931ca4c9589c547f95928fc27cda4cf
   languageName: node
   linkType: hard
 
@@ -8159,12 +8159,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next@npm:^22.4.14":
-  version: 22.4.14
-  resolution: "i18next@npm:22.4.14"
+"i18next@npm:^22.4.15":
+  version: 22.4.15
+  resolution: "i18next@npm:22.4.15"
   dependencies:
     "@babel/runtime": ^7.20.6
-  checksum: 963b70c7e1fee9666ef4d9ea87a63d0c9483007e2a0ea9520356e43a2cd550f3eb1cab24c57a102f3e84fd737fdff41bafc953dafc3bd6589dc9ea52ddb49905
+  checksum: fced898227983e439c59e7aa6e7b87e53ad1b8a1c85f0613a968881418266e5336e9443831125590559796075d516fe3dbf8118679c894094a0a404be78b02a2
   languageName: node
   linkType: hard
 
@@ -11988,10 +11988,10 @@ __metadata:
     "@types/lodash": ^4.14.194
     "@types/react": ~18.0.33
     "@types/react-native": ^0.71.5
-    axios: ^1.3.5
+    axios: ^1.3.6
     dayjs: ^1.11.7
     dotenv: ^16.0.3
-    eas-cli: ^3.9.2
+    eas-cli: ^3.9.3
     expo: ^48.0.11
     expo-asset: ~8.9.1
     expo-constants: ~14.2.1
@@ -12002,7 +12002,7 @@ __metadata:
     expo-router: ^1.6.0
     expo-status-bar: ~1.4.4
     husky: ^8.0.3
-    i18next: ^22.4.14
+    i18next: ^22.4.15
     lodash: ^4.17.21
     native-base: ^3.4.28
     react: 18.2.0

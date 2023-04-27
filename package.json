@@ -1,6 +1,6 @@
 {
   "name": "sabersprops",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "index.ts",
   "private": true,
   "description": "Infos about collection of Sabers & Props",

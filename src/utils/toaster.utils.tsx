@@ -40,8 +40,6 @@ export const showSuccessToaster = (description?: string) => {
 };
 
 export const showErrorToaster = (error: AxiosError | unknown | Error) => {
-  console.error(error);
-
   let errorMessage = undefined;
   if (error instanceof AxiosError) {
     errorMessage = error.response?.data?.message;

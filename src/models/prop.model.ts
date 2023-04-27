@@ -3,7 +3,7 @@ import { PropType } from './propType.model';
 import { State } from './state.model';
 
 export type Prop = {
-  id: string;
+  _id: string;
   name: string;
   character?: string;
   type: PropType;

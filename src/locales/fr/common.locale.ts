@@ -7,6 +7,7 @@ const commonFr = {
     CONFIRM: 'Confirmer',
     DELETE: 'Supprimer',
     DESCRIPTION: 'Description',
+    EDIT: 'Éditer',
     ERROR: 'Erreur',
     FILTER: 'Filtrer',
     NO: 'Non',
@@ -27,6 +28,8 @@ const commonFr = {
   },
   FORMS: {
     ADD_SUCCESS: 'Ajouté avec succès',
+    DELETE_CONFIRM: 'Êtes-vous sûr de vouloir supprimer {{ name }} ?',
+    DELETE_SUCCESS: 'Supprimé avec succès',
     EDIT_SUCCESS: 'Édité avec succès',
   },
   ERRORS: {

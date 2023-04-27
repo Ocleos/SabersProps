@@ -7,6 +7,7 @@ const commonEn = {
     CONFIRM: 'Confirm',
     DELETE: 'Delete',
     DESCRIPTION: 'Description',
+    EDIT: 'Edit',
     ERROR: 'Error',
     FILTER: 'Filter',
     NO: 'No',
@@ -27,6 +28,8 @@ const commonEn = {
   },
   FORMS: {
     ADD_SUCCESS: 'Added with success',
+    DELETE_CONFIRM: 'Are you sure to delete {{ name }} ?',
+    DELETE_SUCCESS: 'Deleted with success',
     EDIT_SUCCESS: 'Updated with success',
   },
   ERRORS: {

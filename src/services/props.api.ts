@@ -12,3 +12,8 @@ export const postProp = async (url: string, { arg }: { arg: Prop }) => {
   const response = await axios.post<Prop>(url, arg);
   return response.data;
 };
+
+export const deleteProp = async (url: string, { arg }: { arg: string }) => {
+  const response = await axios.delete(`${url}/${arg}`);
+  return response.data;
+};

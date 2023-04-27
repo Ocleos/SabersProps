@@ -9,7 +9,6 @@ import { State } from '@src/models/state.model';
 import { postProp, propsUrlEndpoint } from '@src/services/props.api';
 import { showErrorToaster, showSuccessToaster } from '@src/utils/toaster.utils';
 import { MAX_LENGTH } from '@src/utils/validator.utils';
-import { randomUUID } from 'expo-crypto';
 import { useRouter } from 'expo-router';
 import { Button, Icon, Select, VStack } from 'native-base';
 import { useForm } from 'react-hook-form';
@@ -40,8 +39,6 @@ const PropFormComponent: React.FC = () => {
   });
 
   const onSubmit = async (values: Prop) => {
-    values.id = randomUUID();
-
     try {
       await trigger(values);
       showSuccessToaster(t('common:FORMS.ADD_SUCCESS') ?? '');

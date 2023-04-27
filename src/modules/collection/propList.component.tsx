@@ -1,3 +1,4 @@
+import PropActionSheet from './propActionSheet.component';
 import PropCardComponent from './propCard.component';
 import { FlashList } from '@shopify/flash-list';
 import EmptyComponent from '@src/components/empty/empty.component';
@@ -18,15 +19,19 @@ const PropListComponent: React.FC = () => {
   });
 
   return (
-    <FlashList
-      data={props}
-      renderItem={({ item }) => <PropCardComponent prop={item} />}
-      estimatedItemSize={useToken('sizes', 40)}
-      ListEmptyComponent={() => <EmptyComponent title={t('common:COMMON.NO_DATA')} />}
-      keyExtractor={(item) => item.id}
-      onRefresh={() => mutate()}
-      refreshing={isLoading}
-    />
+    <>
+      <FlashList
+        data={props}
+        renderItem={({ item }) => <PropCardComponent prop={item} />}
+        estimatedItemSize={useToken('sizes', 40)}
+        ListEmptyComponent={() => <EmptyComponent title={t('common:COMMON.NO_DATA')} />}
+        keyExtractor={(item) => item._id}
+        onRefresh={() => mutate()}
+        refreshing={isLoading}
+      />
+
+      <PropActionSheet />
+    </>
   );
 };
 

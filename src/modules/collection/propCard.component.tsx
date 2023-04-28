@@ -14,7 +14,7 @@ interface IPropCardProps {
 const PropCardComponent: React.FC<IPropCardProps> = ({ prop }) => {
   const iconName = getIconFromType(prop.type);
 
-  const { setSelectedProp } = useCollectionStore();
+  const { setSelectedProp, setIsActionSheetOpen } = useCollectionStore();
 
   return (
     <Card borderColor={getColorForState(prop.state, 500)}>
@@ -47,7 +47,10 @@ const PropCardComponent: React.FC<IPropCardProps> = ({ prop }) => {
             variant={'ghost'}
             size="lg"
             colorScheme={'primary'}
-            onPress={() => setSelectedProp(prop)}
+            onPress={() => {
+              setSelectedProp(prop);
+              setIsActionSheetOpen(true);
+            }}
           />
         </Center>
       </HStack>

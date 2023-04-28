@@ -3,20 +3,30 @@ import DeleteModal from '@src/components/modal/deleteModal.component';
 import { deleteProp, propsUrlEndpoint } from '@src/services/props.api';
 import { useCollectionStore } from '@src/store/collection.store';
 import { showSuccessToaster } from '@src/utils/toaster.utils';
-import { isNil } from 'lodash';
+import { useRouter } from 'expo-router';
 import { Actionsheet, Icon } from 'native-base';
 import { useTranslation } from 'react-i18next';
 import useSWRMutation from 'swr/mutation';
 
 const PropActionSheet: React.FC = () => {
   const { t } = useTranslation(['common']);
-  const { setSelectedProp, selectedProp, isDeleteModalOpen, setIsDeleteModalOpen } = useCollectionStore();
+  const {
+    selectedProp,
+    setSelectedProp,
+    isActionSheetOpen,
+    setIsActionSheetOpen,
+    isDeleteModalOpen,
+    setIsDeleteModalOpen,
+  } = useCollectionStore();
+
+  const router = useRouter();
 
   const { trigger, isMutating } = useSWRMutation(propsUrlEndpoint, deleteProp);
 
   const onClose = () => {
     setSelectedProp(undefined);
     setIsDeleteModalOpen(false);
+    setIsActionSheetOpen(false);
   };
 
   const onConfirmDelete = () => {
@@ -29,15 +39,22 @@ const PropActionSheet: React.FC = () => {
 
   return (
     <>
-      <Actionsheet isOpen={!isNil(selectedProp)} onClose={onClose}>
+      <Actionsheet isOpen={isActionSheetOpen} onClose={onClose}>
         <Actionsheet.Content>
-          <Actionsheet.Item startIcon={<Icon as={MaterialCommunityIcons} size={8} name="lead-pencil" />}>
+          <Actionsheet.Item
+            startIcon={<Icon as={MaterialCommunityIcons} size={8} name="lead-pencil" />}
+            onPress={() => {
+              setIsActionSheetOpen(false);
+              router.push('/collection/form');
+            }}
+          >
             {t('common:COMMON.EDIT')}
           </Actionsheet.Item>
 
           <Actionsheet.Item
             startIcon={<Icon as={MaterialCommunityIcons} size={8} name="delete" />}
             onPress={() => {
+              setIsActionSheetOpen(false);
               setIsDeleteModalOpen(true);
             }}
           >

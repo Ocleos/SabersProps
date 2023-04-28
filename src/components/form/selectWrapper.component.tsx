@@ -5,7 +5,7 @@ const SelectWrapper = <T extends FieldValues>(props: ISelectProps & UseControlle
   const { field } = useController({ control: props.control, name: props.name });
 
   return (
-    <Select selectedValue={field.value} onValueChange={field.onChange} {...props}>
+    <Select selectedValue={field.value ? field.value.toString() : undefined} onValueChange={field.onChange} {...props}>
       {props.children}
     </Select>
   );

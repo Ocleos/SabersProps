@@ -6,10 +6,12 @@ import SelectWrapper from '@src/components/form/selectWrapper.component';
 import { Prop } from '@src/models/prop.model';
 import { PropType } from '@src/models/propType.model';
 import { State } from '@src/models/state.model';
-import { postProp, propsUrlEndpoint } from '@src/services/props.api';
+import { postProp, propsUrlEndpoint, putProp } from '@src/services/props.api';
+import { useCollectionStore } from '@src/store/collection.store';
 import { showErrorToaster, showSuccessToaster } from '@src/utils/toaster.utils';
 import { MAX_LENGTH } from '@src/utils/validator.utils';
 import { useRouter } from 'expo-router';
+import { isNil } from 'lodash';
 import { Button, Icon, Select, VStack } from 'native-base';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
@@ -20,7 +22,10 @@ const PropFormComponent: React.FC = () => {
   const { t } = useTranslation(['common', 'collection']);
   const router = useRouter();
 
-  const { trigger, isMutating } = useSWRMutation(propsUrlEndpoint, postProp);
+  const { setSelectedProp, selectedProp } = useCollectionStore();
+  const isEdit = !isNil(selectedProp);
+
+  const { trigger, isMutating } = useSWRMutation(propsUrlEndpoint, isEdit ? putProp : postProp);
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().required().max(MAX_LENGTH),
@@ -36,12 +41,18 @@ const PropFormComponent: React.FC = () => {
   const { control, handleSubmit } = useForm<Prop>({
     mode: 'onChange',
     resolver: yupResolver(validationSchema),
+    defaultValues: isEdit ? selectedProp : {},
   });
 
   const onSubmit = async (values: Prop) => {
     try {
       await trigger(values);
-      showSuccessToaster(t('common:FORMS.ADD_SUCCESS') ?? '');
+      if (isEdit) {
+        showSuccessToaster(t('common:FORMS.EDIT_SUCCESS') ?? '');
+        setSelectedProp(undefined);
+      } else {
+        showSuccessToaster(t('common:FORMS.ADD_SUCCESS') ?? '');
+      }
       router.back();
     } catch (error) {
       showErrorToaster(error);

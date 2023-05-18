@@ -8,16 +8,10 @@ import { Actionsheet, Icon } from 'native-base';
 import { useTranslation } from 'react-i18next';
 import useSWRMutation from 'swr/mutation';
 
-const PropActionSheet: React.FC = () => {
+const PropActions: React.FC = () => {
   const { t } = useTranslation(['common']);
-  const {
-    selectedProp,
-    setSelectedProp,
-    isActionSheetOpen,
-    setIsActionSheetOpen,
-    isDeleteModalOpen,
-    setIsDeleteModalOpen,
-  } = useCollectionStore();
+  const { selectedProp, setSelectedProp, isActionsOpen, setIsActionsOpen, isDeleteModalOpen, setIsDeleteModalOpen } =
+    useCollectionStore();
 
   const router = useRouter();
 
@@ -26,7 +20,7 @@ const PropActionSheet: React.FC = () => {
   const onClose = () => {
     setSelectedProp(undefined);
     setIsDeleteModalOpen(false);
-    setIsActionSheetOpen(false);
+    setIsActionsOpen(false);
   };
 
   const onConfirmDelete = () => {
@@ -39,12 +33,12 @@ const PropActionSheet: React.FC = () => {
 
   return (
     <>
-      <Actionsheet isOpen={isActionSheetOpen} onClose={onClose}>
+      <Actionsheet isOpen={isActionsOpen} onClose={onClose}>
         <Actionsheet.Content>
           <Actionsheet.Item
             startIcon={<Icon as={MaterialCommunityIcons} size={8} name='lead-pencil' />}
             onPress={() => {
-              setIsActionSheetOpen(false);
+              setIsActionsOpen(false);
               router.push('/collection/form');
             }}
           >
@@ -54,7 +48,7 @@ const PropActionSheet: React.FC = () => {
           <Actionsheet.Item
             startIcon={<Icon as={MaterialCommunityIcons} size={8} name='delete' />}
             onPress={() => {
-              setIsActionSheetOpen(false);
+              setIsActionsOpen(false);
               setIsDeleteModalOpen(true);
             }}
           >
@@ -75,4 +69,4 @@ const PropActionSheet: React.FC = () => {
   );
 };
 
-export default PropActionSheet;
+export default PropActions;

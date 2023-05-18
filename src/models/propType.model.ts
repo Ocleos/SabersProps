@@ -13,7 +13,6 @@ export const getIconFromType = (type: PropType) => {
       return 'lightsabers';
     case PropType.PROP:
       return 'blaster';
-    case PropType.NONE:
     default:
       return '';
   }

@@ -42,10 +42,10 @@ const PropCardComponent: React.FC<IPropCardProps> = ({ prop }) => {
 
         <Center>
           <IconButton
-            icon={<Icon name="dots-vertical" as={MaterialCommunityIcons} />}
+            icon={<Icon name='dots-vertical' as={MaterialCommunityIcons} />}
             borderRadius={'full'}
             variant={'ghost'}
-            size="lg"
+            size='lg'
             colorScheme={'primary'}
             onPress={() => {
               setSelectedProp(prop);

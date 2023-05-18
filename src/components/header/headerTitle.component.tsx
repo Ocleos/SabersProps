@@ -7,7 +7,7 @@ interface HeaderTitleProps extends IHeadingProps {
 const HeaderTitle: React.FC<HeaderTitleProps> = (props) => {
   const { title } = props;
   return (
-    <Text textAlign="center" fontWeight="bold" fontSize="lg" {...props}>
+    <Text textAlign='center' fontWeight='bold' fontSize='lg' {...props}>
       {title}
     </Text>
   );

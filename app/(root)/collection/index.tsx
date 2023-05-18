@@ -17,7 +17,7 @@ export default () => {
         placement={'bottom-right'}
         onPress={() => router.push('/collection/form')}
         shadow={9}
-        icon={<Icon as={AntDesign} name="plus" size="lg" />}
+        icon={<Icon as={AntDesign} name='plus' size='lg' />}
       />
     </PageLayout>
   );

@@ -29,10 +29,10 @@ const DeleteModal: React.FC<IDeleteModalProps> = (props) => {
 
         <AlertDialog.Footer>
           <Button.Group space={2}>
-            <Button variant="unstyled" colorScheme="coolGray" onPress={onClose} ref={cancelRef}>
+            <Button variant='unstyled' colorScheme='coolGray' onPress={onClose} ref={cancelRef}>
               {t('common:COMMON.CANCEL')}
             </Button>
-            <Button colorScheme="danger" onPress={onConfirm} isLoading={isLoading}>
+            <Button colorScheme='danger' onPress={onConfirm} isLoading={isLoading}>
               {t('common:COMMON.CONFIRM')}
             </Button>
           </Button.Group>

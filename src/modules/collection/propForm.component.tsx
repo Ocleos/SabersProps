@@ -122,7 +122,7 @@ const PropFormComponent: React.FC = () => {
       <Button
         size={'lg'}
         onPress={handleSubmit(onSubmit)}
-        startIcon={<Icon as={MaterialCommunityIcons} name="content-save" size={'md'} />}
+        startIcon={<Icon as={MaterialCommunityIcons} name='content-save' size={'md'} />}
         isLoading={isMutating}
         isDisabled={isMutating}
       >

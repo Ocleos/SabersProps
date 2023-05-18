@@ -24,7 +24,7 @@ export default () => {
 
         <HStack>
           <Text w={'2/3'}>{t('settings:SETTINGS.LANGUAGES.DESCRIPTION')}</Text>
-          <Radio.Group name="language" size='lg' onChange={changeLanguage} defaultValue='fr'>
+          <Radio.Group name='language' size='lg' onChange={changeLanguage} defaultValue='fr'>
             <Radio value='fr' m={1}>
               {t('settings:SETTINGS.LANGUAGES.FRENCH')}
             </Radio>

@@ -16,7 +16,7 @@ const EmptyComponent: React.FC<IEmptyComponentProps> = (props) => {
         <NoDataIcon size={64} />
       </Center>
 
-      <Text textAlign="center" fontWeight="bold">
+      <Text textAlign='center' fontWeight='bold'>
         {title}
       </Text>
     </VStack>

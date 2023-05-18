@@ -6,7 +6,7 @@ export default () => {
   // const { colors } = useTheme();
 
   return (
-    <Redirect href="/collection" />
+    <Redirect href='/collection' />
     // <PageLayout
     //   isScrollable={false}
     //   stackOptions={{

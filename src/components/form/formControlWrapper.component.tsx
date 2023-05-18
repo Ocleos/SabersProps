@@ -19,7 +19,7 @@ const FormControlWrapper = <T extends FieldValues>(props: IFormControlWrapperPro
       {props.children}
       {props.helperText && <FormControl.HelperText>{props.helperText}</FormControl.HelperText>}
       {error && (
-        <FormControl.ErrorMessage startIcon={<Icon as={Ionicons} name="information-circle-outline" />}>
+        <FormControl.ErrorMessage startIcon={<Icon as={Ionicons} name='information-circle-outline' />}>
           {error.message}
         </FormControl.ErrorMessage>
       )}

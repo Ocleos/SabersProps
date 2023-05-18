@@ -42,7 +42,7 @@ const PropActionSheet: React.FC = () => {
       <Actionsheet isOpen={isActionSheetOpen} onClose={onClose}>
         <Actionsheet.Content>
           <Actionsheet.Item
-            startIcon={<Icon as={MaterialCommunityIcons} size={8} name="lead-pencil" />}
+            startIcon={<Icon as={MaterialCommunityIcons} size={8} name='lead-pencil' />}
             onPress={() => {
               setIsActionSheetOpen(false);
               router.push('/collection/form');
@@ -52,7 +52,7 @@ const PropActionSheet: React.FC = () => {
           </Actionsheet.Item>
 
           <Actionsheet.Item
-            startIcon={<Icon as={MaterialCommunityIcons} size={8} name="delete" />}
+            startIcon={<Icon as={MaterialCommunityIcons} size={8} name='delete' />}
             onPress={() => {
               setIsActionSheetOpen(false);
               setIsDeleteModalOpen(true);

@@ -39,7 +39,7 @@ const PropFilters: React.FC = () => {
 
         <Actionsheet.Item>
           <FormControlWrapper label={t('collection:FORM.LABELS.STATE')} name='state' control={control}>
-            <Flex flexDirection='row' flexWrap='wrap' flex={1} maxW={`${maxWidth}px`} style={{ gap: 8 }}>
+            <Flex flexDirection='row' flexWrap='wrap' maxW={`${maxWidth}px`} style={{ gap: 8 }}>
               <StateFilter state={PropState.PRODUCTION} />
               <StateFilter state={PropState.DESIGN} />
               <StateFilter state={PropState.MISSING_PIECES} />

@@ -25,26 +25,28 @@ const PropListComponent: React.FC = () => {
   }, [data, filters]);
 
   return (
-    <VStack space={2}>
-      <FilterSearchWrapper
-        onSearchValue={setSearchValue}
-        searchValue={filters.searchValue}
-        onOpenFilter={setIsFiltersOpen}
-      />
+    <>
+      <VStack space={2} flex={1}>
+        <FilterSearchWrapper
+          onSearchValue={setSearchValue}
+          searchValue={filters.searchValue}
+          onOpenFilter={setIsFiltersOpen}
+        />
 
-      <FlashList
-        data={props}
-        renderItem={({ item }) => <PropCardComponent prop={item} />}
-        estimatedItemSize={160}
-        ListEmptyComponent={() => <EmptyComponent title={t('common:COMMON.NO_DATA')} />}
-        keyExtractor={(item) => item._id}
-        onRefresh={() => mutate()}
-        refreshing={isLoading}
-      />
+        <FlashList
+          data={props}
+          renderItem={({ item }) => <PropCardComponent prop={item} />}
+          estimatedItemSize={160}
+          ListEmptyComponent={() => <EmptyComponent title={t('common:COMMON.NO_DATA')} />}
+          keyExtractor={(item) => item._id}
+          onRefresh={() => mutate()}
+          refreshing={isLoading}
+        />
+      </VStack>
 
       <PropFilters />
       <PropActions />
-    </VStack>
+    </>
   );
 };
 

@@ -29,13 +29,13 @@ const PropFormComponent: React.FC = () => {
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().required().max(MAX_LENGTH),
-    character: Yup.string().max(MAX_LENGTH),
-    manufacturer: Yup.string().required().max(MAX_LENGTH),
-    chassisDesigner: Yup.string().max(MAX_LENGTH),
-    soundboard: Yup.string().max(MAX_LENGTH),
-    apparition: Yup.string().max(MAX_LENGTH),
     state: Yup.number().required(),
     type: Yup.number().required(),
+    manufacturer: Yup.string().required().max(MAX_LENGTH),
+    character: Yup.string().nullable().max(MAX_LENGTH),
+    chassisDesigner: Yup.string().nullable().max(MAX_LENGTH),
+    soundboard: Yup.string().nullable().max(MAX_LENGTH),
+    apparition: Yup.string().nullable().max(MAX_LENGTH),
   });
 
   const { control, handleSubmit } = useForm<Prop>({

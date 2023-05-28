@@ -2,7 +2,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import DeleteModal from '@src/components/modal/deleteModal.component';
 import { deleteProp, propsUrlEndpoint } from '@src/services/props.api';
 import { useCollectionStore } from '@src/store/collection.store';
-import { showSuccessToaster } from '@src/utils/toaster.utils';
+import { showErrorToaster, showSuccessToaster } from '@src/utils/toaster.utils';
 import { useRouter } from 'expo-router';
 import { Actionsheet, Icon } from 'native-base';
 import { useTranslation } from 'react-i18next';
@@ -23,11 +23,15 @@ const PropActions: React.FC = () => {
     setIsActionsOpen(false);
   };
 
-  const onConfirmDelete = () => {
+  const onConfirmDelete = async () => {
     if (selectedProp) {
-      trigger(selectedProp._id);
-      showSuccessToaster(t('common:FORMS.DELETE_SUCCESS') ?? '');
-      onClose();
+      try {
+        await trigger(selectedProp.id);
+        showSuccessToaster(t('common:FORMS.DELETE_SUCCESS') ?? '');
+        onClose();
+      } catch (error) {
+        showErrorToaster(error);
+      }
     }
   };
 

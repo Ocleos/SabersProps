@@ -1,6 +1,7 @@
 import PageLayout from '@src/components/layout/pageLayout.component';
 import { changeLanguage } from '@src/i18n.config';
-import { HStack, Radio, Switch, Text, VStack, useColorMode } from 'native-base';
+import { applicationVersion } from '@src/utils/platforms.utils';
+import { Center, HStack, Radio, Switch, Text, VStack, useColorMode } from 'native-base';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -33,6 +34,12 @@ export default () => {
             </Radio>
           </Radio.Group>
         </HStack>
+
+        {applicationVersion && (
+          <Center>
+            <Text>{`v${applicationVersion}`}</Text>
+          </Center>
+        )}
       </VStack>
     </PageLayout>
   );

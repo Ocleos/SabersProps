@@ -15,7 +15,8 @@ export const initAxios = () => {
       headers.accept = 'application/json';
       headers['Content-Type'] = 'application/json';
       headers['cache-control'] = 'no-cache';
-      headers['x-apikey'] = apiKey;
+      headers['apikey'] = apiKey;
+      headers['Authorization'] = `Bearer ${apiKey}`;
 
       config.headers = headers;
 

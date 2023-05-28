@@ -4,8 +4,8 @@ import FormControlWrapper from '@src/components/form/formControlWrapper.componen
 import InputWrapper from '@src/components/form/inputWrapper.component';
 import SelectWrapper from '@src/components/form/selectWrapper.component';
 import { Prop } from '@src/models/prop.model';
+import { PropState } from '@src/models/propState.model';
 import { PropType } from '@src/models/propType.model';
-import { State } from '@src/models/state.model';
 import { postProp, propsUrlEndpoint, putProp } from '@src/services/props.api';
 import { useCollectionStore } from '@src/store/collection.store';
 import { showErrorToaster, showSuccessToaster } from '@src/utils/toaster.utils';
@@ -75,14 +75,14 @@ const PropFormComponent: React.FC = () => {
 
       <FormControlWrapper label={t('collection:FORM.LABELS.STATE')} name='state' control={control} isRequired={true}>
         <SelectWrapper control={control} name='state' placeholder={t('collection:FORM.LABELS.STATE') ?? ''}>
-          <Select.Item label={t('collection:STATE.PRODUCTION')} value={State.PRODUCTION.toString()} />
-          <Select.Item label={t('collection:STATE.DESIGN')} value={State.DESIGN.toString()} />
-          <Select.Item label={t('collection:STATE.MISSING_PIECES')} value={State.MISSING_PIECES.toString()} />
-          <Select.Item label={t('collection:STATE.READY')} value={State.READY.toString()} />
-          <Select.Item label={t('collection:STATE.IN_PROGRESS')} value={State.IN_PROGRESS.toString()} />
-          <Select.Item label={t('collection:STATE.DONE')} value={State.DONE.toString()} />
-          <Select.Item label={t('collection:STATE.ON_SALE')} value={State.ON_SALE.toString()} />
-          <Select.Item label={t('collection:STATE.SOLD')} value={State.SOLD.toString()} />
+          <Select.Item label={t('collection:STATE.PRODUCTION')} value={PropState.PRODUCTION.toString()} />
+          <Select.Item label={t('collection:STATE.DESIGN')} value={PropState.DESIGN.toString()} />
+          <Select.Item label={t('collection:STATE.MISSING_PIECES')} value={PropState.MISSING_PIECES.toString()} />
+          <Select.Item label={t('collection:STATE.READY')} value={PropState.READY.toString()} />
+          <Select.Item label={t('collection:STATE.IN_PROGRESS')} value={PropState.IN_PROGRESS.toString()} />
+          <Select.Item label={t('collection:STATE.DONE')} value={PropState.DONE.toString()} />
+          <Select.Item label={t('collection:STATE.ON_SALE')} value={PropState.ON_SALE.toString()} />
+          <Select.Item label={t('collection:STATE.SOLD')} value={PropState.SOLD.toString()} />
         </SelectWrapper>
       </FormControlWrapper>
 

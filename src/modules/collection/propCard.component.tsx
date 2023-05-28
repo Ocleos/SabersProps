@@ -2,8 +2,8 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { SabersPropsIcon } from '@src/assets/sabersProps.icon';
 import Card from '@src/components/card/card.component';
 import { Prop } from '@src/models/prop.model';
-import { getIconFromType } from '@src/models/propType.model';
-import { getColorForState } from '@src/models/state.model';
+import { propStates } from '@src/models/propState.model';
+import { propTypes } from '@src/models/propType.model';
 import { useCollectionStore } from '@src/store/collection.store';
 import { Center, Divider, HStack, Heading, Icon, IconButton, Text, VStack, useColorModeValue } from 'native-base';
 
@@ -12,18 +12,16 @@ interface IPropCardProps {
 }
 
 const PropCardComponent: React.FC<IPropCardProps> = ({ prop }) => {
-  const iconName = getIconFromType(prop.type);
-
   const { setSelectedProp, setIsActionsOpen } = useCollectionStore();
 
   return (
-    <Card borderColor={getColorForState(prop.state, 500)}>
+    <Card borderColor={`${propStates[prop.state].colorScheme}.500`}>
       <Icon
         position={'absolute'}
         right={2}
         bottom={2}
         as={SabersPropsIcon}
-        name={iconName}
+        name={propTypes[prop.type].iconName}
         color={useColorModeValue('primary.200:alpha.50', 'primary.800:alpha.50')}
         size={24}
       />

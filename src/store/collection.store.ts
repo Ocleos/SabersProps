@@ -1,5 +1,9 @@
 import { Prop } from '@src/models/prop.model';
-import { filter, some, sortBy } from 'lodash';
+import { PropFilters, defaultPropFilters } from '@src/models/propFilters.model';
+import { PropState } from '@src/models/propState.model';
+import { PropType } from '@src/models/propType.model';
+import { addOrRemove, searchValueInObject } from '@src/utils/arrays.utils';
+import { filter, includes, sortBy } from 'lodash';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 
@@ -8,8 +12,8 @@ interface ICollectionState {
   selectedProp?: Prop;
   isActionsOpen: boolean;
   isDeleteModalOpen: boolean;
-  searchValue: string;
   isFiltersOpen: boolean;
+  filters: PropFilters;
 
   updateProps: (data: Prop[]) => void;
   setSelectedProp: (prop?: Prop) => void;
@@ -17,6 +21,9 @@ interface ICollectionState {
   setIsDeleteModalOpen: (isOpen: boolean) => void;
   setSearchValue: (search: string) => void;
   setIsFiltersOpen: (isOpen: boolean) => void;
+
+  updateTypeFilter: (type: PropType) => void;
+  updateStateFilter: (propState: PropState) => void;
 }
 
 export const useCollectionStore = create<ICollectionState>()(
@@ -25,15 +32,17 @@ export const useCollectionStore = create<ICollectionState>()(
     selectedProp: undefined,
     isActionsOpen: false,
     isDeleteModalOpen: false,
-    searchValue: '',
     isFiltersOpen: false,
+    filters: defaultPropFilters,
 
     updateProps: (data: Prop[]) => {
       set((state) => {
         const filteredData = filter(data, (item) => {
-          return some(Object.values(item as Object), (property) =>
-            property?.toLocaleString().toLocaleLowerCase().includes(state.searchValue),
-          );
+          const isTypeIncluded = includes(state.filters.typesFilter, item.type);
+          const isStateIncluded = includes(state.filters.statesFilter, item.state);
+          const isSearchIncluded = searchValueInObject(state.filters.searchValue, item as Object);
+
+          return isSearchIncluded && isStateIncluded && isTypeIncluded;
         });
         const sortedData = sortBy(filteredData, ['name']);
 
@@ -53,12 +62,26 @@ export const useCollectionStore = create<ICollectionState>()(
       set((state) => ({ ...state, isDeleteModalOpen: isOpen }));
     },
 
-    setSearchValue: (search: string) => {
-      set((state) => ({ ...state, searchValue: search }));
-    },
-
     setIsFiltersOpen: (isOpen) => {
       set((state) => ({ ...state, isFiltersOpen: isOpen }));
+    },
+
+    setSearchValue: (search: string) => {
+      set((state) => ({ ...state, filters: { ...state.filters, searchValue: search } }));
+    },
+
+    updateTypeFilter: (type: PropType) => {
+      set((state) => ({
+        ...state,
+        filters: { ...state.filters, typesFilter: addOrRemove(state.filters.typesFilter, type) },
+      }));
+    },
+
+    updateStateFilter: (propState: PropState) => {
+      set((state) => ({
+        ...state,
+        filters: { ...state.filters, statesFilter: addOrRemove(state.filters.statesFilter, propState) },
+      }));
     },
   })),
 );

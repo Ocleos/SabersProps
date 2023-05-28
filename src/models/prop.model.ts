@@ -1,6 +1,6 @@
 import { PropPrice } from './propPrice.model';
+import { PropState } from './propState.model';
 import { PropType } from './propType.model';
-import { State } from './state.model';
 
 export type Prop = {
   _id: string;
@@ -9,7 +9,7 @@ export type Prop = {
   type: PropType;
   manufacturer: string;
   chassisDesigner?: string;
-  state: State;
+  state: PropState;
   soundboard?: string;
   prices?: PropPrice;
   apparition?: string;

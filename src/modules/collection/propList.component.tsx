@@ -1,5 +1,6 @@
 import PropActions from './propActions.component';
 import PropCardComponent from './propCard.component';
+import PropFilters from './propFilters.component';
 import { FlashList } from '@shopify/flash-list';
 import EmptyComponent from '@src/components/empty/empty.component';
 import FilterSearchWrapper from '@src/components/list/filterSearchWrapper.component';
@@ -15,17 +16,21 @@ const PropListComponent: React.FC = () => {
 
   const { isLoading, data, mutate } = useSWR(propsUrlEndpoint, getProps);
 
-  const { props, searchValue, setSearchValue, updateProps } = useCollectionStore();
+  const { props, filters, setSearchValue, updateProps, setIsFiltersOpen } = useCollectionStore();
 
   useEffect(() => {
     if (data) {
       updateProps(data);
     }
-  }, [data, searchValue]);
+  }, [data, filters]);
 
   return (
     <VStack space={2}>
-      <FilterSearchWrapper onSearchValue={setSearchValue} searchValue={searchValue} />
+      <FilterSearchWrapper
+        onSearchValue={setSearchValue}
+        searchValue={filters.searchValue}
+        onOpenFilter={setIsFiltersOpen}
+      />
 
       <FlashList
         data={props}
@@ -37,6 +42,7 @@ const PropListComponent: React.FC = () => {
         refreshing={isLoading}
       />
 
+      <PropFilters />
       <PropActions />
     </VStack>
   );

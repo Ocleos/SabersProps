@@ -1,3 +1,5 @@
+import i18n from '@src/i18n.config';
+
 export enum PropType {
   NONE = 0,
   LIGHTSABER = 1,
@@ -5,15 +7,14 @@ export enum PropType {
   COSTUME = 3,
 }
 
-export const getIconFromType = (type: PropType) => {
-  switch (type) {
-    case PropType.COSTUME:
-      return 'deathTrooper';
-    case PropType.LIGHTSABER:
-      return 'lightsabers';
-    case PropType.PROP:
-      return 'blaster';
-    default:
-      return '';
-  }
+export interface IPropType {
+  iconName: string;
+  label: string;
+}
+
+export const propTypes: Record<PropType, IPropType> = {
+  [PropType.NONE]: { iconName: '', label: '' },
+  [PropType.LIGHTSABER]: { iconName: 'lightsabers', label: i18n.t('collection:TYPE.LIGHTSABER') },
+  [PropType.PROP]: { iconName: 'blaster', label: i18n.t('collection:TYPE.PROP') },
+  [PropType.COSTUME]: { iconName: 'deathTrooper', label: i18n.t('collection:TYPE.COSTUME') },
 };

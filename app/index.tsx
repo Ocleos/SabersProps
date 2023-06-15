@@ -10,7 +10,7 @@ export default () => {
     // <PageLayout
     //   isScrollable={false}
     //   stackOptions={{
-    //     title: t('home:HOME.TITLE') ?? '',
+    //     title: t('home:HOME.TITLE'),
     //     headerRight: () => (
     //       <IconButton
     //         onPress={() => router.push('settings')}

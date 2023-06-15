@@ -16,7 +16,7 @@ export default () => {
     toggleColorMode();
   };
   return (
-    <PageLayout stackOptions={{ title: t('settings:SETTINGS.TITLE') ?? '' }} isScrollable={true}>
+    <PageLayout stackOptions={{ title: t('settings:SETTINGS.TITLE') }} isScrollable={true}>
       <VStack space={4}>
         <HStack space={4}>
           <Text w={'2/3'}>{t('settings:SETTINGS.DARK_THEME')}</Text>

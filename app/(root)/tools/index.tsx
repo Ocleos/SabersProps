@@ -6,7 +6,7 @@ export default () => {
   const { t } = useTranslation(['routing']);
 
   return (
-    <PageLayout stackOptions={{ title: t('routing:ROUTING.TOOLS.INITIAL') ?? '' }}>
+    <PageLayout stackOptions={{ title: t('routing:ROUTING.TOOLS.INITIAL') }}>
       <AurebeshTranslator />
     </PageLayout>
   );

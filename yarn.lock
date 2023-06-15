@@ -1614,7 +1614,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.13.10, @babel/runtime@npm:^7.18.6, @babel/runtime@npm:^7.20.6, @babel/runtime@npm:^7.6.2, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.8.7":
+"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.13.10, @babel/runtime@npm:^7.18.6, @babel/runtime@npm:^7.6.2, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.8.7":
   version: 7.20.7
   resolution: "@babel/runtime@npm:7.20.7"
   dependencies:
@@ -1638,6 +1638,15 @@ __metadata:
   dependencies:
     regenerator-runtime: ^0.13.11
   checksum: 7b33e25bfa9e0e1b9e8828bb61b2d32bdd46b41b07ba7cb43319ad08efc6fda8eb89445193e67d6541814627df0ca59122c0ea795e412b99c5183a0540d338ab
+  languageName: node
+  linkType: hard
+
+"@babel/runtime@npm:^7.22.5":
+  version: 7.22.5
+  resolution: "@babel/runtime@npm:7.22.5"
+  dependencies:
+    regenerator-runtime: ^0.13.11
+  checksum: 12a50b7de2531beef38840d17af50c55a094253697600cee255311222390c68eed704829308d4fd305e1b3dfbce113272e428e9d9d45b1730e0fede997eaceb1
   languageName: node
   linkType: hard
 
@@ -2356,15 +2365,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@expo/metro-runtime@npm:2.1.4":
-  version: 2.1.4
-  resolution: "@expo/metro-runtime@npm:2.1.4"
+"@expo/metro-runtime@npm:2.1.5":
+  version: 2.1.5
+  resolution: "@expo/metro-runtime@npm:2.1.5"
   dependencies:
     "@bacons/react-views": ^1.1.3
     qs: ^6.10.3
   peerDependencies:
     react-native: "*"
-  checksum: 6cfd987e2c7f06cd8a7a11af6c5d3035444140815a057541032f0187b7215f3274cc827b73dad74f5c1a933a9e66df02f46d67de52fc9a947fd19027cbf4c5b5
+  checksum: 2f4396ea354d439a78027078e988cf91ba8e978576f2ba7fc76810c7521c3df5f1bc176bcfcaead480b01fefdaeff96830c46c1cc06371a36be6e32bb7966f04
   languageName: node
   linkType: hard
 
@@ -3100,7 +3109,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@radix-ui/react-slot@npm:^1.0.0":
+"@radix-ui/react-slot@npm:1.0.1":
   version: 1.0.1
   resolution: "@radix-ui/react-slot@npm:1.0.1"
   dependencies:
@@ -7180,9 +7189,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-head@npm:0.0.6":
-  version: 0.0.6
-  resolution: "expo-head@npm:0.0.6"
+"expo-head@npm:0.0.7":
+  version: 0.0.7
+  resolution: "expo-head@npm:0.0.7"
   dependencies:
     react-helmet-async: ^1.3.0
   peerDependencies:
@@ -7191,7 +7200,7 @@ __metadata:
     expo-router: "*"
     react: "*"
     react-native: "*"
-  checksum: 40d0cb65c7a04ed9ca52dd56b0744c90b2bff8bee225fe19a5efc66255a69c4f0eae5b55e4485b985fd26f88dd25bfc8908e80510847991ed05b82162e8ac5a9
+  checksum: 541a4bbfcc5e5c455fea1d37d16429673172c84c8507e04bd93fed64544ad9cedcf893c8e83ef730f7ea7e4c5e8408d5ff3c926a2c5ff090601b6451b8095651
   languageName: node
   linkType: hard
 
@@ -7251,17 +7260,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-router@npm:^1.7.5":
-  version: 1.7.5
-  resolution: "expo-router@npm:1.7.5"
+"expo-router@npm:^1.7.6":
+  version: 1.7.6
+  resolution: "expo-router@npm:1.7.6"
   dependencies:
     "@bacons/react-views": ^1.1.3
-    "@expo/metro-runtime": 2.1.4
-    "@radix-ui/react-slot": ^1.0.0
+    "@expo/metro-runtime": 2.1.5
+    "@radix-ui/react-slot": 1.0.1
     "@react-navigation/bottom-tabs": ~6.5.7
     "@react-navigation/native": ~6.1.6
     "@react-navigation/native-stack": ~6.9.12
-    expo-head: 0.0.6
+    expo-head: 0.0.7
     expo-splash-screen: "*"
     query-string: 7.1.3
     react-helmet-async: ^1.3.0
@@ -7285,7 +7294,7 @@ __metadata:
       optional: true
     react-native-reanimated:
       optional: true
-  checksum: 890518d2f3b93242e75d65b6748d483d268d22791869ed0d6c9f9b1fd9ef1b5e6c915c45439edc09ad7811b05c7341951c921d83a1465da0d9fbbfffdd32bb33
+  checksum: eacb96831bb2823f3eb3e580f73938d2281a31d86c8699c498053e3db4c264561f4b493311050315b8df2d77a46ef8af9ee929e7b0bac1d74e893204dc266de5
   languageName: node
   linkType: hard
 
@@ -8259,12 +8268,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next@npm:^22.5.1":
-  version: 22.5.1
-  resolution: "i18next@npm:22.5.1"
+"i18next@npm:^23.0.2":
+  version: 23.0.2
+  resolution: "i18next@npm:23.0.2"
   dependencies:
-    "@babel/runtime": ^7.20.6
-  checksum: 175f8ab7fac2abcee147b00cc2d8e7d4fa9b05cdc227f02cac841fc2fd9545ed4a6d88774f594f8ad12dc944e4d34cc8e88aa00c8b9947baef9e859d93abd305
+    "@babel/runtime": ^7.22.5
+  checksum: f5836cfd4988a59a652d4efa6ed2e7c83b64d42acbfc0c868b2ac9204fb526e1157ca85523d2ef5a4b13722e09ec54ae31d5a63240becddee796fd995264555b
   languageName: node
   linkType: hard
 
@@ -11417,21 +11426,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-i18next@npm:^12.3.1":
-  version: 12.3.1
-  resolution: "react-i18next@npm:12.3.1"
+"react-i18next@npm:^13.0.0":
+  version: 13.0.0
+  resolution: "react-i18next@npm:13.0.0"
   dependencies:
-    "@babel/runtime": ^7.20.6
+    "@babel/runtime": ^7.22.5
     html-parse-stringify: ^3.0.1
   peerDependencies:
-    i18next: ">= 19.0.0"
+    i18next: ">= 23.0.1"
     react: ">= 16.8.0"
   peerDependenciesMeta:
     react-dom:
       optional: true
     react-native:
       optional: true
-  checksum: fe3f360e5184bc63861734e94bf625a09b9ec0d28fab41779a68758af258fd1737dde25ff7a88ddb66c1571a3e3de5b3403825a91b4949bf9832a00615acb87a
+  checksum: f897ebb2570f79d2aee01d3d5cf65c0622a1ef07e2536c2d9206d9fe999ece9abf4b4795be99db4326f18fa3858c69745e21b150254d3da0d1f08c77586b1cc4
   languageName: node
   linkType: hard
 
@@ -12098,16 +12107,16 @@ __metadata:
     expo-font: ~11.1.1
     expo-image: ~1.0.1
     expo-linking: ~4.0.1
-    expo-router: ^1.7.5
+    expo-router: ^1.7.6
     expo-status-bar: ~1.4.4
     husky: ^8.0.3
-    i18next: ^22.5.1
+    i18next: ^23.0.2
     lodash: ^4.17.21
     native-base: ^3.4.28
     react: 18.2.0
     react-dom: 18.2.0
     react-hook-form: ^7.44.3
-    react-i18next: ^12.3.1
+    react-i18next: ^13.0.0
     react-native: 0.71.8
     react-native-gesture-handler: ~2.9.0
     react-native-safe-area-context: 4.5.0

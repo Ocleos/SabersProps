@@ -38,7 +38,7 @@ const PropFormComponent: React.FC = () => {
     apparition: Yup.string().nullable().max(MAX_LENGTH),
   });
 
-  const { control, handleSubmit } = useForm<Prop>({
+  const { control, handleSubmit } = useForm({
     mode: 'onChange',
     resolver: yupResolver(validationSchema),
     defaultValues: isEdit ? selectedProp : {},
@@ -48,10 +48,10 @@ const PropFormComponent: React.FC = () => {
     try {
       await trigger(values);
       if (isEdit) {
-        showSuccessToaster(t('common:FORMS.EDIT_SUCCESS') ?? '');
+        showSuccessToaster(t('common:FORMS.EDIT_SUCCESS'));
         setSelectedProp(undefined);
       } else {
-        showSuccessToaster(t('common:FORMS.ADD_SUCCESS') ?? '');
+        showSuccessToaster(t('common:FORMS.ADD_SUCCESS'));
       }
       router.back();
     } catch (error) {
@@ -62,11 +62,11 @@ const PropFormComponent: React.FC = () => {
   return (
     <VStack space={4}>
       <FormControlWrapper label={t('collection:FORM.LABELS.NAME')} name='name' control={control} isRequired={true}>
-        <InputWrapper control={control} name='name' placeholder={t('collection:FORM.LABELS.NAME') ?? ''} />
+        <InputWrapper control={control} name='name' placeholder={t('collection:FORM.LABELS.NAME')} />
       </FormControlWrapper>
 
       <FormControlWrapper label={t('collection:FORM.LABELS.TYPE')} name='type' control={control} isRequired={true}>
-        <SelectWrapper control={control} name='type' placeholder={t('collection:FORM.LABELS.TYPE') ?? ''}>
+        <SelectWrapper control={control} name='type' placeholder={t('collection:FORM.LABELS.TYPE')}>
           <Select.Item label={t('collection:TYPE.LIGHTSABER')} value={PropType.LIGHTSABER.toString()} />
           <Select.Item label={t('collection:TYPE.PROP')} value={PropType.PROP.toString()} />
           <Select.Item label={t('collection:TYPE.COSTUME')} value={PropType.COSTUME.toString()} />
@@ -74,7 +74,7 @@ const PropFormComponent: React.FC = () => {
       </FormControlWrapper>
 
       <FormControlWrapper label={t('collection:FORM.LABELS.STATE')} name='state' control={control} isRequired={true}>
-        <SelectWrapper control={control} name='state' placeholder={t('collection:FORM.LABELS.STATE') ?? ''}>
+        <SelectWrapper control={control} name='state' placeholder={t('collection:FORM.LABELS.STATE')}>
           <Select.Item label={t('collection:STATE.PRODUCTION')} value={PropState.PRODUCTION.toString()} />
           <Select.Item label={t('collection:STATE.DESIGN')} value={PropState.DESIGN.toString()} />
           <Select.Item label={t('collection:STATE.MISSING_PIECES')} value={PropState.MISSING_PIECES.toString()} />
@@ -92,31 +92,27 @@ const PropFormComponent: React.FC = () => {
         control={control}
         isRequired={true}
       >
-        <InputWrapper
-          control={control}
-          name='manufacturer'
-          placeholder={t('collection:FORM.LABELS.MANUFACTURER') ?? ''}
-        />
+        <InputWrapper control={control} name='manufacturer' placeholder={t('collection:FORM.LABELS.MANUFACTURER')} />
       </FormControlWrapper>
 
       <FormControlWrapper label={t('collection:FORM.LABELS.CHARACTER')} name='character' control={control}>
-        <InputWrapper control={control} name='character' placeholder={t('collection:FORM.LABELS.CHARACTER') ?? ''} />
+        <InputWrapper control={control} name='character' placeholder={t('collection:FORM.LABELS.CHARACTER')} />
       </FormControlWrapper>
 
       <FormControlWrapper label={t('collection:FORM.LABELS.APPARITION')} name='apparition' control={control}>
-        <InputWrapper control={control} name='apparition' placeholder={t('collection:FORM.LABELS.APPARITION') ?? ''} />
+        <InputWrapper control={control} name='apparition' placeholder={t('collection:FORM.LABELS.APPARITION')} />
       </FormControlWrapper>
 
       <FormControlWrapper label={t('collection:FORM.LABELS.CHASSIS_DESIGNER')} name='chassisDesigner' control={control}>
         <InputWrapper
           control={control}
           name='chassisDesigner'
-          placeholder={t('collection:FORM.LABELS.CHASSIS_DESIGNER') ?? ''}
+          placeholder={t('collection:FORM.LABELS.CHASSIS_DESIGNER')}
         />
       </FormControlWrapper>
 
       <FormControlWrapper label={t('collection:FORM.LABELS.SOUNDBOARD')} name='soundboard' control={control}>
-        <InputWrapper control={control} name='soundboard' placeholder={t('collection:FORM.LABELS.SOUNDBOARD') ?? ''} />
+        <InputWrapper control={control} name='soundboard' placeholder={t('collection:FORM.LABELS.SOUNDBOARD')} />
       </FormControlWrapper>
 
       <Button

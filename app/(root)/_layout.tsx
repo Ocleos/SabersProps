@@ -23,28 +23,28 @@ export default () => {
       <Tabs.Screen
         name='collection'
         options={{
-          title: t('routing:ROUTING.COLLECTION.INITIAL') ?? '',
+          title: t('routing:ROUTING.COLLECTION.INITIAL'),
           tabBarIcon: (props) => <Icon as={MaterialCommunityIcons} name='sword-cross' color={props.color} size={8} />,
         }}
       />
       <Tabs.Screen
         name='stats'
         options={{
-          title: t('routing:ROUTING.STATS.INITIAL') ?? '',
+          title: t('routing:ROUTING.STATS.INITIAL'),
           tabBarIcon: (props) => <Icon as={FontAwesome} name='pie-chart' color={props.color} size={8} />,
         }}
       />
       <Tabs.Screen
         name='tools'
         options={{
-          title: t('routing:ROUTING.TOOLS.INITIAL') ?? '',
+          title: t('routing:ROUTING.TOOLS.INITIAL'),
           tabBarIcon: (props) => <Icon as={MaterialCommunityIcons} name='tools' color={props.color} size={8} />,
         }}
       />
       <Tabs.Screen
         name='settings'
         options={{
-          title: t('routing:ROUTING.SETTINGS.INITIAL') ?? '',
+          title: t('routing:ROUTING.SETTINGS.INITIAL'),
           tabBarIcon: (props) => <Icon as={FontAwesome} name='gear' color={props.color} size={8} />,
         }}
       />

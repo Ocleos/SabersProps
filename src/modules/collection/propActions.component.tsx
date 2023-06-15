@@ -27,7 +27,7 @@ const PropActions: React.FC = () => {
     if (selectedProp) {
       try {
         await trigger(selectedProp.id);
-        showSuccessToaster(t('common:FORMS.DELETE_SUCCESS') ?? '');
+        showSuccessToaster(t('common:FORMS.DELETE_SUCCESS'));
         onClose();
       } catch (error) {
         showErrorToaster(error);
@@ -64,8 +64,8 @@ const PropActions: React.FC = () => {
       <DeleteModal
         isOpen={isDeleteModalOpen}
         onClose={onClose}
-        title={t('common:COMMON.DELETE') ?? ''}
-        content={t('common:FORMS.DELETE_CONFIRM', { name: selectedProp?.name }) ?? ''}
+        title={t('common:COMMON.DELETE')}
+        content={t('common:FORMS.DELETE_CONFIRM', { name: selectedProp?.name })}
         onConfirm={onConfirmDelete}
         isLoading={isMutating}
       />

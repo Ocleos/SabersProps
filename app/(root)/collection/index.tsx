@@ -15,7 +15,7 @@ export default () => {
   return (
     <PageLayout
       stackOptions={{
-        title: t('routing:ROUTING.COLLECTION.INITIAL') ?? '',
+        title: t('routing:ROUTING.COLLECTION.INITIAL'),
       }}
     >
       <PropListComponent />

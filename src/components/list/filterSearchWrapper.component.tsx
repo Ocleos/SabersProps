@@ -23,7 +23,7 @@ const FilterSearchWrapper: React.FC<IFilterSearchWrapper> = (props) => {
         flex={1}
         variant='rounded'
         value={searchValue}
-        placeholder={t('common:COMMON.SEARCH') ?? ''}
+        placeholder={t('common:COMMON.SEARCH')}
         autoCapitalize='none'
         onChangeText={onChangeText}
         InputLeftElement={<Icon as={FontAwesome5} name='search' px={4} />}

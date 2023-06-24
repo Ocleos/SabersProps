@@ -9,7 +9,7 @@ setLocale({
     required: () => i18n.t('common:VALIDATION.REQUIRED'),
   },
   number: {
-    max: ({ max }) => i18n.t('common:VALIDATION.EMAIL', { max }),
+    max: ({ max }) => i18n.t('common:VALIDATION.MAX', { max }),
     min: ({ min }) => i18n.t('common:VALIDATION.MIN', { min }),
   },
   string: {

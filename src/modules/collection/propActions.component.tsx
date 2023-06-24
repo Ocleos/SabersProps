@@ -24,7 +24,7 @@ const PropActions: React.FC = () => {
   };
 
   const onConfirmDelete = async () => {
-    if (selectedProp) {
+    if (selectedProp?.id) {
       try {
         await trigger(selectedProp.id);
         showSuccessToaster(t('common:FORMS.DELETE_SUCCESS'));

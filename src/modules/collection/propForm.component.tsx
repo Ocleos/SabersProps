@@ -28,14 +28,15 @@ const PropFormComponent: React.FC = () => {
   const { trigger, isMutating } = useSWRMutation(propsUrlEndpoint, isEdit ? putProp : postProp);
 
   const validationSchema = Yup.object().shape({
+    id: Yup.string().optional(),
     name: Yup.string().required().max(MAX_LENGTH),
     state: Yup.number().required(),
     type: Yup.number().required(),
     manufacturer: Yup.string().required().max(MAX_LENGTH),
-    character: Yup.string().nullable().max(MAX_LENGTH),
-    chassisDesigner: Yup.string().nullable().max(MAX_LENGTH),
-    soundboard: Yup.string().nullable().max(MAX_LENGTH),
-    apparition: Yup.string().nullable().max(MAX_LENGTH),
+    character: Yup.string().optional().max(MAX_LENGTH),
+    chassisDesigner: Yup.string().optional().max(MAX_LENGTH),
+    soundboard: Yup.string().optional().max(MAX_LENGTH),
+    apparition: Yup.string().optional().max(MAX_LENGTH),
   });
 
   const { control, handleSubmit } = useForm({

@@ -1,17 +1,14 @@
-import { PropPrice } from './propPrice.model';
 import { PropState } from './propState.model';
 import { PropType } from './propType.model';
 
 export type Prop = {
-  id: string;
+  id: string | undefined;
   name: string;
-  character?: string;
+  state: PropState;
   type: PropType;
   manufacturer: string;
-  chassisDesigner?: string;
-  state: PropState;
-  soundboard?: string;
-  prices?: PropPrice;
-  apparition?: string;
-  color?: string;
+  character: string | undefined;
+  chassisDesigner: string | undefined;
+  soundboard: string | undefined;
+  apparition: string | undefined;
 };

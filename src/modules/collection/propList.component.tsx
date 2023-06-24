@@ -38,7 +38,7 @@ const PropListComponent: React.FC = () => {
           renderItem={({ item }) => <PropCardComponent prop={item} />}
           estimatedItemSize={160}
           ListEmptyComponent={() => <EmptyComponent title={t('common:COMMON.NO_DATA')} />}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item, index) => item.id ?? index.toString()}
           onRefresh={() => mutate()}
           refreshing={isLoading}
         />

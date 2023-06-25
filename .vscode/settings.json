@@ -29,6 +29,7 @@
     "dayjs",
     "hookform",
     "shopify",
+    "supabase",
     "zustand"
   ]
 }

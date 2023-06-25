@@ -7,8 +7,8 @@ export type Prop = {
   state: PropState;
   type: PropType;
   manufacturer: string;
-  character: string | undefined;
-  chassisDesigner: string | undefined;
-  soundboard: string | undefined;
-  apparition: string | undefined;
+  character: string | undefined | null;
+  chassisDesigner: string | undefined | null;
+  soundboard: string | undefined | null;
+  apparition: string | undefined | null;
 };

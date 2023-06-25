@@ -8,12 +8,9 @@ import { getProps, propsUrlEndpoint } from '@src/services/props.api';
 import { useCollectionStore } from '@src/store/collection.store';
 import { VStack } from 'native-base';
 import { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 import useSWR from 'swr';
 
 const PropListComponent: React.FC = () => {
-  const { t } = useTranslation('common');
-
   const { isLoading, data, mutate } = useSWR(propsUrlEndpoint, getProps);
 
   const { props, filters, setSearchValue, updateProps, setIsFiltersOpen } = useCollectionStore();
@@ -37,7 +34,7 @@ const PropListComponent: React.FC = () => {
           data={props}
           renderItem={({ item }) => <PropCardComponent prop={item} />}
           estimatedItemSize={160}
-          ListEmptyComponent={() => <EmptyComponent title={t('common:COMMON.NO_DATA')} />}
+          ListEmptyComponent={() => <EmptyComponent />}
           keyExtractor={(item, index) => item.id ?? index.toString()}
           onRefresh={() => mutate()}
           refreshing={isLoading}

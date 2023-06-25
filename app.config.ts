@@ -37,7 +37,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     favicon: './assets/favicon.png',
   },
   extra: {
-    apiUrl: 'https://pnfeltfqgvkdgyeqtddd.supabase.co/rest/v1',
+    apiUrl: 'https://pnfeltfqgvkdgyeqtddd.supabase.co',
     apiKey: process.env.apiKey,
     eas: {
       projectId: 'c10d5799-2d0f-4239-bf9a-f9278fa20c1c',

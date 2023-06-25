@@ -1,24 +1,21 @@
 import { Prop } from '@src/models/prop.model';
-import axios from 'axios';
+import { supabase } from '@src/utils/supabase.utils';
 
-export const propsUrlEndpoint = '/props';
+export const propsUrlEndpoint = 'props';
 
-export const getProps = async () => {
-  const response = await axios.get<Prop[]>(propsUrlEndpoint);
-  return response.data;
+export const getProps = async (url: string) => {
+  const { data } = await supabase.from(url).select();
+  return data as Prop[];
 };
 
 export const postProp = async (url: string, { arg }: { arg: Prop }) => {
-  const response = await axios.post<Prop>(url, arg);
-  return response.data;
+  await supabase.from(url).insert(arg);
 };
 
 export const putProp = async (url: string, { arg }: { arg: Prop }) => {
-  const response = await axios.put<Prop>(`${url}?id=eq.${arg.id}`, arg);
-  return response.data;
+  await supabase.from(url).update(arg).eq('id', arg.id);
 };
 
 export const deleteProp = async (url: string, { arg }: { arg: string }) => {
-  const response = await axios.delete(`${url}?id=eq.${arg}`);
-  return response.data;
+  await supabase.from(url).delete().eq('id', arg);
 };

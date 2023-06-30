@@ -23,11 +23,14 @@ import HeaderTitle from '@src/components/header/headerTitle.component';
 import extendedTheme from '@src/theme/_extendedTheme.theme';
 import { SplashScreen, Stack } from 'expo-router';
 import { NativeBaseProvider } from 'native-base';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import '@src/i18n.config';
 import { Aurebesh, StarWarsGlyphicons } from '@src/theme/fonts.theme';
+
+// Keep the splash screen visible while we fetch resources
+SplashScreen.preventAutoHideAsync();
 
 export default () => {
   const [isFontsLoaded] = useFonts({
@@ -53,8 +56,14 @@ export default () => {
     Aurebesh,
   });
 
+  const onLayoutRootView = useCallback(async () => {
+    if (isFontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [isFontsLoaded]);
+
   return isFontsLoaded ? (
-    <SafeAreaProvider>
+    <SafeAreaProvider onLayout={onLayoutRootView}>
       <NativeBaseProvider theme={extendedTheme}>
         <Stack
           initialRouteName='/collection'
@@ -65,7 +74,5 @@ export default () => {
         />
       </NativeBaseProvider>
     </SafeAreaProvider>
-  ) : (
-    <SplashScreen />
-  );
+  ) : null;
 };

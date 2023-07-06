@@ -1,4 +1,4 @@
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { Badge, IBadgeProps, Icon } from 'native-base';
 
 interface IFilterBadgeProps extends IBadgeProps {

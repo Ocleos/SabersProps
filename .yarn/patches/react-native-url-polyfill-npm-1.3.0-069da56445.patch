@@ -1,0 +1,13 @@
+diff --git a/auto.js b/auto.js
+index b6eb5e78d16eecb1554303f65cd689bdacb702d6..50927e0ba7eb60c21a7439ec4bd32424aba7630f 100644
+--- a/auto.js
++++ b/auto.js
+@@ -1,3 +1,6 @@
++import {Platform} from 'react-native';
+ import {setupURLPolyfill} from './index';
+ 
+-setupURLPolyfill();
++if (Platform.OS !== 'web') {
++  setupURLPolyfill();
++}
+\ No newline at end of file

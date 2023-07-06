@@ -1,4 +1,4 @@
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import DeleteModal from '@src/components/modal/deleteModal.component';
 import { deleteProp, propsUrlEndpoint } from '@src/services/props.api';
 import { useCollectionStore } from '@src/store/collection.store';

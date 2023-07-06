@@ -1,4 +1,4 @@
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { SabersPropsIcon } from '@src/assets/sabersProps.icon';
 import Card from '@src/components/card/card.component';
 import { Prop } from '@src/models/prop.model';

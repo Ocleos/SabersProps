@@ -1,4 +1,4 @@
-import { Ionicons } from '@expo/vector-icons';
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { FormControl, IFormControlProps, Icon } from 'native-base';
 import React from 'react';
 import { FieldValues, UseControllerProps, useController } from 'react-hook-form';

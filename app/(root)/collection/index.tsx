@@ -1,4 +1,4 @@
-import { AntDesign } from '@expo/vector-icons';
+import AntDesign from '@expo/vector-icons/AntDesign';
 import PageLayout from '@src/components/layout/pageLayout.component';
 import PropListComponent from '@src/modules/collection/propList.component';
 import { useCollectionStore } from '@src/store/collection.store';

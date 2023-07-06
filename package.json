@@ -64,5 +64,8 @@
     "rome": "^12.1.3",
     "typescript": "^4.9.5"
   },
-  "packageManager": "yarn@3.5.1"
+  "packageManager": "yarn@3.5.1",
+  "resolutions": {
+    "react-native-url-polyfill@^1.3.0": "patch:react-native-url-polyfill@npm%3A1.3.0#./.yarn/patches/react-native-url-polyfill-npm-1.3.0-069da56445.patch"
+  }
 }

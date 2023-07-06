@@ -1,4 +1,5 @@
-import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import TabTitle from '@src/components/header/tabTitle.component';
 import { Tabs } from 'expo-router';
 import { Icon, useColorModeValue, useToken } from 'native-base';

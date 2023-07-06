@@ -1,4 +1,4 @@
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { yupResolver } from '@hookform/resolvers/yup';
 import FormControlWrapper from '@src/components/form/formControlWrapper.component';
 import InputWrapper from '@src/components/form/inputWrapper.component';

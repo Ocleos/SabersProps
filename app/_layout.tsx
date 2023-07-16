@@ -23,7 +23,7 @@ import HeaderTitle from '@src/components/header/headerTitle.component';
 import extendedTheme from '@src/theme/_extendedTheme.theme';
 import { SplashScreen, Stack } from 'expo-router';
 import { NativeBaseProvider } from 'native-base';
-import React, { useCallback } from 'react';
+import React, { useEffect } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import '@src/i18n.config';
@@ -56,14 +56,14 @@ export default () => {
     Aurebesh,
   });
 
-  const onLayoutRootView = useCallback(async () => {
+  useEffect(() => {
     if (isFontsLoaded) {
-      await SplashScreen.hideAsync();
+      SplashScreen.hideAsync();
     }
   }, [isFontsLoaded]);
 
   return isFontsLoaded ? (
-    <SafeAreaProvider onLayout={onLayoutRootView}>
+    <SafeAreaProvider>
       <NativeBaseProvider theme={extendedTheme}>
         <Stack
           initialRouteName='/collection'

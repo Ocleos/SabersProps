@@ -1,4 +1,3 @@
-//import { Image } from 'expo-image';
 import NoDataIcon from '@src/assets/noData.icon';
 import { Center, Text, VStack } from 'native-base';
 import { useTranslation } from 'react-i18next';

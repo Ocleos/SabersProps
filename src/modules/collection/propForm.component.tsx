@@ -66,7 +66,13 @@ const PropFormComponent: React.FC = () => {
         <InputWrapper control={control} name='name' placeholder={t('collection:FORM.LABELS.NAME')} />
       </FormControlWrapper>
 
-      <FormControlWrapper label={t('collection:FORM.LABELS.TYPE')} name='type' control={control} isRequired={true}>
+      <FormControlWrapper
+        label={t('collection:FORM.LABELS.TYPE')}
+        name='type'
+        control={control}
+        isRequired={true}
+        isReadOnly={true}
+      >
         <SelectWrapper control={control} name='type' placeholder={t('collection:FORM.LABELS.TYPE')}>
           <Select.Item label={t('collection:TYPE.LIGHTSABER')} value={PropType.LIGHTSABER.toString()} />
           <Select.Item label={t('collection:TYPE.PROP')} value={PropType.PROP.toString()} />
@@ -74,7 +80,13 @@ const PropFormComponent: React.FC = () => {
         </SelectWrapper>
       </FormControlWrapper>
 
-      <FormControlWrapper label={t('collection:FORM.LABELS.STATE')} name='state' control={control} isRequired={true}>
+      <FormControlWrapper
+        label={t('collection:FORM.LABELS.STATE')}
+        name='state'
+        control={control}
+        isRequired={true}
+        isReadOnly={true}
+      >
         <SelectWrapper control={control} name='state' placeholder={t('collection:FORM.LABELS.STATE')}>
           <Select.Item label={t('collection:STATE.PRODUCTION')} value={PropState.PRODUCTION.toString()} />
           <Select.Item label={t('collection:STATE.DESIGN')} value={PropState.DESIGN.toString()} />

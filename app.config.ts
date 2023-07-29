@@ -5,7 +5,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: 'SabersProps',
   slug: 'SabersProps',
-  version: '0.0.5',
+  version: '0.0.6',
   scheme: 'sabersprops',
   jsEngine: 'hermes',
   orientation: 'portrait',
@@ -15,9 +15,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     image: './assets/splash.png',
     resizeMode: 'contain',
     backgroundColor: '#000000',
-  },
-  updates: {
-    fallbackToCacheTimeout: 0,
   },
   assetBundlePatterns: ['**/*'],
   android: {
@@ -35,6 +32,12 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   web: {
     bundler: 'metro',
     favicon: './assets/favicon.png',
+  },
+  updates: {
+    url: 'https://u.expo.dev/c10d5799-2d0f-4239-bf9a-f9278fa20c1c',
+  },
+  runtimeVersion: {
+    policy: 'sdkVersion',
   },
   extra: {
     apiUrl: 'https://pnfeltfqgvkdgyeqtddd.supabase.co',

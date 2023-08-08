@@ -45,12 +45,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/code-frame@npm:^7.0.0, @babel/code-frame@npm:^7.12.13, @babel/code-frame@npm:^7.22.5":
-  version: 7.22.5
-  resolution: "@babel/code-frame@npm:7.22.5"
+"@babel/code-frame@npm:^7.0.0, @babel/code-frame@npm:^7.12.13, @babel/code-frame@npm:^7.22.10, @babel/code-frame@npm:^7.22.5":
+  version: 7.22.10
+  resolution: "@babel/code-frame@npm:7.22.10"
   dependencies:
-    "@babel/highlight": ^7.22.5
-  checksum: cfe804f518f53faaf9a1d3e0f9f74127ab9a004912c3a16fda07fb6a633393ecb9918a053cb71804204c1b7ec3d49e1699604715e2cfb0c9f7bc4933d324ebb6
+    "@babel/highlight": ^7.22.10
+    chalk: ^2.4.2
+  checksum: 89a06534ad19759da6203a71bad120b1d7b2ddc016c8e07d4c56b35dea25e7396c6da60a754e8532a86733092b131ae7f661dbe6ba5d165ea777555daa2ed3c9
   languageName: node
   linkType: hard
 
@@ -61,38 +62,38 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:^7.13.16, @babel/core@npm:^7.20.0, @babel/core@npm:^7.22.9":
-  version: 7.22.9
-  resolution: "@babel/core@npm:7.22.9"
+"@babel/core@npm:^7.13.16, @babel/core@npm:^7.20.0, @babel/core@npm:^7.22.10":
+  version: 7.22.10
+  resolution: "@babel/core@npm:7.22.10"
   dependencies:
     "@ampproject/remapping": ^2.2.0
-    "@babel/code-frame": ^7.22.5
-    "@babel/generator": ^7.22.9
-    "@babel/helper-compilation-targets": ^7.22.9
+    "@babel/code-frame": ^7.22.10
+    "@babel/generator": ^7.22.10
+    "@babel/helper-compilation-targets": ^7.22.10
     "@babel/helper-module-transforms": ^7.22.9
-    "@babel/helpers": ^7.22.6
-    "@babel/parser": ^7.22.7
+    "@babel/helpers": ^7.22.10
+    "@babel/parser": ^7.22.10
     "@babel/template": ^7.22.5
-    "@babel/traverse": ^7.22.8
-    "@babel/types": ^7.22.5
+    "@babel/traverse": ^7.22.10
+    "@babel/types": ^7.22.10
     convert-source-map: ^1.7.0
     debug: ^4.1.0
     gensync: ^1.0.0-beta.2
     json5: ^2.2.2
     semver: ^6.3.1
-  checksum: 7bf069aeceb417902c4efdaefab1f7b94adb7dea694a9aed1bda2edf4135348a080820529b1a300c6f8605740a00ca00c19b2d5e74b5dd489d99d8c11d5e56d1
+  checksum: cc4efa09209fe1f733cf512e9e4bb50870b191ab2dee8014e34cd6e731f204e48476cc53b4bbd0825d4d342304d577ae43ff5fd8ab3896080673c343321acb32
   languageName: node
   linkType: hard
 
-"@babel/generator@npm:^7.20.0, @babel/generator@npm:^7.22.7, @babel/generator@npm:^7.22.9":
-  version: 7.22.9
-  resolution: "@babel/generator@npm:7.22.9"
+"@babel/generator@npm:^7.20.0, @babel/generator@npm:^7.22.10":
+  version: 7.22.10
+  resolution: "@babel/generator@npm:7.22.10"
   dependencies:
-    "@babel/types": ^7.22.5
+    "@babel/types": ^7.22.10
     "@jridgewell/gen-mapping": ^0.3.2
     "@jridgewell/trace-mapping": ^0.3.17
     jsesc: ^2.5.1
-  checksum: 7c9d2c58b8d5ac5e047421a6ab03ec2ff5d9a5ff2c2212130a0055e063ac349e0b19d435537d6886c999771aef394832e4f54cd9fc810100a7f23d982f6af06b
+  checksum: 59a79730abdff9070692834bd3af179e7a9413fa2ff7f83dff3eb888765aeaeb2bfc7b0238a49613ed56e1af05956eff303cc139f2407eda8df974813e486074
   languageName: node
   linkType: hard
 
@@ -115,18 +116,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/helper-compilation-targets@npm:^7.17.7, @babel/helper-compilation-targets@npm:^7.18.9, @babel/helper-compilation-targets@npm:^7.20.0, @babel/helper-compilation-targets@npm:^7.20.7, @babel/helper-compilation-targets@npm:^7.22.9":
-  version: 7.22.9
-  resolution: "@babel/helper-compilation-targets@npm:7.22.9"
+"@babel/helper-compilation-targets@npm:^7.17.7, @babel/helper-compilation-targets@npm:^7.18.9, @babel/helper-compilation-targets@npm:^7.20.0, @babel/helper-compilation-targets@npm:^7.20.7, @babel/helper-compilation-targets@npm:^7.22.10":
+  version: 7.22.10
+  resolution: "@babel/helper-compilation-targets@npm:7.22.10"
   dependencies:
     "@babel/compat-data": ^7.22.9
     "@babel/helper-validator-option": ^7.22.5
     browserslist: ^4.21.9
     lru-cache: ^5.1.1
     semver: ^6.3.1
-  peerDependencies:
-    "@babel/core": ^7.0.0
-  checksum: ea0006c6a93759025f4a35a25228ae260538c9f15023e8aac2a6d45ca68aef4cf86cfc429b19af9a402cbdd54d5de74ad3fbcf6baa7e48184dc079f1a791e178
+  checksum: f6f1896816392bcff671bbe6e277307729aee53befb4a66ea126e2a91eda78d819a70d06fa384c74ef46c1595544b94dca50bef6c78438d9ffd31776dafbd435
   languageName: node
   linkType: hard
 
@@ -346,34 +345,34 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/helpers@npm:^7.22.6":
-  version: 7.22.6
-  resolution: "@babel/helpers@npm:7.22.6"
+"@babel/helpers@npm:^7.22.10":
+  version: 7.22.10
+  resolution: "@babel/helpers@npm:7.22.10"
   dependencies:
     "@babel/template": ^7.22.5
-    "@babel/traverse": ^7.22.6
-    "@babel/types": ^7.22.5
-  checksum: 5c1f33241fe7bf7709868c2105134a0a86dca26a0fbd508af10a89312b1f77ca38ebae43e50be3b208613c5eacca1559618af4ca236f0abc55d294800faeff30
+    "@babel/traverse": ^7.22.10
+    "@babel/types": ^7.22.10
+  checksum: 3b1219e362df390b6c5d94b75a53fc1c2eb42927ced0b8022d6a29b833a839696206b9bdad45b4805d05591df49fc16b6fb7db758c9c2ecfe99e3e94cb13020f
   languageName: node
   linkType: hard
 
-"@babel/highlight@npm:^7.10.4, @babel/highlight@npm:^7.18.6, @babel/highlight@npm:^7.22.5":
-  version: 7.22.5
-  resolution: "@babel/highlight@npm:7.22.5"
+"@babel/highlight@npm:^7.10.4, @babel/highlight@npm:^7.18.6, @babel/highlight@npm:^7.22.10":
+  version: 7.22.10
+  resolution: "@babel/highlight@npm:7.22.10"
   dependencies:
     "@babel/helper-validator-identifier": ^7.22.5
-    chalk: ^2.0.0
+    chalk: ^2.4.2
     js-tokens: ^4.0.0
-  checksum: f61ae6de6ee0ea8d9b5bcf2a532faec5ab0a1dc0f7c640e5047fc61630a0edb88b18d8c92eb06566d30da7a27db841aca11820ecd3ebe9ce514c9350fbed39c4
+  checksum: f714a1e1a72dd9d72f6383f4f30fd342e21a8df32d984a4ea8f5eab691bb6ba6db2f8823d4b4cf135d98869e7a98925b81306aa32ee3c429f8cfa52c75889e1b
   languageName: node
   linkType: hard
 
-"@babel/parser@npm:^7.13.16, @babel/parser@npm:^7.20.0, @babel/parser@npm:^7.22.5, @babel/parser@npm:^7.22.7":
-  version: 7.22.7
-  resolution: "@babel/parser@npm:7.22.7"
+"@babel/parser@npm:^7.13.16, @babel/parser@npm:^7.20.0, @babel/parser@npm:^7.22.10, @babel/parser@npm:^7.22.5":
+  version: 7.22.10
+  resolution: "@babel/parser@npm:7.22.10"
   bin:
     parser: ./bin/babel-parser.js
-  checksum: 02209ddbd445831ee8bf966fdf7c29d189ed4b14343a68eb2479d940e7e3846340d7cc6bd654a5f3d87d19dc84f49f50a58cf9363bee249dc5409ff3ba3dab54
+  checksum: af51567b7d3cdf523bc608eae057397486c7fa6c2e5753027c01fe5c36f0767b2d01ce3049b222841326cc5b8c7fda1d810ac1a01af0a97bb04679e2ef9f7049
   languageName: node
   linkType: hard
 
@@ -1466,32 +1465,32 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/traverse@npm:^7.20.0, @babel/traverse@npm:^7.20.7, @babel/traverse@npm:^7.22.6, @babel/traverse@npm:^7.22.8":
-  version: 7.22.8
-  resolution: "@babel/traverse@npm:7.22.8"
+"@babel/traverse@npm:^7.20.0, @babel/traverse@npm:^7.20.7, @babel/traverse@npm:^7.22.10":
+  version: 7.22.10
+  resolution: "@babel/traverse@npm:7.22.10"
   dependencies:
-    "@babel/code-frame": ^7.22.5
-    "@babel/generator": ^7.22.7
+    "@babel/code-frame": ^7.22.10
+    "@babel/generator": ^7.22.10
     "@babel/helper-environment-visitor": ^7.22.5
     "@babel/helper-function-name": ^7.22.5
     "@babel/helper-hoist-variables": ^7.22.5
     "@babel/helper-split-export-declaration": ^7.22.6
-    "@babel/parser": ^7.22.7
-    "@babel/types": ^7.22.5
+    "@babel/parser": ^7.22.10
+    "@babel/types": ^7.22.10
     debug: ^4.1.0
     globals: ^11.1.0
-  checksum: a381369bc3eedfd13ed5fef7b884657f1c29024ea7388198149f0edc34bd69ce3966e9f40188d15f56490a5e12ba250ccc485f2882b53d41b054fccefb233e33
+  checksum: 9f7b358563bfb0f57ac4ed639f50e5c29a36b821a1ce1eea0c7db084f5b925e3275846d0de63bde01ca407c85d9804e0efbe370d92cd2baaafde3bd13b0f4cdb
   languageName: node
   linkType: hard
 
-"@babel/types@npm:^7.18.6, @babel/types@npm:^7.18.9, @babel/types@npm:^7.20.0, @babel/types@npm:^7.20.2, @babel/types@npm:^7.20.7, @babel/types@npm:^7.22.5, @babel/types@npm:^7.4.4, @babel/types@npm:^7.8.3":
-  version: 7.22.5
-  resolution: "@babel/types@npm:7.22.5"
+"@babel/types@npm:^7.18.6, @babel/types@npm:^7.18.9, @babel/types@npm:^7.20.0, @babel/types@npm:^7.20.2, @babel/types@npm:^7.20.7, @babel/types@npm:^7.22.10, @babel/types@npm:^7.22.5, @babel/types@npm:^7.4.4, @babel/types@npm:^7.8.3":
+  version: 7.22.10
+  resolution: "@babel/types@npm:7.22.10"
   dependencies:
     "@babel/helper-string-parser": ^7.22.5
     "@babel/helper-validator-identifier": ^7.22.5
     to-fast-properties: ^2.0.0
-  checksum: c13a9c1dc7d2d1a241a2f8363540cb9af1d66e978e8984b400a20c4f38ba38ca29f06e26a0f2d49a70bad9e57615dac09c35accfddf1bb90d23cd3e0a0bab892
+  checksum: 095c4f4b7503fa816e4094113f0ec2351ef96ff32012010b771693066ff628c7c664b21c6bd3fb93aeb46fe7c61f6b3a3c9e4ed0034d6a2481201c417371c8af
   languageName: node
   linkType: hard
 
@@ -1950,22 +1949,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@expo/eas-build-job@npm:1.0.13":
-  version: 1.0.13
-  resolution: "@expo/eas-build-job@npm:1.0.13"
+"@expo/eas-build-job@npm:1.0.30":
+  version: 1.0.30
+  resolution: "@expo/eas-build-job@npm:1.0.30"
   dependencies:
-    joi: ^17.7.0
-    semver: ^7.3.8
-  checksum: ba60dda58116486ceaed818e0c813cc96c3d80597d0f5f4874a0d9e4832d9a0201b2dbc0d315a7a628c28dfbf8c96435d911910ec116fe097f55d114c5e10f88
+    joi: ^17.9.2
+    semver: ^7.5.4
+  checksum: 2fdaeaccdde631ff659d9a723b9344367e81f8aace5d6e1fe5a26403ce1295bf963846d9b7a791a8a40f38a33bd5377a5203e8c85b27de29a7920d6bbfe77690
   languageName: node
   linkType: hard
 
-"@expo/eas-json@npm:3.17.0":
-  version: 3.17.0
-  resolution: "@expo/eas-json@npm:3.17.0"
+"@expo/eas-json@npm:4.1.0":
+  version: 4.1.0
+  resolution: "@expo/eas-json@npm:4.1.0"
   dependencies:
     "@babel/code-frame": 7.18.6
-    "@expo/eas-build-job": 1.0.13
+    "@expo/eas-build-job": 1.0.30
     chalk: 4.1.2
     env-string: 1.0.1
     fs-extra: 10.1.0
@@ -1975,7 +1974,7 @@ __metadata:
     semver: 7.3.8
     terminal-link: 2.1.1
     tslib: 2.4.1
-  checksum: fba26da8e4dcccb008df9b33f95f96a6cfbc840b2a20ad3bf7fe1e85d761aeb679364d5557ec15be17a311e4bf6c34cc8f76e77c42aae8f840dad3fa14a88d8e
+  checksum: e32c0bbd0fddb1854746244623c0a2c0fb065187e5beff21587c285d6ed85856eec73df87e0deff2ffddcd5f501acdbbdd0c0c33c363118f34e7d87a738b51d9
   languageName: node
   linkType: hard
 
@@ -2033,13 +2032,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@expo/logger@npm:1.0.21":
-  version: 1.0.21
-  resolution: "@expo/logger@npm:1.0.21"
+"@expo/logger@npm:1.0.30":
+  version: 1.0.30
+  resolution: "@expo/logger@npm:1.0.30"
   dependencies:
     "@types/bunyan": ^1.8.8
     bunyan: ^1.8.15
-  checksum: 5ad9b2838b7d415125d4a5e181cb78b1b481cd3a682618f41a9e8605f6ec0f6ce8286c12887b169b710ecc37691a30649f16251afe4ec5e1097d500123edb97c
+  checksum: a57b5b2accc1434e09f8442d3c5da8ae881340372e10cb18d7da78ddabb101db2163a1a579ecbe5531915eeae93b2bc384e824f513a61738439987639f7eafa2
   languageName: node
   linkType: hard
 
@@ -2114,7 +2113,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@expo/package-manager@npm:^1.0.2, @expo/package-manager@npm:~1.0.0":
+"@expo/package-manager@npm:~1.0.0":
   version: 1.0.2
   resolution: "@expo/package-manager@npm:1.0.2"
   dependencies:
@@ -2265,7 +2264,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@expo/spawn-async@npm:^1.5.0, @expo/spawn-async@npm:^1.7.0":
+"@expo/spawn-async@npm:^1.5.0, @expo/spawn-async@npm:^1.7.2":
   version: 1.7.2
   resolution: "@expo/spawn-async@npm:1.7.2"
   dependencies:
@@ -2274,22 +2273,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@expo/steps@npm:1.0.28":
-  version: 1.0.28
-  resolution: "@expo/steps@npm:1.0.28"
+"@expo/steps@npm:1.0.34":
+  version: 1.0.34
+  resolution: "@expo/steps@npm:1.0.34"
   dependencies:
-    "@expo/logger": 1.0.21
-    "@expo/package-manager": ^1.0.2
-    "@expo/spawn-async": ^1.7.0
+    "@expo/logger": 1.0.30
+    "@expo/spawn-async": ^1.7.2
     arg: ^5.0.2
     fs-extra: ^11.1.1
-    joi: ^17.7.0
+    joi: ^17.9.2
     lodash.clonedeep: ^4.5.0
     lodash.get: ^4.4.2
     this-file: ^2.0.3
     uuid: ^9.0.0
-    yaml: ^2.2.1
-  checksum: 8f4d80aa8067dfa40594e15cbb93ed9e8323bd76687cc0c9e1b502dab08f1b60ebfb9037ce2733b4300f8def90aba97d48befa3b8d9eccbbf7eadf6ba86b7b40
+    yaml: ^2.3.1
+  checksum: 2e8fe53b04e799aa4bc343cd278512fc9288cc3df2c358b6647d280cf2421cefd20b14e0b445e0fe83e4f39edc210bebad5f8ac746b006918d753fe576dd6347
   languageName: node
   linkType: hard
 
@@ -2402,12 +2400,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hookform/resolvers@npm:^3.1.1":
-  version: 3.1.1
-  resolution: "@hookform/resolvers@npm:3.1.1"
+"@hookform/resolvers@npm:^3.2.0":
+  version: 3.2.0
+  resolution: "@hookform/resolvers@npm:3.2.0"
   peerDependencies:
     react-hook-form: ^7.0.0
-  checksum: 41da04f0995438364f129484011a84c0d4333ce1b4cb7815593f58ece51bbd88c87db9ea6b1f5d0b7ae3e47bfcdf1a3f8e2328c46800e884074048473b56d5b5
+  checksum: 041692117f1915ea23ab48f0eeaa4841ffb45f849b9743315ac4b05ae860a4ceb41adc55cf3c213aefe705b6b63b725d9a128c0ae7d15f5faca162e2a94a63d1
   languageName: node
   linkType: hard
 
@@ -4351,12 +4349,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@supabase/postgrest-js@npm:^1.7.0":
-  version: 1.7.1
-  resolution: "@supabase/postgrest-js@npm:1.7.1"
+"@supabase/postgrest-js@npm:^1.8.0":
+  version: 1.8.0
+  resolution: "@supabase/postgrest-js@npm:1.8.0"
   dependencies:
     cross-fetch: ^3.1.5
-  checksum: 97f6e45a0420a304a20e89e7c2cf5790315708800965565ef34aa42b96dc97849462f2fd5c6e16095f29dc03c15d4671cd5f607a7f596095fc15e225e9e8074a
+  checksum: 107273fff13ba4dc95efe736bdc8b4021305e57614516c53d2026e56d81f918259df1776ab9429acee38b2a736620c5074e2b5a94e81964ea96502d8d0c0b519
   languageName: node
   linkType: hard
 
@@ -4380,17 +4378,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@supabase/supabase-js@npm:^2.31.0":
-  version: 2.31.0
-  resolution: "@supabase/supabase-js@npm:2.31.0"
+"@supabase/supabase-js@npm:^2.32.0":
+  version: 2.32.0
+  resolution: "@supabase/supabase-js@npm:2.32.0"
   dependencies:
     "@supabase/functions-js": ^2.1.0
     "@supabase/gotrue-js": ^2.46.1
-    "@supabase/postgrest-js": ^1.7.0
+    "@supabase/postgrest-js": ^1.8.0
     "@supabase/realtime-js": ^2.7.3
     "@supabase/storage-js": ^2.5.1
     cross-fetch: ^3.1.5
-  checksum: e6ca7e8480865368f6aef36f464aa2f58288ec9ba4823923888095b35e510fe6c2197e59b91e96c137f3683dfb704df4ccb41a04752040d18e3c2be54d8106b8
+  checksum: 1b4cb5b07a66d05e718f778a33d88c0c56e133135be99fcc25e7f69087f9ed9fa6cebc45ecb69766d337c1d6a0f0b0299bbf5375e57ea41dfcb24aa5d3ed0e6f
   languageName: node
   linkType: hard
 
@@ -5573,7 +5571,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chalk@npm:^2.0.0, chalk@npm:^2.0.1, chalk@npm:^2.4.2":
+"chalk@npm:^2.0.1, chalk@npm:^2.4.2":
   version: 2.4.2
   resolution: "chalk@npm:2.4.2"
   dependencies:
@@ -6456,17 +6454,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eas-cli@npm:^3.17.1":
-  version: 3.17.1
-  resolution: "eas-cli@npm:3.17.1"
+"eas-cli@npm:^4.1.1":
+  version: 4.1.1
+  resolution: "eas-cli@npm:4.1.1"
   dependencies:
     "@expo/apple-utils": 1.3.1
     "@expo/code-signing-certificates": 0.0.5
     "@expo/config": 8.1.2
     "@expo/config-plugins": 7.2.4
     "@expo/config-types": 49.0.0
-    "@expo/eas-build-job": 1.0.13
-    "@expo/eas-json": 3.17.0
+    "@expo/eas-build-job": 1.0.30
+    "@expo/eas-json": 4.1.0
     "@expo/json-file": 8.2.37
     "@expo/multipart-body-parser": 1.1.0
     "@expo/osascript": 2.0.33
@@ -6479,7 +6477,7 @@ __metadata:
     "@expo/results": 1.0.0
     "@expo/rudder-sdk-node": 1.1.1
     "@expo/spawn-async": 1.7.0
-    "@expo/steps": 1.0.28
+    "@expo/steps": 1.0.34
     "@expo/timeago.js": 1.0.0
     "@oclif/core": 1.23.2
     "@oclif/plugin-autocomplete": 1.3.10
@@ -6536,7 +6534,7 @@ __metadata:
     wrap-ansi: 7.0.0
   bin:
     eas: bin/run
-  checksum: 0f700b504da188063862c81146aec8bdbdd245e59ea848b743d591695ea5d0e9de01436f442bab348bf0f85d81d0a8c3d9d366e89c49de3c4257c70a43e8be1c
+  checksum: 83405221b12b051b6fb2a49c5e003b4d2167823a8a4168575b7ee02658ffff2adff14b89b7cf2c6fcbd321cff17f3cac715d1569531d3bf1d9ff9fdc6f639729
   languageName: node
   linkType: hard
 
@@ -7906,12 +7904,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next@npm:^23.4.1":
-  version: 23.4.1
-  resolution: "i18next@npm:23.4.1"
+"i18next@npm:^23.4.3":
+  version: 23.4.3
+  resolution: "i18next@npm:23.4.3"
   dependencies:
     "@babel/runtime": ^7.22.5
-  checksum: d9283d3de5e4ea2e55f61bd8ada98b5aef1b7db35a69c8ccf193367c5cbee6f795a67c5cd8a7af511e56c12b021b91d97253863b6c2336726925d20518fb02cc
+  checksum: cf080fec98850362d6b70f473055e382bf9f3ff33f9e9b06bb7706408c97b5e0842613be90b556972976f9cb752345b428a18b367c3bcfeebf55198d1260db0e
   languageName: node
   linkType: hard
 
@@ -8502,16 +8500,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"joi@npm:^17.2.1, joi@npm:^17.7.0":
-  version: 17.8.3
-  resolution: "joi@npm:17.8.3"
+"joi@npm:^17.2.1, joi@npm:^17.9.2":
+  version: 17.9.2
+  resolution: "joi@npm:17.9.2"
   dependencies:
     "@hapi/hoek": ^9.0.0
     "@hapi/topo": ^5.0.0
     "@sideway/address": ^4.1.3
     "@sideway/formula": ^3.0.1
     "@sideway/pinpoint": ^2.0.0
-  checksum: d93ea768740fc447d19a3340734af8062a53616bfe61d117992632f5064c0abe7ca495a29747317a4f6cd655839507a0e3c9daa90f4f14a7e57a5ad653c43714
+  checksum: 8c3709849293411c524e5a679dba7b42598a29a663478941767b8d5b06288611dece58803c468a2c7320cc2429a3e71e3d94337fe47aefcf6c22174dbd90b601
   languageName: node
   linkType: hard
 
@@ -11577,19 +11575,19 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "sabersprops@workspace:."
   dependencies:
-    "@babel/core": ^7.22.9
+    "@babel/core": ^7.22.10
     "@commitlint/cli": ^17.6.7
     "@commitlint/config-conventional": ^17.6.7
     "@expo-google-fonts/exo-2": ^0.2.3
     "@expo/vector-icons": ^13.0.0
-    "@hookform/resolvers": ^3.1.1
+    "@hookform/resolvers": ^3.2.0
     "@shopify/flash-list": 1.4.3
-    "@supabase/supabase-js": ^2.31.0
+    "@supabase/supabase-js": ^2.32.0
     "@types/lodash": ^4.14.196
     "@types/react": ~18.2.17
     dayjs: ^1.11.9
     dotenv: ^16.3.1
-    eas-cli: ^3.17.1
+    eas-cli: ^4.1.1
     expo: ^49.0.6
     expo-asset: ~8.10.1
     expo-constants: ~14.4.2
@@ -11600,7 +11598,7 @@ __metadata:
     expo-status-bar: ~1.6.0
     expo-updates: ~0.18.11
     husky: ^8.0.3
-    i18next: ^23.4.1
+    i18next: ^23.4.3
     lodash: ^4.17.21
     native-base: ^3.4.28
     normalize-css-color: ^1.0.2
@@ -11619,7 +11617,7 @@ __metadata:
     swr: ^2.2.0
     typescript: ^5.1.6
     yup: ^1.2.0
-    zustand: ^4.3.9
+    zustand: ^4.4.1
   languageName: unknown
   linkType: soft
 
@@ -11748,7 +11746,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:^7.3.4, semver@npm:^7.3.5, semver@npm:^7.3.7, semver@npm:^7.3.8, semver@npm:^7.5.3":
+"semver@npm:^7.3.4, semver@npm:^7.3.5, semver@npm:^7.3.7, semver@npm:^7.5.3, semver@npm:^7.5.4":
   version: 7.5.4
   resolution: "semver@npm:7.5.4"
   dependencies:
@@ -13430,7 +13428,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yaml@npm:^2.2.1":
+"yaml@npm:^2.2.1, yaml@npm:^2.3.1":
   version: 2.3.1
   resolution: "yaml@npm:2.3.1"
   checksum: 2c7bc9a7cd4c9f40d3b0b0a98e370781b68b8b7c4515720869aced2b00d92f5da1762b4ffa947f9e795d6cd6b19f410bd4d15fdd38aca7bd96df59bd9486fb54
@@ -13521,19 +13519,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"zustand@npm:^4.3.9":
-  version: 4.3.9
-  resolution: "zustand@npm:4.3.9"
+"zustand@npm:^4.4.1":
+  version: 4.4.1
+  resolution: "zustand@npm:4.4.1"
   dependencies:
     use-sync-external-store: 1.2.0
   peerDependencies:
+    "@types/react": ">=16.8"
     immer: ">=9.0"
     react: ">=16.8"
   peerDependenciesMeta:
+    "@types/react":
+      optional: true
     immer:
       optional: true
     react:
       optional: true
-  checksum: fc83d653913fa537c354ba8b95d3a4fdebe62d2ebd3d9f5aeff2edf062811c0f5af48e02ab4da32b666752fd4f3e78c2b44624e445254f48503595435d4a7d70
+  checksum: 80acd0fbf633782996642802c8692bbb80ae5c80a8dff4c501b88250acd5ccd468fbc6398bdce198475a25e3839c91385b81da921274f33ffb5c2d08c3eab400
   languageName: node
   linkType: hard

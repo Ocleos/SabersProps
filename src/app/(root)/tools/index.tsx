@@ -1,5 +1,5 @@
 import PageLayout from '@src/components/layout/pageLayout.component';
-import AurebeshTranslator from '@src/modules/tools/aurebeshTranslator/aurebeshTranslator.component';
+import ToolsPage from '@src/modules/tools/pages/tools.page';
 import { useTranslation } from 'react-i18next';
 
 export default () => {
@@ -7,7 +7,7 @@ export default () => {
 
   return (
     <PageLayout stackOptions={{ title: t('routing:ROUTING.TOOLS.INITIAL') }}>
-      <AurebeshTranslator />
+      <ToolsPage />
     </PageLayout>
   );
 };

@@ -1,6 +1,6 @@
 import PageLayout from '@src/components/layout/pageLayout.component';
-import PropFormComponent from '@src/modules/collection/propForm.component';
-import { useCollectionStore } from '@src/store/collection.store';
+import PropFormPage from '@src/modules/collection/pages/propForm.page';
+import { useCollectionStore } from '@src/modules/collection/store/collection.store';
 import { isNil } from 'lodash';
 import { useTranslation } from 'react-i18next';
 
@@ -14,7 +14,7 @@ export default () => {
 
   return (
     <PageLayout stackOptions={{ title }} isScrollable={true}>
-      <PropFormComponent />
+      <PropFormPage />
     </PageLayout>
   );
 };

@@ -1,4 +1,3 @@
-//@ts-nocheck
 import { IIconProps, Icon, useColorModeValue, useTheme } from 'native-base';
 import * as React from 'react';
 import { Circle, Path } from 'react-native-svg';

@@ -1,54 +1,63 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import TabTitle from '@src/components/header/tabTitle.component';
-import { Tabs } from 'expo-router';
-import { Icon, useColorModeValue, useToken } from 'native-base';
+import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
+import DrawerLayout from '@src/components/layout/drawerLayout.component';
+import { Drawer } from 'expo-router/drawer';
+import { IIconProps, Icon, useColorModeValue, useToken } from 'native-base';
 import { useTranslation } from 'react-i18next';
+
+const defaultIconProps: IIconProps = {
+  size: 8,
+};
 
 export default () => {
   const { t } = useTranslation(['routing']);
 
   return (
-    <Tabs
+    <Drawer
+      drawerContent={(props) => <DrawerLayout {...props} />}
       screenOptions={{
         headerShown: false,
-        tabBarActiveBackgroundColor: useToken('colors', useColorModeValue('light.50', 'dark.50')),
-        tabBarActiveTintColor: useToken('colors', 'primary.500'),
-        tabBarInactiveBackgroundColor: useToken('colors', useColorModeValue('light.50', 'dark.50')),
-        tabBarLabel: (props) => <TabTitle title={props.children} color={props.color} />,
-        tabBarStyle: {
-          height: useToken('sizes', 16),
+        drawerActiveTintColor: useToken('colors', 'primary.500'),
+        drawerInactiveTintColor: useToken('colors', useColorModeValue('darkText', 'lightText')),
+        drawerStyle: {
+          backgroundColor: useToken('colors', useColorModeValue('light.50', 'dark.50')),
         },
       }}
     >
-      <Tabs.Screen
+      <Drawer.Screen
         name='collection'
         options={{
-          title: t('routing:ROUTING.COLLECTION.INITIAL'),
-          tabBarIcon: (props) => <Icon as={MaterialCommunityIcons} name='sword-cross' color={props.color} size={8} />,
+          drawerLabel: t('routing:ROUTING.COLLECTION.INITIAL'),
+          drawerIcon: (props) => (
+            <Icon as={MaterialCommunityIcons} name='sword-cross' color={props.color} {...defaultIconProps} />
+          ),
         }}
       />
-      <Tabs.Screen
+
+      <Drawer.Screen
         name='stats'
         options={{
-          title: t('routing:ROUTING.STATS.INITIAL'),
-          tabBarIcon: (props) => <Icon as={FontAwesome} name='pie-chart' color={props.color} size={8} />,
+          drawerLabel: t('routing:ROUTING.STATS.INITIAL'),
+          drawerIcon: (props) => <Icon as={FontAwesome} name='pie-chart' color={props.color} {...defaultIconProps} />,
         }}
       />
-      <Tabs.Screen
+
+      <Drawer.Screen
         name='tools'
         options={{
-          title: t('routing:ROUTING.TOOLS.INITIAL'),
-          tabBarIcon: (props) => <Icon as={MaterialCommunityIcons} name='tools' color={props.color} size={8} />,
+          drawerLabel: t('routing:ROUTING.TOOLS.INITIAL'),
+          drawerIcon: (props) => (
+            <Icon as={MaterialCommunityIcons} name='tools' color={props.color} {...defaultIconProps} />
+          ),
         }}
       />
-      <Tabs.Screen
+
+      <Drawer.Screen
         name='settings'
         options={{
-          title: t('routing:ROUTING.SETTINGS.INITIAL'),
-          tabBarIcon: (props) => <Icon as={FontAwesome} name='gear' color={props.color} size={8} />,
+          drawerLabel: t('routing:ROUTING.SETTINGS.INITIAL'),
+          drawerIcon: (props) => <Icon as={FontAwesome} name='gear' color={props.color} {...defaultIconProps} />,
         }}
       />
-    </Tabs>
+    </Drawer>
   );
 };

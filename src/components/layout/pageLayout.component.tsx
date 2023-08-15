@@ -1,12 +1,13 @@
-import type { NativeStackNavigationOptions } from '@react-navigation/native-stack';
-import { Stack } from 'expo-router';
+import { DrawerToggleButton } from '@react-navigation/drawer';
+import { HeaderBackButton } from '@react-navigation/elements';
+import { Stack, router } from 'expo-router';
 import { Box, IScrollViewProps, ScrollView, View, useColorModeValue, useToken } from 'native-base';
 import { IViewProps } from 'native-base/lib/typescript/components/basic/View/types';
 
 interface Props {
   children: React.ReactNode;
+  title?: string;
   isScrollable?: boolean;
-  stackOptions?: NativeStackNavigationOptions;
   scrollViewProps?: IScrollViewProps;
   viewProps?: IViewProps;
 }
@@ -23,9 +24,16 @@ const PageLayout: React.FC<Props> = (props) => {
           statusBarColor: useToken('colors', useColorModeValue('light.50', 'dark.50')),
           statusBarStyle: useColorModeValue('dark', 'light'),
           statusBarAnimation: 'fade',
-          ...props.stackOptions,
+          headerLeft: (props) =>
+            props.canGoBack ? (
+              <HeaderBackButton {...props} onPress={() => router.back()} />
+            ) : (
+              <DrawerToggleButton {...props} />
+            ),
+          title: props.title,
         }}
       />
+
       {props.isScrollable ? (
         <ScrollView h={'full'} {...props.scrollViewProps}>
           {props.children}

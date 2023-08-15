@@ -6,11 +6,11 @@ const routingFr = {
       EDIT: 'Éditer',
       INITIAL: 'Collection',
     },
-    STATS: {
-      INITIAL: 'Stats',
-    },
     SETTINGS: {
       INITIAL: 'Paramètres',
+    },
+    STATS: {
+      INITIAL: 'Stats',
     },
     TOOLS: {
       INITIAL: 'Outils',

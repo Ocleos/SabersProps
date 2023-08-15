@@ -6,11 +6,7 @@ export default () => {
   const { t } = useTranslation(['routing']);
 
   return (
-    <PageLayout
-      stackOptions={{
-        title: t('routing:ROUTING.COLLECTION.INITIAL'),
-      }}
-    >
+    <PageLayout title={t('routing:ROUTING.COLLECTION.INITIAL')}>
       <PropListPage />
     </PageLayout>
   );

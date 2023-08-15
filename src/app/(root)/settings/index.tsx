@@ -4,10 +4,10 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 export default () => {
-  const { t } = useTranslation(['common', 'settings']);
+  const { t } = useTranslation(['routing']);
 
   return (
-    <PageLayout stackOptions={{ title: t('settings:SETTINGS.TITLE') }} isScrollable={true}>
+    <PageLayout title={t('routing:ROUTING.SETTINGS.INITIAL')}>
       <SettingsPage />
     </PageLayout>
   );

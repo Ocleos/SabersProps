@@ -6,7 +6,6 @@ const settingsFr = {
       ENGLISH: 'Anglais',
       FRENCH: 'Français',
     },
-    TITLE: 'Paramètres',
   },
 };
 

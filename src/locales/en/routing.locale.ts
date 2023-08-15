@@ -6,11 +6,11 @@ const routingEn = {
       EDIT: 'Edit',
       INITIAL: 'Collection',
     },
-    STATS: {
-      INITIAL: 'Stats',
-    },
     SETTINGS: {
       INITIAL: 'Settings',
+    },
+    STATS: {
+      INITIAL: 'Stats',
     },
     TOOLS: {
       INITIAL: 'Tools',

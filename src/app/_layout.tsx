@@ -19,9 +19,8 @@ import {
   Exo2_900Black_Italic,
   useFonts,
 } from '@expo-google-fonts/exo-2';
-import HeaderTitle from '@src/components/header/headerTitle.component';
 import extendedTheme from '@src/theme/_extendedTheme.theme';
-import { SplashScreen, Stack } from 'expo-router';
+import { Slot, SplashScreen } from 'expo-router';
 import { NativeBaseProvider } from 'native-base';
 import React, { useEffect } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -65,13 +64,7 @@ export default () => {
   return isFontsLoaded ? (
     <SafeAreaProvider>
       <NativeBaseProvider theme={extendedTheme}>
-        <Stack
-          initialRouteName='/collection'
-          screenOptions={{
-            headerShown: false,
-            headerTitle: (props) => <HeaderTitle title={props.children} />,
-          }}
-        />
+        <Slot />
       </NativeBaseProvider>
     </SafeAreaProvider>
   ) : null;

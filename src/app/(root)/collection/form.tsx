@@ -13,7 +13,7 @@ export default () => {
   const title = isEdit ? t('collection:FORM.EDIT_TITLE') : t('collection:FORM.ADD_TITLE');
 
   return (
-    <PageLayout stackOptions={{ title }} isScrollable={true}>
+    <PageLayout title={title} isScrollable={true}>
       <PropFormPage />
     </PageLayout>
   );

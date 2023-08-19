@@ -1,4 +1,3 @@
-import { postProp, propsUrlEndpoint, putProp } from '../services/props.api';
 import { useCollectionStore } from '../store/collection.store';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -8,6 +7,7 @@ import SelectWrapper from '@src/components/form/selectWrapper.component';
 import { Prop } from '@src/models/prop.model';
 import { PropState } from '@src/models/propState.model';
 import { PropType } from '@src/models/propType.model';
+import { PROPS_URL_ENDPOINT, postData, putData } from '@src/utils/supabase.utils';
 import { showErrorToaster, showSuccessToaster } from '@src/utils/toaster.utils';
 import { MAX_LENGTH } from '@src/utils/validator.utils';
 import { useRouter } from 'expo-router';
@@ -25,7 +25,7 @@ const PropFormPage: React.FC = () => {
   const { setSelectedProp, selectedProp } = useCollectionStore();
   const isEdit = !isNil(selectedProp);
 
-  const { trigger, isMutating } = useSWRMutation(propsUrlEndpoint, isEdit ? putProp : postProp);
+  const { trigger, isMutating } = useSWRMutation(PROPS_URL_ENDPOINT, isEdit ? putData<Prop> : postData<Prop>);
 
   const validationSchema: Yup.ObjectSchema<Prop> = Yup.object().shape({
     id: Yup.string().optional(),

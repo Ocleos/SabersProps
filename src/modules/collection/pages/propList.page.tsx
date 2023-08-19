@@ -1,12 +1,13 @@
 import PropActions from '../components/propList/propActions.component';
 import PropCardComponent from '../components/propList/propCard.component';
 import PropFilters from '../components/propList/propFilters/propFilters.component';
-import { getProps, propsUrlEndpoint } from '../services/props.api';
 import { useCollectionStore } from '../store/collection.store';
 import { AntDesign } from '@expo/vector-icons';
 import { FlashList } from '@shopify/flash-list';
 import EmptyComponent from '@src/components/empty/empty.component';
 import FilterSearchWrapper from '@src/components/list/filterSearchWrapper.component';
+import { Prop } from '@src/models/prop.model';
+import { PROPS_URL_ENDPOINT, getData } from '@src/utils/supabase.utils';
 import { useRouter } from 'expo-router';
 import { Fab, Icon, VStack } from 'native-base';
 import { useEffect } from 'react';
@@ -15,7 +16,7 @@ import useSWR from 'swr';
 const PropListPage: React.FC = () => {
   const router = useRouter();
 
-  const { isLoading, data, mutate } = useSWR(propsUrlEndpoint, getProps);
+  const { isLoading, data, mutate } = useSWR(PROPS_URL_ENDPOINT, getData<Prop>);
 
   const { props, filters, setSearchValue, updateProps, setIsFiltersOpen, setSelectedProp } = useCollectionStore();
 

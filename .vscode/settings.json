@@ -1,5 +1,6 @@
 {
   "cSpell.words": ["aurebesh", "sabersprops"],
+  "editor.linkedEditing": true,
   "editor.tabSize": 2,
   "editor.codeActionsOnSave": {
     "source.fixAll": true,

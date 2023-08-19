@@ -6,6 +6,9 @@ const routingFr = {
       EDIT: 'Éditer',
       INITIAL: 'Collection',
     },
+    NOTES: {
+      INITIAL: 'Notes',
+    },
     SETTINGS: {
       INITIAL: 'Paramètres',
     },

@@ -42,6 +42,16 @@ export default () => {
       />
 
       <Drawer.Screen
+        name='notes'
+        options={{
+          drawerLabel: t('routing:ROUTING.NOTES.INITIAL'),
+          drawerIcon: (props) => (
+            <Icon as={MaterialCommunityIcons} name='note-text' color={props.color} {...defaultIconProps} />
+          ),
+        }}
+      />
+
+      <Drawer.Screen
         name='tools'
         options={{
           drawerLabel: t('routing:ROUTING.TOOLS.INITIAL'),

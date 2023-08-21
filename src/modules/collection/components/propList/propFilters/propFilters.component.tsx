@@ -28,7 +28,7 @@ const PropFilters: React.FC = () => {
     <Actionsheet isOpen={isFiltersOpen} onClose={onClose}>
       <Actionsheet.Content>
         <Actionsheet.Item>
-          <FormControlWrapper label={t('collection:FORM.LABELS.TYPE')} name='type' control={control}>
+          <FormControlWrapper label={t('collection:LABELS.TYPE')} name='type' control={control}>
             <HStack space={2}>
               <TypeFilter type={PropType.LIGHTSABER} />
               <TypeFilter type={PropType.PROP} />
@@ -38,7 +38,7 @@ const PropFilters: React.FC = () => {
         </Actionsheet.Item>
 
         <Actionsheet.Item>
-          <FormControlWrapper label={t('collection:FORM.LABELS.STATE')} name='state' control={control}>
+          <FormControlWrapper label={t('collection:LABELS.STATE')} name='state' control={control}>
             <Flex flexDirection='row' flexWrap='wrap' maxW={`${maxWidth}px`} style={{ gap: 8 }}>
               <StateFilter state={PropState.PRODUCTION} />
               <StateFilter state={PropState.DESIGN} />

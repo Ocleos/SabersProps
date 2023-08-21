@@ -1,12 +1,13 @@
 import PageLayout from '@src/components/layout/pageLayout.component';
-import { useLocalSearchParams } from 'expo-router';
-import { Text } from 'native-base';
+import PropDetailPage from '@src/modules/collection/pages/propDetail.page';
+import { useTranslation } from 'react-i18next';
 
 export default () => {
-  const { id } = useLocalSearchParams();
+  const { t } = useTranslation(['routing']);
+
   return (
-    <PageLayout>
-      <Text>Détail {id}</Text>
+    <PageLayout title={t('routing:ROUTING.COLLECTION.DETAIL')} isScrollable={true}>
+      <PropDetailPage />
     </PageLayout>
   );
 };

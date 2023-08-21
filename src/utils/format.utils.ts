@@ -16,7 +16,7 @@ export const formatDate = (value: string | number | dayjs.Dayjs | Date | null | 
 export const formatNumber = (value: number, options?: Intl.NumberFormatOptions) =>
   Intl.NumberFormat(i18n.language, options).format(value);
 
-export const formatToCurrency = (value: number, currency: string) =>
+export const formatToCurrency = (value: number, currency: string = CURRENCY_EUROS) =>
   formatNumber(value, { currency, style: 'currency' });
 
 export const formatToUnit = (value: number, unit: string) =>

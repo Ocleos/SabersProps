@@ -11,6 +11,7 @@ export const supabase = createClient(apiUrl, apiKey, {
 
 export const PROPS_URL_ENDPOINT = 'props';
 export const NOTES_URL_ENDPOINT = 'notes';
+export const COMPONENTS_URL_ENDPOINT = 'components';
 
 type Data = {
   id: string | undefined;

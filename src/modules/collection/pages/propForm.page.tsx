@@ -62,18 +62,18 @@ const PropFormPage: React.FC = () => {
 
   return (
     <VStack space={4}>
-      <FormControlWrapper label={t('collection:FORM.LABELS.NAME')} name='name' control={control} isRequired={true}>
-        <InputWrapper control={control} name='name' placeholder={t('collection:FORM.LABELS.NAME')} />
+      <FormControlWrapper label={t('collection:LABELS.NAME')} name='name' control={control} isRequired={true}>
+        <InputWrapper control={control} name='name' placeholder={t('collection:LABELS.NAME')} />
       </FormControlWrapper>
 
       <FormControlWrapper
-        label={t('collection:FORM.LABELS.TYPE')}
+        label={t('collection:LABELS.TYPE')}
         name='type'
         control={control}
         isRequired={true}
         isReadOnly={true}
       >
-        <SelectWrapper control={control} name='type' placeholder={t('collection:FORM.LABELS.TYPE')}>
+        <SelectWrapper control={control} name='type' placeholder={t('collection:LABELS.TYPE')}>
           <Select.Item label={t('collection:TYPE.LIGHTSABER')} value={PropType.LIGHTSABER.toString()} />
           <Select.Item label={t('collection:TYPE.PROP')} value={PropType.PROP.toString()} />
           <Select.Item label={t('collection:TYPE.COSTUME')} value={PropType.COSTUME.toString()} />
@@ -81,13 +81,13 @@ const PropFormPage: React.FC = () => {
       </FormControlWrapper>
 
       <FormControlWrapper
-        label={t('collection:FORM.LABELS.STATE')}
+        label={t('collection:LABELS.STATE')}
         name='state'
         control={control}
         isRequired={true}
         isReadOnly={true}
       >
-        <SelectWrapper control={control} name='state' placeholder={t('collection:FORM.LABELS.STATE')}>
+        <SelectWrapper control={control} name='state' placeholder={t('collection:LABELS.STATE')}>
           <Select.Item label={t('collection:STATE.PRODUCTION')} value={PropState.PRODUCTION.toString()} />
           <Select.Item label={t('collection:STATE.DESIGN')} value={PropState.DESIGN.toString()} />
           <Select.Item label={t('collection:STATE.MISSING_PIECES')} value={PropState.MISSING_PIECES.toString()} />
@@ -100,32 +100,28 @@ const PropFormPage: React.FC = () => {
       </FormControlWrapper>
 
       <FormControlWrapper
-        label={t('collection:FORM.LABELS.MANUFACTURER')}
+        label={t('collection:LABELS.MANUFACTURER')}
         name='manufacturer'
         control={control}
         isRequired={true}
       >
-        <InputWrapper control={control} name='manufacturer' placeholder={t('collection:FORM.LABELS.MANUFACTURER')} />
+        <InputWrapper control={control} name='manufacturer' placeholder={t('collection:LABELS.MANUFACTURER')} />
       </FormControlWrapper>
 
-      <FormControlWrapper label={t('collection:FORM.LABELS.CHARACTER')} name='character' control={control}>
-        <InputWrapper control={control} name='character' placeholder={t('collection:FORM.LABELS.CHARACTER')} />
+      <FormControlWrapper label={t('collection:LABELS.CHARACTER')} name='character' control={control}>
+        <InputWrapper control={control} name='character' placeholder={t('collection:LABELS.CHARACTER')} />
       </FormControlWrapper>
 
-      <FormControlWrapper label={t('collection:FORM.LABELS.APPARITION')} name='apparition' control={control}>
-        <InputWrapper control={control} name='apparition' placeholder={t('collection:FORM.LABELS.APPARITION')} />
+      <FormControlWrapper label={t('collection:LABELS.APPARITION')} name='apparition' control={control}>
+        <InputWrapper control={control} name='apparition' placeholder={t('collection:LABELS.APPARITION')} />
       </FormControlWrapper>
 
-      <FormControlWrapper label={t('collection:FORM.LABELS.CHASSIS_DESIGNER')} name='chassisDesigner' control={control}>
-        <InputWrapper
-          control={control}
-          name='chassisDesigner'
-          placeholder={t('collection:FORM.LABELS.CHASSIS_DESIGNER')}
-        />
+      <FormControlWrapper label={t('collection:LABELS.CHASSIS_DESIGNER')} name='chassisDesigner' control={control}>
+        <InputWrapper control={control} name='chassisDesigner' placeholder={t('collection:LABELS.CHASSIS_DESIGNER')} />
       </FormControlWrapper>
 
-      <FormControlWrapper label={t('collection:FORM.LABELS.SOUNDBOARD')} name='soundboard' control={control}>
-        <InputWrapper control={control} name='soundboard' placeholder={t('collection:FORM.LABELS.SOUNDBOARD')} />
+      <FormControlWrapper label={t('collection:LABELS.SOUNDBOARD')} name='soundboard' control={control}>
+        <InputWrapper control={control} name='soundboard' placeholder={t('collection:LABELS.SOUNDBOARD')} />
       </FormControlWrapper>
 
       <Button

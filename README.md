@@ -4,7 +4,6 @@
 
 - Collection
   - Props' detail
-    - Props' properties
     - Pictures gallery
     - Prices
     - Components list

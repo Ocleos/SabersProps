@@ -4,7 +4,7 @@
     "ignore": ["**/node_modules/*.*", "**/.expo/*"]
   },
   "organizeImports": {
-    "enabled": true
+    "enabled": false
   },
   "formatter": {
     "enabled": true,

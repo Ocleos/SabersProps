@@ -1,17 +1,22 @@
 const collectionEn = {
+  CATEGORIES: {
+    COMPONENTS: 'Components',
+    INFORMATIONS: 'Informations',
+    PRICES: 'Prices',
+  },
+  LABELS: {
+    APPARITION: 'Apparition',
+    CHARACTER: 'Character',
+    CHASSIS_DESIGNER: 'Chassis designer',
+    MANUFACTURER: 'Manufacturer',
+    NAME: 'Name',
+    SOUNDBOARD: 'Soundboard',
+    STATE: 'State',
+    TYPE: 'Type',
+  },
   FORM: {
     ADD_TITLE: 'Add a prop',
     EDIT_TITLE: 'Edit a prop',
-    LABELS: {
-      APPARITION: 'Apparition',
-      CHARACTER: 'Character',
-      CHASSIS_DESIGNER: 'Chassis designer',
-      MANUFACTURER: 'Manufacturer',
-      NAME: 'Name',
-      SOUNDBOARD: 'Soundboard',
-      STATE: 'State',
-      TYPE: 'Type',
-    },
   },
   STATE: {
     DESIGN: 'Design',

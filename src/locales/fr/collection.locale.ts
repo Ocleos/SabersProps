@@ -1,17 +1,22 @@
 const collectionFr = {
+  CATEGORIES: {
+    COMPONENTS: 'Composants',
+    INFORMATIONS: 'Informations',
+    PRICES: 'Prix',
+  },
+  LABELS: {
+    APPARITION: 'Apparition',
+    CHARACTER: 'Personnage',
+    CHASSIS_DESIGNER: 'Concepteur chassis',
+    MANUFACTURER: 'Créateur',
+    NAME: 'Nom',
+    SOUNDBOARD: 'Carte son',
+    STATE: 'Statut',
+    TYPE: 'Type',
+  },
   FORM: {
     ADD_TITLE: 'Ajouter un prop',
     EDIT_TITLE: 'Éditer un prop',
-    LABELS: {
-      APPARITION: 'Apparition',
-      CHARACTER: 'Personnage',
-      CHASSIS_DESIGNER: 'Concepteur chassis',
-      MANUFACTURER: 'Créateur',
-      NAME: 'Nom',
-      SOUNDBOARD: 'Carte son',
-      STATE: 'Statut',
-      TYPE: 'Type',
-    },
   },
   STATE: {
     DESIGN: 'Conception',

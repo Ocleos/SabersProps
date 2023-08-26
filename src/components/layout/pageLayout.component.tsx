@@ -1,8 +1,10 @@
 import { DrawerToggleButton } from '@react-navigation/drawer';
 import { HeaderBackButton } from '@react-navigation/elements';
-import { Stack, router } from 'expo-router';
+import type { NativeStackNavigationOptions } from '@react-navigation/native-stack';
+import { Stack, useRouter } from 'expo-router';
 import { Box, IScrollViewProps, ScrollView, View, useColorModeValue, useToken } from 'native-base';
 import { IViewProps } from 'native-base/lib/typescript/components/basic/View/types';
+import React from 'react';
 
 interface Props {
   children: React.ReactNode;
@@ -10,9 +12,12 @@ interface Props {
   isScrollable?: boolean;
   scrollViewProps?: IScrollViewProps;
   viewProps?: IViewProps;
+  screenOptions?: NativeStackNavigationOptions;
 }
 
 const PageLayout: React.FC<Props> = (props) => {
+  const router = useRouter();
+
   return (
     <Box p={4} backgroundColor={useColorModeValue('light.100', 'dark.100')} flex={1}>
       <Stack.Screen
@@ -31,6 +36,7 @@ const PageLayout: React.FC<Props> = (props) => {
               <DrawerToggleButton {...props} />
             ),
           title: props.title,
+          ...props.screenOptions,
         }}
       />
 

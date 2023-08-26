@@ -1,10 +1,11 @@
-import InformationsCard from '../components/propDetail/informationsCard.component';
-import PricesCard from '../components/propDetail/pricesCard.component';
-import { getPropDetail } from '../services/props.api';
 import { PROPS_URL_ENDPOINT } from '@src/utils/supabase.utils';
 import { useLocalSearchParams } from 'expo-router';
 import { Heading, Spinner, VStack } from 'native-base';
 import useSWR from 'swr';
+import InformationsCard from '../components/propDetail/informationsCard.component';
+import PricesCard from '../components/propDetail/pricesCard.component';
+import StatusDetail from '../components/propDetail/statusDetail.component';
+import { getPropDetail } from '../services/props.api';
 
 const PropDetailPage: React.FC = () => {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -21,6 +22,8 @@ const PropDetailPage: React.FC = () => {
         <Heading w={'full'} textAlign={'center'} size={'xl'}>
           {propDetail.name}
         </Heading>
+
+        <StatusDetail prop={propDetail} />
 
         <InformationsCard prop={propDetail} />
 

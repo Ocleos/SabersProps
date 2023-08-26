@@ -1,4 +1,3 @@
-import { useCollectionStore } from '../../store/collection.store';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { SabersPropsIcon } from '@src/assets/sabersProps.icon';
 import Card from '@src/components/card/card.component';
@@ -18,6 +17,7 @@ import {
   VStack,
   useColorModeValue,
 } from 'native-base';
+import { useCollectionStore } from '../../store/collection.store';
 
 interface IPropCardProps {
   prop: Prop;
@@ -29,7 +29,7 @@ const PropCardComponent: React.FC<IPropCardProps> = ({ prop }) => {
   const { setSelectedProp, setIsActionsOpen } = useCollectionStore();
 
   return (
-    <Pressable onPress={() => router.push(`/collection/${prop.id}`)}>
+    <Pressable onPress={() => router.push(`/collection/${prop.id}/informations`)}>
       <Card borderColor={`${propStates[prop.state].colorScheme}.500`}>
         <Icon
           position={'absolute'}

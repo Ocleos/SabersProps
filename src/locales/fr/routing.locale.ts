@@ -2,8 +2,9 @@ const routingFr = {
   ROUTING: {
     COLLECTION: {
       ADD: 'Ajouter',
-      DETAIL: 'Détail',
+      COMPONENTS: 'Composants',
       EDIT: 'Éditer',
+      INFORMATIONS: 'Informations',
       INITIAL: 'Collection',
     },
     NOTES: {

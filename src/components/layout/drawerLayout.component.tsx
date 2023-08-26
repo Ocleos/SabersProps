@@ -1,6 +1,11 @@
-import { DrawerContent, DrawerContentComponentProps } from '@react-navigation/drawer';
+import { DrawerContent, DrawerContentComponentProps, DrawerToggleButton } from '@react-navigation/drawer';
+import type { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 import { useAssets } from 'expo-asset';
 import { Avatar, Divider, HStack, Heading, View } from 'native-base';
+
+export const withDrawerToggle: NativeStackNavigationOptions = {
+  headerLeft: (props) => <DrawerToggleButton {...props} />,
+};
 
 const DrawerLayout: React.FC<DrawerContentComponentProps> = (props) => {
   const [assets] = useAssets([require('@assets/icon.png')]);

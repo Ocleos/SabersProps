@@ -23,7 +23,6 @@ import extendedTheme from '@src/theme/_extendedTheme.theme';
 import { Slot, SplashScreen } from 'expo-router';
 import { NativeBaseProvider } from 'native-base';
 import React, { useEffect } from 'react';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import '@src/i18n.config';
 import { Aurebesh, StarWarsGlyphicons } from '@src/theme/fonts.theme';
@@ -62,10 +61,8 @@ export default () => {
   }, [isFontsLoaded]);
 
   return isFontsLoaded ? (
-    <SafeAreaProvider>
-      <NativeBaseProvider theme={extendedTheme}>
-        <Slot />
-      </NativeBaseProvider>
-    </SafeAreaProvider>
+    <NativeBaseProvider theme={extendedTheme}>
+      <Slot />
+    </NativeBaseProvider>
   ) : null;
 };

@@ -4,7 +4,7 @@ import LabelIcon from '@src/components/label/labelIcon.component';
 import { VStack } from 'native-base';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { PropDetail } from '../../models/propDetail.model';
+import { PropDetail } from '../../../models/propDetail.model';
 
 interface IInformationsCard {
   prop: PropDetail;

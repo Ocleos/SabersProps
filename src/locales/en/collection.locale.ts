@@ -15,8 +15,10 @@ const collectionEn = {
     TYPE: 'Type',
   },
   FORM: {
-    ADD_TITLE: 'Add a prop',
-    EDIT_TITLE: 'Edit a prop',
+    ADD: 'Add a prop',
+    ADD_COMPONENT: 'Add a component',
+    EDIT: 'Edit a prop',
+    EDIT_COMPONENT: 'Edit a component',
   },
   STATE: {
     DESIGN: 'Design',

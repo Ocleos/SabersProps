@@ -4,7 +4,7 @@ import { propTypes } from '@src/models/propType.model';
 import { iconStyle } from '@src/theme/icon.theme';
 import { Badge, Box, HStack, IBadgeProps, Icon } from 'native-base';
 import React from 'react';
-import { PropDetail } from '../../models/propDetail.model';
+import { PropDetail } from '../../../models/propDetail.model';
 
 interface IStatusDetail {
   prop: PropDetail;

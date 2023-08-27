@@ -15,8 +15,10 @@ const collectionFr = {
     TYPE: 'Type',
   },
   FORM: {
-    ADD_TITLE: 'Ajouter un prop',
-    EDIT_TITLE: 'Éditer un prop',
+    ADD: 'Ajouter un prop',
+    ADD_COMPONENT: 'Ajouter un composant',
+    EDIT: 'Éditer un prop',
+    EDIT_COMPONENT: 'Éditer un composant',
   },
   STATE: {
     DESIGN: 'Conception',

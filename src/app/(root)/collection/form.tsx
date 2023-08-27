@@ -10,7 +10,7 @@ export default () => {
   const { selectedProp } = useCollectionStore();
   const isEdit = !isNil(selectedProp);
 
-  const title = isEdit ? t('collection:FORM.EDIT_TITLE') : t('collection:FORM.ADD_TITLE');
+  const title = isEdit ? t('collection:FORM.EDIT') : t('collection:FORM.ADD');
 
   return (
     <PageLayout title={title} isScrollable={true}>

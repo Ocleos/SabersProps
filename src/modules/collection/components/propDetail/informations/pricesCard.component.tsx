@@ -5,7 +5,7 @@ import { formatToCurrency } from '@src/utils/format.utils';
 import { VStack } from 'native-base';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { PropDetail } from '../../models/propDetail.model';
+import { PropDetail } from '../../../models/propDetail.model';
 
 interface IPricesCard {
   prop: PropDetail;

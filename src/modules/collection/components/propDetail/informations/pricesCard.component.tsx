@@ -1,4 +1,4 @@
-import { Ionicons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import CollapseCard from '@src/components/card/collapseCard.component';
 import LabelIcon from '@src/components/label/labelIcon.component';
 import { formatToCurrency } from '@src/utils/format.utils';
@@ -19,23 +19,23 @@ const PricesCard: React.FC<IPricesCard> = ({ prop }) => {
       <VStack space={2}>
         <LabelIcon
           label={prop.prices?.price ? formatToCurrency(prop.prices.price) : '-'}
-          icon={{ as: Ionicons, name: 'card' }}
+          icon={{ as: MaterialCommunityIcons, name: 'credit-card-outline' }}
         />
         <LabelIcon
           label={prop.prices?.fees ? formatToCurrency(prop.prices.fees) : '-'}
-          icon={{ as: Ionicons, name: 'airplane' }}
+          icon={{ as: MaterialCommunityIcons, name: 'truck-fast-outline' }}
         />
         <LabelIcon
           label={prop.prices?.total ? formatToCurrency(prop.prices.total) : '-'}
-          icon={{ as: Ionicons, name: 'cash' }}
+          icon={{ as: MaterialCommunityIcons, name: 'cart-outline' }}
         />
         <LabelIcon
           label={prop.prices?.workPrice ? formatToCurrency(prop.prices.workPrice) : '-'}
-          icon={{ as: Ionicons, name: 'construct' }}
+          icon={{ as: MaterialCommunityIcons, name: 'progress-wrench' }}
         />
         <LabelIcon
           label={prop.prices?.sellingPrice ? formatToCurrency(prop.prices.sellingPrice) : '-'}
-          icon={{ as: Ionicons, name: 'pricetag' }}
+          icon={{ as: MaterialCommunityIcons, name: 'tag-multiple-outline' }}
         />
       </VStack>
     </CollapseCard>

@@ -1,20 +1,32 @@
-import { AntDesign } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { FlashList } from '@shopify/flash-list';
+import ActionsMenu from '@src/components/actionSheet/actionsMenu.component';
 import EmptyComponent from '@src/components/empty/empty.component';
 import FilterSearchWrapper from '@src/components/list/filterSearchWrapper.component';
+import { COMPONENTS_URL_ENDPOINT, PROPS_URL_ENDPOINT } from '@src/utils/supabase.utils';
 import { useRouter } from 'expo-router';
 import { isNil } from 'lodash';
 import { Fab, Icon, VStack } from 'native-base';
 import { useEffect } from 'react';
-import PropComponentActions from '../components/propDetail/components/propComponentActions.component';
+import { useSWRConfig } from 'swr';
 import PropComponentCard from '../components/propDetail/components/propComponentCard.component';
 import { usePropDetailStore } from '../store/propDetail.store';
 
 const PropDetailComponents: React.FC = () => {
   const router = useRouter();
+  const { mutate } = useSWRConfig();
 
-  const { propDetail, components, searchValue, updateComponents, setSearchValue, setSelectedComponent } =
-    usePropDetailStore();
+  const {
+    propDetail,
+    components,
+    searchValue,
+    selectedComponent,
+    updateComponents,
+    setSearchValue,
+    setSelectedComponent,
+    isActionsOpen,
+    setIsActionsOpen,
+  } = usePropDetailStore();
 
   useEffect(() => {
     if (propDetail) {
@@ -45,10 +57,19 @@ const PropDetailComponents: React.FC = () => {
           router.push(`/collection/${propDetail?.id}/components/form`);
         }}
         shadow={9}
-        icon={<Icon as={AntDesign} name='plus' size='lg' />}
+        icon={<Icon as={MaterialCommunityIcons} name='plus' size='lg' />}
       />
 
-      <PropComponentActions />
+      <ActionsMenu
+        idSelected={propDetail?.id}
+        nameSelected={selectedComponent?.label}
+        routeEdit={`/collection/${selectedComponent?.idProp}/components/form`}
+        isOpen={isActionsOpen}
+        setIsOpen={setIsActionsOpen}
+        setSelected={setSelectedComponent}
+        urlEndpoint={COMPONENTS_URL_ENDPOINT}
+        onDeleteCallback={() => mutate([PROPS_URL_ENDPOINT, selectedComponent?.idProp])}
+      />
     </>
   );
 };

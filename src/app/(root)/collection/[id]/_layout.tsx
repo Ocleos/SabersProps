@@ -21,7 +21,7 @@ export default () => {
           name='informations'
           options={{
             tabBarLabel: t('routing:ROUTING.COLLECTION.INFORMATIONS'),
-            tabBarIcon: (props) => <Icon as={MaterialCommunityIcons} name='information' {...props} />,
+            tabBarIcon: (props) => <Icon as={MaterialCommunityIcons} name='information-outline' {...props} />,
           }}
         />
         <Tabs.Screen

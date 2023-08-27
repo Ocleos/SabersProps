@@ -1,8 +1,8 @@
-import { Note } from '../../models/note.model';
-import { useNotesStore } from '../../store/notes.store';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import Card from '@src/components/card/card.component';
 import { HStack, Heading, Icon, IconButton, Text, VStack } from 'native-base';
+import { Note } from '../../models/note.model';
+import { useNotesStore } from '../../store/notes.store';
 
 interface INoteCardProps {
   note: Note;
@@ -19,7 +19,7 @@ const NoteCardComponent: React.FC<INoteCardProps> = ({ note }) => {
             {note.title}
           </Heading>
           <IconButton
-            icon={<Icon name='dots-vertical' as={MaterialCommunityIcons} />}
+            icon={<Icon as={MaterialCommunityIcons} name='dots-vertical' />}
             borderRadius={'full'}
             variant={'ghost'}
             size='lg'

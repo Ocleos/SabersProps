@@ -1,7 +1,7 @@
-import Card from './card.component';
-import { FontAwesome5 } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { HStack, Heading, IBoxProps, Icon, IconButton, VStack } from 'native-base';
 import { useState } from 'react';
+import Card from './card.component';
 
 interface ICollapseCard extends IBoxProps {
   title?: string;
@@ -23,7 +23,11 @@ const CollapseCard: React.FC<ICollapseCard> = (props) => {
 
           <IconButton
             icon={
-              isOpen ? <Icon name='chevron-up' as={FontAwesome5} /> : <Icon name='chevron-down' as={FontAwesome5} />
+              isOpen ? (
+                <Icon as={MaterialCommunityIcons} name='chevron-up' />
+              ) : (
+                <Icon as={MaterialCommunityIcons} name='chevron-down' />
+              )
             }
             borderRadius={'full'}
             variant={'ghost'}

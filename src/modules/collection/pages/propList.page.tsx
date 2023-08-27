@@ -1,9 +1,6 @@
-import PropActions from '../components/propList/propActions.component';
-import PropCardComponent from '../components/propList/propCard.component';
-import PropFilters from '../components/propList/propFilters/propFilters.component';
-import { useCollectionStore } from '../store/collection.store';
-import { AntDesign } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { FlashList } from '@shopify/flash-list';
+import ActionsMenu from '@src/components/actionSheet/actionsMenu.component';
 import EmptyComponent from '@src/components/empty/empty.component';
 import FilterSearchWrapper from '@src/components/list/filterSearchWrapper.component';
 import { Prop } from '@src/models/prop.model';
@@ -12,13 +9,26 @@ import { useRouter } from 'expo-router';
 import { Fab, Icon, VStack } from 'native-base';
 import { useEffect } from 'react';
 import useSWR from 'swr';
+import PropCardComponent from '../components/propList/propCard.component';
+import PropFilters from '../components/propList/propFilters/propFilters.component';
+import { useCollectionStore } from '../store/collection.store';
 
 const PropListPage: React.FC = () => {
   const router = useRouter();
 
   const { isLoading, data, mutate } = useSWR(PROPS_URL_ENDPOINT, getData<Prop>);
 
-  const { props, filters, setSearchValue, updateProps, setIsFiltersOpen, setSelectedProp } = useCollectionStore();
+  const {
+    props,
+    filters,
+    selectedProp,
+    isActionsOpen,
+    setIsActionsOpen,
+    setSearchValue,
+    updateProps,
+    setIsFiltersOpen,
+    setSelectedProp,
+  } = useCollectionStore();
 
   useEffect(() => {
     if (data) {
@@ -54,11 +64,20 @@ const PropListPage: React.FC = () => {
           router.push('/collection/form');
         }}
         shadow={9}
-        icon={<Icon as={AntDesign} name='plus' size='lg' />}
+        icon={<Icon as={MaterialCommunityIcons} name='plus' size='lg' />}
       />
 
       <PropFilters />
-      <PropActions />
+
+      <ActionsMenu
+        idSelected={selectedProp?.id}
+        nameSelected={selectedProp?.name}
+        routeEdit='/collection/form'
+        isOpen={isActionsOpen}
+        setIsOpen={setIsActionsOpen}
+        setSelected={setSelectedProp}
+        urlEndpoint={PROPS_URL_ENDPOINT}
+      />
     </>
   );
 };

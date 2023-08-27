@@ -1,4 +1,3 @@
-import { useCollectionStore } from '../store/collection.store';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { yupResolver } from '@hookform/resolvers/yup';
 import FormControlWrapper from '@src/components/form/formControlWrapper.component';
@@ -17,6 +16,7 @@ import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import useSWRMutation from 'swr/mutation';
 import * as Yup from 'yup';
+import { useCollectionStore } from '../store/collection.store';
 
 const PropFormPage: React.FC = () => {
   const { t } = useTranslation(['common', 'collection']);
@@ -127,7 +127,7 @@ const PropFormPage: React.FC = () => {
       <Button
         size={'lg'}
         onPress={handleSubmit(onSubmit)}
-        startIcon={<Icon as={MaterialCommunityIcons} name='content-save' size={'md'} />}
+        startIcon={<Icon as={MaterialCommunityIcons} name='content-save-outline' size={'md'} />}
         isLoading={isMutating}
         isDisabled={isMutating}
       >

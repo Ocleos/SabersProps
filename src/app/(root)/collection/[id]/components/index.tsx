@@ -7,7 +7,7 @@ export default () => {
   const { t } = useTranslation(['routing']);
 
   const { propDetail } = usePropDetailStore();
-  const title = `${propDetail?.name ?? ''} - ${t('routing:ROUTING.COLLECTION.COMPONENTS')}`;
+  const title = propDetail?.name ?? t('routing:ROUTING.COLLECTION.COMPONENTS');
 
   return (
     <PageLayout title={title}>

@@ -11,14 +11,12 @@ interface ICollectionState {
   props: Prop[];
   selectedProp?: Prop;
   isActionsOpen: boolean;
-  isDeleteModalOpen: boolean;
   isFiltersOpen: boolean;
   filters: PropFilters;
 
   updateProps: (data: Prop[]) => void;
   setSelectedProp: (prop?: Prop) => void;
   setIsActionsOpen: (isOpen: boolean) => void;
-  setIsDeleteModalOpen: (isOpen: boolean) => void;
   setSearchValue: (search: string) => void;
   setIsFiltersOpen: (isOpen: boolean) => void;
 
@@ -31,7 +29,6 @@ export const useCollectionStore = create<ICollectionState>()(
     props: [],
     selectedProp: undefined,
     isActionsOpen: false,
-    isDeleteModalOpen: false,
     isFiltersOpen: false,
     filters: defaultPropFilters,
 
@@ -56,10 +53,6 @@ export const useCollectionStore = create<ICollectionState>()(
 
     setIsActionsOpen: (isOpen: boolean) => {
       set((state) => ({ ...state, isActionsOpen: isOpen }));
-    },
-
-    setIsDeleteModalOpen: (isOpen: boolean) => {
-      set((state) => ({ ...state, isDeleteModalOpen: isOpen }));
     },
 
     setIsFiltersOpen: (isOpen) => {

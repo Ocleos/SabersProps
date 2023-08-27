@@ -1,4 +1,4 @@
-import { Ionicons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import CollapseCard from '@src/components/card/collapseCard.component';
 import LabelIcon from '@src/components/label/labelIcon.component';
 import { VStack } from 'native-base';
@@ -16,11 +16,11 @@ const InformationsCard: React.FC<IInformationsCard> = ({ prop }) => {
   return (
     <CollapseCard title={t('collection:CATEGORIES.INFORMATIONS')} isOpened={true}>
       <VStack space={2}>
-        <LabelIcon label={prop.manufacturer} icon={{ as: Ionicons, name: 'build' }} />
-        <LabelIcon label={prop.chassisDesigner ?? ''} icon={{ as: Ionicons, name: 'shapes' }} />
-        <LabelIcon label={prop.soundboard ?? ''} icon={{ as: Ionicons, name: 'hardware-chip-sharp' }} />
-        <LabelIcon label={prop.character ?? ''} icon={{ as: Ionicons, name: 'person' }} />
-        <LabelIcon label={prop.apparition ?? ''} icon={{ as: Ionicons, name: 'film' }} />
+        <LabelIcon label={prop.manufacturer} icon={{ as: MaterialCommunityIcons, name: 'wrench-outline' }} />
+        <LabelIcon label={prop.chassisDesigner ?? ''} icon={{ as: MaterialCommunityIcons, name: 'shape' }} />
+        <LabelIcon label={prop.soundboard ?? ''} icon={{ as: MaterialCommunityIcons, name: 'memory' }} />
+        <LabelIcon label={prop.character ?? ''} icon={{ as: MaterialCommunityIcons, name: 'account-outline' }} />
+        <LabelIcon label={prop.apparition ?? ''} icon={{ as: MaterialCommunityIcons, name: 'movie-outline' }} />
       </VStack>
     </CollapseCard>
   );

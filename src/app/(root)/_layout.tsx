@@ -1,4 +1,4 @@
-import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import DrawerLayout from '@src/components/layout/drawerLayout.component';
 import { Drawer } from 'expo-router/drawer';
 import { IIconProps, Icon, useColorModeValue, useToken } from 'native-base';
@@ -37,7 +37,9 @@ export default () => {
         name='stats'
         options={{
           drawerLabel: t('routing:ROUTING.STATS.INITIAL'),
-          drawerIcon: (props) => <Icon as={FontAwesome} name='pie-chart' color={props.color} {...defaultIconProps} />,
+          drawerIcon: (props) => (
+            <Icon as={MaterialCommunityIcons} name='chart-arc' color={props.color} {...defaultIconProps} />
+          ),
         }}
       />
 
@@ -46,7 +48,7 @@ export default () => {
         options={{
           drawerLabel: t('routing:ROUTING.NOTES.INITIAL'),
           drawerIcon: (props) => (
-            <Icon as={MaterialCommunityIcons} name='note-text' color={props.color} {...defaultIconProps} />
+            <Icon as={MaterialCommunityIcons} name='note-text-outline' color={props.color} {...defaultIconProps} />
           ),
         }}
       />
@@ -65,7 +67,9 @@ export default () => {
         name='settings'
         options={{
           drawerLabel: t('routing:ROUTING.SETTINGS.INITIAL'),
-          drawerIcon: (props) => <Icon as={FontAwesome} name='gear' color={props.color} {...defaultIconProps} />,
+          drawerIcon: (props) => (
+            <Icon as={MaterialCommunityIcons} name='cog-outline' color={props.color} {...defaultIconProps} />
+          ),
         }}
       />
     </Drawer>

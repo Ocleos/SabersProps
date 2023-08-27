@@ -1,5 +1,3 @@
-import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
-import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { HStack, Icon, IconButton, Input } from 'native-base';
 import { useTranslation } from 'react-i18next';
@@ -28,9 +26,13 @@ const FilterSearchWrapper: React.FC<IFilterSearchWrapper> = (props) => {
         placeholder={t('common:COMMON.SEARCH')}
         autoCapitalize='none'
         onChangeText={onChangeText}
-        InputLeftElement={<Icon as={FontAwesome5} name='search' px={4} />}
+        InputLeftElement={<Icon as={MaterialCommunityIcons} name='magnify' px={4} />}
         InputRightElement={
-          <IconButton icon={<Icon as={Ionicons} name='close' />} rounded={'full'} onPress={() => onChangeText('')} />
+          <IconButton
+            icon={<Icon as={MaterialCommunityIcons} name='close' />}
+            rounded={'full'}
+            onPress={() => onChangeText('')}
+          />
         }
       />
       {onOpenFilter && (

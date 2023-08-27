@@ -55,7 +55,7 @@ const PropCardComponent: React.FC<IPropCardProps> = ({ prop }) => {
 
           <Center>
             <IconButton
-              icon={<Icon name='dots-vertical' as={MaterialCommunityIcons} />}
+              icon={<Icon as={MaterialCommunityIcons} name='dots-vertical' />}
               borderRadius={'full'}
               variant={'ghost'}
               size='lg'

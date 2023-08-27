@@ -10,14 +10,12 @@ interface IPropDetailState {
   components: PropComponent[];
   selectedComponent?: PropComponent;
   isActionsOpen: boolean;
-  isDeleteModalOpen: boolean;
   searchValue: string;
 
   updatePropDetail: (data: PropDetail | undefined) => void;
   updateComponents: (data: PropComponent[]) => void;
   setSelectedComponent: (component?: PropComponent) => void;
   setIsActionsOpen: (isOpen: boolean) => void;
-  setIsDeleteModalOpen: (isOpen: boolean) => void;
   setSearchValue: (search: string) => void;
 }
 
@@ -27,7 +25,6 @@ export const usePropDetailStore = create<IPropDetailState>()(
     components: [],
     selectedComponent: undefined,
     isActionsOpen: false,
-    isDeleteModalOpen: false,
     searchValue: '',
 
     updatePropDetail: (data: PropDetail | undefined) => {
@@ -53,10 +50,6 @@ export const usePropDetailStore = create<IPropDetailState>()(
 
     setIsActionsOpen: (isOpen: boolean) => {
       set((state) => ({ ...state, isActionsOpen: isOpen }));
-    },
-
-    setIsDeleteModalOpen: (isOpen: boolean) => {
-      set((state) => ({ ...state, isDeleteModalOpen: isOpen }));
     },
 
     setSearchValue: (search: string) => {

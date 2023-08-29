@@ -1,7 +1,7 @@
 export type PropComponent = {
-  id: string;
+  id: string | undefined;
   idProp: string;
-  vendor: string;
+  seller: string;
   date: string;
   label: string;
   rate: number;

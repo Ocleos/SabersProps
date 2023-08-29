@@ -61,7 +61,7 @@ const PropDetailComponents: React.FC = () => {
       />
 
       <ActionsMenu
-        idSelected={propDetail?.id}
+        idSelected={selectedComponent?.id}
         nameSelected={selectedComponent?.label}
         routeEdit={`/collection/${selectedComponent?.idProp}/components/form`}
         isOpen={isActionsOpen}

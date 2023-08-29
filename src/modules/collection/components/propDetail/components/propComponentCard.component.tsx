@@ -44,7 +44,7 @@ const PropComponentCard: React.FC<IPropComponentCard> = ({ propComponent }) => {
 
           <LabelIcon
             viewProps={{ w: '3/5' }}
-            label={propComponent.vendor}
+            label={propComponent.seller}
             icon={{ as: MaterialCommunityIcons, name: 'store-outline' }}
           />
         </HStack>

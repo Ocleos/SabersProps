@@ -6,7 +6,6 @@
   - Props' detail
     - Pictures gallery
     - Prices
-    - Components list
 - Stats
   - State vs Type (count)
     - Table

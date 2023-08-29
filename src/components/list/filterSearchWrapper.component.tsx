@@ -26,10 +26,10 @@ const FilterSearchWrapper: React.FC<IFilterSearchWrapper> = (props) => {
         placeholder={t('common:COMMON.SEARCH')}
         autoCapitalize='none'
         onChangeText={onChangeText}
-        InputLeftElement={<Icon as={MaterialCommunityIcons} name='magnify' px={4} />}
+        InputLeftElement={<Icon as={MaterialCommunityIcons} name='magnify' ml={2} size={6} />}
         InputRightElement={
           <IconButton
-            icon={<Icon as={MaterialCommunityIcons} name='close' />}
+            icon={<Icon as={MaterialCommunityIcons} name='close' size={6} />}
             rounded={'full'}
             onPress={() => onChangeText('')}
           />
@@ -37,7 +37,7 @@ const FilterSearchWrapper: React.FC<IFilterSearchWrapper> = (props) => {
       />
       {onOpenFilter && (
         <IconButton
-          icon={<Icon as={MaterialCommunityIcons} name='filter-outline' />}
+          icon={<Icon as={MaterialCommunityIcons} name='filter-outline' size={6} />}
           rounded={'full'}
           onPress={() => onOpenFilter(true)}
         />

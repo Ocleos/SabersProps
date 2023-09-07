@@ -14,7 +14,7 @@ export const NOTES_URL_ENDPOINT = 'notes';
 export const COMPONENTS_URL_ENDPOINT = 'components';
 
 type Data = {
-  id: string | undefined;
+  id?: string | undefined;
 };
 
 export const getData = async <T extends Data>(url: string) => {

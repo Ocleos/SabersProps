@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "streetsidesoftware.code-spell-checker",
+    "dsznajder.es7-react-js-snippets",
+    "expo.vscode-expo-tools",
+    "antfu.file-nesting",
+    "streetsidesoftware.code-spell-checker-french",
+    "streetsidesoftware.code-spell-checker-french-reforme",
+    "pkief.material-icon-theme",
+    "nativebase.nativebase-v3-vscode-extension",
+    "yoavbls.pretty-ts-errors",
+    "rome.rome"
+  ]
+}

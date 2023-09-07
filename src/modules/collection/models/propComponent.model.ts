@@ -1,5 +1,5 @@
 export type PropComponent = {
-  id: string | undefined;
+  id?: string | undefined;
   idProp: string;
   seller: string;
   date: string;

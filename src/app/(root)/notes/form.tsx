@@ -1,9 +1,9 @@
-import PageLayout from '@src/components/layout/pageLayout.component';
-import NoteFormPage from '@src/modules/notes/pages/noteForm.page';
-import { useNotesStore } from '@src/modules/notes/store/notes.store';
 import { isNil } from 'lodash';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import PageLayout from '~src/components/layout/pageLayout.component';
+import NoteFormPage from '~src/modules/notes/pages/noteForm.page';
+import { useNotesStore } from '~src/modules/notes/store/notes.store';
 
 export default () => {
   const { t } = useTranslation(['notes']);

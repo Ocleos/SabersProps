@@ -1,8 +1,8 @@
-import PageLayout from '@src/components/layout/pageLayout.component';
-import PropFormPage from '@src/modules/collection/pages/propForm.page';
-import { useCollectionStore } from '@src/modules/collection/store/collection.store';
 import { isNil } from 'lodash';
 import { useTranslation } from 'react-i18next';
+import PageLayout from '~src/components/layout/pageLayout.component';
+import PropFormPage from '~src/modules/collection/pages/propForm.page';
+import { useCollectionStore } from '~src/modules/collection/store/collection.store';
 
 export default () => {
   const { t } = useTranslation(['collection']);

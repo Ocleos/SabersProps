@@ -9,6 +9,7 @@
     "pkief.material-icon-theme",
     "nativebase.nativebase-v3-vscode-extension",
     "yoavbls.pretty-ts-errors",
-    "rome.rome"
+    "biomejs.biome",
+    "esbenp.prettier-vscode"
   ]
 }

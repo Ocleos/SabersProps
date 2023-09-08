@@ -1,8 +1,8 @@
-import { SabersPropsIcon } from '@src/assets/sabersProps.icon';
-import { propStates } from '@src/models/propState.model';
-import { propTypes } from '@src/models/propType.model';
 import { Badge, Box, HStack, IBadgeProps, Icon } from 'native-base';
 import React from 'react';
+import { SabersPropsIcon } from '~src/assets/sabersProps.icon';
+import { propStates } from '~src/models/propState.model';
+import { propTypes } from '~src/models/propType.model';
 import { PropDetail } from '../../../models/propDetail.model';
 
 interface IStatusDetail {

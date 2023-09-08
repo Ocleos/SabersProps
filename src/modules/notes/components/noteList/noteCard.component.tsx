@@ -1,6 +1,6 @@
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import Card from '@src/components/card/card.component';
 import { HStack, Heading, Icon, IconButton, Text, VStack } from 'native-base';
+import Card from '~src/components/card/card.component';
 import { Note } from '../../models/note.model';
 import { useNotesStore } from '../../store/notes.store';
 

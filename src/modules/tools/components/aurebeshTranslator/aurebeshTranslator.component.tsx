@@ -1,8 +1,8 @@
-import AurebeshTranslatorModal from './aurebeshTranslatorModal.component';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { Button, Icon } from 'native-base';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import AurebeshTranslatorModal from './aurebeshTranslatorModal.component';
 
 const AurebeshTranslator: React.FC = () => {
   const { t } = useTranslation(['tools', 'common']);

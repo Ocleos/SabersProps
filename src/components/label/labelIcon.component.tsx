@@ -1,7 +1,7 @@
-import { iconStyle } from '@src/theme/icon.theme';
 import { HStack, IIconProps, Icon, Text } from 'native-base';
 import { IViewProps } from 'native-base/lib/typescript/components/basic/View/types';
 import React from 'react';
+import { iconStyle } from '~src/theme/icon.theme';
 
 interface ILabelIcon {
   label: string;

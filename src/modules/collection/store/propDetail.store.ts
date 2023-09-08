@@ -1,7 +1,7 @@
-import { searchValueInObject } from '@src/utils/arrays.utils';
 import { filter, sortBy } from 'lodash';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
+import { searchValueInObject } from '~src/utils/arrays.utils';
 import { PropComponent } from '../models/propComponent.model';
 import { PropDetail } from '../models/propDetail.model';
 

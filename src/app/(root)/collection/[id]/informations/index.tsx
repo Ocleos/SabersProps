@@ -1,7 +1,7 @@
-import PageLayout from '@src/components/layout/pageLayout.component';
-import PropDetailInformations from '@src/modules/collection/pages/propDetailInformations.page';
-import { usePropDetailStore } from '@src/modules/collection/store/propDetail.store';
 import { useTranslation } from 'react-i18next';
+import PageLayout from '~src/components/layout/pageLayout.component';
+import PropDetailInformations from '~src/modules/collection/pages/propDetailInformations.page';
+import { usePropDetailStore } from '~src/modules/collection/store/propDetail.store';
 
 export default () => {
   const { t } = useTranslation(['routing']);

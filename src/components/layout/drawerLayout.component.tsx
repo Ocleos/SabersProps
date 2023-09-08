@@ -8,7 +8,7 @@ export const withDrawerToggle: NativeStackNavigationOptions = {
 };
 
 const DrawerLayout: React.FC<DrawerContentComponentProps> = (props) => {
-  const [assets] = useAssets([require('@assets/icon.png')]);
+  const [assets] = useAssets([require('~assets/icon.png')]);
 
   return (
     <View flex={1}>

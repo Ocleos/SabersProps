@@ -1,8 +1,8 @@
-import AlertWrapper from '@src/components/alert/alertWrapper.component';
-import i18n from '@src/i18n.config';
 import { isError } from 'lodash';
 import { IToastProps, Toast } from 'native-base';
 import React from 'react';
+import AlertWrapper from '~src/components/alert/alertWrapper.component';
+import i18n from '~src/i18n.config';
 
 interface ShowToasterProps extends IToastProps {
   status: string;
@@ -11,8 +11,7 @@ interface ShowToasterProps extends IToastProps {
 }
 
 export const showToaster = (props: ShowToasterProps) => {
-  // rome-ignore lint/correctness/noUnusedVariables:
-  const toastRef = Toast.show({
+  const _toastRef = Toast.show({
     placement: 'top',
     render: () => (
       <AlertWrapper
@@ -20,8 +19,8 @@ export const showToaster = (props: ShowToasterProps) => {
         title={props.title}
         description={props.description}
         onClose={() => {
-          if (toastRef) {
-            Toast.close(toastRef);
+          if (_toastRef) {
+            Toast.close(_toastRef);
           }
         }}
       />

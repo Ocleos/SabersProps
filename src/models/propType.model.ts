@@ -1,4 +1,4 @@
-import i18n from '@src/i18n.config';
+import i18n from '~src/i18n.config';
 
 export enum PropType {
   NONE = 0,

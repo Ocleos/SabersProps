@@ -1,11 +1,5 @@
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { yupResolver } from '@hookform/resolvers/yup';
-import FormControlWrapper from '@src/components/form/formControlWrapper.component';
-import InputWrapper from '@src/components/form/inputWrapper.component';
-import TextAreaWrapper from '@src/components/form/textAreaWrapper.component';
-import { NOTES_URL_ENDPOINT, postData, putData } from '@src/utils/supabase.utils';
-import { showErrorToaster, showSuccessToaster } from '@src/utils/toaster.utils';
-import { MAX_LENGTH } from '@src/utils/validator.utils';
 import { useRouter } from 'expo-router';
 import { isNil } from 'lodash';
 import { Button, Icon, VStack } from 'native-base';
@@ -13,6 +7,12 @@ import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import useSWRMutation from 'swr/mutation';
 import * as Yup from 'yup';
+import FormControlWrapper from '~src/components/form/formControlWrapper.component';
+import InputWrapper from '~src/components/form/inputWrapper.component';
+import TextAreaWrapper from '~src/components/form/textAreaWrapper.component';
+import { NOTES_URL_ENDPOINT, postData, putData } from '~src/utils/supabase.utils';
+import { showErrorToaster, showSuccessToaster } from '~src/utils/toaster.utils';
+import { MAX_LENGTH } from '~src/utils/validator.utils';
 import { Note } from '../models/note.model';
 import { useNotesStore } from '../store/notes.store';
 

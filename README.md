@@ -12,7 +12,7 @@
     - Stacked Horizontal Bar
   - Prices
     - Total / Min / Max / Avg
-    - Basic Scatter Chart  
+    - Basic Scatter Chart
       - Prices by project
   - Expenses
     - line chart

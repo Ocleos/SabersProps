@@ -1,5 +1,5 @@
-import AurebeshTranslator from '../components/aurebeshTranslator/aurebeshTranslator.component';
 import React from 'react';
+import AurebeshTranslator from '../components/aurebeshTranslator/aurebeshTranslator.component';
 
 const ToolsPage: React.FC = () => {
   return <AurebeshTranslator />;

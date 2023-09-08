@@ -1,14 +1,14 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { FlashList } from '@shopify/flash-list';
-import ActionsMenu from '@src/components/actionSheet/actionsMenu.component';
-import EmptyComponent from '@src/components/empty/empty.component';
-import FilterSearchWrapper from '@src/components/list/filterSearchWrapper.component';
-import { COMPONENTS_URL_ENDPOINT, PROPS_URL_ENDPOINT } from '@src/utils/supabase.utils';
 import { useRouter } from 'expo-router';
 import { isNil } from 'lodash';
 import { Fab, Icon, VStack } from 'native-base';
 import { useEffect } from 'react';
 import { useSWRConfig } from 'swr';
+import ActionsMenu from '~src/components/actionSheet/actionsMenu.component';
+import EmptyComponent from '~src/components/empty/empty.component';
+import FilterSearchWrapper from '~src/components/list/filterSearchWrapper.component';
+import { COMPONENTS_URL_ENDPOINT, PROPS_URL_ENDPOINT } from '~src/utils/supabase.utils';
 import PropComponentCard from '../components/propDetail/components/propComponentCard.component';
 import { usePropDetailStore } from '../store/propDetail.store';
 

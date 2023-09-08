@@ -1,8 +1,8 @@
-import { changeLanguage } from '@src/i18n.config';
-import { applicationVersion } from '@src/utils/platforms.utils';
 import { Center, HStack, Radio, Switch, Text, VStack, useColorMode } from 'native-base';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { changeLanguage } from '~src/i18n.config';
+import { applicationVersion } from '~src/utils/platforms.utils';
 
 const SettingsPage: React.FC = () => {
   const { t } = useTranslation(['common', 'settings']);

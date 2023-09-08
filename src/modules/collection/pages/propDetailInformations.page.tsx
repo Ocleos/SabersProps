@@ -1,8 +1,8 @@
-import { PROPS_URL_ENDPOINT } from '@src/utils/supabase.utils';
 import { useLocalSearchParams } from 'expo-router';
 import { Spinner, VStack } from 'native-base';
 import { useEffect } from 'react';
 import useSWR from 'swr';
+import { PROPS_URL_ENDPOINT } from '~src/utils/supabase.utils';
 import InformationsCard from '../components/propDetail/informations/informationsCard.component';
 import PricesCard from '../components/propDetail/informations/pricesCard.component';
 import StatusDetail from '../components/propDetail/informations/statusDetail.component';

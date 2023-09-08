@@ -1,8 +1,8 @@
-import FilterBadge from '@src/components/list/filterBadge.component';
-import { PropState, propStates } from '@src/models/propState.model';
-import { useCollectionStore } from '@src/modules/collection/store/collection.store';
 import { includes } from 'lodash';
 import { Pressable } from 'react-native';
+import FilterBadge from '~src/components/list/filterBadge.component';
+import { PropState, propStates } from '~src/models/propState.model';
+import { useCollectionStore } from '~src/modules/collection/store/collection.store';
 
 export interface IStateFilterProps {
   state: PropState;

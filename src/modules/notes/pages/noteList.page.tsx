@@ -1,11 +1,11 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { FlashList } from '@shopify/flash-list';
-import ActionsMenu from '@src/components/actionSheet/actionsMenu.component';
-import EmptyComponent from '@src/components/empty/empty.component';
-import { NOTES_URL_ENDPOINT, getData } from '@src/utils/supabase.utils';
 import { useRouter } from 'expo-router';
 import { Fab, Icon, VStack } from 'native-base';
 import useSWR from 'swr';
+import ActionsMenu from '~src/components/actionSheet/actionsMenu.component';
+import EmptyComponent from '~src/components/empty/empty.component';
+import { NOTES_URL_ENDPOINT, getData } from '~src/utils/supabase.utils';
 import NoteCardComponent from '../components/noteList/noteCard.component';
 import { Note } from '../models/note.model';
 import { useNotesStore } from '../store/notes.store';

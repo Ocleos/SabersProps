@@ -19,13 +19,13 @@ import {
   Exo2_900Black_Italic,
   useFonts,
 } from '@expo-google-fonts/exo-2';
-import extendedTheme from '@src/theme/_extendedTheme.theme';
 import { Slot, SplashScreen } from 'expo-router';
 import { NativeBaseProvider } from 'native-base';
 import React, { useEffect } from 'react';
+import extendedTheme from '~src/theme/_extendedTheme.theme';
 
-import '@src/i18n.config';
-import { Aurebesh, StarWarsGlyphicons } from '@src/theme/fonts.theme';
+import '~src/i18n.config';
+import { Aurebesh, StarWarsGlyphicons } from '~src/theme/fonts.theme';
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();

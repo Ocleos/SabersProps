@@ -1,12 +1,12 @@
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import DeleteModal from '@src/components/modal/deleteModal.component';
-import { deleteData } from '@src/utils/supabase.utils';
-import { showErrorToaster, showSuccessToaster } from '@src/utils/toaster.utils';
 import { useRouter } from 'expo-router';
 import { Actionsheet, Icon } from 'native-base';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import useSWRMutation from 'swr/mutation';
+import DeleteModal from '~src/components/modal/deleteModal.component';
+import { deleteData } from '~src/utils/supabase.utils';
+import { showErrorToaster, showSuccessToaster } from '~src/utils/toaster.utils';
 
 interface IActionsProp {
   idSelected?: string;

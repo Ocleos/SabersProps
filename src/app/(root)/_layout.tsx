@@ -1,8 +1,8 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import DrawerLayout from '@src/components/layout/drawerLayout.component';
 import { Drawer } from 'expo-router/drawer';
 import { IIconProps, Icon, useColorModeValue, useToken } from 'native-base';
 import { useTranslation } from 'react-i18next';
+import DrawerLayout from '~src/components/layout/drawerLayout.component';
 
 const defaultIconProps: IIconProps = {
   size: 8,

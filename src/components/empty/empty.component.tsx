@@ -1,6 +1,6 @@
-import NoDataIcon from '@src/assets/noData.icon';
 import { Center, Text, VStack } from 'native-base';
 import { useTranslation } from 'react-i18next';
+import NoDataIcon from '~src/assets/noData.icon';
 
 interface IEmptyComponentProps {
   title?: string;

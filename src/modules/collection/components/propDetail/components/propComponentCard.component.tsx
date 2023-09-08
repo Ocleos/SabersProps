@@ -1,11 +1,11 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import Card from '@src/components/card/card.component';
-import LabelIcon from '@src/components/label/labelIcon.component';
-import { PropComponent } from '@src/modules/collection/models/propComponent.model';
-import { usePropDetailStore } from '@src/modules/collection/store/propDetail.store';
-import { CURRENCY_EUROS, FORMAT_DATE, formatDate, formatNumber, formatToCurrency } from '@src/utils/format.utils';
 import { HStack, Icon, IconButton, Text, VStack } from 'native-base';
 import React from 'react';
+import Card from '~src/components/card/card.component';
+import LabelIcon from '~src/components/label/labelIcon.component';
+import { PropComponent } from '~src/modules/collection/models/propComponent.model';
+import { usePropDetailStore } from '~src/modules/collection/store/propDetail.store';
+import { CURRENCY_EUROS, FORMAT_DATE, formatDate, formatNumber, formatToCurrency } from '~src/utils/format.utils';
 
 interface IPropComponentCard {
   propComponent: PropComponent;

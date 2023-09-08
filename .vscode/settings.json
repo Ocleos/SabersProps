@@ -1,18 +1,15 @@
 {
-  "cSpell.words": ["aurebesh", "sabersprops"],
   "editor.linkedEditing": true,
   "editor.tabSize": 2,
   "editor.codeActionsOnSave": {
     "source.fixAll": true,
+    "quickfix.biome": true,
     "source.organizeImports": true,
-    "source.organizeImports.rome": true
+    "source.organizeImports.biome": true
   },
-  "editor.defaultFormatter": "rome.rome",
-  "[jsonc]": {
-    "editor.defaultFormatter": "rome.rome"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "rome.rome"
+  "editor.defaultFormatter": "biomejs.biome",
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "editor.formatOnSave": true,
   "editor.wordWrap": "wordWrapColumn",
@@ -20,12 +17,18 @@
   "files.eol": "\n",
   "files.insertFinalNewline": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
+  "explorer.fileNesting.patterns": {
+    "app.config.ts": "*.env, babel.config.*, biome.*, eas.*, metro.config.*, .lintstaged*, .prettier*, commitlint.*, tsconfig*",
+    "package.json": ".yarnrc*, yarn*"
+  },
+  "cSpell.words": ["aurebesh", "sabersprops"],
   "cSpell.ignoreRegExpList": ["/from\\\\s+(['\\\"]).*\\\\1/"],
   "cSpell.ignoreWords": [
     "Actionsheet",
     "Glyphicons",
     "Ionicons",
     "Pressable",
+    "biomejs",
     "commitlint",
     "dayjs",
     "hookform",

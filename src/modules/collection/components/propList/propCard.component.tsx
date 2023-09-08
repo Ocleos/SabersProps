@@ -1,9 +1,4 @@
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import { SabersPropsIcon } from '@src/assets/sabersProps.icon';
-import Card from '@src/components/card/card.component';
-import { Prop } from '@src/models/prop.model';
-import { propStates } from '@src/models/propState.model';
-import { propTypes } from '@src/models/propType.model';
 import { useRouter } from 'expo-router';
 import {
   Center,
@@ -17,6 +12,11 @@ import {
   VStack,
   useColorModeValue,
 } from 'native-base';
+import { SabersPropsIcon } from '~src/assets/sabersProps.icon';
+import Card from '~src/components/card/card.component';
+import { Prop } from '~src/models/prop.model';
+import { propStates } from '~src/models/propState.model';
+import { propTypes } from '~src/models/propType.model';
 import { useCollectionStore } from '../../store/collection.store';
 
 interface IPropCardProps {

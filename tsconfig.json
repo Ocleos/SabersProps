@@ -4,9 +4,9 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "@assets/*": ["./assets/*"],
-      "@src/*": ["./src/*"]
+      "~assets/*": ["./assets/*"],
+      "~src/*": ["./src/*"]
     },
-    "moduleSuffixes": [".ios", ".android", ".native", ".web", ""],
+    "moduleSuffixes": [".ios", ".android", ".native", ".web", ""]
   }
 }

@@ -1,5 +1,5 @@
-import i18n from '@src/i18n.config';
 import { setLocale } from 'yup';
+import i18n from '~src/i18n.config';
 
 export const MAX_LENGTH = 100;
 

@@ -1,7 +1,7 @@
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { isNil } from 'lodash';
+import { Save } from 'lucide-react-native';
 import { Button, Icon, VStack } from 'native-base';
 import React, { useEffect } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
@@ -148,7 +148,7 @@ const PropComponentForm = () => {
       <Button
         size={'lg'}
         onPress={handleSubmit(onSubmit)}
-        startIcon={<Icon as={MaterialCommunityIcons} name='content-save-outline' size={'md'} />}
+        startIcon={<Icon as={Save} size={'md'} />}
         isLoading={isMutating}
         isDisabled={isMutating}
       >

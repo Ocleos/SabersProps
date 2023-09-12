@@ -1,4 +1,4 @@
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import { Languages } from 'lucide-react-native';
 import { Button, Icon } from 'native-base';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -13,7 +13,7 @@ const AurebeshTranslator: React.FC = () => {
       <Button
         onPress={() => setIsTranslatorOpenModal(true)}
         size={'lg'}
-        leftIcon={<Icon as={MaterialCommunityIcons} name='translate' size={'md'} mr={4} />}
+        leftIcon={<Icon as={Languages} size={'md'} mr={4} />}
       >
         {t('tools:TOOLS.TRANSLATOR.TITLE')}
       </Button>

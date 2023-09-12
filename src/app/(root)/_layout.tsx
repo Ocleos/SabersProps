@@ -1,5 +1,5 @@
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Drawer } from 'expo-router/drawer';
+import { PieChart, PocketKnife, ScrollText, Settings, Swords } from 'lucide-react-native';
 import { IIconProps, Icon, useColorModeValue, useToken } from 'native-base';
 import { useTranslation } from 'react-i18next';
 import DrawerLayout from '~src/components/layout/drawerLayout.component';
@@ -27,9 +27,7 @@ export default () => {
         name='collection'
         options={{
           drawerLabel: t('routing:ROUTING.COLLECTION.INITIAL'),
-          drawerIcon: (props) => (
-            <Icon as={MaterialCommunityIcons} name='sword-cross' color={props.color} {...defaultIconProps} />
-          ),
+          drawerIcon: (props) => <Icon as={Swords} color={props.color} {...defaultIconProps} />,
         }}
       />
 
@@ -37,9 +35,7 @@ export default () => {
         name='stats'
         options={{
           drawerLabel: t('routing:ROUTING.STATS.INITIAL'),
-          drawerIcon: (props) => (
-            <Icon as={MaterialCommunityIcons} name='chart-arc' color={props.color} {...defaultIconProps} />
-          ),
+          drawerIcon: (props) => <Icon as={PieChart} color={props.color} {...defaultIconProps} />,
         }}
       />
 
@@ -47,9 +43,7 @@ export default () => {
         name='notes'
         options={{
           drawerLabel: t('routing:ROUTING.NOTES.INITIAL'),
-          drawerIcon: (props) => (
-            <Icon as={MaterialCommunityIcons} name='note-text-outline' color={props.color} {...defaultIconProps} />
-          ),
+          drawerIcon: (props) => <Icon as={ScrollText} color={props.color} {...defaultIconProps} />,
         }}
       />
 
@@ -57,9 +51,7 @@ export default () => {
         name='tools'
         options={{
           drawerLabel: t('routing:ROUTING.TOOLS.INITIAL'),
-          drawerIcon: (props) => (
-            <Icon as={MaterialCommunityIcons} name='tools' color={props.color} {...defaultIconProps} />
-          ),
+          drawerIcon: (props) => <Icon as={PocketKnife} color={props.color} {...defaultIconProps} />,
         }}
       />
 
@@ -67,9 +59,7 @@ export default () => {
         name='settings'
         options={{
           drawerLabel: t('routing:ROUTING.SETTINGS.INITIAL'),
-          drawerIcon: (props) => (
-            <Icon as={MaterialCommunityIcons} name='cog-outline' color={props.color} {...defaultIconProps} />
-          ),
+          drawerIcon: (props) => <Icon as={Settings} name='cog-outline' color={props.color} {...defaultIconProps} />,
         }}
       />
     </Drawer>

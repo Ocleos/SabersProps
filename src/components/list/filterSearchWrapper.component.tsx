@@ -1,4 +1,4 @@
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import { Filter, Search, X } from 'lucide-react-native';
 import { HStack, Icon, IconButton, Input } from 'native-base';
 import { useTranslation } from 'react-i18next';
 
@@ -26,21 +26,13 @@ const FilterSearchWrapper: React.FC<IFilterSearchWrapper> = (props) => {
         placeholder={t('common:COMMON.SEARCH')}
         autoCapitalize='none'
         onChangeText={onChangeText}
-        InputLeftElement={<Icon as={MaterialCommunityIcons} name='magnify' ml={2} size={6} />}
+        InputLeftElement={<Icon as={Search} ml={2} size={6} />}
         InputRightElement={
-          <IconButton
-            icon={<Icon as={MaterialCommunityIcons} name='close' size={6} />}
-            rounded={'full'}
-            onPress={() => onChangeText('')}
-          />
+          <IconButton icon={<Icon as={X} size={6} />} rounded={'full'} onPress={() => onChangeText('')} />
         }
       />
       {onOpenFilter && (
-        <IconButton
-          icon={<Icon as={MaterialCommunityIcons} name='filter-outline' size={6} />}
-          rounded={'full'}
-          onPress={() => onOpenFilter(true)}
-        />
+        <IconButton icon={<Icon as={Filter} size={6} />} rounded={'full'} onPress={() => onOpenFilter(true)} />
       )}
     </HStack>
   );

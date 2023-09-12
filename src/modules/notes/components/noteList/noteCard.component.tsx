@@ -1,4 +1,4 @@
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import { MoreVertical } from 'lucide-react-native';
 import { HStack, Heading, Icon, IconButton, Text, VStack } from 'native-base';
 import Card from '~src/components/card/card.component';
 import { Note } from '../../models/note.model';
@@ -19,7 +19,7 @@ const NoteCardComponent: React.FC<INoteCardProps> = ({ note }) => {
             {note.title}
           </Heading>
           <IconButton
-            icon={<Icon as={MaterialCommunityIcons} name='dots-vertical' />}
+            icon={<Icon as={MoreVertical} />}
             borderRadius={'full'}
             variant={'ghost'}
             size='lg'

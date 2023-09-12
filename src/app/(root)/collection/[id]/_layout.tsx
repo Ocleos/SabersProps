@@ -1,5 +1,5 @@
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Stack, Tabs } from 'expo-router';
+import { Cpu, Info } from 'lucide-react-native';
 import { Icon, useColorModeValue, useToken } from 'native-base';
 import { useTranslation } from 'react-i18next';
 
@@ -21,14 +21,14 @@ export default () => {
           name='informations'
           options={{
             tabBarLabel: t('routing:ROUTING.COLLECTION.INFORMATIONS'),
-            tabBarIcon: (props) => <Icon as={MaterialCommunityIcons} name='information-outline' {...props} />,
+            tabBarIcon: (props) => <Icon as={Info} color={props.color} size={6} />,
           }}
         />
         <Tabs.Screen
           name='components'
           options={{
             tabBarLabel: t('routing:ROUTING.COLLECTION.COMPONENTS'),
-            tabBarIcon: (props) => <Icon as={MaterialCommunityIcons} name='chip' {...props} />,
+            tabBarIcon: (props) => <Icon as={Cpu} color={props.color} size={6} />,
           }}
         />
       </Tabs>

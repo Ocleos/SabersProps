@@ -1,5 +1,5 @@
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { useRouter } from 'expo-router';
+import { MoreVertical } from 'lucide-react-native';
 import {
   Center,
   Divider,
@@ -55,7 +55,7 @@ const PropCardComponent: React.FC<IPropCardProps> = ({ prop }) => {
 
           <Center>
             <IconButton
-              icon={<Icon as={MaterialCommunityIcons} name='dots-vertical' />}
+              icon={<Icon as={MoreVertical} />}
               borderRadius={'full'}
               variant={'ghost'}
               size='lg'

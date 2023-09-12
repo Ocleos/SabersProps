@@ -1,4 +1,4 @@
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { ArrowRightLeft, CalendarDays, MoreVertical, ShoppingCart, Store, Truck } from 'lucide-react-native';
 import { HStack, Icon, IconButton, Text, VStack } from 'native-base';
 import React from 'react';
 import Card from '~src/components/card/card.component';
@@ -23,7 +23,7 @@ const PropComponentCard: React.FC<IPropComponentCard> = ({ propComponent }) => {
           </Text>
 
           <IconButton
-            icon={<Icon as={MaterialCommunityIcons} name='dots-vertical' />}
+            icon={<Icon as={MoreVertical} />}
             borderRadius={'full'}
             variant={'ghost'}
             size='lg'
@@ -39,32 +39,28 @@ const PropComponentCard: React.FC<IPropComponentCard> = ({ propComponent }) => {
           <LabelIcon
             viewProps={{ w: '2/5' }}
             label={formatDate(propComponent.date, FORMAT_DATE)}
-            icon={{ as: MaterialCommunityIcons, name: 'calendar-month' }}
+            icon={{ as: CalendarDays }}
           />
 
-          <LabelIcon
-            viewProps={{ w: '3/5' }}
-            label={propComponent.seller}
-            icon={{ as: MaterialCommunityIcons, name: 'store-outline' }}
-          />
+          <LabelIcon viewProps={{ w: '3/5' }} label={propComponent.seller} icon={{ as: Store }} />
         </HStack>
 
         <HStack>
           <LabelIcon
             viewProps={{ w: '1/3' }}
             label={formatNumber(propComponent.rate, { maximumFractionDigits: 5 })}
-            icon={{ as: MaterialCommunityIcons, name: 'swap-horizontal' }}
+            icon={{ as: ArrowRightLeft }}
           />
 
           <LabelIcon
             viewProps={{ w: '1/3' }}
             label={formatToCurrency(propComponent.priceEuros, CURRENCY_EUROS)}
-            icon={{ as: MaterialCommunityIcons, name: 'cart-outline' }}
+            icon={{ as: ShoppingCart }}
           />
           <LabelIcon
             viewProps={{ w: '1/3' }}
             label={formatToCurrency(propComponent.feesEuros, CURRENCY_EUROS)}
-            icon={{ as: MaterialCommunityIcons, name: 'truck-fast-outline' }}
+            icon={{ as: Truck }}
           />
         </HStack>
       </VStack>

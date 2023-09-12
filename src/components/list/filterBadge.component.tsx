@@ -1,4 +1,4 @@
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import { Ban, Check } from 'lucide-react-native';
 import { Badge, IBadgeProps, Icon } from 'native-base';
 
 interface IFilterBadgeProps extends IBadgeProps {
@@ -13,7 +13,7 @@ export const FilterBadge: React.FC<IFilterBadgeProps> = ({ isSelected, colorSele
       colorScheme={isSelected ? colorSelected : 'muted'}
       variant='subtle'
       rounded='full'
-      startIcon={<Icon as={MaterialCommunityIcons} name={isSelected ? 'check-bold' : 'cancel'} />}
+      startIcon={<Icon as={isSelected ? Check : Ban} />}
     >
       {label}
     </Badge>

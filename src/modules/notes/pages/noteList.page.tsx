@@ -1,6 +1,6 @@
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { FlashList } from '@shopify/flash-list';
 import { useRouter } from 'expo-router';
+import { Plus } from 'lucide-react-native';
 import { Fab, Icon, VStack } from 'native-base';
 import useSWR from 'swr';
 import ActionsMenu from '~src/components/actionSheet/actionsMenu.component';
@@ -39,7 +39,7 @@ const NoteListPage: React.FC = () => {
           router.push('/notes/form');
         }}
         shadow={9}
-        icon={<Icon as={MaterialCommunityIcons} name='plus' size='lg' />}
+        icon={<Icon as={Plus} size='lg' />}
       />
 
       <ActionsMenu

@@ -1,5 +1,5 @@
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { useRouter } from 'expo-router';
+import { Pencil, Trash2 } from 'lucide-react-native';
 import { Actionsheet, Icon } from 'native-base';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -58,7 +58,7 @@ const ActionsMenu: React.FC<IActionsProp> = (props) => {
       <Actionsheet isOpen={isOpen} onClose={onClose}>
         <Actionsheet.Content>
           <Actionsheet.Item
-            startIcon={<Icon as={MaterialCommunityIcons} size={8} name='pencil-outline' />}
+            startIcon={<Icon as={Pencil} size={8} />}
             onPress={() => {
               setIsOpen(false);
               router.push(routeEdit);
@@ -68,7 +68,7 @@ const ActionsMenu: React.FC<IActionsProp> = (props) => {
           </Actionsheet.Item>
 
           <Actionsheet.Item
-            startIcon={<Icon as={MaterialCommunityIcons} size={8} name='delete-outline' />}
+            startIcon={<Icon as={Trash2} size={8} />}
             onPress={() => {
               setIsOpen(false);
               setIsDeleteModalOpen(true);

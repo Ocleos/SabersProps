@@ -1,4 +1,4 @@
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { ChevronDown, ChevronUp } from 'lucide-react-native';
 import { HStack, Heading, IBoxProps, Icon, IconButton, VStack } from 'native-base';
 import { useState } from 'react';
 import Card from './card.component';
@@ -22,13 +22,7 @@ const CollapseCard: React.FC<ICollapseCard> = (props) => {
           </Heading>
 
           <IconButton
-            icon={
-              isOpen ? (
-                <Icon as={MaterialCommunityIcons} name='chevron-up' />
-              ) : (
-                <Icon as={MaterialCommunityIcons} name='chevron-down' />
-              )
-            }
+            icon={isOpen ? <Icon as={ChevronUp} /> : <Icon as={ChevronDown} />}
             borderRadius={'full'}
             variant={'ghost'}
             size='lg'

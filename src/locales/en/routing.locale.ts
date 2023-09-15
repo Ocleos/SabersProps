@@ -7,6 +7,9 @@ const routingEn = {
       INFORMATIONS: 'Informations',
       INITIAL: 'Collection',
     },
+    HOME: {
+      INITIAL: 'Home',
+    },
     NOTES: {
       INITIAL: 'Notes',
     },

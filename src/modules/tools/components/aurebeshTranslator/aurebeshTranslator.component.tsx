@@ -1,7 +1,8 @@
+import { Button, ButtonIcon, ButtonText } from '@gluestack-ui/themed';
 import { Languages } from 'lucide-react-native';
-import { Button, Icon } from 'native-base';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import ModalWrapper from '~src/components/modal/modalWrapper.component';
 import AurebeshTranslatorModal from './aurebeshTranslatorModal.component';
 
 const AurebeshTranslator: React.FC = () => {
@@ -10,15 +11,18 @@ const AurebeshTranslator: React.FC = () => {
 
   return (
     <>
-      <Button
-        onPress={() => setIsTranslatorOpenModal(true)}
-        size={'lg'}
-        leftIcon={<Icon as={Languages} size={'md'} mr={4} />}
-      >
-        {t('tools:TOOLS.TRANSLATOR.TITLE')}
+      <Button onPress={() => setIsTranslatorOpenModal(true)}>
+        <ButtonIcon as={Languages} />
+        <ButtonText marginHorizontal={'$2'}>{t('tools:TOOLS.TRANSLATOR.TITLE')}</ButtonText>
       </Button>
 
-      <AurebeshTranslatorModal isOpen={isTranslatorModalOpen} onClose={() => setIsTranslatorOpenModal(false)} />
+      <ModalWrapper
+        title={t('tools:TOOLS.TRANSLATOR.TITLE')}
+        isOpen={isTranslatorModalOpen}
+        onClose={() => setIsTranslatorOpenModal(false)}
+      >
+        <AurebeshTranslatorModal />
+      </ModalWrapper>
     </>
   );
 };

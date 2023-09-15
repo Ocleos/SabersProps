@@ -1,12 +1,7 @@
 import { Drawer } from 'expo-router/drawer';
-import { PieChart, PocketKnife, ScrollText, Settings, Swords } from 'lucide-react-native';
-import { IIconProps, Icon, useColorModeValue, useToken } from 'native-base';
+import { Home, PieChart, PocketKnife, ScrollText, Settings, Swords } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
 import DrawerLayout from '~src/components/layout/drawerLayout.component';
-
-const defaultIconProps: IIconProps = {
-  size: 8,
-};
 
 export default () => {
   const { t } = useTranslation(['routing']);
@@ -16,18 +11,22 @@ export default () => {
       drawerContent={(props) => <DrawerLayout {...props} />}
       screenOptions={{
         headerShown: false,
-        drawerActiveTintColor: useToken('colors', 'primary.500'),
-        drawerInactiveTintColor: useToken('colors', useColorModeValue('darkText', 'lightText')),
-        drawerStyle: {
-          backgroundColor: useToken('colors', useColorModeValue('light.50', 'dark.50')),
-        },
+        drawerLabelStyle: { fontFamily: 'Exo2_500Medium' },
       }}
     >
+      <Drawer.Screen
+        name='home'
+        options={{
+          drawerLabel: t('routing:ROUTING.HOME.INITIAL'),
+          drawerIcon: (props) => <Home color={props.color} size={props.size} />,
+        }}
+      />
+
       <Drawer.Screen
         name='collection'
         options={{
           drawerLabel: t('routing:ROUTING.COLLECTION.INITIAL'),
-          drawerIcon: (props) => <Icon as={Swords} color={props.color} {...defaultIconProps} />,
+          drawerIcon: (props) => <Swords color={props.color} size={props.size} />,
         }}
       />
 
@@ -35,7 +34,7 @@ export default () => {
         name='stats'
         options={{
           drawerLabel: t('routing:ROUTING.STATS.INITIAL'),
-          drawerIcon: (props) => <Icon as={PieChart} color={props.color} {...defaultIconProps} />,
+          drawerIcon: (props) => <PieChart color={props.color} size={props.size} />,
         }}
       />
 
@@ -43,7 +42,7 @@ export default () => {
         name='notes'
         options={{
           drawerLabel: t('routing:ROUTING.NOTES.INITIAL'),
-          drawerIcon: (props) => <Icon as={ScrollText} color={props.color} {...defaultIconProps} />,
+          drawerIcon: (props) => <ScrollText color={props.color} size={props.size} />,
         }}
       />
 
@@ -51,7 +50,7 @@ export default () => {
         name='tools'
         options={{
           drawerLabel: t('routing:ROUTING.TOOLS.INITIAL'),
-          drawerIcon: (props) => <Icon as={PocketKnife} color={props.color} {...defaultIconProps} />,
+          drawerIcon: (props) => <PocketKnife color={props.color} size={props.size} />,
         }}
       />
 
@@ -59,7 +58,7 @@ export default () => {
         name='settings'
         options={{
           drawerLabel: t('routing:ROUTING.SETTINGS.INITIAL'),
-          drawerIcon: (props) => <Icon as={Settings} name='cog-outline' color={props.color} {...defaultIconProps} />,
+          drawerIcon: (props) => <Settings color={props.color} size={props.size} />,
         }}
       />
     </Drawer>

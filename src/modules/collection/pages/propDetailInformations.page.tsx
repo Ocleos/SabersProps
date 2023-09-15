@@ -1,5 +1,5 @@
+import { Spinner, VStack } from '@gluestack-ui/themed';
 import { useLocalSearchParams } from 'expo-router';
-import { Spinner, VStack } from 'native-base';
 import { useEffect } from 'react';
 import useSWR from 'swr';
 import { PROPS_URL_ENDPOINT } from '~src/utils/supabase.utils';
@@ -20,13 +20,13 @@ const PropDetailInformations: React.FC = () => {
 
   useEffect(() => {
     updatePropDetail(propDetail);
-  }, [propDetail]);
+  }, [updatePropDetail, propDetail]);
 
   return isLoading ? (
     <Spinner />
   ) : (
     propDetail && (
-      <VStack space={4}>
+      <VStack gap={'$4'}>
         <StatusDetail prop={propDetail} />
         <InformationsCard prop={propDetail} />
         <PricesCard prop={propDetail} />

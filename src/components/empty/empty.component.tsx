@@ -1,4 +1,4 @@
-import { Center, Text, VStack } from 'native-base';
+import { Center, Text, VStack } from '@gluestack-ui/themed';
 import { useTranslation } from 'react-i18next';
 import NoDataIcon from '~src/assets/noData.icon';
 
@@ -12,12 +12,12 @@ const EmptyComponent: React.FC<IEmptyComponentProps> = (props) => {
   const { title } = props;
 
   return (
-    <VStack space={10}>
-      <Center mt={10}>
-        <NoDataIcon size={64} />
+    <VStack gap={'$10'}>
+      <Center mt={'$10'}>
+        <NoDataIcon />
       </Center>
 
-      <Text textAlign='center' fontWeight='bold'>
+      <Text textAlign='center' bold={true}>
         {title ?? t('common:COMMON.NO_DATA')}
       </Text>
     </VStack>

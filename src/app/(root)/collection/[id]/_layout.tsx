@@ -1,6 +1,5 @@
 import { Stack, Tabs } from 'expo-router';
 import { Cpu, Info } from 'lucide-react-native';
-import { Icon, useColorModeValue, useToken } from 'native-base';
 import { useTranslation } from 'react-i18next';
 
 export default () => {
@@ -12,23 +11,21 @@ export default () => {
       <Tabs
         screenOptions={{
           headerShown: false,
-          tabBarActiveBackgroundColor: useToken('colors', useColorModeValue('light.50', 'dark.50')),
-          tabBarInactiveBackgroundColor: useToken('colors', useColorModeValue('light.50', 'dark.50')),
-          tabBarActiveTintColor: useToken('colors', 'primary.500'),
+          tabBarLabelStyle: { fontFamily: 'Exo2_400Regular' },
         }}
       >
         <Tabs.Screen
           name='informations'
           options={{
             tabBarLabel: t('routing:ROUTING.COLLECTION.INFORMATIONS'),
-            tabBarIcon: (props) => <Icon as={Info} color={props.color} size={6} />,
+            tabBarIcon: (props) => <Info color={props.color} size={props.size} />,
           }}
         />
         <Tabs.Screen
           name='components'
           options={{
             tabBarLabel: t('routing:ROUTING.COLLECTION.COMPONENTS'),
-            tabBarIcon: (props) => <Icon as={Cpu} color={props.color} size={6} />,
+            tabBarIcon: (props) => <Cpu color={props.color} size={props.size} />,
           }}
         />
       </Tabs>

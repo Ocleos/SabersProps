@@ -1,5 +1,5 @@
+import { Pressable } from '@gluestack-ui/themed';
 import { includes } from 'lodash';
-import { Pressable } from 'react-native';
 import FilterBadge from '~src/components/list/filterBadge.component';
 import { PropType, propTypes } from '~src/models/propType.model';
 import { useCollectionStore } from '~src/modules/collection/store/collection.store';

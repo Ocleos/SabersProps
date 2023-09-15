@@ -1,9 +1,10 @@
+import { Button, ButtonIcon, HStack, Heading, VStack } from '@gluestack-ui/themed';
 import { ChevronDown, ChevronUp } from 'lucide-react-native';
-import { HStack, Heading, IBoxProps, Icon, IconButton, VStack } from 'native-base';
 import { useState } from 'react';
+import { ViewProps } from 'react-native';
 import Card from './card.component';
 
-interface ICollapseCard extends IBoxProps {
+interface ICollapseCard extends ViewProps {
   title?: string;
   isOpened?: boolean;
 }
@@ -15,22 +16,20 @@ const CollapseCard: React.FC<ICollapseCard> = (props) => {
 
   return (
     <Card {...props}>
-      <VStack space={2}>
-        <HStack space={2}>
+      <VStack gap={'$2'}>
+        <HStack gap={'$2'}>
           <Heading flex={1} isTruncated={true} m={'auto'}>
             {title}
           </Heading>
 
-          <IconButton
-            icon={isOpen ? <Icon as={ChevronUp} /> : <Icon as={ChevronDown} />}
-            borderRadius={'full'}
-            variant={'ghost'}
-            size='lg'
-            colorScheme={'primary'}
+          <Button
+            variant='link'
             onPress={() => {
               setIsOpen(!isOpen);
             }}
-          />
+          >
+            <ButtonIcon as={isOpen ? ChevronUp : ChevronDown} size='xl' />
+          </Button>
         </HStack>
 
         {isOpen ? children : null}

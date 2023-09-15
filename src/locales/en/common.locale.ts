@@ -1,6 +1,7 @@
 const commonEn = {
   COMMON: {
     ADD: 'Add',
+    ANNOUNCE: 'Announce',
     BACK: 'Back',
     CANCEL: 'Cancel',
     CLOSE: 'Close',
@@ -10,6 +11,7 @@ const commonEn = {
     EDIT: 'Edit',
     ERROR: 'Error',
     FILTER: 'Filter',
+    INFO: 'Info',
     NO: 'No',
     NO_DATA: 'No data',
     OFF: 'Off',
@@ -24,6 +26,7 @@ const commonEn = {
     TITLE: 'Title',
     VALIDATE: 'Validate',
     START: 'Start',
+    WARNING: 'Warning',
     YES: 'Yes',
   },
   FORMS: {

@@ -1,18 +1,15 @@
-import { HStack, IIconProps, Icon, Text } from 'native-base';
-import { IViewProps } from 'native-base/lib/typescript/components/basic/View/types';
-import React from 'react';
-import { iconStyle } from '~src/theme/icon.theme';
+import { HStack, Icon, Text } from '@gluestack-ui/themed';
+import { LucideIcon } from 'lucide-react-native';
 
 interface ILabelIcon {
   label: string;
-  icon: IIconProps;
-  viewProps?: IViewProps;
+  icon: LucideIcon;
 }
 
-const LabelIcon: React.FC<ILabelIcon> = ({ label, icon, viewProps }) => {
+const LabelIcon: React.FC<ILabelIcon> = ({ label, icon }) => {
   return (
-    <HStack space={2} {...viewProps}>
-      <Icon {...icon} {...iconStyle} />
+    <HStack gap={'$2'}>
+      <Icon as={icon} size={'xl'} color={'$primary500'} />
       <Text flex={1}>{label}</Text>
     </HStack>
   );

@@ -1,26 +1,26 @@
+import { Button, ButtonIcon, ButtonSpinner, ButtonText, SelectItem, VStack, useToast } from '@gluestack-ui/themed';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'expo-router';
-import { isNil } from 'lodash';
+import { isError, isNil } from 'lodash';
 import { Save } from 'lucide-react-native';
-import { Button, Icon, Select, VStack } from 'native-base';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import useSWRMutation from 'swr/mutation';
 import * as Yup from 'yup';
-import FormControlWrapper from '~src/components/form/formControlWrapper.component';
 import InputWrapper from '~src/components/form/inputWrapper.component';
 import SelectWrapper from '~src/components/form/selectWrapper.component';
+import ToastWrapper from '~src/components/toast/toastWrapper.component';
 import { Prop } from '~src/models/prop.model';
-import { PropState } from '~src/models/propState.model';
-import { PropType } from '~src/models/propType.model';
+import { PropState, propStates } from '~src/models/propState.model';
+import { PropType, propTypes } from '~src/models/propType.model';
 import { PROPS_URL_ENDPOINT, postData, putData } from '~src/utils/supabase.utils';
-import { showErrorToaster, showSuccessToaster } from '~src/utils/toaster.utils';
 import { MAX_LENGTH } from '~src/utils/validator.utils';
 import { useCollectionStore } from '../store/collection.store';
 
 const PropFormPage: React.FC = () => {
   const { t } = useTranslation(['common', 'collection']);
   const router = useRouter();
+  const toast = useToast();
 
   const { setSelectedProp, selectedProp } = useCollectionStore();
   const isEdit = !isNil(selectedProp);
@@ -49,89 +49,101 @@ const PropFormPage: React.FC = () => {
     try {
       await trigger(values);
       if (isEdit) {
-        showSuccessToaster(t('common:FORMS.EDIT_SUCCESS'));
+        toast.show({
+          render: (id) => <ToastWrapper id={id} action='success' description={t('common:FORMS.EDIT_SUCCESS')} />,
+        });
         setSelectedProp(undefined);
       } else {
-        showSuccessToaster(t('common:FORMS.ADD_SUCCESS'));
+        toast.show({
+          render: (id) => <ToastWrapper id={id} action='success' description={t('common:FORMS.ADD_SUCCESS')} />,
+        });
       }
       router.back();
     } catch (error) {
-      showErrorToaster(error);
+      toast.show({
+        render: (id) => (
+          <ToastWrapper id={id} action='error' description={isError(error) ? error.message : undefined} />
+        ),
+      });
     }
   };
 
   return (
-    <VStack space={4}>
-      <FormControlWrapper label={t('collection:LABELS.NAME')} name='name' control={control} isRequired={true}>
-        <InputWrapper control={control} name='name' placeholder={t('collection:LABELS.NAME')} />
-      </FormControlWrapper>
+    <VStack gap={'$4'} flex={1}>
+      <InputWrapper
+        control={control}
+        name='name'
+        placeholder={t('collection:LABELS.NAME')}
+        characterCount={MAX_LENGTH}
+        isRequired={true}
+      />
 
-      <FormControlWrapper
-        label={t('collection:LABELS.TYPE')}
+      <SelectWrapper
+        control={control}
         name='type'
-        control={control}
-        isRequired={true}
-        isReadOnly={true}
+        placeholder={t('collection:LABELS.TYPE')}
+        initialSelectedLabel={isEdit ? propTypes[selectedProp.type].label : undefined}
       >
-        <SelectWrapper control={control} name='type' placeholder={t('collection:LABELS.TYPE')}>
-          <Select.Item label={t('collection:TYPE.LIGHTSABER')} value={PropType.LIGHTSABER.toString()} />
-          <Select.Item label={t('collection:TYPE.PROP')} value={PropType.PROP.toString()} />
-          <Select.Item label={t('collection:TYPE.COSTUME')} value={PropType.COSTUME.toString()} />
-        </SelectWrapper>
-      </FormControlWrapper>
+        <SelectItem label={t('collection:TYPE.LIGHTSABER')} value={PropType.LIGHTSABER.toString()} />
+        <SelectItem label={t('collection:TYPE.PROP')} value={PropType.PROP.toString()} />
+        <SelectItem label={t('collection:TYPE.COSTUME')} value={PropType.COSTUME.toString()} />
+      </SelectWrapper>
 
-      <FormControlWrapper
-        label={t('collection:LABELS.STATE')}
+      <SelectWrapper
+        control={control}
         name='state'
-        control={control}
-        isRequired={true}
-        isReadOnly={true}
+        placeholder={t('collection:LABELS.STATE')}
+        initialSelectedLabel={isEdit ? propStates[selectedProp.state].label : undefined}
       >
-        <SelectWrapper control={control} name='state' placeholder={t('collection:LABELS.STATE')}>
-          <Select.Item label={t('collection:STATE.PRODUCTION')} value={PropState.PRODUCTION.toString()} />
-          <Select.Item label={t('collection:STATE.DESIGN')} value={PropState.DESIGN.toString()} />
-          <Select.Item label={t('collection:STATE.MISSING_PIECES')} value={PropState.MISSING_PIECES.toString()} />
-          <Select.Item label={t('collection:STATE.READY')} value={PropState.READY.toString()} />
-          <Select.Item label={t('collection:STATE.IN_PROGRESS')} value={PropState.IN_PROGRESS.toString()} />
-          <Select.Item label={t('collection:STATE.DONE')} value={PropState.DONE.toString()} />
-          <Select.Item label={t('collection:STATE.ON_SALE')} value={PropState.ON_SALE.toString()} />
-          <Select.Item label={t('collection:STATE.SOLD')} value={PropState.SOLD.toString()} />
-        </SelectWrapper>
-      </FormControlWrapper>
+        <SelectItem label={t('collection:STATE.PRODUCTION')} value={PropState.PRODUCTION.toString()} />
+        <SelectItem label={t('collection:STATE.DESIGN')} value={PropState.DESIGN.toString()} />
+        <SelectItem label={t('collection:STATE.MISSING_PIECES')} value={PropState.MISSING_PIECES.toString()} />
+        <SelectItem label={t('collection:STATE.READY')} value={PropState.READY.toString()} />
+        <SelectItem label={t('collection:STATE.IN_PROGRESS')} value={PropState.IN_PROGRESS.toString()} />
+        <SelectItem label={t('collection:STATE.DONE')} value={PropState.DONE.toString()} />
+        <SelectItem label={t('collection:STATE.ON_SALE')} value={PropState.ON_SALE.toString()} />
+        <SelectItem label={t('collection:STATE.SOLD')} value={PropState.SOLD.toString()} />
+      </SelectWrapper>
 
-      <FormControlWrapper
-        label={t('collection:LABELS.MANUFACTURER')}
+      <InputWrapper
+        control={control}
         name='manufacturer'
-        control={control}
+        placeholder={t('collection:LABELS.MANUFACTURER')}
+        characterCount={MAX_LENGTH}
         isRequired={true}
-      >
-        <InputWrapper control={control} name='manufacturer' placeholder={t('collection:LABELS.MANUFACTURER')} />
-      </FormControlWrapper>
+      />
 
-      <FormControlWrapper label={t('collection:LABELS.CHARACTER')} name='character' control={control}>
-        <InputWrapper control={control} name='character' placeholder={t('collection:LABELS.CHARACTER')} />
-      </FormControlWrapper>
+      <InputWrapper
+        control={control}
+        name='character'
+        placeholder={t('collection:LABELS.CHARACTER')}
+        characterCount={MAX_LENGTH}
+      />
 
-      <FormControlWrapper label={t('collection:LABELS.APPARITION')} name='apparition' control={control}>
-        <InputWrapper control={control} name='apparition' placeholder={t('collection:LABELS.APPARITION')} />
-      </FormControlWrapper>
+      <InputWrapper
+        control={control}
+        name='apparition'
+        placeholder={t('collection:LABELS.APPARITION')}
+        characterCount={MAX_LENGTH}
+      />
 
-      <FormControlWrapper label={t('collection:LABELS.CHASSIS_DESIGNER')} name='chassisDesigner' control={control}>
-        <InputWrapper control={control} name='chassisDesigner' placeholder={t('collection:LABELS.CHASSIS_DESIGNER')} />
-      </FormControlWrapper>
+      <InputWrapper
+        control={control}
+        name='chassisDesigner'
+        placeholder={t('collection:LABELS.CHASSIS_DESIGNER')}
+        characterCount={MAX_LENGTH}
+      />
 
-      <FormControlWrapper label={t('collection:LABELS.SOUNDBOARD')} name='soundboard' control={control}>
-        <InputWrapper control={control} name='soundboard' placeholder={t('collection:LABELS.SOUNDBOARD')} />
-      </FormControlWrapper>
+      <InputWrapper
+        control={control}
+        name='soundboard'
+        placeholder={t('collection:LABELS.SOUNDBOARD')}
+        characterCount={MAX_LENGTH}
+      />
 
-      <Button
-        size={'lg'}
-        onPress={handleSubmit(onSubmit)}
-        startIcon={<Icon as={Save} size={'md'} />}
-        isLoading={isMutating}
-        isDisabled={isMutating}
-      >
-        {t('common:COMMON.SAVE')}
+      <Button isDisabled={isMutating} onPress={handleSubmit(onSubmit)}>
+        {isMutating ? <ButtonSpinner /> : <ButtonIcon as={Save} />}
+        <ButtonText marginHorizontal={'$2'}>{t('common:COMMON.SAVE')}</ButtonText>
       </Button>
     </VStack>
   );

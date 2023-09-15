@@ -1,22 +1,11 @@
+import { Center, Divider, HStack, Heading, Icon, Pressable, Text, VStack } from '@gluestack-ui/themed';
 import { useRouter } from 'expo-router';
-import { MoreVertical } from 'lucide-react-native';
-import {
-  Center,
-  Divider,
-  HStack,
-  Heading,
-  Icon,
-  IconButton,
-  Pressable,
-  Text,
-  VStack,
-  useColorModeValue,
-} from 'native-base';
-import { SabersPropsIcon } from '~src/assets/sabersProps.icon';
 import Card from '~src/components/card/card.component';
+import ActionsMenu from '~src/components/menu/actionsMenu.component';
 import { Prop } from '~src/models/prop.model';
 import { propStates } from '~src/models/propState.model';
 import { propTypes } from '~src/models/propType.model';
+import { PROPS_URL_ENDPOINT } from '~src/utils/supabase.utils';
 import { useCollectionStore } from '../../store/collection.store';
 
 interface IPropCardProps {
@@ -26,44 +15,49 @@ interface IPropCardProps {
 const PropCardComponent: React.FC<IPropCardProps> = ({ prop }) => {
   const router = useRouter();
 
-  const { setSelectedProp, setIsActionsOpen } = useCollectionStore();
+  const { setSelectedProp } = useCollectionStore();
 
   return (
     <Pressable onPress={() => router.push(`/collection/${prop.id}/informations`)}>
-      <Card borderColor={`${propStates[prop.state].colorScheme}.500`}>
+      <Card borderColor={`$${propStates[prop.state].colorScheme}500`}>
         <Icon
-          position={'absolute'}
-          right={2}
-          bottom={2}
-          as={SabersPropsIcon}
-          name={propTypes[prop.type].iconName}
-          color={useColorModeValue('primary.200:alpha.50', 'primary.800:alpha.50')}
-          size={24}
+          position='absolute'
+          right={'$2'}
+          bottom={'$2'}
+          as={propTypes[prop.type].icon}
+          sx={{
+            _dark: {
+              color: '$primary800',
+            },
+            _light: {
+              color: '$primary200',
+            },
+          }}
+          w={'$24'}
+          h={'$24'}
+          opacity={50}
         />
 
-        <HStack space={2}>
-          <VStack space={2} flex={1}>
+        <HStack gap={'$2'}>
+          <VStack flex={1} gap={'$2'}>
             <Heading>{prop.name}</Heading>
             <Heading size='sm'>{prop.character}</Heading>
-            <HStack space={2}>
-              <Text fontSize={'sm'}>{prop.manufacturer}</Text>
-              <Divider bg='primary.500' thickness={2} orientation='vertical' h={5} />
-              <Text fontSize={'sm'}>{prop.chassisDesigner}</Text>
+            <HStack gap={'$2'}>
+              <Text size='sm'>{prop.manufacturer}</Text>
+              <Divider orientation='vertical' bg='$primary500' />
+              <Text size='sm'>{prop.chassisDesigner}</Text>
             </HStack>
-            <Text fontSize={'sm'}>{prop.soundboard}</Text>
+            <Text size='sm'>{prop.soundboard}</Text>
           </VStack>
 
           <Center>
-            <IconButton
-              icon={<Icon as={MoreVertical} />}
-              borderRadius={'full'}
-              variant={'ghost'}
-              size='lg'
-              colorScheme={'primary'}
-              onPress={() => {
-                setSelectedProp(prop);
-                setIsActionsOpen(true);
-              }}
+            <ActionsMenu
+              onActionSelected={() => setSelectedProp(prop)}
+              routeEdit={'/collection/form'}
+              urlEndpoint={PROPS_URL_ENDPOINT}
+              idSelected={prop?.id}
+              nameSelected={prop?.name}
+              resetSelected={() => setSelectedProp(undefined)}
             />
           </Center>
         </HStack>

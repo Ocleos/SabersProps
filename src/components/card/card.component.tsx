@@ -1,15 +1,27 @@
-import { Box, IBoxProps, useColorModeValue } from 'native-base';
+import { Box } from '@gluestack-ui/themed';
+import { ViewProps } from 'react-native';
 
-const Card: React.FC<IBoxProps> = (props) => {
+// TODO fix type
+interface ICardProps extends ViewProps {
+  borderColor?: string;
+}
+
+const Card: React.FC<ICardProps> = (props) => {
   return (
     <Box
-      borderRadius={'lg'}
-      mb={4}
-      p={4}
-      borderWidth={1}
-      borderColor={useColorModeValue('light.200', 'dark.200')}
-      bg={useColorModeValue('trueGray.50', 'trueGray.900')}
-      shadow={4}
+      p={'$4'}
+      borderWidth={'$1'}
+      borderRadius={'$lg'}
+      sx={{
+        _dark: {
+          borderColor: props.borderColor ?? '$borderDark800',
+          bg: '$backgroundDark900',
+        },
+        _light: {
+          borderColor: props.borderColor ?? '$borderLight200',
+          bg: '$backgroundLight100',
+        },
+      }}
       {...props}
     />
   );

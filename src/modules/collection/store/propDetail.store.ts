@@ -9,13 +9,11 @@ interface IPropDetailState {
   propDetail?: PropDetail;
   components: PropComponent[];
   selectedComponent?: PropComponent;
-  isActionsOpen: boolean;
   searchValue: string;
 
   updatePropDetail: (data: PropDetail | undefined) => void;
-  updateComponents: (data: PropComponent[]) => void;
+  updateComponents: (data: PropComponent[], search: string) => void;
   setSelectedComponent: (component?: PropComponent) => void;
-  setIsActionsOpen: (isOpen: boolean) => void;
   setSearchValue: (search: string) => void;
 }
 
@@ -24,17 +22,16 @@ export const usePropDetailStore = create<IPropDetailState>()(
     propDetail: undefined,
     components: [],
     selectedComponent: undefined,
-    isActionsOpen: false,
     searchValue: '',
 
     updatePropDetail: (data: PropDetail | undefined) => {
       set((state) => ({ ...state, propDetail: data }));
     },
 
-    updateComponents: (data: PropComponent[]) => {
+    updateComponents: (data: PropComponent[], search: string) => {
       set((state) => {
         const filteredData = filter(data, (item) => {
-          const isSearchIncluded = searchValueInObject(state.searchValue, item);
+          const isSearchIncluded = searchValueInObject(search, item);
 
           return isSearchIncluded;
         });
@@ -46,10 +43,6 @@ export const usePropDetailStore = create<IPropDetailState>()(
 
     setSelectedComponent: (propComponent?: PropComponent) => {
       set((state) => ({ ...state, selectedComponent: propComponent }));
-    },
-
-    setIsActionsOpen: (isOpen: boolean) => {
-      set((state) => ({ ...state, isActionsOpen: isOpen }));
     },
 
     setSearchValue: (search: string) => {

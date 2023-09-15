@@ -1,6 +1,7 @@
 const commonFr = {
   COMMON: {
     ADD: 'Ajouter',
+    ANNOUNCE: 'Annonce',
     BACK: 'Retour',
     CANCEL: 'Annuler',
     CLOSE: 'Fermer',
@@ -10,6 +11,7 @@ const commonFr = {
     EDIT: 'Éditer',
     ERROR: 'Erreur',
     FILTER: 'Filtrer',
+    INFO: 'Info',
     NO: 'Non',
     NO_DATA: 'Aucune donnée',
     OFF: 'Off',
@@ -24,6 +26,7 @@ const commonFr = {
     TITLE: 'Titre',
     VALIDATE: 'Valider',
     START: 'Démarrer',
+    WARNING: 'Attention',
     YES: 'Oui',
   },
   FORMS: {

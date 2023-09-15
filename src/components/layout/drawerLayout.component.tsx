@@ -1,31 +1,27 @@
-import { DrawerContent, DrawerContentComponentProps, DrawerToggleButton } from '@react-navigation/drawer';
-import type { NativeStackNavigationOptions } from '@react-navigation/native-stack';
+import { Avatar, AvatarImage, Divider, HStack, Heading } from '@gluestack-ui/themed';
+import { DrawerContent, DrawerContentComponentProps } from '@react-navigation/drawer';
 import { useAssets } from 'expo-asset';
-import { Avatar, Box, Divider, HStack, Heading } from 'native-base';
-
-export const withDrawerToggle: NativeStackNavigationOptions = {
-  headerLeft: (props) => <DrawerToggleButton {...props} />,
-};
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const DrawerLayout: React.FC<DrawerContentComponentProps> = (props) => {
   const [assets] = useAssets([require('~assets/icon.png')]);
 
   return (
-    <Box flex={1} safeArea={true}>
-      <HStack p={4} space={4} alignItems={'center'}>
-        <Avatar
-          size={'md'}
-          source={{
-            uri: assets ? assets[0].uri : undefined,
-          }}
-        />
-        <Heading color={'primary.500'}>SabersProps</Heading>
+    <SafeAreaView style={{ flex: 1 }}>
+      <HStack gap={'$4'} p={'$4'} alignItems='center'>
+        <Avatar>
+          <AvatarImage source={{ uri: assets ? assets[0].uri : undefined }} />
+        </Avatar>
+
+        <Heading bold={true} color='$primary500' size='2xl'>
+          SabersProps
+        </Heading>
       </HStack>
 
       <Divider />
 
       <DrawerContent {...props} />
-    </Box>
+    </SafeAreaView>
   );
 };
 

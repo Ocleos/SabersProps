@@ -1,18 +1,17 @@
+import { Button, ButtonIcon, ButtonSpinner, ButtonText, VStack, useToast } from '@gluestack-ui/themed';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { isNil } from 'lodash';
+import { isError, isNaN as isNaNumber, isNil } from 'lodash';
 import { Save } from 'lucide-react-native';
-import { Button, Icon, VStack } from 'native-base';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useSWRConfig } from 'swr';
 import useSWRMutation from 'swr/mutation';
 import * as yup from 'yup';
-import FormControlWrapper from '~src/components/form/formControlWrapper.component';
 import InputWrapper from '~src/components/form/inputWrapper.component';
+import ToastWrapper from '~src/components/toast/toastWrapper.component';
 import { COMPONENTS_URL_ENDPOINT, PROPS_URL_ENDPOINT, postData, putData } from '~src/utils/supabase.utils';
-import { showErrorToaster, showSuccessToaster } from '~src/utils/toaster.utils';
 import { MAX_LENGTH } from '~src/utils/validator.utils';
 import { PropComponent } from '../models/propComponent.model';
 import { usePropDetailStore } from '../store/propDetail.store';
@@ -20,6 +19,7 @@ import { usePropDetailStore } from '../store/propDetail.store';
 const PropComponentForm = () => {
   const { t } = useTranslation(['common', 'collection']);
   const router = useRouter();
+  const toast = useToast();
 
   const { setSelectedComponent, selectedComponent } = usePropDetailStore();
   const isEdit = !isNil(selectedComponent);
@@ -62,97 +62,99 @@ const PropComponentForm = () => {
     const priceEuros = rateWatch * priceWatch;
     const feesEuros = rateWatch * feesWatch;
 
-    setValue('priceEuros', isNaN(priceEuros) ? 0 : priceEuros);
-    setValue('feesEuros', isNaN(feesEuros) ? 0 : feesEuros);
-  }, [rateWatch, priceWatch, feesWatch]);
+    setValue('priceEuros', isNaNumber(priceEuros) ? 0 : priceEuros);
+    setValue('feesEuros', isNaNumber(feesEuros) ? 0 : feesEuros);
+  }, [setValue, rateWatch, priceWatch, feesWatch]);
 
   const onSubmit = async (values: PropComponent) => {
     try {
       await trigger(values);
       if (isEdit) {
-        showSuccessToaster(t('common:FORMS.EDIT_SUCCESS'));
+        toast.show({
+          render: (id) => <ToastWrapper id={id} action='success' description={t('common:FORMS.EDIT_SUCCESS')} />,
+        });
         setSelectedComponent(undefined);
       } else {
-        showSuccessToaster(t('common:FORMS.ADD_SUCCESS'));
+        toast.show({
+          render: (id) => <ToastWrapper id={id} action='success' description={t('common:FORMS.ADD_SUCCESS')} />,
+        });
       }
       mutate([PROPS_URL_ENDPOINT, idProp]);
       router.back();
     } catch (error) {
-      showErrorToaster(error);
+      toast.show({
+        render: (id) => (
+          <ToastWrapper id={id} action='error' description={isError(error) ? error.message : undefined} />
+        ),
+      });
     }
   };
 
   return (
-    <VStack space={4}>
-      <FormControlWrapper label={t('collection:LABELS.SELLER')} name='seller' control={control} isRequired={true}>
-        <InputWrapper control={control} name='seller' placeholder={t('collection:LABELS.SELLER')} />
-      </FormControlWrapper>
+    <VStack gap={'$4'}>
+      <InputWrapper
+        control={control}
+        name='seller'
+        placeholder={t('collection:LABELS.SELLER')}
+        isRequired={true}
+        characterCount={MAX_LENGTH}
+      />
 
-      <FormControlWrapper label={t('collection:LABELS.DATE')} name='date' control={control} isRequired={true}>
-        <InputWrapper control={control} name='date' placeholder={t('collection:LABELS.DATE')} />
-      </FormControlWrapper>
+      <InputWrapper control={control} name='date' placeholder={t('collection:LABELS.DATE')} isRequired={true} />
 
-      <FormControlWrapper label={t('collection:LABELS.LABEL')} name='label' control={control} isRequired={true}>
-        <InputWrapper control={control} name='label' placeholder={t('collection:LABELS.LABEL')} />
-      </FormControlWrapper>
+      <InputWrapper
+        control={control}
+        name='label'
+        placeholder={t('collection:LABELS.LABEL')}
+        characterCount={MAX_LENGTH}
+        isRequired={true}
+      />
 
-      <FormControlWrapper label={t('collection:LABELS.RATE')} name='rate' control={control} isRequired={true}>
-        <InputWrapper control={control} name='rate' placeholder={t('collection:LABELS.RATE')} keyboardType='numeric' />
-      </FormControlWrapper>
+      <InputWrapper
+        control={control}
+        name='rate'
+        placeholder={t('collection:LABELS.RATE')}
+        keyboardType='numeric'
+        isRequired={true}
+      />
 
-      <FormControlWrapper label={t('collection:LABELS.PRICE')} name='price' control={control} isRequired={true}>
-        <InputWrapper
-          control={control}
-          name='price'
-          placeholder={t('collection:LABELS.PRICE')}
-          keyboardType='numeric'
-        />
-      </FormControlWrapper>
+      <InputWrapper
+        control={control}
+        name='price'
+        placeholder={t('collection:LABELS.PRICE')}
+        keyboardType='numeric'
+        isRequired={true}
+      />
 
-      <FormControlWrapper
-        label={`${t('collection:LABELS.PRICE')} (€)`}
+      <InputWrapper
+        control={control}
         name='priceEuros'
-        control={control}
+        placeholder={`${t('collection:LABELS.PRICE')} (€)`}
+        keyboardType='numeric'
         isRequired={true}
-        isDisabled={true}
-        isReadOnly={true}
-      >
-        <InputWrapper
-          control={control}
-          name='priceEuros'
-          placeholder={`${t('collection:LABELS.PRICE')} (€)`}
-          keyboardType='numeric'
-        />
-      </FormControlWrapper>
+        disabled={true}
+      />
 
-      <FormControlWrapper label={t('collection:LABELS.FEES')} name='fees' control={control} isRequired={true}>
-        <InputWrapper control={control} name='fees' placeholder={t('collection:LABELS.FEES')} keyboardType='numeric' />
-      </FormControlWrapper>
+      <InputWrapper
+        control={control}
+        name='fees'
+        placeholder={t('collection:LABELS.FEES')}
+        keyboardType='numeric'
+        isRequired={true}
+      />
 
-      <FormControlWrapper
-        label={`${t('collection:LABELS.FEES')} (€)`}
+      <InputWrapper
+        control={control}
         name='feesEuros'
-        control={control}
+        placeholder={`${t('collection:LABELS.FEES')} (€)`}
+        keyboardType='numeric'
         isRequired={true}
-        isDisabled={true}
-        isReadOnly={true}
-      >
-        <InputWrapper
-          control={control}
-          name='feesEuros'
-          placeholder={`${t('collection:LABELS.FEES')} (€)`}
-          keyboardType='numeric'
-        />
-      </FormControlWrapper>
+        disabled={true}
+      />
 
-      <Button
-        size={'lg'}
-        onPress={handleSubmit(onSubmit)}
-        startIcon={<Icon as={Save} size={'md'} />}
-        isLoading={isMutating}
-        isDisabled={isMutating}
-      >
-        {t('common:COMMON.SAVE')}
+      <Button isDisabled={isMutating} onPress={handleSubmit(onSubmit)}>
+        {isMutating ? <ButtonSpinner /> : <ButtonIcon as={Save} />}
+        <ButtonText marginHorizontal={'$2'}>{t('common:COMMON.SAVE')}</ButtonText>
       </Button>
     </VStack>
   );

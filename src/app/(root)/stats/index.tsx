@@ -1,4 +1,4 @@
-import { Text } from 'native-base';
+import { Text } from '@gluestack-ui/themed';
 import { useTranslation } from 'react-i18next';
 import PageLayout from '~src/components/layout/pageLayout.component';
 
@@ -6,7 +6,7 @@ export default () => {
   const { t } = useTranslation(['routing']);
 
   return (
-    <PageLayout title={t('routing:ROUTING.STATS.INITIAL')}>
+    <PageLayout title={t('routing:ROUTING.STATS.INITIAL')} hasDrawerToggle={true}>
       <Text>Stats Page</Text>
     </PageLayout>
   );

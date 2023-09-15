@@ -5,5 +5,5 @@ export default () => {
 
   if (!rootNavigationState?.key) return null;
 
-  return <Redirect href='/(root)/collection' />;
+  return <Redirect href='/(root)/home' />;
 };

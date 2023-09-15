@@ -1,10 +1,9 @@
+import { Box, Fab, FabIcon, VStack } from '@gluestack-ui/themed';
 import { FlashList } from '@shopify/flash-list';
 import { useRouter } from 'expo-router';
 import { Plus } from 'lucide-react-native';
-import { Fab, Icon, VStack } from 'native-base';
 import { useEffect } from 'react';
 import useSWR from 'swr';
-import ActionsMenu from '~src/components/actionSheet/actionsMenu.component';
 import EmptyComponent from '~src/components/empty/empty.component';
 import FilterSearchWrapper from '~src/components/list/filterSearchWrapper.component';
 import { Prop } from '~src/models/prop.model';
@@ -18,27 +17,17 @@ const PropListPage: React.FC = () => {
 
   const { isLoading, data, mutate } = useSWR(PROPS_URL_ENDPOINT, getData<Prop>);
 
-  const {
-    props,
-    filters,
-    selectedProp,
-    isActionsOpen,
-    setIsActionsOpen,
-    setSearchValue,
-    updateProps,
-    setIsFiltersOpen,
-    setSelectedProp,
-  } = useCollectionStore();
+  const { props, filters, setSearchValue, updateProps, setIsFiltersOpen, setSelectedProp } = useCollectionStore();
 
   useEffect(() => {
     if (data) {
-      updateProps(data);
+      updateProps(data, filters);
     }
-  }, [data, filters]);
+  }, [updateProps, data, filters]);
 
   return (
     <>
-      <VStack space={2} flex={1}>
+      <VStack flex={1} gap={'$4'}>
         <FilterSearchWrapper
           onSearchValue={setSearchValue}
           searchValue={filters.searchValue}
@@ -50,6 +39,7 @@ const PropListPage: React.FC = () => {
           renderItem={({ item }) => <PropCardComponent prop={item} />}
           estimatedItemSize={160}
           ListEmptyComponent={() => <EmptyComponent />}
+          ItemSeparatorComponent={() => <Box h={'$4'} />}
           keyExtractor={(item, index) => item.id ?? index.toString()}
           onRefresh={() => mutate()}
           refreshing={isLoading}
@@ -57,27 +47,16 @@ const PropListPage: React.FC = () => {
       </VStack>
 
       <Fab
-        renderInPortal={false}
-        placement={'bottom-right'}
+        size='lg'
         onPress={() => {
           setSelectedProp(undefined);
           router.push('/collection/form');
         }}
-        shadow={9}
-        icon={<Icon as={Plus} size='lg' />}
-      />
+      >
+        <FabIcon as={Plus} size='xl' />
+      </Fab>
 
       <PropFilters />
-
-      <ActionsMenu
-        idSelected={selectedProp?.id}
-        nameSelected={selectedProp?.name}
-        routeEdit='/collection/form'
-        isOpen={isActionsOpen}
-        setIsOpen={setIsActionsOpen}
-        setSelected={setSelectedProp}
-        urlEndpoint={PROPS_URL_ENDPOINT}
-      />
     </>
   );
 };

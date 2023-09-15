@@ -24,14 +24,14 @@
   "cSpell.words": ["aurebesh", "sabersprops"],
   "cSpell.ignoreRegExpList": ["/from\\\\s+(['\\\"]).*\\\\1/"],
   "cSpell.ignoreWords": [
-    "Actionsheet",
-    "Glyphicons",
-    "Ionicons",
-    "Pressable",
+    "actionsheet",
     "biomejs",
     "commitlint",
     "dayjs",
+    "gluestack",
+    "glyphicons",
     "hookform",
+    "pressable",
     "shopify",
     "supabase",
     "zustand"

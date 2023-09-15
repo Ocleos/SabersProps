@@ -1,37 +1,36 @@
-import { MoreVertical } from 'lucide-react-native';
-import { HStack, Heading, Icon, IconButton, Text, VStack } from 'native-base';
+import { HStack, Heading, Text, VStack } from '@gluestack-ui/themed';
 import Card from '~src/components/card/card.component';
+import ActionsMenu from '~src/components/menu/actionsMenu.component';
+import { NOTES_URL_ENDPOINT } from '~src/utils/supabase.utils';
 import { Note } from '../../models/note.model';
 import { useNotesStore } from '../../store/notes.store';
 
-interface INoteCardProps {
+type INoteCardProps = {
   note: Note;
-}
+};
 
 const NoteCardComponent: React.FC<INoteCardProps> = ({ note }) => {
-  const { setSelectedNote, setIsActionsOpen } = useNotesStore();
+  const { setSelectedNote, selectedNote } = useNotesStore();
 
   return (
     <Card>
-      <VStack space={2}>
-        <HStack space={2}>
+      <VStack gap={'$2'}>
+        <HStack gap={'$2'}>
           <Heading flex={1} isTruncated={true} m={'auto'}>
             {note.title}
           </Heading>
-          <IconButton
-            icon={<Icon as={MoreVertical} />}
-            borderRadius={'full'}
-            variant={'ghost'}
-            size='lg'
-            colorScheme={'primary'}
-            onPress={() => {
-              setSelectedNote(note);
-              setIsActionsOpen(true);
-            }}
+
+          <ActionsMenu
+            onActionSelected={() => setSelectedNote(note)}
+            routeEdit={'/notes/form'}
+            urlEndpoint={NOTES_URL_ENDPOINT}
+            idSelected={selectedNote?.id}
+            nameSelected={selectedNote?.title}
+            resetSelected={() => setSelectedNote(undefined)}
           />
         </HStack>
 
-        <Text noOfLines={3}>{note.description}</Text>
+        <Text numberOfLines={3}>{note.description}</Text>
       </VStack>
     </Card>
   );

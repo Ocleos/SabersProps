@@ -7,6 +7,9 @@ const routingFr = {
       INFORMATIONS: 'Informations',
       INITIAL: 'Collection',
     },
+    HOME: {
+      INITIAL: 'Accueil',
+    },
     NOTES: {
       INITIAL: 'Notes',
     },

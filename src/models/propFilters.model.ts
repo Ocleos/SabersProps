@@ -1,11 +1,11 @@
 import { PropState } from './propState.model';
 import { PropType } from './propType.model';
 
-export interface PropFilters {
+export type PropFilters = {
   searchValue: string;
   typesFilter: PropType[];
   statesFilter: PropState[];
-}
+};
 
 export const defaultPropFilters: PropFilters = {
   searchValue: '',

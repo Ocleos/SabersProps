@@ -12,15 +12,15 @@ export enum PropState {
   SOLD = 8,
 }
 
-export interface IPropState {
+export type IPropState = {
   colorScheme: string;
   label: string;
-}
+};
 
 export const propStates: Record<PropState, IPropState> = {
   [PropState.NONE]: { colorScheme: 'primary', label: '' },
-  [PropState.PRODUCTION]: { colorScheme: 'danger', label: i18n.t('collection:STATE.PRODUCTION') },
-  [PropState.DESIGN]: { colorScheme: 'danger', label: i18n.t('collection:STATE.DESIGN') },
+  [PropState.PRODUCTION]: { colorScheme: 'error', label: i18n.t('collection:STATE.PRODUCTION') },
+  [PropState.DESIGN]: { colorScheme: 'error', label: i18n.t('collection:STATE.DESIGN') },
   [PropState.MISSING_PIECES]: { colorScheme: 'warning', label: i18n.t('collection:STATE.MISSING_PIECES') },
   [PropState.READY]: { colorScheme: 'warning', label: i18n.t('collection:STATE.READY') },
   [PropState.IN_PROGRESS]: { colorScheme: 'warning', label: i18n.t('collection:STATE.IN_PROGRESS') },

@@ -10,13 +10,11 @@ import { addOrRemove, searchValueInObject } from '~src/utils/arrays.utils';
 interface ICollectionState {
   props: Prop[];
   selectedProp?: Prop;
-  isActionsOpen: boolean;
   isFiltersOpen: boolean;
   filters: PropFilters;
 
-  updateProps: (data: Prop[]) => void;
+  updateProps: (data: Prop[], filters: PropFilters) => void;
   setSelectedProp: (prop?: Prop) => void;
-  setIsActionsOpen: (isOpen: boolean) => void;
   setSearchValue: (search: string) => void;
   setIsFiltersOpen: (isOpen: boolean) => void;
 
@@ -28,16 +26,15 @@ export const useCollectionStore = create<ICollectionState>()(
   devtools((set) => ({
     props: [],
     selectedProp: undefined,
-    isActionsOpen: false,
     isFiltersOpen: false,
     filters: defaultPropFilters,
 
-    updateProps: (data: Prop[]) => {
+    updateProps: (data: Prop[], filters: PropFilters) => {
       set((state) => {
         const filteredData = filter(data, (item) => {
-          const isTypeIncluded = includes(state.filters.typesFilter, item.type);
-          const isStateIncluded = includes(state.filters.statesFilter, item.state);
-          const isSearchIncluded = searchValueInObject(state.filters.searchValue, item);
+          const isTypeIncluded = includes(filters.typesFilter, item.type);
+          const isStateIncluded = includes(filters.statesFilter, item.state);
+          const isSearchIncluded = searchValueInObject(filters.searchValue, item);
 
           return isSearchIncluded && isStateIncluded && isTypeIncluded;
         });
@@ -49,10 +46,6 @@ export const useCollectionStore = create<ICollectionState>()(
 
     setSelectedProp: (prop?: Prop) => {
       set((state) => ({ ...state, selectedProp: prop }));
-    },
-
-    setIsActionsOpen: (isOpen: boolean) => {
-      set((state) => ({ ...state, isActionsOpen: isOpen }));
     },
 
     setIsFiltersOpen: (isOpen) => {

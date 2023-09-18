@@ -5,7 +5,7 @@
 - Collection
   - Props' detail
     - Pictures gallery
-    - Prices
+    - Edit selling price
 - Stats
   - State vs Type (count)
     - Table

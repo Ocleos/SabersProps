@@ -37,7 +37,7 @@ export const useCollectionStore = create<ICollectionState>()(
         const filteredData = filter(data, (item) => {
           const isTypeIncluded = includes(state.filters.typesFilter, item.type);
           const isStateIncluded = includes(state.filters.statesFilter, item.state);
-          const isSearchIncluded = searchValueInObject(state.filters.searchValue, item as Object);
+          const isSearchIncluded = searchValueInObject(state.filters.searchValue, item);
 
           return isSearchIncluded && isStateIncluded && isTypeIncluded;
         });

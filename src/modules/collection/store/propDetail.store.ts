@@ -34,7 +34,7 @@ export const usePropDetailStore = create<IPropDetailState>()(
     updateComponents: (data: PropComponent[]) => {
       set((state) => {
         const filteredData = filter(data, (item) => {
-          const isSearchIncluded = searchValueInObject(state.searchValue, item as Object);
+          const isSearchIncluded = searchValueInObject(state.searchValue, item);
 
           return isSearchIncluded;
         });

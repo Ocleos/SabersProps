@@ -3,7 +3,7 @@ import { Alert, CloseIcon, HStack, IAlertProps, IconButton, Text, VStack } from 
 interface IAlertWrapperProps extends IAlertProps {
   title: string;
   description?: string;
-  onClose: Function;
+  onClose: () => void;
 }
 
 const AlertWrapper: React.FC<IAlertWrapperProps> = (props) => {
@@ -19,7 +19,7 @@ const AlertWrapper: React.FC<IAlertWrapperProps> = (props) => {
               {title}
             </Text>
           </HStack>
-          <IconButton variant='unstyled' icon={<CloseIcon size='3' />} onPress={() => onClose()} />
+          <IconButton variant='unstyled' icon={<CloseIcon size='3' />} onPress={onClose} />
         </HStack>
         {description && (
           <Text px='6' color={'darkText'}>

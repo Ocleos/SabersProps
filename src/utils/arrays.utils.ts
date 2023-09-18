@@ -12,6 +12,6 @@ export const addOrRemove = <T>(list: T[], item: T): T[] => {
   return list;
 };
 
-export const searchValueInObject = (searchValue: string, item: Object): boolean => {
+export const searchValueInObject = <T extends Record<string, unknown>>(searchValue: string, item: T): boolean => {
   return some(Object.values(item), (property) => property?.toLocaleString().toLocaleLowerCase().includes(searchValue));
 };

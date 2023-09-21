@@ -4401,12 +4401,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@supabase/gotrue-js@npm:^2.51.0":
-  version: 2.51.0
-  resolution: "@supabase/gotrue-js@npm:2.51.0"
+"@supabase/gotrue-js@npm:^2.54.0":
+  version: 2.54.0
+  resolution: "@supabase/gotrue-js@npm:2.54.0"
   dependencies:
     "@supabase/node-fetch": ^2.6.14
-  checksum: bcbd4bb537cea986a631cfba7e715db9469cbc94ffb235443d58cdb17076d27e11746f6d3cfd1b27114f9cd4c200055014bee601c2ea7f86ab59e914e1a2d3b6
+  checksum: ce2e83536e96331e08bb89e17a0e2c4b6f888ed53f7da7ad03f58e1547d188d366536e8445fddf69850ec2e6ed82d12643ecf630fcc8dbd1c8b7e73d20e2eaa5
   languageName: node
   linkType: hard
 
@@ -4448,17 +4448,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@supabase/supabase-js@npm:^2.33.2":
-  version: 2.33.2
-  resolution: "@supabase/supabase-js@npm:2.33.2"
+"@supabase/supabase-js@npm:^2.36.0":
+  version: 2.36.0
+  resolution: "@supabase/supabase-js@npm:2.36.0"
   dependencies:
     "@supabase/functions-js": ^2.1.5
-    "@supabase/gotrue-js": ^2.51.0
+    "@supabase/gotrue-js": ^2.54.0
     "@supabase/node-fetch": ^2.6.14
     "@supabase/postgrest-js": ^1.8.4
     "@supabase/realtime-js": ^2.7.4
     "@supabase/storage-js": ^2.5.4
-  checksum: 20ce6a961a3a5f9b4aa593c492510843944c99a1af9916a68b1797859390ac4d72793fb418f66097672fe3bba2dcf988c7057660a0997084da97c906f5c5cc86
+  checksum: c95d50b3e9c26c18bb71a00e6e8e7cf3915bf8df23e0d77afee34365e4c133edaa62711fbc5cb73b3984a793e63e41aed8de97ea7293fc5574afb539b3aba470
   languageName: node
   linkType: hard
 
@@ -4603,14 +4603,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:~18.2.21":
-  version: 18.2.21
-  resolution: "@types/react@npm:18.2.21"
+"@types/react@npm:~18.2.22":
+  version: 18.2.22
+  resolution: "@types/react@npm:18.2.22"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: ffed203bfe7aad772b8286f7953305c9181ac3a8f27d3f5400fbbc2a8e27ca8e5bbff818ee014f39ca0d19d2b3bb154e5bdbec7e232c6f80b59069375aa78349
+  checksum: 44289523dabaadcd3fd85689abb98f9ebcc8492d7e978348d1c986138acef4801030b279e89a19e38a6319e294bcea77559e37e0c803e4bacf2b8ae3a56ba587
   languageName: node
   linkType: hard
 
@@ -6234,10 +6234,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dayjs@npm:^1.11.9, dayjs@npm:^1.8.15":
-  version: 1.11.9
-  resolution: "dayjs@npm:1.11.9"
-  checksum: a4844d83dc87f921348bb9b1b93af851c51e6f71fa259604809cfe1b49d1230e6b0212dab44d1cb01994c096ad3a77ea1cf18fa55154da6efcc9d3610526ac38
+"dayjs@npm:^1.11.10, dayjs@npm:^1.8.15":
+  version: 1.11.10
+  resolution: "dayjs@npm:1.11.10"
+  checksum: a6b5a3813b8884f5cd557e2e6b7fa569f4c5d0c97aca9558e38534af4f2d60daafd3ff8c2000fed3435cfcec9e805bcebd99f90130c6d1c5ef524084ced588c4
   languageName: node
   linkType: hard
 
@@ -11132,12 +11132,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-hook-form@npm:7.46.1":
-  version: 7.46.1
-  resolution: "react-hook-form@npm:7.46.1"
+"react-hook-form@npm:7.46.2":
+  version: 7.46.2
+  resolution: "react-hook-form@npm:7.46.2"
   peerDependencies:
     react: ^16.8.0 || ^17 || ^18
-  checksum: 9c11ba454ce5b2a16e7499f2ca710e0c0cff227f39689b8e7985902f27f99bfc7a2c49f145ef228528764cf8286bf6101fc8a0f5094ce652eb31cab1684518d1
+  checksum: 5ad2b478337fed3ab1a7bee79844d89a85485626fb1afd4acba54e28adb8f6663d37efefa9000b6ddb33f7de23b765bfac9a1d12e10c63e71463317a307134cf
   languageName: node
   linkType: hard
 
@@ -11753,10 +11753,10 @@ __metadata:
     "@react-navigation/elements": ^1.3.18
     "@react-navigation/native": ^6.1.7
     "@shopify/flash-list": 1.4.3
-    "@supabase/supabase-js": ^2.33.2
+    "@supabase/supabase-js": ^2.36.0
     "@types/lodash": ^4.14.198
-    "@types/react": ~18.2.21
-    dayjs: ^1.11.9
+    "@types/react": ~18.2.22
+    dayjs: ^1.11.10
     dotenv: ^16.3.1
     eas-cli: ^5.2.0
     expo: ^49.0.11
@@ -11776,7 +11776,7 @@ __metadata:
     normalize-css-color: ^1.0.2
     react: 18.2.0
     react-dom: 18.2.0
-    react-hook-form: 7.46.1
+    react-hook-form: 7.46.2
     react-i18next: ^13.2.2
     react-native: 0.72.4
     react-native-gesture-handler: ~2.12.1

@@ -36,7 +36,6 @@ const PropFormPage: React.FC = () => {
     character: Yup.string().nullable().max(MAX_LENGTH),
     chassisDesigner: Yup.string().nullable().max(MAX_LENGTH),
     soundboard: Yup.string().nullable().max(MAX_LENGTH),
-    apparition: Yup.string().nullable().max(MAX_LENGTH),
   });
 
   const { control, handleSubmit } = useForm<Prop>({
@@ -117,13 +116,6 @@ const PropFormPage: React.FC = () => {
         control={control}
         name='character'
         placeholder={t('collection:LABELS.CHARACTER')}
-        characterCount={MAX_LENGTH}
-      />
-
-      <InputWrapper
-        control={control}
-        name='apparition'
-        placeholder={t('collection:LABELS.APPARITION')}
         characterCount={MAX_LENGTH}
       />
 

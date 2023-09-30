@@ -10,5 +10,4 @@ export type Prop = {
   character?: string | undefined | null;
   chassisDesigner?: string | undefined | null;
   soundboard?: string | undefined | null;
-  apparition?: string | undefined | null;
 };

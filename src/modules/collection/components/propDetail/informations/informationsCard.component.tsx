@@ -1,5 +1,5 @@
 import { VStack } from '@gluestack-ui/themed';
-import { Cpu, Film, Shapes, User2, Wrench } from 'lucide-react-native';
+import { Cpu, Shapes, User2, Wrench } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
 import CollapseCard from '~src/components/card/collapseCard.component';
 import LabelIcon from '~src/components/label/labelIcon.component';
@@ -19,7 +19,6 @@ const InformationsCard: React.FC<IInformationsCard> = ({ prop }) => {
         <LabelIcon label={prop.chassisDesigner ?? ''} icon={Shapes} />
         <LabelIcon label={prop.soundboard ?? ''} icon={Cpu} />
         <LabelIcon label={prop.character ?? ''} icon={User2} />
-        <LabelIcon label={prop.apparition ?? ''} icon={Film} />
       </VStack>
     </CollapseCard>
   );

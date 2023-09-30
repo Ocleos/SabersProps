@@ -5,7 +5,6 @@ const collectionFr = {
     PRICES: 'Prix',
   },
   LABELS: {
-    APPARITION: 'Apparition',
     CHARACTER: 'Personnage',
     CHASSIS_DESIGNER: 'Concepteur chassis',
     DATE: 'Date',

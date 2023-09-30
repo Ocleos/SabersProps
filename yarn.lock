@@ -4249,11 +4249,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-navigation/drawer@npm:^6.6.5":
-  version: 6.6.5
-  resolution: "@react-navigation/drawer@npm:6.6.5"
+"@react-navigation/drawer@npm:^6.6.6":
+  version: 6.6.6
+  resolution: "@react-navigation/drawer@npm:6.6.6"
   dependencies:
-    "@react-navigation/elements": ^1.3.20
+    "@react-navigation/elements": ^1.3.21
     color: ^4.2.3
     warn-once: ^0.1.0
   peerDependencies:
@@ -4264,19 +4264,19 @@ __metadata:
     react-native-reanimated: ">= 1.0.0"
     react-native-safe-area-context: ">= 3.0.0"
     react-native-screens: ">= 3.0.0"
-  checksum: e1fa26092e0e22f503f5630c1f6b98703f8ebf81267710b82f21c1c04848a8827f3f3b7846bfd8b837d4cc981fb7eb7cbc644c2574685c071bfeac53835ce8dc
+  checksum: 0645ecbb0a658591c3554d66419164842b2c81f3e824f45405a60ddd2a2a90cec87bc8c614a411751fab70db5e9114f3a77494f6762580600271c4d273f9212d
   languageName: node
   linkType: hard
 
-"@react-navigation/elements@npm:^1.3.17, @react-navigation/elements@npm:^1.3.20":
-  version: 1.3.20
-  resolution: "@react-navigation/elements@npm:1.3.20"
+"@react-navigation/elements@npm:^1.3.17, @react-navigation/elements@npm:^1.3.21":
+  version: 1.3.21
+  resolution: "@react-navigation/elements@npm:1.3.21"
   peerDependencies:
     "@react-navigation/native": ^6.0.0
     react: "*"
     react-native: "*"
     react-native-safe-area-context: ">= 3.0.0"
-  checksum: 7eb4be48ade6a03b19df2f5abc8d2d02d0ff1adad11eac6be494b338964cfc7854638fc112fa68e634ea5db9d5efc585bae5a0244fc7f45f94cbcbbad5afb938
+  checksum: 1bcff98e755a8a946570ba2d09b07b4038aa558e68dda7f93c89dfa6b37ead53a9da9adb1bd6c17ec4f1d1af36a24bd910b9c678c2c928d2ecea87dca080dc39
   languageName: node
   linkType: hard
 
@@ -4941,6 +4941,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@shopify/react-native-skia@npm:0.1.196":
+  version: 0.1.196
+  resolution: "@shopify/react-native-skia@npm:0.1.196"
+  dependencies:
+    canvaskit-wasm: 0.38.0
+    react-reconciler: ^0.27.0
+  peerDependencies:
+    react: ">=18.0"
+    react-native: ">=0.64"
+    react-native-reanimated: ">=2.0.0"
+  peerDependenciesMeta:
+    react-native:
+      optional: true
+    react-native-reanimated:
+      optional: true
+  bin:
+    setup-skia-web: scripts/setup-canvaskit.js
+  checksum: 95fdfbfedb099000311a981cbfbc3100948987e0b68ba8570ea395996dab574c166a924b9900aa622a33e9841735b76ad7d24e55fef1aa417ff55e561f0f5ba6
+  languageName: node
+  linkType: hard
+
 "@sideway/address@npm:^4.1.3":
   version: 4.1.4
   resolution: "@sideway/address@npm:4.1.4"
@@ -5350,6 +5371,31 @@ __metadata:
     "@urql/core": ">=4.0.0"
     wonka: ^6.3.2
   checksum: 5bb30c1de9fc6c1cd25224da4c2445567dc3d6bacac43a15dcca07bbd87c2c30c765dc522a3150dc119dc76230b2da27328a4ccd4e9cfb02039d87a9beaf97b4
+  languageName: node
+  linkType: hard
+
+"@wuba/react-native-echarts@npm:^1.2.5":
+  version: 1.2.5
+  resolution: "@wuba/react-native-echarts@npm:1.2.5"
+  dependencies:
+    "@xmldom/xmldom": ^0.8.6
+    entities: ^4.4.0
+  peerDependencies:
+    "@shopify/react-native-skia": "*"
+    echarts: "*"
+    react: "*"
+    react-native: "*"
+    react-native-gesture-handler: "*"
+    react-native-svg: "*"
+    zrender: "*"
+  checksum: 83efd496bea7a6a290f77774d90c68ce53ef1c253dfd4d54ddc35b0db95dd05ab4def1e2118c1db15e82cd855c38cb8d3b4cbb3907b8cdda55d1a71310c665ad
+  languageName: node
+  linkType: hard
+
+"@xmldom/xmldom@npm:^0.8.6":
+  version: 0.8.10
+  resolution: "@xmldom/xmldom@npm:0.8.10"
+  checksum: 4c136aec31fb3b49aaa53b6fcbfe524d02a1dc0d8e17ee35bd3bf35e9ce1344560481cd1efd086ad1a4821541482528672306d5e37cdbd187f33d7fadd3e2cf0
   languageName: node
   linkType: hard
 
@@ -6244,6 +6290,13 @@ __metadata:
   version: 1.0.30001546
   resolution: "caniuse-lite@npm:1.0.30001546"
   checksum: d3ef82f5ee94743002c5b2dd61c84342debcc94b2d5907b64ade3514ecfc4f20bbe86a6bc453fd6436d5fbcf6582e07405d7c2077565675a71c83adc238a11fa
+  languageName: node
+  linkType: hard
+
+"canvaskit-wasm@npm:0.38.0":
+  version: 0.38.0
+  resolution: "canvaskit-wasm@npm:0.38.0"
+  checksum: 5a743d7623187949241e1b18aa2bb43016dc837fa903594921afed4afb6b58032bccf81a30cdf71e23f185fc3827864f8ce780799c38de5325492a0fe2425e4e
   languageName: node
   linkType: hard
 
@@ -7238,6 +7291,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"echarts@npm:^5.4.3":
+  version: 5.4.3
+  resolution: "echarts@npm:5.4.3"
+  dependencies:
+    tslib: 2.3.0
+    zrender: 5.4.4
+  checksum: f4f69becf1cf8f546f9488ffa3bffaa971dcfbd49f5d635f288cbc8c5177839154bd6c325d6ed72c2b822c89c9bba4947ac73400614fd23c6f2f7ace3c939132
+  languageName: node
+  linkType: hard
+
 "ee-first@npm:1.1.1":
   version: 1.1.1
   resolution: "ee-first@npm:1.1.1"
@@ -7295,10 +7358,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"entities@npm:^4.2.0":
-  version: 4.4.0
-  resolution: "entities@npm:4.4.0"
-  checksum: 84d250329f4b56b40fa93ed067b194db21e8815e4eb9b59f43a086f0ecd342814f6bc483de8a77da5d64e0f626033192b1b4f1792232a7ea6b970ebe0f3187c2
+"entities@npm:^4.2.0, entities@npm:^4.4.0":
+  version: 4.5.0
+  resolution: "entities@npm:4.5.0"
+  checksum: 853f8ebd5b425d350bffa97dd6958143179a5938352ccae092c62d1267c4e392a039be1bae7d51b6e4ffad25f51f9617531fedf5237f15df302ccfb452cbf2d7
   languageName: node
   linkType: hard
 
@@ -11775,6 +11838,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-reconciler@npm:^0.27.0":
+  version: 0.27.0
+  resolution: "react-reconciler@npm:0.27.0"
+  dependencies:
+    loose-envify: ^1.1.0
+    scheduler: ^0.21.0
+  peerDependencies:
+    react: ^18.0.0
+  checksum: c2ae111f150c2a46970182df12ea8254719fdfec5e26574711b1838fc37863c63671460a351570fd359c088d891e7bb0ff89023c2f7c1582393b57dd517b92c2
+  languageName: node
+  linkType: hard
+
 "react-refresh@npm:^0.4.0":
   version: 0.4.3
   resolution: "react-refresh@npm:0.4.3"
@@ -12227,16 +12302,19 @@ __metadata:
     "@gluestack-ui/config": ^1.0.3
     "@gluestack-ui/themed": ^1.0.8
     "@hookform/resolvers": ^3.3.2
-    "@react-navigation/drawer": ^6.6.5
-    "@react-navigation/elements": ^1.3.20
+    "@react-navigation/drawer": ^6.6.6
+    "@react-navigation/elements": ^1.3.21
     "@react-navigation/native": ^6.1.9
     "@shopify/flash-list": 1.4.3
+    "@shopify/react-native-skia": 0.1.196
     "@supabase/supabase-js": ^2.38.2
     "@types/lodash": ^4.14.200
     "@types/react": ~18.2.31
+    "@wuba/react-native-echarts": ^1.2.5
     dayjs: ^1.11.10
     dotenv: ^16.3.1
     eas-cli: ^5.4.0
+    echarts: ^5.4.3
     expo: ^49.0.16
     expo-asset: ~8.10.1
     expo-constants: ~14.4.2
@@ -12310,6 +12388,15 @@ __metadata:
   dependencies:
     loose-envify: ^1.1.0
   checksum: 232149125c10f10193b1340ec4bbf14a8e6a845152790d6fd6f58207642db801abdb5a21227561a0a93871b98ba47539a6233b4e6155aae72d6db6db9f9f09b3
+  languageName: node
+  linkType: hard
+
+"scheduler@npm:^0.21.0":
+  version: 0.21.0
+  resolution: "scheduler@npm:0.21.0"
+  dependencies:
+    loose-envify: ^1.1.0
+  checksum: 4f8285076041ed2c81acdd1faa987f1655fdbd30554bc667c1ea64743fc74fb3a04ca7d27454b3d678735df5a230137a3b84756061b43dc5796e80701b66d124
   languageName: node
   linkType: hard
 
@@ -13301,6 +13388,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tslib@npm:2.3.0":
+  version: 2.3.0
+  resolution: "tslib@npm:2.3.0"
+  checksum: 8869694c26e4a7b56d449662fd54a4f9ba872c889d991202c74462bd99f10e61d5bd63199566c4284c0f742277736292a969642cc7b590f98727a7cae9529122
+  languageName: node
+  linkType: hard
+
 "tslib@npm:2.4.0":
   version: 2.4.0
   resolution: "tslib@npm:2.4.0"
@@ -14189,6 +14283,15 @@ __metadata:
     toposort: ^2.0.2
     type-fest: ^2.19.0
   checksum: 08150c6e05b944b128dd27d423757d21a2b5dd3d000abd431c7f22349101d373b2ed5e5f66b5b308fe0579cd67ee788ed6935f810842d8c0fa46b0f7a1be0023
+  languageName: node
+  linkType: hard
+
+"zrender@npm:5.4.4":
+  version: 5.4.4
+  resolution: "zrender@npm:5.4.4"
+  dependencies:
+    tslib: 2.3.0
+  checksum: 4b317346af8eca38e62ba029239c3a13e97eac4fa15b3ddadbae23442d8b373f0e937c255dee8080d6bb2fc79c9da54f1106415586ed8942bd8bc684b3890ea9
   languageName: node
   linkType: hard
 

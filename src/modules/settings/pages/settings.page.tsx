@@ -1,17 +1,14 @@
 import { Center, HStack, Radio, Switch, Text, VStack, useColorMode } from 'native-base';
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { changeLanguage } from '~src/i18n.config';
 import { applicationVersion } from '~src/utils/platforms.utils';
 
 const SettingsPage: React.FC = () => {
   const { t } = useTranslation(['common', 'settings']);
-  const { toggleColorMode } = useColorMode();
-
-  const [isDarkTheme, setIsDarkTheme] = useState(true);
+  const { toggleColorMode, colorMode } = useColorMode();
 
   const onToggleTheme = () => {
-    setIsDarkTheme(!isDarkTheme);
     toggleColorMode();
   };
 
@@ -19,7 +16,7 @@ const SettingsPage: React.FC = () => {
     <VStack space={4}>
       <HStack space={4}>
         <Text w={'2/3'}>{t('settings:SETTINGS.DARK_THEME')}</Text>
-        <Switch size='lg' isChecked={isDarkTheme} onToggle={onToggleTheme} m='auto' />
+        <Switch size='lg' isChecked={colorMode === 'dark'} onToggle={onToggleTheme} m='auto' />
       </HStack>
 
       <HStack>

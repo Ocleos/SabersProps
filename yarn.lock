@@ -4411,12 +4411,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@supabase/gotrue-js@npm:^2.54.0":
-  version: 2.54.0
-  resolution: "@supabase/gotrue-js@npm:2.54.0"
+"@supabase/gotrue-js@npm:^2.54.2":
+  version: 2.55.0
+  resolution: "@supabase/gotrue-js@npm:2.55.0"
   dependencies:
     "@supabase/node-fetch": ^2.6.14
-  checksum: ce2e83536e96331e08bb89e17a0e2c4b6f888ed53f7da7ad03f58e1547d188d366536e8445fddf69850ec2e6ed82d12643ecf630fcc8dbd1c8b7e73d20e2eaa5
+  checksum: 0c66a8456e885cd5fde96df631822035fcafe94c7f3b51150e174e44c5821202a8f3424df6c55e9f25da712be3737d021d3e831aa619e511cc29b44eab5bdddf
   languageName: node
   linkType: hard
 
@@ -4459,17 +4459,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@supabase/supabase-js@npm:^2.37.0":
-  version: 2.37.0
-  resolution: "@supabase/supabase-js@npm:2.37.0"
+"@supabase/supabase-js@npm:^2.38.0":
+  version: 2.38.0
+  resolution: "@supabase/supabase-js@npm:2.38.0"
   dependencies:
     "@supabase/functions-js": ^2.1.5
-    "@supabase/gotrue-js": ^2.54.0
+    "@supabase/gotrue-js": ^2.54.2
     "@supabase/node-fetch": ^2.6.14
     "@supabase/postgrest-js": ^1.8.4
     "@supabase/realtime-js": ^2.8.0
     "@supabase/storage-js": ^2.5.4
-  checksum: 0aa4ea1a17e5d687114aec0f7a10dc26d82728f1fafae21d6a1ff9c0059c01fd90c9403a70d1f72bc1eaa10434478bc0021d2f5f7a3311846d7e7c7da8d5bc74
+  checksum: fc882c049b15904c63b7d37a652a6da71f2e34fdebce15fe1d164e83dbdd1b30470e1700e740234e989e7ceac3c027f5f31617ea7ada9da63a1afebdb6f9b259
   languageName: node
   linkType: hard
 
@@ -4614,14 +4614,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:~18.2.23":
-  version: 18.2.23
-  resolution: "@types/react@npm:18.2.23"
+"@types/react@npm:~18.2.25":
+  version: 18.2.25
+  resolution: "@types/react@npm:18.2.25"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: efb9d1ed1940c0e7ba08a21ffba5e266d8dbbb8fe618cfb97bc902dfc96385fdd8189e3f7f64b4aa13134f8e61947d60560deb23be151253c3a97b0d070897ca
+  checksum: 177515cd44135d56191ec6c5c10edd490c96c175d37624d9c37bc2007c3abcf6cc2d2137d2a073d692cdc5129d5d5785bd60a6ddd315f695da5d8b989fa2afc5
   languageName: node
   linkType: hard
 
@@ -7125,9 +7125,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-updates@npm:~0.18.14":
-  version: 0.18.14
-  resolution: "expo-updates@npm:0.18.14"
+"expo-updates@npm:~0.18.16":
+  version: 0.18.16
+  resolution: "expo-updates@npm:0.18.16"
   dependencies:
     "@expo/code-signing-certificates": 0.0.5
     "@expo/config": ~8.1.0
@@ -7144,13 +7144,13 @@ __metadata:
     expo: "*"
   bin:
     expo-updates: bin/cli.js
-  checksum: d5deb30dc838c373ae0f1e38e84cb2a589e5f4eca2dbf186715fe884be20b2e7592ab93ef72692bf02970828b4b1f9d287ac86209f155018560ab8b430bab74b
+  checksum: 3931b12ec41d6d7f609eb92b51ea6e6133414ec60e068c02088695d8c84b416457210f4227030c26dcfa862098cf5b27240b4aa88aefbdd34f1540f829fe2a13
   languageName: node
   linkType: hard
 
-"expo@npm:^49.0.13":
-  version: 49.0.13
-  resolution: "expo@npm:49.0.13"
+"expo@npm:^49.0.14":
+  version: 49.0.14
+  resolution: "expo@npm:49.0.14"
   dependencies:
     "@babel/runtime": ^7.20.0
     "@expo/cli": 0.10.13
@@ -7174,7 +7174,7 @@ __metadata:
     uuid: ^3.4.0
   bin:
     expo: bin/cli
-  checksum: 66ec9f5fbb9dc444e6e65c255732923f0329748e522a5e66c03ead232bd4cbe4d940cd2b51dd51b86955605542e07e7b2cf36274a8d7f696633260a2d10e9541
+  checksum: 56a1cb91b5cfaaa3e2ccf722252746af50bcfd972ed45a708fd177efc08b2b2449803565683524b60a2e7b546dd6bd660516b1cf8b035566b065202b2f388c40
   languageName: node
   linkType: hard
 
@@ -9160,15 +9160,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lucide-react-native@npm:^0.279.0":
-  version: 0.279.0
-  resolution: "lucide-react-native@npm:0.279.0"
+"lucide-react-native@npm:^0.284.0":
+  version: 0.284.0
+  resolution: "lucide-react-native@npm:0.284.0"
   peerDependencies:
     prop-types: ^15.7.2
     react: ^16.5.1 || ^17.0.0 || ^18.0.0
     react-native: "*"
     react-native-svg: ^12.0.0 || ^13.0.0
-  checksum: 3de8c1cb14ed373fccb1bb8c554baeb54b63bf9239c2a9e8259356ae3bf2006276d3568ccf08131e799043d4cbf76f0e1ea38f222a5426ecef3496a1c53173a4
+  checksum: 27e7d515b8759f11f79cf2224ee4ec9f5526264e9095f4850fc804d3565de3126c632d96412301c963c07bb9746aacd56bbe4604f6e76c5136888bf87e8bb42a
   languageName: node
   linkType: hard
 
@@ -11038,12 +11038,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-hook-form@npm:7.46.2":
-  version: 7.46.2
-  resolution: "react-hook-form@npm:7.46.2"
+"react-hook-form@npm:7.47.0":
+  version: 7.47.0
+  resolution: "react-hook-form@npm:7.47.0"
   peerDependencies:
     react: ^16.8.0 || ^17 || ^18
-  checksum: 5ad2b478337fed3ab1a7bee79844d89a85485626fb1afd4acba54e28adb8f6663d37efefa9000b6ddb33f7de23b765bfac9a1d12e10c63e71463317a307134cf
+  checksum: dec192fec9c54e436f9e47008635dd7849b6b119ed477a9b0cd491367a0b2ced3427cd937febfb245e1cb7578c863917181d903eff4519c2787bf713ec7d3426
   languageName: node
   linkType: hard
 
@@ -11659,13 +11659,13 @@ __metadata:
     "@react-navigation/elements": ^1.3.19
     "@react-navigation/native": ^6.1.8
     "@shopify/flash-list": 1.4.3
-    "@supabase/supabase-js": ^2.37.0
+    "@supabase/supabase-js": ^2.38.0
     "@types/lodash": ^4.14.199
-    "@types/react": ~18.2.23
+    "@types/react": ~18.2.25
     dayjs: ^1.11.10
     dotenv: ^16.3.1
     eas-cli: ^5.4.0
-    expo: ^49.0.13
+    expo: ^49.0.14
     expo-asset: ~8.10.1
     expo-constants: ~14.4.2
     expo-font: ~11.4.0
@@ -11673,16 +11673,16 @@ __metadata:
     expo-linking: ~5.0.2
     expo-router: 2.0.0
     expo-status-bar: ~1.6.0
-    expo-updates: ~0.18.14
+    expo-updates: ~0.18.16
     husky: ^8.0.3
     i18next: ^23.5.1
     lodash: ^4.17.21
-    lucide-react-native: ^0.279.0
+    lucide-react-native: ^0.284.0
     native-base: ^3.4.28
     normalize-css-color: ^1.0.2
     react: 18.2.0
     react-dom: 18.2.0
-    react-hook-form: 7.46.2
+    react-hook-form: 7.47.0
     react-i18next: ^13.2.2
     react-native: 0.72.5
     react-native-gesture-handler: ~2.12.1
@@ -11695,7 +11695,7 @@ __metadata:
     swr: ^2.2.4
     typescript: ^5.2.2
     yup: ^1.3.2
-    zustand: ^4.4.1
+    zustand: ^4.4.3
   languageName: unknown
   linkType: soft
 
@@ -13587,9 +13587,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"zustand@npm:^4.4.1":
-  version: 4.4.1
-  resolution: "zustand@npm:4.4.1"
+"zustand@npm:^4.4.3":
+  version: 4.4.3
+  resolution: "zustand@npm:4.4.3"
   dependencies:
     use-sync-external-store: 1.2.0
   peerDependencies:
@@ -13603,6 +13603,6 @@ __metadata:
       optional: true
     react:
       optional: true
-  checksum: 80acd0fbf633782996642802c8692bbb80ae5c80a8dff4c501b88250acd5ccd468fbc6398bdce198475a25e3839c91385b81da921274f33ffb5c2d08c3eab400
+  checksum: 3ed16457a3a4b9fe6523f52d397af37db8fab5687dd21a23ede25f657346b25df374490baea27f10d416faae5e96acf7b4065c86044746d775881d266d1500f0
   languageName: node
   linkType: hard

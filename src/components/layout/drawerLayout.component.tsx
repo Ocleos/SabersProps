@@ -1,7 +1,7 @@
 import { DrawerContent, DrawerContentComponentProps, DrawerToggleButton } from '@react-navigation/drawer';
 import type { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 import { useAssets } from 'expo-asset';
-import { Avatar, Divider, HStack, Heading, View } from 'native-base';
+import { Avatar, Box, Divider, HStack, Heading } from 'native-base';
 
 export const withDrawerToggle: NativeStackNavigationOptions = {
   headerLeft: (props) => <DrawerToggleButton {...props} />,
@@ -11,7 +11,7 @@ const DrawerLayout: React.FC<DrawerContentComponentProps> = (props) => {
   const [assets] = useAssets([require('~assets/icon.png')]);
 
   return (
-    <View flex={1}>
+    <Box flex={1} safeArea={true}>
       <HStack p={4} space={4} alignItems={'center'}>
         <Avatar
           size={'md'}
@@ -25,7 +25,7 @@ const DrawerLayout: React.FC<DrawerContentComponentProps> = (props) => {
       <Divider />
 
       <DrawerContent {...props} />
-    </View>
+    </Box>
   );
 };
 

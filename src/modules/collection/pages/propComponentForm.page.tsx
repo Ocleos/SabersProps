@@ -96,60 +96,61 @@ const PropComponentForm = () => {
         control={control}
         name='seller'
         placeholder={t('collection:LABELS.SELLER')}
-        isRequired={true}
-        characterCount={MAX_LENGTH}
+        formControlProps={{ isRequired: true }}
       />
 
-      <InputWrapper control={control} name='date' placeholder={t('collection:LABELS.DATE')} isRequired={true} />
+      <InputWrapper
+        control={control}
+        name='date'
+        placeholder={t('collection:LABELS.DATE')}
+        formControlProps={{ isRequired: true }}
+      />
 
       <InputWrapper
         control={control}
         name='label'
         placeholder={t('collection:LABELS.LABEL')}
-        characterCount={MAX_LENGTH}
-        isRequired={true}
+        formControlProps={{ isRequired: true }}
       />
 
       <InputWrapper
         control={control}
         name='rate'
         placeholder={t('collection:LABELS.RATE')}
-        keyboardType='numeric'
-        isRequired={true}
+        inputProps={{ keyboardType: 'numeric' }}
+        formControlProps={{ isRequired: true }}
       />
 
       <InputWrapper
         control={control}
         name='price'
         placeholder={t('collection:LABELS.PRICE')}
-        keyboardType='numeric'
-        isRequired={true}
+        inputProps={{ keyboardType: 'numeric' }}
+        formControlProps={{ isRequired: true }}
       />
 
       <InputWrapper
         control={control}
         name='priceEuros'
         placeholder={`${t('collection:LABELS.PRICE')} (€)`}
-        keyboardType='numeric'
-        isRequired={true}
-        disabled={true}
+        inputProps={{ keyboardType: 'numeric' }}
+        formControlProps={{ isDisabled: true }}
       />
 
       <InputWrapper
         control={control}
         name='fees'
         placeholder={t('collection:LABELS.FEES')}
-        keyboardType='numeric'
-        isRequired={true}
+        inputProps={{ keyboardType: 'numeric' }}
+        formControlProps={{ isRequired: true }}
       />
 
       <InputWrapper
         control={control}
         name='feesEuros'
         placeholder={`${t('collection:LABELS.FEES')} (€)`}
-        keyboardType='numeric'
-        isRequired={true}
-        disabled={true}
+        inputProps={{ keyboardType: 'numeric' }}
+        formControlProps={{ isDisabled: true }}
       />
 
       <Button isDisabled={isMutating} onPress={handleSubmit(onSubmit)}>

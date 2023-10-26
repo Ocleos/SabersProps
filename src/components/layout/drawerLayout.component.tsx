@@ -13,7 +13,7 @@ const DrawerLayout: React.FC<DrawerContentComponentProps> = (props) => {
           <AvatarImage source={{ uri: assets ? assets[0].uri : undefined }} />
         </Avatar>
 
-        <Heading bold={true} color='$primary500' size='2xl'>
+        <Heading color='$primary500' size='2xl'>
           SabersProps
         </Heading>
       </HStack>

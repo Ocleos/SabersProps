@@ -33,6 +33,10 @@ export const gluestackUIConfig = createConfig({
       tertiary900: '#011838',
       tertiary950: '#000711',
     },
+    fontWeights: {
+      ...defaultConfig.tokens.fontWeights,
+      bold: 600,
+    },
     fonts: {
       heading: 'Exo2_700Bold',
       body: 'Exo2_400Regular',

@@ -73,8 +73,7 @@ const PropFormPage: React.FC = () => {
         control={control}
         name='name'
         placeholder={t('collection:LABELS.NAME')}
-        characterCount={MAX_LENGTH}
-        isRequired={true}
+        formControlProps={{ isRequired: true }}
       />
 
       <SelectWrapper
@@ -82,6 +81,7 @@ const PropFormPage: React.FC = () => {
         name='type'
         placeholder={t('collection:LABELS.TYPE')}
         initialSelectedLabel={isEdit ? propTypes[selectedProp.type].label : undefined}
+        formControlProps={{ isRequired: true }}
       >
         <SelectItem label={t('collection:TYPE.LIGHTSABER')} value={PropType.LIGHTSABER.toString()} />
         <SelectItem label={t('collection:TYPE.PROP')} value={PropType.PROP.toString()} />
@@ -93,6 +93,7 @@ const PropFormPage: React.FC = () => {
         name='state'
         placeholder={t('collection:LABELS.STATE')}
         initialSelectedLabel={isEdit ? propStates[selectedProp.state].label : undefined}
+        formControlProps={{ isRequired: true }}
       >
         <SelectItem label={t('collection:STATE.PRODUCTION')} value={PropState.PRODUCTION.toString()} />
         <SelectItem label={t('collection:STATE.DESIGN')} value={PropState.DESIGN.toString()} />
@@ -108,30 +109,14 @@ const PropFormPage: React.FC = () => {
         control={control}
         name='manufacturer'
         placeholder={t('collection:LABELS.MANUFACTURER')}
-        characterCount={MAX_LENGTH}
-        isRequired={true}
+        formControlProps={{ isRequired: true }}
       />
 
-      <InputWrapper
-        control={control}
-        name='character'
-        placeholder={t('collection:LABELS.CHARACTER')}
-        characterCount={MAX_LENGTH}
-      />
+      <InputWrapper control={control} name='character' placeholder={t('collection:LABELS.CHARACTER')} />
 
-      <InputWrapper
-        control={control}
-        name='chassisDesigner'
-        placeholder={t('collection:LABELS.CHASSIS_DESIGNER')}
-        characterCount={MAX_LENGTH}
-      />
+      <InputWrapper control={control} name='chassisDesigner' placeholder={t('collection:LABELS.CHASSIS_DESIGNER')} />
 
-      <InputWrapper
-        control={control}
-        name='soundboard'
-        placeholder={t('collection:LABELS.SOUNDBOARD')}
-        characterCount={MAX_LENGTH}
-      />
+      <InputWrapper control={control} name='soundboard' placeholder={t('collection:LABELS.SOUNDBOARD')} />
 
       <Button isDisabled={isMutating} onPress={handleSubmit(onSubmit)}>
         {isMutating ? <ButtonSpinner /> : <ButtonIcon as={Save} />}

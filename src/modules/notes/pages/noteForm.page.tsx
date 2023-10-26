@@ -67,17 +67,15 @@ const NoteFormPage: React.FC = () => {
         control={control}
         name='title'
         placeholder={t('notes:FORM.LABELS.TITLE')}
-        characterCount={MAX_LENGTH}
-        isRequired={true}
+        formControlProps={{ isRequired: true }}
       />
 
       <InputWrapper
         control={control}
         name='description'
         placeholder={t('notes:FORM.LABELS.DESCRIPTION')}
-        isRequired={true}
-        multiline={true}
-        numberOfLines={10}
+        formControlProps={{ isRequired: true }}
+        inputProps={{ multiline: true, numberOfLines: 10 }}
       />
 
       <Button isDisabled={isMutating} onPress={handleSubmit(onSubmit)}>

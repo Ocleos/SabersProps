@@ -22,8 +22,6 @@
 
 ## FIXES
 
-- Font on heading
 - Icon in drawer
 - Bottom margin on list with FAB
-- Input wrapper to Gluestack
 - Fix props cards informations

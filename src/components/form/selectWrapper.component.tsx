@@ -9,17 +9,17 @@ import {
   SelectInput,
   SelectPortal,
   SelectTrigger,
-  Text,
-  VStack,
 } from '@gluestack-ui/themed';
 import { ChevronDown } from 'lucide-react-native';
-import React, { useContext } from 'react';
+import React from 'react';
 import { FieldValues, UseControllerProps, useController } from 'react-hook-form';
-import { ThemeContext } from '~src/theme/themeContext.theme';
+import FormControlWrapper, { FormControlProps } from './formControlWrapper.component';
 
 type ISelectWrapperProps = {
   placeholder?: string;
   initialSelectedLabel?: string;
+  formControlProps?: FormControlProps;
+  helperText?: string;
   children: React.ReactNode;
 };
 
@@ -29,37 +29,25 @@ const SelectWrapper = <T extends FieldValues>(props: ISelectWrapperProps & UseCo
     fieldState: { error, invalid },
   } = useController({ control: props.control, name: props.name });
 
-  const { placeholder, initialSelectedLabel, children } = props;
-
-  const { isDarkTheme } = useContext(ThemeContext);
-
-  const borderColor = isDarkTheme ? '$textDark400' : '$textLight500';
+  const { placeholder, initialSelectedLabel, formControlProps, helperText, children } = props;
 
   return (
-    <VStack gap={'$0'} mt={'$2'}>
+    <FormControlWrapper
+      placeholder={placeholder}
+      helperText={helperText}
+      error={error?.message}
+      isInvalid={invalid}
+      {...formControlProps}
+    >
       <Select
         selectedValue={field.value ? field.value.toString() : undefined}
         selectedLabel={initialSelectedLabel}
         onValueChange={field.onChange}
-        isInvalid={invalid}
       >
-        <SelectTrigger
-          variant='outline'
-          size='xl'
-          bgColor={isDarkTheme ? '$backgroundDark900' : '$backgroundLight100'}
-          borderColor={invalid ? '$error500' : borderColor}
-          borderRadius={'$lg'}
-        >
-          <SelectInput
-            pl={'$4'}
-            placeholder={placeholder}
-            color={isDarkTheme ? '$textDark400' : '$textLight500'}
-            fontSize={'$md'}
-            fontWeight={'$extrabold'}
-            fontFamily='Exo2_800ExtraBold'
-          />
+        <SelectTrigger>
+          <SelectInput placeholder={placeholder} />
           <SelectIcon mr={'$4'}>
-            <Icon as={ChevronDown} size='xl' />
+            <Icon as={ChevronDown} />
           </SelectIcon>
         </SelectTrigger>
 
@@ -73,13 +61,7 @@ const SelectWrapper = <T extends FieldValues>(props: ISelectWrapperProps & UseCo
           </SelectContent>
         </SelectPortal>
       </Select>
-
-      {error && (
-        <Text fontSize={'$xs'} color={'$error500'}>
-          {error.message}
-        </Text>
-      )}
-    </VStack>
+    </FormControlWrapper>
   );
 };
 

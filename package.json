@@ -1,6 +1,6 @@
 {
   "name": "sabersprops",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "main": "index.ts",
   "private": true,
   "description": "Infos about collection of Sabers & Props",
@@ -76,7 +76,9 @@
   "packageManager": "yarn@3.6.3",
   "expo": {
     "install": {
-      "exclude": ["react-native-svg"]
+      "exclude": [
+        "react-native-svg"
+      ]
     }
   }
 }

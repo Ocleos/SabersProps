@@ -1,0 +1,22 @@
+{
+  "git": {
+    "commitMessage": "chore(app): update to v${version}",
+    "requireBranch": "main",
+    "tagName": "preview/v${version}"
+  },
+  "hooks": {
+    "before:init": ["git pull", "yarn biome ci ."],
+    "after:bump": "npx auto-changelog -v preview/v${version}"
+  },
+  "plugins": {
+    "@release-it/bumper": {
+      "out": "app.config.ts"
+    }
+  },
+  "github": {
+    "release": false
+  },
+  "npm": {
+    "publish": false
+  }
+}

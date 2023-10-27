@@ -19,7 +19,7 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "explorer.fileNesting.patterns": {
     "app.config.ts": "*.env, babel.config.*, biome.*, eas.*, metro.config.*, .lintstaged*, .prettier*, commitlint.*, tsconfig*",
-    "package.json": ".yarnrc*, yarn*"
+    "package.json": ".yarnrc*, yarn*, .release-it*, .auto-changelog"
   },
   "cSpell.words": ["aurebesh", "sabersprops"],
   "cSpell.ignoreRegExpList": ["/from\\\\s+(['\\\"]).*\\\\1/"],

@@ -15,7 +15,8 @@
     "build:dev": "npx eas build --platform android --profile development",
     "build:preview": "npx eas build --platform android --profile preview",
     "build:prod": "npx eas build --platform android --profile production --auto-submit",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "release": "release-it"
   },
   "dependencies": {
     "@expo-google-fonts/exo-2": "^0.2.3",
@@ -75,9 +76,7 @@
   "packageManager": "yarn@3.6.3",
   "expo": {
     "install": {
-      "exclude": [
-        "react-native-svg"
-      ]
+      "exclude": ["react-native-svg"]
     }
   }
 }

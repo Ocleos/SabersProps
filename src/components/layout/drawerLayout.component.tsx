@@ -1,16 +1,14 @@
-import { Avatar, AvatarImage, Divider, HStack, Heading } from '@gluestack-ui/themed';
+import { Avatar, Divider, HStack, Heading, Icon } from '@gluestack-ui/themed';
 import { DrawerContent, DrawerContentComponentProps } from '@react-navigation/drawer';
-import { useAssets } from 'expo-asset';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import LogoIcon from '~src/assets/icons/logo.icon';
 
 const DrawerLayout: React.FC<DrawerContentComponentProps> = (props) => {
-  const [assets] = useAssets([require('~assets/icon.png')]);
-
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <HStack gap={'$4'} p={'$4'} alignItems='center'>
-        <Avatar>
-          <AvatarImage source={{ uri: assets ? assets[0].uri : undefined }} />
+        <Avatar bg='$secondary900' borderColor='$primary500' borderWidth={2}>
+          <Icon as={LogoIcon} size='xl' color='$primary500' />
         </Avatar>
 
         <Heading color='$primary500' size='2xl'>

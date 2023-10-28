@@ -7102,9 +7102,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eas-cli@npm:^5.5.0":
-  version: 5.5.0
-  resolution: "eas-cli@npm:5.5.0"
+"eas-cli@npm:^5.6.0":
+  version: 5.6.0
+  resolution: "eas-cli@npm:5.6.0"
   dependencies:
     "@expo/apple-utils": 1.3.2
     "@expo/code-signing-certificates": 0.0.5
@@ -7182,7 +7182,7 @@ __metadata:
     wrap-ansi: 7.0.0
   bin:
     eas: bin/run
-  checksum: 55cedfd41315f16638e88e5d7a2622cf663a35f838adeb6243467ac6291f58ff894cc08f3481dd599d8310b84c21b21f7b2a472e60adb6a87842230bdeafb25b
+  checksum: 45c48fb877f02cdc0da72706ca43e7db9687fbd95eeec65c30b727cf6e0b5dcad4a5f8da9b90f5684becc455fe4d5f936f0ce93236e7817b20c7d32d43fed4b6
   languageName: node
   linkType: hard
 
@@ -7551,15 +7551,6 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: d17b98c7ad9ad3b995ed2f41d3e7d439d890cd52cd5e82c613227c082887ae0b6c725c5876acdbe2ba2b256f31d7af2bc4f00220cc19efe72eed0911e89945d1
-  languageName: node
-  linkType: hard
-
-"expo-image@npm:~1.3.4":
-  version: 1.3.4
-  resolution: "expo-image@npm:1.3.4"
-  peerDependencies:
-    expo: "*"
-  checksum: 0b523680ea97282f4852e2244b381f1665bcaaafbd9475f1aec506b82d73223f1e8b799e8031fae7acc1f2133e90b163d151457e79a3e8dfcbcbf026e627d779
   languageName: node
   linkType: hard
 
@@ -9698,15 +9689,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lucide-react-native@npm:^0.289.0":
-  version: 0.289.0
-  resolution: "lucide-react-native@npm:0.289.0"
+"lucide-react-native@npm:^0.290.0":
+  version: 0.290.0
+  resolution: "lucide-react-native@npm:0.290.0"
   peerDependencies:
     prop-types: ^15.7.2
     react: ^16.5.1 || ^17.0.0 || ^18.0.0
     react-native: "*"
     react-native-svg: ^12.0.0 || ^13.0.0
-  checksum: 7dacb1c8736f36b93dbecd3fb21f65e0d62d9bace8b8442863a4d9ccad0df7f18be42116c5f483059f2878c9fa5ad701d7a6c61defd629019a8ab229c58ba30f
+  checksum: bcc629584102c4d3bee4de96004bbcbc75b19589525f82d1298d60f42c58090f33e5ae63de214e9a15269d46e2c964f0972d20245b490d0508cb3bc14ef3af1d
   languageName: node
   linkType: hard
 
@@ -12199,13 +12190,10 @@ __metadata:
     "@wuba/react-native-echarts": ^1.2.5
     dayjs: ^1.11.10
     dotenv: ^16.3.1
-    eas-cli: ^5.5.0
+    eas-cli: ^5.6.0
     echarts: ^5.4.3
     expo: ^49.0.16
-    expo-asset: ~8.10.1
     expo-constants: ~14.4.2
-    expo-font: ~11.4.0
-    expo-image: ~1.3.4
     expo-linking: ~5.0.2
     expo-router: 2.0.9
     expo-status-bar: ~1.6.0
@@ -12213,7 +12201,7 @@ __metadata:
     husky: ^8.0.3
     i18next: ^23.6.0
     lodash: ^4.17.21
-    lucide-react-native: ^0.289.0
+    lucide-react-native: ^0.290.0
     react: 18.2.0
     react-dom: 18.2.0
     react-hook-form: 7.47.0

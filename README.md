@@ -22,6 +22,5 @@
 
 ## FIXES
 
-- Icon in drawer
 - Bottom margin on list with FAB
 - Fix props cards informations

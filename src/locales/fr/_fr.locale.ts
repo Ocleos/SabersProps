@@ -3,6 +3,7 @@ import commonFr from './common.locale';
 import notesFr from './notes.locale';
 import routingFr from './routing.locale';
 import settingsFr from './settings.locale';
+import statsFr from './stats.locale';
 import toolsFr from './tools.locale';
 
 const fr = {
@@ -11,6 +12,7 @@ const fr = {
   notes: notesFr,
   routing: routingFr,
   settings: settingsFr,
+  stats: statsFr,
   tools: toolsFr,
 };
 

@@ -3,6 +3,7 @@ import commonEn from './common.locale';
 import notesEn from './notes.locale';
 import routingEn from './routing.locale';
 import settingsEn from './settings.locale';
+import statsEn from './stats.locale';
 import toolsEn from './tools.locale';
 
 const en = {
@@ -11,6 +12,7 @@ const en = {
   notes: notesEn,
   routing: routingEn,
   settings: settingsEn,
+  stats: statsEn,
   tools: toolsEn,
 };
 

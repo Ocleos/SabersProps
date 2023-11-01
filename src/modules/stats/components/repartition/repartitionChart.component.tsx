@@ -3,19 +3,19 @@ import { EChartsOption, SeriesOption } from 'echarts';
 import { BarChart } from 'echarts/charts';
 import { GridComponent } from 'echarts/components';
 import * as echarts from 'echarts/core';
-import { get, map } from 'lodash';
+import { get, keys, map } from 'lodash';
 import React, { useContext, useEffect, useRef } from 'react';
 import { Dimensions } from 'react-native';
-import { propStates } from '~src/models/propState.model';
+import { PropState, propStates } from '~src/models/propState.model';
 import { PropType, propTypes } from '~src/models/propType.model';
 import { gluestackUIConfig } from '~src/theme/gluestack-ui.config';
 import { ThemeContext } from '~src/theme/themeContext.theme';
-import { Repartition } from '../../models/repartition.model';
+import { StateRepartition } from '../../models/repartition.model';
 
 echarts.use([SVGRenderer, BarChart, GridComponent]);
 
 type RepartitionChartProps = {
-  data: Repartition[];
+  data: StateRepartition;
 };
 
 const RepartitionChart: React.FC<RepartitionChartProps> = ({ data }) => {
@@ -25,7 +25,7 @@ const RepartitionChart: React.FC<RepartitionChartProps> = ({ data }) => {
 
   const { theme } = useContext(ThemeContext);
 
-  const paddingCard = 16 * 4; // $4 (Layout) + $4 (Card)
+  const paddingCard = 64; // ($4 (Layout) + $4 (Card)) * 2
   const maxWidth = Dimensions.get('window').width - paddingCard;
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const RepartitionChart: React.FC<RepartitionChartProps> = ({ data }) => {
         right: 0,
       },
       textStyle: {
-        fontFamily: 'Exo_400Regular',
+        fontFamily: 'Exo2_400Regular',
       },
       xAxis: {
         type: 'category',
@@ -49,17 +49,19 @@ const RepartitionChart: React.FC<RepartitionChartProps> = ({ data }) => {
         type: 'value',
         inverse: true,
       },
-      series: map(data, (stateData): SeriesOption => {
+      series: map(keys(data), (stateData): SeriesOption => {
+        const state: PropState = Number(stateData);
+
         return {
           type: 'bar',
           stack: 'total',
           itemStyle: {
             borderWidth: 1,
-            color: get(config.tokens.colors, `${propStates[stateData.state].colorScheme}200`),
-            borderColor: get(config.tokens.colors, `${propStates[stateData.state].colorScheme}700`),
+            color: get(config.tokens.colors, `${propStates[state].colorScheme}200`),
+            borderColor: get(config.tokens.colors, `${propStates[state].colorScheme}700`),
           },
-          name: propStates[stateData.state].label,
-          data: stateData.values,
+          name: propStates[state].label,
+          data: data[state].values,
         };
       }),
     };

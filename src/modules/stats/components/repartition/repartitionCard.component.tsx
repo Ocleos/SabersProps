@@ -1,46 +1,38 @@
+import { Spinner, VStack } from '@gluestack-ui/themed';
+import { isNil } from 'lodash';
+import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import useSWR from 'swr';
 import CollapseCard from '~src/components/card/collapseCard.component';
-import { Repartition } from '../../models/repartition.model';
+import { Prop } from '~src/models/prop.model';
+import { PROPS_URL_ENDPOINT, getData } from '~src/utils/supabase.utils';
+import { useRepartitionStore } from '../../stores/repartition.store';
 import RepartitionChart from './repartitionChart.component';
+import RepartitionTable from './repartitionTable.component';
 
 const RepartitionCard = () => {
-  const data: Repartition[] = [
-    {
-      state: 1,
-      values: [4, 0, 0],
-    },
-    {
-      state: 2,
-      values: [5, 0, 0],
-    },
-    {
-      state: 3,
-      values: [13, 0, 0],
-    },
-    {
-      state: 4,
-      values: [2, 2, 0],
-    },
-    {
-      state: 5,
-      values: [0, 0, 0],
-    },
-    {
-      state: 6,
-      values: [17, 3, 1],
-    },
-    {
-      state: 7,
-      values: [5, 0, 0],
-    },
-    {
-      state: 8,
-      values: [0, 0, 0],
-    },
-  ];
+  const { t } = useTranslation(['stats']);
+
+  const { data } = useSWR(PROPS_URL_ENDPOINT, getData<Prop>);
+
+  const { repartition, calculateRepartition } = useRepartitionStore();
+
+  useEffect(() => {
+    if (data) {
+      calculateRepartition(data);
+    }
+  }, [data, calculateRepartition]);
 
   return (
-    <CollapseCard title={'Répartition'} isOpened={true}>
-      <RepartitionChart data={data} />
+    <CollapseCard title={t('stats:LABEL.REPARTITION')} isOpened={false}>
+      {isNil(repartition) ? (
+        <Spinner size={'large'} />
+      ) : (
+        <VStack gap={'$4'}>
+          <RepartitionTable data={repartition} />
+          <RepartitionChart data={repartition.states} />
+        </VStack>
+      )}
     </CollapseCard>
   );
 };

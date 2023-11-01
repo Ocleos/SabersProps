@@ -7,9 +7,6 @@
     - Pictures gallery
     - Edit selling price
 - Stats
-  - State vs Type (count)
-    - Table
-    - Stacked Horizontal Bar
   - Prices
     - Total / Min / Max / Avg
     - Basic Scatter Chart

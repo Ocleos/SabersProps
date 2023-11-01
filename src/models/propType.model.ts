@@ -4,7 +4,6 @@ import LightsabersIcon from '~src/assets/icons/lightsabers.icon';
 import i18n from '~src/i18n.config';
 
 export enum PropType {
-  NONE = 0,
   LIGHTSABER = 1,
   PROP = 2,
   COSTUME = 3,
@@ -16,7 +15,6 @@ export type IPropType = {
 };
 
 export const propTypes: Record<PropType, IPropType> = {
-  [PropType.NONE]: { icon: null, label: '' },
   [PropType.LIGHTSABER]: { icon: LightsabersIcon, label: i18n.t('collection:TYPE.LIGHTSABER') },
   [PropType.PROP]: { icon: BlasterIcon, label: i18n.t('collection:TYPE.PROP') },
   [PropType.COSTUME]: { icon: DeathTrooperIcon, label: i18n.t('collection:TYPE.COSTUME') },

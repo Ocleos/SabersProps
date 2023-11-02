@@ -2,6 +2,7 @@
 
 ## TODO
 
+- Home
 - Collection
   - Props' detail
     - Pictures gallery

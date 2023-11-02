@@ -2,7 +2,7 @@ import { reduce } from 'lodash';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 import { Prop } from '~src/models/prop.model';
-import { Repartition, initialData } from '../models/repartition.model';
+import { Repartition } from '../models/repartition.model';
 
 type RepartitionState = {
   repartition?: Repartition;
@@ -16,6 +16,21 @@ export const useRepartitionStore = create<RepartitionState>()(
 
     calculateRepartition: (data: Prop[]) => {
       set((state) => {
+        const initialData: Repartition = {
+          total: 0,
+          types: [0, 0, 0],
+          states: {
+            1: { total: 0, values: [0, 0, 0] },
+            2: { total: 0, values: [0, 0, 0] },
+            3: { total: 0, values: [0, 0, 0] },
+            4: { total: 0, values: [0, 0, 0] },
+            5: { total: 0, values: [0, 0, 0] },
+            6: { total: 0, values: [0, 0, 0] },
+            7: { total: 0, values: [0, 0, 0] },
+            8: { total: 0, values: [0, 0, 0] },
+          },
+        };
+
         const values = reduce(
           data,
           (result, currentProp) => {

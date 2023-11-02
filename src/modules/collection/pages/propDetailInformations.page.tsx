@@ -7,7 +7,7 @@ import InformationsCard from '../components/propDetail/informations/informations
 import PricesCard from '../components/propDetail/informations/pricesCard.component';
 import StatusDetail from '../components/propDetail/informations/statusDetail.component';
 import { getPropDetail } from '../services/props.api';
-import { usePropDetailStore } from '../store/propDetail.store';
+import { usePropDetailStore } from '../stores/propDetail.store';
 
 const PropDetailInformations: React.FC = () => {
   const { id } = useLocalSearchParams<{ id: string }>();

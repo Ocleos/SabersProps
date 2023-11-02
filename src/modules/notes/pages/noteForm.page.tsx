@@ -12,7 +12,7 @@ import ToastWrapper from '~src/components/toast/toastWrapper.component';
 import { NOTES_URL_ENDPOINT, postData, putData } from '~src/utils/supabase.utils';
 import { MAX_LENGTH } from '~src/utils/validator.utils';
 import { Note } from '../models/note.model';
-import { useNotesStore } from '../store/notes.store';
+import { useNotesStore } from '../stores/notes.store';
 
 const NoteFormPage: React.FC = () => {
   const { t } = useTranslation(['common', 'notes']);

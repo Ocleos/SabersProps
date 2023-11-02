@@ -4,7 +4,7 @@ import { Dimensions } from 'react-native';
 import ActionsheetWrapper from '~src/components/menu/actionsheetWrapper.component';
 import { PropState } from '~src/models/propState.model';
 import { PropType } from '~src/models/propType.model';
-import { useCollectionStore } from '~src/modules/collection/store/collection.store';
+import { useCollectionStore } from '~src/modules/collection/stores/collection.store';
 import StateFilter from './stateFilter.component';
 import TypeFilter from './typeFilter.component';
 

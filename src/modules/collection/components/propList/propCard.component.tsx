@@ -6,7 +6,7 @@ import { Prop } from '~src/models/prop.model';
 import { propStates } from '~src/models/propState.model';
 import { propTypes } from '~src/models/propType.model';
 import { PROPS_URL_ENDPOINT } from '~src/utils/supabase.utils';
-import { useCollectionStore } from '../../store/collection.store';
+import { useCollectionStore } from '../../stores/collection.store';
 
 interface IPropCardProps {
   prop: Prop;

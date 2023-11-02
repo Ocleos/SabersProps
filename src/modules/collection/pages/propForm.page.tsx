@@ -15,7 +15,7 @@ import { PropState, propStates } from '~src/models/propState.model';
 import { PropType, propTypes } from '~src/models/propType.model';
 import { PROPS_URL_ENDPOINT, postData, putData } from '~src/utils/supabase.utils';
 import { MAX_LENGTH } from '~src/utils/validator.utils';
-import { useCollectionStore } from '../store/collection.store';
+import { useCollectionStore } from '../stores/collection.store';
 
 const PropFormPage: React.FC = () => {
   const { t } = useTranslation(['common', 'collection']);

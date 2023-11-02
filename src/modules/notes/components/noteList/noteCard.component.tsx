@@ -3,7 +3,7 @@ import Card from '~src/components/card/card.component';
 import ActionsMenu from '~src/components/menu/actionsMenu.component';
 import { NOTES_URL_ENDPOINT } from '~src/utils/supabase.utils';
 import { Note } from '../../models/note.model';
-import { useNotesStore } from '../../store/notes.store';
+import { useNotesStore } from '../../stores/notes.store';
 
 type INoteCardProps = {
   note: Note;

@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import EmptyComponent from '~src/components/empty/empty.component';
 import FilterSearchWrapper from '~src/components/list/filterSearchWrapper.component';
 import PropComponentCard from '../components/propDetail/components/propComponentCard.component';
-import { usePropDetailStore } from '../store/propDetail.store';
+import { usePropDetailStore } from '../stores/propDetail.store';
 
 const PropDetailComponents: React.FC = () => {
   const router = useRouter();

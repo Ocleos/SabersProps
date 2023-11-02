@@ -10,7 +10,7 @@ import { Prop } from '~src/models/prop.model';
 import { PROPS_URL_ENDPOINT, getData } from '~src/utils/supabase.utils';
 import PropCardComponent from '../components/propList/propCard.component';
 import PropFilters from '../components/propList/propFilters/propFilters.component';
-import { useCollectionStore } from '../store/collection.store';
+import { useCollectionStore } from '../stores/collection.store';
 
 const PropListPage: React.FC = () => {
   const router = useRouter();

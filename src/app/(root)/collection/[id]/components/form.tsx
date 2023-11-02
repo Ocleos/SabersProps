@@ -2,7 +2,7 @@ import { isNil } from 'lodash';
 import { useTranslation } from 'react-i18next';
 import PageLayout from '~src/components/layout/pageLayout.component';
 import PropComponentForm from '~src/modules/collection/pages/propComponentForm.page';
-import { usePropDetailStore } from '~src/modules/collection/store/propDetail.store';
+import { usePropDetailStore } from '~src/modules/collection/stores/propDetail.store';
 
 export default () => {
   const { t } = useTranslation(['collection']);

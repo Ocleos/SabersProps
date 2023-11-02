@@ -8,7 +8,7 @@ import EmptyComponent from '~src/components/empty/empty.component';
 import { NOTES_URL_ENDPOINT, getData } from '~src/utils/supabase.utils';
 import NoteCardComponent from '../components/noteList/noteCard.component';
 import { Note } from '../models/note.model';
-import { useNotesStore } from '../store/notes.store';
+import { useNotesStore } from '../stores/notes.store';
 
 const NoteListPage: React.FC = () => {
   const router = useRouter();

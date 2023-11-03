@@ -1,5 +1,5 @@
 import { Drawer } from 'expo-router/drawer';
-import { Home, PieChart, PocketKnife, ScrollText, Settings, Swords } from 'lucide-react-native';
+import { Home, LineChart, PocketKnife, ScrollText, Settings, Swords } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
 import DrawerLayout from '~src/components/layout/drawerLayout.component';
 
@@ -34,7 +34,7 @@ export default () => {
         name='stats'
         options={{
           drawerLabel: t('routing:ROUTING.STATS.INITIAL'),
-          drawerIcon: (props) => <PieChart color={props.color} size={props.size} />,
+          drawerIcon: (props) => <LineChart color={props.color} size={props.size} />,
         }}
       />
 

@@ -5,7 +5,7 @@ import { GridComponent } from 'echarts/components';
 import * as echarts from 'echarts/core';
 import { get, keys, map } from 'lodash';
 import React, { useContext, useEffect, useRef } from 'react';
-import { Dimensions } from 'react-native';
+import { useWindowDimensions } from 'react-native';
 import { PropState, propStates } from '~src/models/propState.model';
 import { PropType, propTypes } from '~src/models/propType.model';
 import { gluestackUIConfig } from '~src/theme/gluestack-ui.config';
@@ -19,6 +19,7 @@ type RepartitionChartProps = {
 };
 
 const RepartitionChart: React.FC<RepartitionChartProps> = ({ data }) => {
+  const { width } = useWindowDimensions();
   const svgRef = useRef<HTMLElement>(null);
 
   const config = gluestackUIConfig;
@@ -26,7 +27,7 @@ const RepartitionChart: React.FC<RepartitionChartProps> = ({ data }) => {
   const { theme } = useContext(ThemeContext);
 
   const paddingCard = 64; // ($4 (Layout) + $4 (Card)) * 2
-  const maxWidth = Dimensions.get('window').width - paddingCard;
+  const maxWidth = width - paddingCard;
 
   useEffect(() => {
     const option: EChartsOption = {

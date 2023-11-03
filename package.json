@@ -35,6 +35,7 @@
     "echarts": "^5.4.3",
     "expo": "^49.0.16",
     "expo-constants": "~14.4.2",
+    "expo-linear-gradient": "~12.3.0",
     "expo-linking": "~5.0.2",
     "expo-router": "2.0.9",
     "expo-status-bar": "~1.6.0",
@@ -64,8 +65,7 @@
     "@commitlint/cli": "^18.2.0",
     "@commitlint/config-conventional": "^18.1.0",
     "@types/lodash": "^4.14.200",
-    "@types/react": "~18.2.33",
-    "@types/react-native": "^0.72.5",
+    "@types/react": "~18.2.34",
     "dotenv": "^16.3.1",
     "eas-cli": "^5.6.0",
     "husky": "^8.0.3",
@@ -74,7 +74,9 @@
   "packageManager": "yarn@4.0.1",
   "expo": {
     "install": {
-      "exclude": ["react-native-svg"]
+      "exclude": [
+        "react-native-svg"
+      ]
     }
   }
 }

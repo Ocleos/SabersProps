@@ -1,6 +1,6 @@
 import { ActionsheetItem, Box, Heading, VStack } from '@gluestack-ui/themed';
 import { useTranslation } from 'react-i18next';
-import { Dimensions } from 'react-native';
+import { useWindowDimensions } from 'react-native';
 import ActionsheetWrapper from '~src/components/menu/actionsheetWrapper.component';
 import { PropState } from '~src/models/propState.model';
 import { PropType } from '~src/models/propType.model';
@@ -10,6 +10,7 @@ import TypeFilter from './typeFilter.component';
 
 const PropFilters: React.FC = () => {
   const { t } = useTranslation(['collection']);
+  const { width } = useWindowDimensions();
 
   const { isFiltersOpen, setIsFiltersOpen } = useCollectionStore();
 
@@ -18,7 +19,7 @@ const PropFilters: React.FC = () => {
   };
 
   const paddingActionsheet = 20 * 2; // $2 (Actionsheet) + $3 (ActionsheetItem)
-  const maxWidth = Dimensions.get('window').width - paddingActionsheet;
+  const maxWidth = width - paddingActionsheet;
 
   return (
     <ActionsheetWrapper isOpen={isFiltersOpen} onClose={onClose}>

@@ -1,10 +1,9 @@
-import { Button, ButtonIcon, HStack, Heading, VStack } from '@gluestack-ui/themed';
+import { Box, Button, ButtonIcon, HStack, Heading, VStack } from '@gluestack-ui/themed';
 import { ChevronDown, ChevronUp } from 'lucide-react-native';
-import { useState } from 'react';
-import { ViewProps } from 'react-native';
+import { ComponentProps, useState } from 'react';
 import Card from './card.component';
 
-interface ICollapseCard extends ViewProps {
+interface ICollapseCard extends ComponentProps<typeof Box> {
   title?: string;
   isOpened?: boolean;
 }

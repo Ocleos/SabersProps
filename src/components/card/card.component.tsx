@@ -1,12 +1,7 @@
 import { Box } from '@gluestack-ui/themed';
-import { ViewProps } from 'react-native';
+import { ComponentProps } from 'react';
 
-// TODO fix type
-interface ICardProps extends ViewProps {
-  borderColor?: string;
-}
-
-const Card: React.FC<ICardProps> = (props) => {
+const Card: React.FC<ComponentProps<typeof Box>> = (props) => {
   return (
     <Box
       p={'$4'}

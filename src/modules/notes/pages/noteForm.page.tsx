@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 import useSWRMutation from 'swr/mutation';
 import * as Yup from 'yup';
 import InputWrapper from '~src/components/form/inputWrapper.component';
+import TextAreaWrapper from '~src/components/form/textAreaWrapper.component';
 import ToastWrapper from '~src/components/toast/toastWrapper.component';
 import { NOTES_URL_ENDPOINT, postData, putData } from '~src/utils/supabase.utils';
 import { MAX_LENGTH } from '~src/utils/validator.utils';
@@ -70,7 +71,7 @@ const NoteFormPage: React.FC = () => {
         formControlProps={{ isRequired: true }}
       />
 
-      <InputWrapper
+      <TextAreaWrapper
         control={control}
         name='description'
         placeholder={t('notes:FORM.LABELS.DESCRIPTION')}

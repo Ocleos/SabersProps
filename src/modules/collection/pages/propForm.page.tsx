@@ -81,8 +81,7 @@ const PropFormPage: React.FC = () => {
         name='type'
         placeholder={t('collection:LABELS.TYPE')}
         initialSelectedLabel={isEdit ? propTypes[selectedProp.type].label : undefined}
-        formControlProps={{ isRequired: true }}
-      >
+        formControlProps={{ isRequired: true }}>
         <SelectItem label={t('collection:TYPE.LIGHTSABER')} value={PropType.LIGHTSABER.toString()} />
         <SelectItem label={t('collection:TYPE.PROP')} value={PropType.PROP.toString()} />
         <SelectItem label={t('collection:TYPE.COSTUME')} value={PropType.COSTUME.toString()} />
@@ -93,8 +92,7 @@ const PropFormPage: React.FC = () => {
         name='state'
         placeholder={t('collection:LABELS.STATE')}
         initialSelectedLabel={isEdit ? propStates[selectedProp.state].label : undefined}
-        formControlProps={{ isRequired: true }}
-      >
+        formControlProps={{ isRequired: true }}>
         <SelectItem label={t('collection:STATE.PRODUCTION')} value={PropState.PRODUCTION.toString()} />
         <SelectItem label={t('collection:STATE.DESIGN')} value={PropState.DESIGN.toString()} />
         <SelectItem label={t('collection:STATE.MISSING_PIECES')} value={PropState.MISSING_PIECES.toString()} />

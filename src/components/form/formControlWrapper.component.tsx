@@ -33,8 +33,7 @@ const FormControlWrapper: React.FC<FormControlWrapperProps> = (props) => {
       isDisabled={props.isDisabled}
       isInvalid={props.isInvalid}
       isReadOnly={props.isReadOnly}
-      isRequired={props.isRequired}
-    >
+      isRequired={props.isRequired}>
       <FormControlLabel>
         <FormControlLabelText>{placeholder}</FormControlLabelText>
       </FormControlLabel>

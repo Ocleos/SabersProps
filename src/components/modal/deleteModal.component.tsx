@@ -22,8 +22,7 @@ const DeleteModal: React.FC<IDeleteModalProps> = (props) => {
           {isLoading && <ButtonSpinner mr={'$2'} />}
           <ButtonText>{t('common:COMMON.DELETE')}</ButtonText>
         </Button>
-      }
-    >
+      }>
       {children}
     </ModalWrapper>
   );

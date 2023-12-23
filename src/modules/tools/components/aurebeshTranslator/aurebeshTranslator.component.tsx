@@ -19,8 +19,7 @@ const AurebeshTranslator: React.FC = () => {
       <ModalWrapper
         title={t('tools:TOOLS.TRANSLATOR.TITLE')}
         isOpen={isTranslatorModalOpen}
-        onClose={() => setIsTranslatorOpenModal(false)}
-      >
+        onClose={() => setIsTranslatorOpenModal(false)}>
         <AurebeshTranslatorModal />
       </ModalWrapper>
     </>

@@ -20,8 +20,7 @@ const BadgeWrapper: React.FC<BadgeWrapperProps> = ({ colorScheme, label, icon })
         _light: {
           bg: `$${colorScheme}100`,
         },
-      }}
-    >
+      }}>
       {icon && <BadgeIcon as={icon} color={`$${colorScheme}900`} size='xl' />}
       <BadgeText textTransform='capitalize' color={`$${colorScheme}900`} m={'$1'}>
         {label}

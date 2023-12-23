@@ -80,8 +80,7 @@ const ActionsMenu: React.FC<IActionsMenuProps> = (props) => {
           <Button variant='link' {...triggerProps}>
             <ButtonIcon as={MoreVertical} size='xl' />
           </Button>
-        )}
-      >
+        )}>
         <MenuItem key='edit' textValue={t('common:COMMON.EDIT')}>
           <Icon as={Pencil} size='xl' />
           <MenuItemLabel ml={'$4'}>{t('common:COMMON.EDIT')}</MenuItemLabel>
@@ -98,8 +97,7 @@ const ActionsMenu: React.FC<IActionsMenuProps> = (props) => {
         onClose={onClose}
         title={t('common:COMMON.DELETE')}
         onConfirm={onConfirmDelete}
-        isLoading={isMutating}
-      >
+        isLoading={isMutating}>
         <Text>{t('common:FORMS.DELETE_CONFIRM', { name: nameSelected })}</Text>
       </DeleteModal>
     </>

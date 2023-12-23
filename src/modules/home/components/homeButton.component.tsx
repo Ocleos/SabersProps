@@ -20,9 +20,8 @@ const HomeButton: React.FC<HomeButtonProps> = ({ module }) => {
           p='$4'
           alignItems='center'
           justifyContent='center'
-          gap='$4'
-        >
-          <Icon as={module.icon} color='$textLight0' w='$12' h='$12' />
+          gap='$4'>
+          <Icon as={module.icon} color='$textLight0' w='$12' h='$12' sx={{ props: { size: 48 } }} />
           <Heading color='$textLight0'>{module.title}</Heading>
         </Pressable>
       </LinearGradient>

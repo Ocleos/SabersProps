@@ -12,8 +12,7 @@ export default () => {
       screenOptions={{
         headerShown: false,
         drawerLabelStyle: { fontFamily: 'Exo2_500Medium' },
-      }}
-    >
+      }}>
       <Drawer.Screen
         name='home'
         options={{

@@ -40,8 +40,7 @@ const PageLayout: React.FC<IPageLayoutProps> = ({
                 size='lg'
                 p={'$2'}
                 w={'$11'}
-                onPress={() => navigation.dispatch(DrawerActions.toggleDrawer)}
-              >
+                onPress={() => navigation.dispatch(DrawerActions.toggleDrawer)}>
                 <ButtonIcon as={Menu} size='xl' />
               </Button>
             ) : (

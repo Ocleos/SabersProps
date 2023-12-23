@@ -42,8 +42,7 @@ const PropDetailComponents: React.FC = () => {
         onPress={() => {
           setSelectedComponent(undefined);
           router.push(`/collection/${propDetail?.id}/components/form`);
-        }}
-      >
+        }}>
         <FabIcon as={Plus} size='xl' />
       </Fab>
     </>

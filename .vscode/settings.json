@@ -2,10 +2,10 @@
   "editor.linkedEditing": true,
   "editor.tabSize": 2,
   "editor.codeActionsOnSave": {
-    "source.fixAll": true,
-    "quickfix.biome": true,
-    "source.organizeImports": true,
-    "source.organizeImports.biome": true
+    "source.fixAll": "explicit",
+    "quickfix.biome": "explicit",
+    "source.organizeImports": "explicit",
+    "source.organizeImports.biome": "explicit"
   },
   "editor.defaultFormatter": "biomejs.biome",
   "[markdown]": {

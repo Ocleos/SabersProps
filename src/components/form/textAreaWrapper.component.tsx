@@ -1,17 +1,17 @@
-import { Input, InputField } from '@gluestack-ui/themed';
+import { Textarea, TextareaInput } from '@gluestack-ui/themed';
 import { isNil } from 'lodash';
 import { ComponentProps } from 'react';
 import { FieldValues, UseControllerProps, useController } from 'react-hook-form';
 import FormControlWrapper, { FormControlProps } from './formControlWrapper.component';
 
-type InputWrapperProps = {
+type TextAreaWrapperProps = {
   placeholder?: string;
   helperText?: string;
   formControlProps?: FormControlProps;
-  inputProps?: ComponentProps<typeof InputField>;
+  inputProps?: ComponentProps<typeof TextareaInput>;
 };
 
-const InputWrapper = <T extends FieldValues>(props: InputWrapperProps & UseControllerProps<T>) => {
+const TextAreaWrapper = <T extends FieldValues>(props: TextAreaWrapperProps & UseControllerProps<T>) => {
   const {
     field,
     fieldState: { error, invalid },
@@ -26,8 +26,8 @@ const InputWrapper = <T extends FieldValues>(props: InputWrapperProps & UseContr
       error={error?.message}
       isInvalid={invalid}
       {...formControlProps}>
-      <Input>
-        <InputField
+      <Textarea h='$40'>
+        <TextareaInput
           placeholder={placeholder}
           value={!isNil(field.value) ? `${field.value}` : ''}
           onBlur={field.onBlur}
@@ -41,9 +41,9 @@ const InputWrapper = <T extends FieldValues>(props: InputWrapperProps & UseContr
           }}
           {...inputProps}
         />
-      </Input>
+      </Textarea>
     </FormControlWrapper>
   );
 };
 
-export default InputWrapper;
+export default TextAreaWrapper;

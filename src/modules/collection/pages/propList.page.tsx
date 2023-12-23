@@ -51,8 +51,7 @@ const PropListPage: React.FC = () => {
         onPress={() => {
           setSelectedProp(undefined);
           router.push('/collection/form');
-        }}
-      >
+        }}>
         <FabIcon as={Plus} size='xl' />
       </Fab>
 

@@ -19,5 +19,4 @@
 
 ## FIXES
 
-- Bottom margin on list with FAB
 - Fix props cards informations

@@ -22,8 +22,7 @@ const Cell: React.FC<{ colorScheme?: string } & ViewProps> = ({ colorScheme, chi
       justifyContent='center'
       p={'$2'}
       bg={colorScheme ? `$${colorScheme}200` : undefined}
-      borderColor='$secondary500'
-    >
+      borderColor='$secondary500'>
       {children}
     </Box>
   );

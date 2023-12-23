@@ -12,8 +12,7 @@ export default () => {
         screenOptions={{
           headerShown: false,
           tabBarLabelStyle: { fontFamily: 'Exo2_400Regular' },
-        }}
-      >
+        }}>
         <Tabs.Screen
           name='informations'
           options={{

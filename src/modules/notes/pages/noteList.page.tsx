@@ -37,8 +37,7 @@ const NoteListPage: React.FC = () => {
         onPress={() => {
           setSelectedNote(undefined);
           router.push('/notes/form');
-        }}
-      >
+        }}>
         <FabIcon as={Plus} size='xl' />
       </Fab>
     </>

@@ -37,13 +37,11 @@ const SelectWrapper = <T extends FieldValues>(props: ISelectWrapperProps & UseCo
       helperText={helperText}
       error={error?.message}
       isInvalid={invalid}
-      {...formControlProps}
-    >
+      {...formControlProps}>
       <Select
         selectedValue={field.value ? field.value.toString() : undefined}
         selectedLabel={initialSelectedLabel}
-        onValueChange={field.onChange}
-      >
+        onValueChange={field.onChange}>
         <SelectTrigger>
           <SelectInput placeholder={placeholder} />
           <SelectIcon mr={'$4'}>

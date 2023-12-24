@@ -29,7 +29,7 @@ const Cell: React.FC<{ colorScheme?: string } & ViewProps> = ({ colorScheme, chi
 };
 
 const RepartitionTable: React.FC<RepartitionTableProps> = ({ data }) => {
-  const { t } = useTranslation(['stats']);
+  const { t } = useTranslation(['common']);
 
   return (
     <VStack>
@@ -49,7 +49,7 @@ const RepartitionTable: React.FC<RepartitionTableProps> = ({ data }) => {
         </Cell>
 
         <Cell>
-          <Heading size='xs'>{t('stats:LABEL.TOTAL')}</Heading>
+          <Heading size='xs'>{t('common:COMMON.TOTAL')}</Heading>
         </Cell>
       </HStack>
 
@@ -83,7 +83,7 @@ const RepartitionTable: React.FC<RepartitionTableProps> = ({ data }) => {
 
       <HStack>
         <Cell>
-          <Heading size='xs'>{t('stats:LABEL.TOTAL')}</Heading>
+          <Heading size='xs'>{t('common:COMMON.TOTAL')}</Heading>
         </Cell>
 
         {map(data.types, (value, index) => (

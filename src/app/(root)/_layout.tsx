@@ -1,12 +1,14 @@
 import { Drawer } from 'expo-router/drawer';
 import { Home, LineChart, PocketKnife, ScrollText, Settings, Swords } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import DrawerLayout from '~src/components/layout/drawerLayout.component';
+import { isWeb } from '~src/utils/platforms.utils';
 
 export default () => {
   const { t } = useTranslation(['routing']);
 
-  return (
+  const drawer = (
     <Drawer
       drawerContent={(props) => <DrawerLayout {...props} />}
       screenOptions={{
@@ -62,4 +64,6 @@ export default () => {
       />
     </Drawer>
   );
+
+  return isWeb ? drawer : <GestureHandlerRootView style={{ flex: 1 }}>{drawer}</GestureHandlerRootView>;
 };

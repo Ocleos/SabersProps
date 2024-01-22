@@ -1,7 +1,8 @@
 import { useFonts } from '@expo-google-fonts/exo-2';
 import { GluestackUIProvider } from '@gluestack-ui/themed';
 import { ThemeProvider } from '@react-navigation/native';
-import { Slot, SplashScreen } from 'expo-router';
+import { Slot } from 'expo-router';
+import * as SplashScreen from 'expo-splash-screen';
 import { useState } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import '~src/i18n.config';

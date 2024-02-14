@@ -29,6 +29,7 @@ const RepartitionChart: React.FC<RepartitionChartProps> = ({ data }) => {
   const paddingCard = 64; // ($4 (Layout) + $4 (Card)) * 2
   const maxWidth = width - paddingCard;
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     const option: EChartsOption = {
       backgroundColor: 'transparent',

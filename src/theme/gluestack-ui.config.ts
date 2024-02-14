@@ -1,4 +1,4 @@
-import { createConfig } from '@gluestack-style/react';
+import { FontResolver, createConfig } from '@gluestack-style/react';
 import { config as defaultConfig } from '@gluestack-ui/config';
 
 export const gluestackUIConfig = createConfig({
@@ -38,9 +38,10 @@ export const gluestackUIConfig = createConfig({
       bold: 600,
     },
     fonts: {
-      heading: 'Exo2_700Bold',
-      body: 'Exo2_400Regular',
-      mono: 'Exo2_400Regular',
+      heading: 'Exo2',
+      body: 'Exo2',
+      mono: 'Exo2',
     },
   },
+  plugins: [new FontResolver()],
 });

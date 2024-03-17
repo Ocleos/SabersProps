@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import useSWR from 'swr';
 import CollapseCard from '~src/components/card/collapseCard.component';
-import { Prop } from '~src/models/prop.model';
+import type { Prop } from '~src/models/prop.model';
 import { PROPS_URL_ENDPOINT, getData } from '~src/utils/supabase.utils';
 import { useRepartitionStore } from '../../stores/repartition.store';
 import RepartitionChart from './repartitionChart.component';

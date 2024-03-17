@@ -1,5 +1,5 @@
 import i18n from '~src/i18n.config';
-import { ChartPricesSeries } from '../../models/chartPricesSeries.model';
+import type { ChartPricesSeries } from '../../models/chartPricesSeries.model';
 
 export const pricesChartSeries: ChartPricesSeries[] = [
   { label: i18n.t('stats:LABEL.PRICE'), property: 'price', color: 'primary', isVisible: true },

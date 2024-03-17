@@ -1,16 +1,16 @@
 import { SVGRenderer, SvgChart } from '@wuba/react-native-echarts';
-import { EChartsOption, SeriesOption } from 'echarts';
+import type { EChartsOption, SeriesOption } from 'echarts';
 import { BarChart } from 'echarts/charts';
 import { GridComponent } from 'echarts/components';
 import * as echarts from 'echarts/core';
 import { get, keys, map } from 'lodash';
-import React, { useContext, useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { useWindowDimensions } from 'react-native';
-import { PropState, propStates } from '~src/models/propState.model';
+import { type PropState, propStates } from '~src/models/propState.model';
 import { PropType, propTypes } from '~src/models/propType.model';
 import { gluestackUIConfig } from '~src/theme/gluestack-ui.config';
 import { ThemeContext } from '~src/theme/themeContext.theme';
-import { StateRepartition } from '../../models/repartition.model';
+import type { StateRepartition } from '../../models/repartition.model';
 
 echarts.use([SVGRenderer, BarChart, GridComponent]);
 
@@ -29,7 +29,6 @@ const RepartitionChart: React.FC<RepartitionChartProps> = ({ data }) => {
   const paddingCard = 64; // ($4 (Layout) + $4 (Card)) * 2
   const maxWidth = width - paddingCard;
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     const option: EChartsOption = {
       backgroundColor: 'transparent',

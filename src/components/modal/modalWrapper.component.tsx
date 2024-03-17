@@ -13,9 +13,8 @@ import {
   ModalHeader,
 } from '@gluestack-ui/themed';
 import { X } from 'lucide-react-native';
-import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { ViewProps } from 'react-native';
+import type { ViewProps } from 'react-native';
 
 export interface IModalWrapperProps extends ViewProps {
   title: string;

@@ -1,5 +1,5 @@
 import { HStack, Icon, Text } from '@gluestack-ui/themed';
-import { LucideIcon } from 'lucide-react-native';
+import type { LucideIcon } from 'lucide-react-native';
 
 interface ILabelIcon {
   label: string;

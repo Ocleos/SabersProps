@@ -1,8 +1,8 @@
 import { Input, InputField } from '@gluestack-ui/themed';
 import { isNil } from 'lodash';
-import { ComponentProps } from 'react';
-import { FieldValues, UseControllerProps, useController } from 'react-hook-form';
-import FormControlWrapper, { FormControlProps } from './formControlWrapper.component';
+import type { ComponentProps } from 'react';
+import { type FieldValues, type UseControllerProps, useController } from 'react-hook-form';
+import FormControlWrapper, { type FormControlProps } from './formControlWrapper.component';
 
 type InputWrapperProps = {
   placeholder?: string;

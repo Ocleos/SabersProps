@@ -1,4 +1,4 @@
-import { Theme } from '@react-navigation/native';
+import type { Theme } from '@react-navigation/native';
 import { gluestackUIConfig } from './gluestack-ui.config';
 
 export const navigationTheme = (isDarkTheme: boolean): Theme => {

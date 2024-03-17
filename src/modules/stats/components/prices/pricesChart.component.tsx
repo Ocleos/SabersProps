@@ -1,15 +1,15 @@
 import { SVGRenderer, SvgChart } from '@wuba/react-native-echarts';
-import { EChartsOption } from 'echarts';
+import type { EChartsOption } from 'echarts';
 import { BarChart, ScatterChart } from 'echarts/charts';
 import { GridComponent, TooltipComponent } from 'echarts/components';
 import * as echarts from 'echarts/core';
 import { get, map } from 'lodash';
-import React, { useContext, useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { useWindowDimensions } from 'react-native';
 import { gluestackUIConfig } from '~src/theme/gluestack-ui.config';
 import { ThemeContext } from '~src/theme/themeContext.theme';
 import { formatToCurrency } from '~src/utils/format.utils';
-import { PricesInfosData } from '../../models/pricesInfosData.model';
+import type { PricesInfosData } from '../../models/pricesInfosData.model';
 import { pricesChartSeries } from './pricesChart.utils';
 
 type PricesChartProps = {

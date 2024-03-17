@@ -1,13 +1,12 @@
 import { Box, HStack, Heading, Icon, Text, VStack } from '@gluestack-ui/themed';
 import { keys, map } from 'lodash';
-import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { ViewProps } from 'react-native';
+import type { ViewProps } from 'react-native';
 import BlasterIcon from '~src/assets/icons/blaster.icon';
 import DeathTrooperIcon from '~src/assets/icons/deathTrooper.icon';
 import LightsabersIcon from '~src/assets/icons/lightsabers.icon';
-import { PropState, propStates } from '~src/models/propState.model';
-import { Repartition } from '../../models/repartition.model';
+import { type PropState, propStates } from '~src/models/propState.model';
+import type { Repartition } from '../../models/repartition.model';
 
 type RepartitionTableProps = {
   data: Repartition;

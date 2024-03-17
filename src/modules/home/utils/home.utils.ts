@@ -1,6 +1,6 @@
 import { LineChart, PocketKnife, ScrollText, Settings, Swords } from 'lucide-react-native';
 import i18n from '~src/i18n.config';
-import { Module } from '../models/module.models';
+import type { Module } from '../models/module.models';
 
 export const getModules = (): Module[] => {
   return [

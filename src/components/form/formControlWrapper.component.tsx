@@ -9,7 +9,6 @@ import {
   FormControlLabelText,
 } from '@gluestack-ui/themed';
 import { AlertOctagon } from 'lucide-react-native';
-import React from 'react';
 
 export type FormControlProps = {
   isInvalid?: boolean;

@@ -1,5 +1,4 @@
 import { createIcon } from '@gluestack-ui/themed';
-import * as React from 'react';
 import { Path } from 'react-native-svg';
 
 const LogoIcon = createIcon({

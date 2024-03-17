@@ -5,7 +5,7 @@ import {
   ActionsheetDragIndicator,
   ActionsheetDragIndicatorWrapper,
 } from '@gluestack-ui/themed';
-import React, { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 type ActionsheetWrapperProps = {
   isOpen: boolean;

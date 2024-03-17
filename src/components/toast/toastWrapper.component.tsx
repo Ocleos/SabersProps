@@ -1,6 +1,5 @@
 import { Center, Icon, Toast, ToastDescription, ToastTitle, VStack } from '@gluestack-ui/themed';
-import { AlertTriangle, CheckCircle, Info, LucideIcon, Megaphone, XOctagon } from 'lucide-react-native';
-import React from 'react';
+import { AlertTriangle, CheckCircle, Info, type LucideIcon, Megaphone, XOctagon } from 'lucide-react-native';
 import i18n from '~src/i18n.config';
 
 type ToastWrapperProps = {

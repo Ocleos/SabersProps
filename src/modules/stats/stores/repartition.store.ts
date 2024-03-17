@@ -1,8 +1,8 @@
 import { reduce } from 'lodash';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
-import { Prop } from '~src/models/prop.model';
-import { Repartition } from '../models/repartition.model';
+import type { Prop } from '~src/models/prop.model';
+import type { Repartition } from '../models/repartition.model';
 
 type RepartitionState = {
   repartition?: Repartition;

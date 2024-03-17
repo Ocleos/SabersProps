@@ -1,5 +1,5 @@
 import { Box, Center, HStack, RadioGroup, Switch, Text, VStack } from '@gluestack-ui/themed';
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import RadioWrapper from '~src/components/form/radioWrapper.component';
 import { changeLanguage } from '~src/i18n.config';

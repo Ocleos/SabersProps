@@ -3,7 +3,7 @@ import { DrawerActions } from '@react-navigation/native';
 import { Stack, useNavigation, useRouter } from 'expo-router';
 import { ArrowLeft, Menu } from 'lucide-react-native';
 import { useContext } from 'react';
-import { ViewProps } from 'react-native';
+import type { ViewProps } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ThemeContext } from '~src/theme/themeContext.theme';
 

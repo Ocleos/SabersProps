@@ -1,6 +1,6 @@
-import { Box, HStack, Heading, Icon, Pressable, VStack } from '@gluestack-ui/themed';
+import { type Box, HStack, Heading, Icon, Pressable, VStack } from '@gluestack-ui/themed';
 import { ChevronDown, ChevronUp } from 'lucide-react-native';
-import { ComponentProps, useState } from 'react';
+import { type ComponentProps, useState } from 'react';
 import Card from './card.component';
 
 interface ICollapseCard extends ComponentProps<typeof Box> {

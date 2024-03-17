@@ -2,8 +2,8 @@ import { filter, sortBy } from 'lodash';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 import { searchValueInObject } from '~src/utils/arrays.utils';
-import { PropComponent } from '../models/propComponent.model';
-import { PropDetail } from '../models/propDetail.model';
+import type { PropComponent } from '../models/propComponent.model';
+import type { PropDetail } from '../models/propDetail.model';
 
 interface IPropDetailState {
   propDetail?: PropDetail;

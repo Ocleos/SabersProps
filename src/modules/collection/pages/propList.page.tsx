@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import useSWR from 'swr';
 import EmptyComponent from '~src/components/empty/empty.component';
 import FilterSearchWrapper from '~src/components/list/filterSearchWrapper.component';
-import { Prop } from '~src/models/prop.model';
+import type { Prop } from '~src/models/prop.model';
 import { PROPS_URL_ENDPOINT, getData } from '~src/utils/supabase.utils';
 import PropCardComponent from '../components/propList/propCard.component';
 import PropFilters from '../components/propList/propFilters/propFilters.component';

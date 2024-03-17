@@ -11,9 +11,8 @@ import {
   SelectTrigger,
 } from '@gluestack-ui/themed';
 import { ChevronDown } from 'lucide-react-native';
-import React from 'react';
-import { FieldValues, UseControllerProps, useController } from 'react-hook-form';
-import FormControlWrapper, { FormControlProps } from './formControlWrapper.component';
+import { type FieldValues, type UseControllerProps, useController } from 'react-hook-form';
+import FormControlWrapper, { type FormControlProps } from './formControlWrapper.component';
 
 type ISelectWrapperProps = {
   placeholder?: string;

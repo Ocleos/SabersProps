@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
-import { Note } from '../models/note.model';
+import type { Note } from '../models/note.model';
 
 type INotesState = {
   selectedNote?: Note;

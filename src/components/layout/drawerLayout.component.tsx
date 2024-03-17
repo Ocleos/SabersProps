@@ -1,5 +1,5 @@
 import { Avatar, Divider, HStack, Heading, Icon } from '@gluestack-ui/themed';
-import { DrawerContent, DrawerContentComponentProps } from '@react-navigation/drawer';
+import { DrawerContent, type DrawerContentComponentProps } from '@react-navigation/drawer';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import LogoIcon from '~src/assets/icons/logo.icon';
 

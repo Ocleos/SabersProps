@@ -1,4 +1,4 @@
-import { PropState } from '~src/models/propState.model';
+import type { PropState } from '~src/models/propState.model';
 
 export type CountByState = {
   values: number[];

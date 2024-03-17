@@ -1,11 +1,10 @@
 import { Spinner, VStack } from '@gluestack-ui/themed';
 import { isNil } from 'lodash';
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import useSWR from 'swr';
 import CollapseCard from '~src/components/card/collapseCard.component';
 import { PROPS_PRICES_URL_ENDPOINT, getData } from '~src/utils/supabase.utils';
-import { PricesInfosData } from '../../models/pricesInfosData.model';
+import type { PricesInfosData } from '../../models/pricesInfosData.model';
 import PricesChart from './pricesChart.component';
 import PricesInfos from './pricesInfos.component';
 

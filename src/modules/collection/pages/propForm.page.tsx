@@ -10,7 +10,7 @@ import * as Yup from 'yup';
 import InputWrapper from '~src/components/form/inputWrapper.component';
 import SelectWrapper from '~src/components/form/selectWrapper.component';
 import ToastWrapper from '~src/components/toast/toastWrapper.component';
-import { Prop } from '~src/models/prop.model';
+import type { Prop } from '~src/models/prop.model';
 import { PropState, propStates } from '~src/models/propState.model';
 import { PropType, propTypes } from '~src/models/propType.model';
 import { PROPS_URL_ENDPOINT, postData, putData } from '~src/utils/supabase.utils';

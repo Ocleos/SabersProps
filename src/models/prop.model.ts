@@ -1,5 +1,5 @@
-import { PropState } from './propState.model';
-import { PropType } from './propType.model';
+import type { PropState } from './propState.model';
+import type { PropType } from './propType.model';
 
 export type Prop = {
   id?: string | undefined;

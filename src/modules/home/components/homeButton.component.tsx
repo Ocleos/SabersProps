@@ -1,8 +1,7 @@
 import { Box, Heading, Icon, Pressable } from '@gluestack-ui/themed';
 import { useRouter } from 'expo-router';
-import React from 'react';
 import LinearGradient from '~src/theme/linearGradient.theme';
-import { Module } from '../models/module.models';
+import type { Module } from '../models/module.models';
 
 type HomeButtonProps = {
   module: Module;

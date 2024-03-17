@@ -1,5 +1,5 @@
 import { Box } from '@gluestack-ui/themed';
-import { ComponentProps } from 'react';
+import type { ComponentProps } from 'react';
 
 const Card: React.FC<ComponentProps<typeof Box>> = (props) => {
   return (

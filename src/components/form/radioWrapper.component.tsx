@@ -1,5 +1,4 @@
 import { CircleIcon, Radio, RadioIcon, RadioIndicator, RadioLabel } from '@gluestack-ui/themed';
-import React from 'react';
 
 interface IRadioWrapperProps {
   value: string;

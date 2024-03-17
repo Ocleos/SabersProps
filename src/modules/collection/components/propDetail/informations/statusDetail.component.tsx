@@ -2,7 +2,7 @@ import { Box, HStack } from '@gluestack-ui/themed';
 import BadgeWrapper from '~src/components/label/badgeWrapper.component';
 import { propStates } from '~src/models/propState.model';
 import { propTypes } from '~src/models/propType.model';
-import { PropDetail } from '../../../models/propDetail.model';
+import type { PropDetail } from '../../../models/propDetail.model';
 
 interface IStatusDetail {
   prop: PropDetail;

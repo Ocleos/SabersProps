@@ -1,5 +1,4 @@
 import { useToken } from '@gluestack-ui/themed';
-import * as React from 'react';
 import { useContext } from 'react';
 import { Circle, Path, Svg } from 'react-native-svg';
 import { ThemeContext } from '~src/theme/themeContext.theme';

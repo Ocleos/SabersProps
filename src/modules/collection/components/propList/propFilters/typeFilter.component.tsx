@@ -1,7 +1,7 @@
 import { Pressable } from '@gluestack-ui/themed';
 import { includes } from 'lodash';
 import FilterBadge from '~src/components/list/filterBadge.component';
-import { PropType, propTypes } from '~src/models/propType.model';
+import { type PropType, propTypes } from '~src/models/propType.model';
 import { useCollectionStore } from '~src/modules/collection/stores/collection.store';
 
 export interface ITypeFilterProps {

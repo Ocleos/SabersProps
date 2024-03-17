@@ -1,6 +1,6 @@
 import { Button, ButtonSpinner, ButtonText } from '@gluestack-ui/themed';
 import { useTranslation } from 'react-i18next';
-import ModalWrapper, { IModalWrapperProps } from './modalWrapper.component';
+import ModalWrapper, { type IModalWrapperProps } from './modalWrapper.component';
 
 interface IDeleteModalProps extends IModalWrapperProps {
   onConfirm: () => void;

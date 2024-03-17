@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import CollapseCard from '~src/components/card/collapseCard.component';
 import LabelIcon from '~src/components/label/labelIcon.component';
 import { formatToCurrency } from '~src/utils/format.utils';
-import { PropDetail } from '../../../models/propDetail.model';
+import type { PropDetail } from '../../../models/propDetail.model';
 
 interface IPricesCard {
   prop: PropDetail;

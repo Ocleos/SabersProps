@@ -2,7 +2,7 @@ import { Center, Divider, HStack, Heading, Icon, Pressable, Text, VStack } from 
 import { useRouter } from 'expo-router';
 import Card from '~src/components/card/card.component';
 import ActionsMenu from '~src/components/menu/actionsMenu.component';
-import { Prop } from '~src/models/prop.model';
+import type { Prop } from '~src/models/prop.model';
 import { propStates } from '~src/models/propState.model';
 import { propTypes } from '~src/models/propType.model';
 import { PROPS_URL_ENDPOINT } from '~src/utils/supabase.utils';

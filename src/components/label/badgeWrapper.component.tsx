@@ -1,6 +1,5 @@
 import { Badge, BadgeIcon, BadgeText } from '@gluestack-ui/themed';
-import { LucideIcon } from 'lucide-react-native';
-import React from 'react';
+import type { LucideIcon } from 'lucide-react-native';
 
 type BadgeWrapperProps = {
   colorScheme: string;

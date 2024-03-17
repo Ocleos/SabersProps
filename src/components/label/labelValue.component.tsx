@@ -1,5 +1,4 @@
 import { HStack, Heading, Text } from '@gluestack-ui/themed';
-import React from 'react';
 
 type Props = {
   title: string;

@@ -1,10 +1,10 @@
 import { filter, includes, sortBy } from 'lodash';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
-import { Prop } from '~src/models/prop.model';
-import { PropFilters, defaultPropFilters } from '~src/models/propFilters.model';
-import { PropState } from '~src/models/propState.model';
-import { PropType } from '~src/models/propType.model';
+import type { Prop } from '~src/models/prop.model';
+import { type PropFilters, defaultPropFilters } from '~src/models/propFilters.model';
+import type { PropState } from '~src/models/propState.model';
+import type { PropType } from '~src/models/propType.model';
 import { addOrRemove, searchValueInObject } from '~src/utils/arrays.utils';
 
 interface ICollectionState {

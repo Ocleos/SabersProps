@@ -13,7 +13,7 @@ import InputWrapper from '~src/components/form/inputWrapper.component';
 import ToastWrapper from '~src/components/toast/toastWrapper.component';
 import { COMPONENTS_URL_ENDPOINT, PROPS_URL_ENDPOINT, postData, putData } from '~src/utils/supabase.utils';
 import { MAX_LENGTH } from '~src/utils/validator.utils';
-import { PropComponent } from '../models/propComponent.model';
+import type { PropComponent } from '../models/propComponent.model';
 import { usePropDetailStore } from '../stores/propDetail.store';
 
 const PropComponentForm = () => {

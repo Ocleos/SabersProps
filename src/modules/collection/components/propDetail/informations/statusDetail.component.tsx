@@ -1,7 +1,8 @@
-import { Box, HStack } from '@gluestack-ui/themed';
+import { View } from 'react-native';
 import BadgeWrapper from '~src/components/label/badgeWrapper.component';
 import { propStates } from '~src/models/propState.model';
 import { propTypes } from '~src/models/propType.model';
+import { HStack } from '~ui/stack';
 import type { PropDetail } from '../../../models/propDetail.model';
 
 interface IStatusDetail {
@@ -10,14 +11,18 @@ interface IStatusDetail {
 
 const StatusDetail: React.FC<IStatusDetail> = ({ prop }) => {
   return (
-    <HStack alignItems={'center'}>
-      <Box w={'$1/2'} alignItems={'center'}>
-        <BadgeWrapper colorScheme={'primary'} label={propTypes[prop.type].label} icon={propTypes[prop.type].icon} />
-      </Box>
+    <HStack>
+      <View className='basis-1/2 items-center'>
+        <BadgeWrapper label={propTypes[prop.type].label} colorScheme='primary' icon={propTypes[prop.type].icon} />
+      </View>
 
-      <Box w={'$1/2'} alignItems={'center'}>
-        <BadgeWrapper colorScheme={propStates[prop.state].colorScheme} label={propStates[prop.state].label} />
-      </Box>
+      <View className='basis-1/2 items-center'>
+        <BadgeWrapper
+          colorScheme={propStates[prop.state].colorScheme}
+          label={propStates[prop.state].label}
+          icon={propStates[prop.state].icon}
+        />
+      </View>
     </HStack>
   );
 };

@@ -4,7 +4,6 @@
   "editor.codeActionsOnSave": {
     "source.fixAll": "explicit",
     "quickfix.biome": "explicit",
-    "source.organizeImports": "explicit",
     "source.organizeImports.biome": "explicit"
   },
   "editor.defaultFormatter": "biomejs.biome",
@@ -18,7 +17,7 @@
   "files.insertFinalNewline": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "explorer.fileNesting.patterns": {
-    "app.config.ts": "*.env, babel.config.*, biome.*, eas.*, metro.config.*, .lintstaged*, .prettier*, commitlint.*, tsconfig*",
+    "app.config.ts": "*.env, babel.config.*, biome.*, components.json, eas.*, metro.config.*, .lintstaged*, .prettier*, commitlint.*, nativewind*, tailwind*, tsconfig*",
     "package.json": ".yarnrc*, yarn*, .release-it*, .auto-changelog"
   },
   "cSpell.words": ["aurebesh", "sabersprops"],
@@ -31,9 +30,12 @@
     "echarts",
     "gluestack",
     "hookform",
+    "nativewind",
     "pressable",
+    "pressables",
     "shopify",
     "supabase",
+    "tailwindcss",
     "zustand"
   ]
 }

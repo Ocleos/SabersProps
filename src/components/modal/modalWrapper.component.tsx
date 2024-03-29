@@ -1,23 +1,12 @@
-import {
-  Button,
-  ButtonText,
-  HStack,
-  Heading,
-  Icon,
-  Modal,
-  ModalBackdrop,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-} from '@gluestack-ui/themed';
-import { X } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
-import type { ViewProps } from 'react-native';
+import { Button } from '~ui/button';
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '~ui/dialog';
+import { HStack } from '~ui/stack';
+import { Text } from '~ui/text';
 
-export interface IModalWrapperProps extends ViewProps {
-  title: string;
+export interface IModalWrapperProps {
+  title?: string;
+  description?: string;
   isOpen: boolean;
   onClose: () => void;
   mainButton?: React.ReactNode;
@@ -27,24 +16,27 @@ export interface IModalWrapperProps extends ViewProps {
 const ModalWrapper: React.FC<IModalWrapperProps> = (props) => {
   const { t } = useTranslation(['common']);
 
-  const { title, isOpen, onClose, mainButton, hasCancelButton, children } = props;
+  const { title, description, isOpen, onClose, mainButton, hasCancelButton } = props;
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
-      <ModalBackdrop />
-      <ModalContent maxHeight={'$2/3'}>
-        <ModalHeader>
-          <Heading size='lg'>{title}</Heading>
-          <ModalCloseButton>
-            <Icon as={X} size='xl' />
-          </ModalCloseButton>
-        </ModalHeader>
-        <ModalBody>{children}</ModalBody>
-        <ModalFooter>
-          <HStack flex={1} gap={'$4'} justifyContent='flex-end'>
+    <Dialog
+      open={isOpen}
+      onOpenChange={(value) => {
+        if (!value) {
+          onClose();
+        }
+      }}>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>{title}</DialogTitle>
+          {description && <DialogDescription>{description}</DialogDescription>}
+        </DialogHeader>
+
+        <DialogFooter>
+          <HStack className='justify-end gap-4'>
             {hasCancelButton && (
-              <Button variant='outline' action='secondary' onPress={onClose}>
-                <ButtonText>{t('common:COMMON.CANCEL')}</ButtonText>
+              <Button variant='outline' onPress={onClose}>
+                <Text>{t('common:COMMON.CANCEL')}</Text>
               </Button>
             )}
 
@@ -52,13 +44,13 @@ const ModalWrapper: React.FC<IModalWrapperProps> = (props) => {
               mainButton
             ) : (
               <Button onPress={onClose}>
-                <ButtonText>{t('common:COMMON.CLOSE')}</ButtonText>
+                <Text>{t('common:COMMON.CLOSE')}</Text>
               </Button>
             )}
           </HStack>
-        </ModalFooter>
-      </ModalContent>
-    </Modal>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   );
 };
 

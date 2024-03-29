@@ -2,11 +2,11 @@ import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 import type { Note } from '../models/note.model';
 
-type INotesState = {
+interface INotesState {
   selectedNote?: Note;
 
   setSelectedNote: (note?: Note) => void;
-};
+}
 
 export const useNotesStore = create<INotesState>()(
   devtools((set) => ({

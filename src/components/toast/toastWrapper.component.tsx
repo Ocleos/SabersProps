@@ -1,56 +1,77 @@
-import { Center, Icon, Toast, ToastDescription, ToastTitle, VStack } from '@gluestack-ui/themed';
+import { get } from 'lodash';
 import { AlertTriangle, CheckCircle, Info, type LucideIcon, Megaphone, XOctagon } from 'lucide-react-native';
+import { View } from 'react-native';
+import type { ToastConfig } from 'react-native-toast-message';
 import i18n from '~src/i18n.config';
+import { colorsTheme } from '~src/theme/nativewind.theme';
+import { HStack, VStack } from '~ui/stack';
+import { Text } from '~ui/text';
+import { Large } from '~ui/typography';
+import { cn } from '../_ui/lib/utils';
+
+export const toastConfig: ToastConfig = {
+  error: (props) => <ToastWrapper action='error' description={props.text2} />,
+  warning: (props) => <ToastWrapper action='warning' description={props.text2} />,
+  success: (props) => <ToastWrapper action='success' description={props.text2} />,
+  info: (props) => <ToastWrapper action='info' description={props.text2} />,
+  attention: (props) => <ToastWrapper action='attention' description={props.text2} />,
+};
 
 type ToastWrapperProps = {
-  id: string;
   description?: string;
   action: 'error' | 'warning' | 'success' | 'info' | 'attention';
 };
 
-const ToastWrapper: React.FC<ToastWrapperProps> = ({ id, description, action }) => {
-  let icon: LucideIcon;
+const ToastWrapper: React.FC<ToastWrapperProps> = ({ description, action }) => {
+  let ToastIcon: LucideIcon;
   let title: string;
-  const colorIcon = action === 'attention' ? '$secondary500' : `$${action}500`;
+  let colorScheme: string;
 
   switch (action) {
     case 'attention': {
-      icon = Megaphone;
+      ToastIcon = Megaphone;
       title = i18n.t('common:COMMON.ANNOUNCE');
+      colorScheme = 'neutral';
       break;
     }
     case 'error': {
-      icon = XOctagon;
+      ToastIcon = XOctagon;
       title = i18n.t('common:COMMON.ERROR');
+      colorScheme = 'red';
       break;
     }
     case 'info': {
-      icon = Info;
+      ToastIcon = Info;
       title = i18n.t('common:COMMON.INFO');
+      colorScheme = 'blue';
       break;
     }
     case 'success': {
-      icon = CheckCircle;
+      ToastIcon = CheckCircle;
       title = i18n.t('common:COMMON.SUCCESS');
+      colorScheme = 'green';
       break;
     }
     case 'warning': {
-      icon = AlertTriangle;
+      ToastIcon = AlertTriangle;
       title = i18n.t('common:COMMON.WARNING');
+      colorScheme = 'orange';
       break;
     }
   }
 
   return (
-    <Toast nativeID={`toast+${id}`} action={action} variant='accent'>
-      <Center>
-        <Icon as={icon} size='xl' color={colorIcon} />
-      </Center>
-      <VStack space='xs' ml={'$4'}>
-        <ToastTitle>{title}</ToastTitle>
-        <ToastDescription>{description}</ToastDescription>
-      </VStack>
-    </Toast>
+    <View className={cn(['rounded-md border-l-8 bg-popover p-4', `border-${colorScheme}-500`])}>
+      <HStack className='gap-4'>
+        <View className='items-center justify-center'>
+          <ToastIcon color={get(colorsTheme, `${colorScheme}.500`)} />
+        </View>
+        <VStack className='gap-1'>
+          <Large className='text-popover-foreground'>{title}</Large>
+          <Text className='text-popover-foreground'>{description}</Text>
+        </VStack>
+      </HStack>
+    </View>
   );
 };
 

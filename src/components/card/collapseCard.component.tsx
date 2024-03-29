@@ -1,9 +1,11 @@
-import { type Box, HStack, Heading, Icon, Pressable, VStack } from '@gluestack-ui/themed';
 import { ChevronDown, ChevronUp } from 'lucide-react-native';
 import { type ComponentProps, useState } from 'react';
-import Card from './card.component';
+import { Pressable, type View } from 'react-native';
+import { colorsTheme } from '~src/theme/nativewind.theme';
+import { Card, CardContent, CardHeader, CardTitle } from '~ui/card';
+import { HStack } from '~ui/stack';
 
-interface ICollapseCard extends ComponentProps<typeof Box> {
+interface ICollapseCard extends ComponentProps<typeof View> {
   title?: string;
   isOpened?: boolean;
 }
@@ -15,22 +17,16 @@ const CollapseCard: React.FC<ICollapseCard> = (props) => {
 
   return (
     <Card {...props}>
-      <VStack gap={'$2'}>
-        <Pressable
-          onPress={() => {
-            setIsOpen(!isOpen);
-          }}>
-          <HStack gap={'$2'} alignItems='center'>
-            <Heading flex={1} isTruncated={true} m={'auto'}>
-              {title}
-            </Heading>
-
-            <Icon as={isOpen ? ChevronUp : ChevronDown} size='xl' color='$primary500' />
+      <CardHeader>
+        <Pressable onPress={() => setIsOpen(!isOpen)}>
+          <HStack className='items-center gap-2'>
+            <CardTitle className='grow'>{title}</CardTitle>
+            {isOpen ? <ChevronUp color={colorsTheme.primary[500]} /> : <ChevronDown color={colorsTheme.primary[500]} />}
           </HStack>
         </Pressable>
+      </CardHeader>
 
-        {isOpen ? children : null}
-      </VStack>
+      {isOpen && <CardContent>{children}</CardContent>}
     </Card>
   );
 };

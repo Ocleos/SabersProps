@@ -1,3 +1,4 @@
+import type { SvgProps } from 'react-native-svg';
 import BlasterIcon from '~src/assets/icons/blaster.icon';
 import DeathTrooperIcon from '~src/assets/icons/deathTrooper.icon';
 import LightsabersIcon from '~src/assets/icons/lightsabers.icon';
@@ -10,7 +11,7 @@ export enum PropType {
 }
 
 export type IPropType = {
-  icon: unknown; // TODO fix type
+  icon: React.FC<SvgProps>;
   label: string;
 };
 

@@ -1,34 +1,33 @@
-import { Box, HStack, Heading, Icon, Text, VStack } from '@gluestack-ui/themed';
 import { keys, map } from 'lodash';
 import { useTranslation } from 'react-i18next';
-import type { ViewProps } from 'react-native';
+import { View, type ViewProps } from 'react-native';
 import BlasterIcon from '~src/assets/icons/blaster.icon';
 import DeathTrooperIcon from '~src/assets/icons/deathTrooper.icon';
 import LightsabersIcon from '~src/assets/icons/lightsabers.icon';
+import { cn } from '~src/components/_ui/lib/utils';
 import { type PropState, propStates } from '~src/models/propState.model';
+import { colorsTheme } from '~src/theme/nativewind.theme';
+import { useColorScheme } from '~src/theme/useColorTheme.theme';
+import { HStack, VStack } from '~ui/stack';
+import { Text } from '~ui/text';
 import type { Repartition } from '../../models/repartition.model';
 
-type RepartitionTableProps = {
+interface IRepartitionTableProps {
   data: Repartition;
-};
+}
 
 const Cell: React.FC<{ colorScheme?: string } & ViewProps> = ({ colorScheme, children }) => {
+  const bgColor = colorScheme ? `bg-${colorScheme}-200` : '';
+
   return (
-    <Box
-      w={'$1/5'}
-      borderWidth={'$1'}
-      alignItems='center'
-      justifyContent='center'
-      p={'$2'}
-      bg={colorScheme ? `$${colorScheme}200` : undefined}
-      borderColor='$secondary500'>
-      {children}
-    </Box>
+    <View className={cn(['w-1/5 items-center justify-center border border-border p-2', bgColor])}>{children}</View>
   );
 };
 
-const RepartitionTable: React.FC<RepartitionTableProps> = ({ data }) => {
+const RepartitionTable: React.FC<IRepartitionTableProps> = ({ data }) => {
   const { t } = useTranslation(['common']);
+
+  const { colorScheme } = useColorScheme();
 
   return (
     <VStack>
@@ -36,19 +35,19 @@ const RepartitionTable: React.FC<RepartitionTableProps> = ({ data }) => {
         <Cell />
 
         <Cell>
-          <Icon as={LightsabersIcon} size='xl' />
+          <LightsabersIcon color={colorsTheme.foreground[colorScheme]} />
         </Cell>
 
         <Cell>
-          <Icon as={BlasterIcon} size='xl' />
+          <BlasterIcon color={colorsTheme.foreground[colorScheme]} />
         </Cell>
 
         <Cell>
-          <Icon as={DeathTrooperIcon} size='xl' />
+          <DeathTrooperIcon color={colorsTheme.foreground[colorScheme]} />
         </Cell>
 
         <Cell>
-          <Heading size='xs'>{t('common:COMMON.TOTAL')}</Heading>
+          <Text className='font-exo2Bold'>{t('common:COMMON.TOTAL')}</Text>
         </Cell>
       </HStack>
 
@@ -58,23 +57,19 @@ const RepartitionTable: React.FC<RepartitionTableProps> = ({ data }) => {
         return (
           <HStack key={`state${state}`}>
             <Cell colorScheme={propStates[state].colorScheme}>
-              <Text size='2xs' textAlign='center' color={`$${propStates[state].colorScheme}500`}>
+              <Text className={cn(['text-xs', `text-${propStates[state].colorScheme}-600`])}>
                 {propStates[state].label}
               </Text>
             </Cell>
 
             {map(data.states[state].values, (value, index) => (
               <Cell key={`valueType${index}`}>
-                <Text size='xs' textAlign='center'>
-                  {value}
-                </Text>
+                <Text>{value}</Text>
               </Cell>
             ))}
 
             <Cell>
-              <Text size='xs' textAlign='center'>
-                {data.states[state].total}
-              </Text>
+              <Text>{data.states[state].total}</Text>
             </Cell>
           </HStack>
         );
@@ -82,21 +77,17 @@ const RepartitionTable: React.FC<RepartitionTableProps> = ({ data }) => {
 
       <HStack>
         <Cell>
-          <Heading size='xs'>{t('common:COMMON.TOTAL')}</Heading>
+          <Text className='font-exo2Bold'>{t('common:COMMON.TOTAL')}</Text>
         </Cell>
 
         {map(data.types, (value, index) => (
           <Cell key={`totalType${index}`}>
-            <Text size='xs' textAlign='center'>
-              {value}
-            </Text>
+            <Text>{value}</Text>
           </Cell>
         ))}
 
         <Cell>
-          <Text size='xs' textAlign='center'>
-            {data.total}
-          </Text>
+          <Text>{data.total}</Text>
         </Cell>
       </HStack>
     </VStack>

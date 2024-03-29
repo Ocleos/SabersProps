@@ -4,27 +4,25 @@ import { BarChart, ScatterChart } from 'echarts/charts';
 import { GridComponent, TooltipComponent } from 'echarts/components';
 import * as echarts from 'echarts/core';
 import { get, map } from 'lodash';
-import { useContext, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useWindowDimensions } from 'react-native';
-import { gluestackUIConfig } from '~src/theme/gluestack-ui.config';
-import { ThemeContext } from '~src/theme/themeContext.theme';
+import { colorsTheme, fontFamily } from '~src/theme/nativewind.theme';
+import { useColorScheme } from '~src/theme/useColorTheme.theme';
 import { formatToCurrency } from '~src/utils/format.utils';
 import type { PricesInfosData } from '../../models/pricesInfosData.model';
 import { pricesChartSeries } from './pricesChart.utils';
 
-type PricesChartProps = {
+interface IPricesChartProps {
   data: PricesInfosData[];
-};
+}
 
 echarts.use([SVGRenderer, BarChart, GridComponent, TooltipComponent, ScatterChart]);
 
-const PricesChart: React.FC<PricesChartProps> = ({ data }) => {
+const PricesChart: React.FC<IPricesChartProps> = ({ data }) => {
   const { width } = useWindowDimensions();
   const svgRef = useRef<HTMLElement>(null);
 
-  const config = gluestackUIConfig;
-
-  const { theme } = useContext(ThemeContext);
+  const { colorScheme } = useColorScheme();
 
   const paddingCard = 64; // ($4 (Layout) + $4 (Card)) * 2
   const maxWidth = width - paddingCard;
@@ -46,7 +44,7 @@ const PricesChart: React.FC<PricesChartProps> = ({ data }) => {
         valueFormatter: (value) => (value ? formatToCurrency(Number(value)) : '--'),
       },
       textStyle: {
-        fontFamily: 'Exo2_400Regular',
+        fontFamily: fontFamily.exo2,
       },
       xAxis: {
         type: 'value',
@@ -62,11 +60,11 @@ const PricesChart: React.FC<PricesChartProps> = ({ data }) => {
           name: entry.label,
           type: entry.isVisible ? 'bar' : 'scatter',
           stack: entry.isVisible ? 'prices' : entry.property,
-          symbolSize: 0,
+          symbolSize: entry.property === 'total' ? 0 : 10,
           itemStyle: {
             borderWidth: 1,
-            color: get(config.tokens.colors, `${entry.color}200`),
-            borderColor: get(config.tokens.colors, `${entry.color}700`),
+            color: get(colorsTheme, `${entry.color}.200`),
+            borderColor: get(colorsTheme, `${entry.color}.500`),
           },
           data: map(data, entry.property),
         };
@@ -75,7 +73,7 @@ const PricesChart: React.FC<PricesChartProps> = ({ data }) => {
 
     let chart: echarts.ECharts;
     if (svgRef.current) {
-      chart = echarts.init(svgRef.current, theme, {
+      chart = echarts.init(svgRef.current, colorScheme, {
         renderer: 'svg',
         width: maxWidth,
         height: height,
@@ -83,7 +81,7 @@ const PricesChart: React.FC<PricesChartProps> = ({ data }) => {
       chart.setOption(option);
     }
     return () => chart?.dispose();
-  }, [theme, maxWidth, height, config, data]);
+  }, [colorScheme, maxWidth, height, data]);
 
   return <SvgChart ref={svgRef} />;
 };

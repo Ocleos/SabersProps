@@ -1,5 +1,6 @@
-import { Button, ButtonSpinner, ButtonText } from '@gluestack-ui/themed';
 import { useTranslation } from 'react-i18next';
+import { Button } from '~ui/button';
+import { Text } from '~ui/text';
 import ModalWrapper, { type IModalWrapperProps } from './modalWrapper.component';
 
 interface IDeleteModalProps extends IModalWrapperProps {
@@ -9,22 +10,19 @@ interface IDeleteModalProps extends IModalWrapperProps {
 
 const DeleteModal: React.FC<IDeleteModalProps> = (props) => {
   const { t } = useTranslation(['common']);
-  const { onConfirm, isLoading, title, isOpen, onClose, children } = props;
+  const { onConfirm, isLoading } = props;
 
   return (
     <ModalWrapper
       hasCancelButton={true}
-      title={title}
-      isOpen={isOpen}
-      onClose={onClose}
+      title={t('common:COMMON.DELETE')}
       mainButton={
-        <Button isDisabled={isLoading} onPress={onConfirm} action='negative'>
-          {isLoading && <ButtonSpinner mr={'$2'} />}
-          <ButtonText>{t('common:COMMON.DELETE')}</ButtonText>
+        <Button disabled={isLoading} onPress={onConfirm} variant='destructive'>
+          <Text>{t('common:COMMON.DELETE')}</Text>
         </Button>
-      }>
-      {children}
-    </ModalWrapper>
+      }
+      {...props}
+    />
   );
 };
 

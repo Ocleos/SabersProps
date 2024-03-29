@@ -1,4 +1,4 @@
-import { Pressable } from '@gluestack-ui/themed';
+import { TouchableHighlight } from '@gorhom/bottom-sheet';
 import { includes } from 'lodash';
 import FilterBadge from '~src/components/list/filterBadge.component';
 import { type PropState, propStates } from '~src/models/propState.model';
@@ -14,13 +14,13 @@ const StateFilter: React.FC<IStateFilterProps> = ({ state }) => {
   const isSelected = includes(filters.statesFilter, state);
 
   return (
-    <Pressable onPress={() => updateStateFilter(state)}>
+    <TouchableHighlight onPress={() => updateStateFilter(state)}>
       <FilterBadge
         isSelected={isSelected}
         colorSelected={propStates[state].colorScheme}
         label={propStates[state].label}
       />
-    </Pressable>
+    </TouchableHighlight>
   );
 };
 

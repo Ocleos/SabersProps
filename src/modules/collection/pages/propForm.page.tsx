@@ -1,26 +1,29 @@
-import { Button, ButtonIcon, ButtonSpinner, ButtonText, SelectItem, VStack, useToast } from '@gluestack-ui/themed';
+import { SelectItem } from '@gluestack-ui/themed';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'expo-router';
 import { isError, isNil } from 'lodash';
 import { Save } from 'lucide-react-native';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
+import Toast from 'react-native-toast-message';
 import useSWRMutation from 'swr/mutation';
 import * as Yup from 'yup';
 import InputWrapper from '~src/components/form/inputWrapper.component';
 import SelectWrapper from '~src/components/form/selectWrapper.component';
-import ToastWrapper from '~src/components/toast/toastWrapper.component';
 import type { Prop } from '~src/models/prop.model';
 import { PropState, propStates } from '~src/models/propState.model';
 import { PropType, propTypes } from '~src/models/propType.model';
+import { colorsTheme } from '~src/theme/nativewind.theme';
 import { PROPS_URL_ENDPOINT, postData, putData } from '~src/utils/supabase.utils';
 import { MAX_LENGTH } from '~src/utils/validator.utils';
+import { Button } from '~ui/button';
+import { VStack } from '~ui/stack';
+import { Text } from '~ui/text';
 import { useCollectionStore } from '../stores/collection.store';
 
 const PropFormPage: React.FC = () => {
   const { t } = useTranslation(['common', 'collection']);
   const router = useRouter();
-  const toast = useToast();
 
   const { setSelectedProp, selectedProp } = useCollectionStore();
   const isEdit = !isNil(selectedProp);
@@ -48,27 +51,19 @@ const PropFormPage: React.FC = () => {
     try {
       await trigger(values);
       if (isEdit) {
-        toast.show({
-          render: (id) => <ToastWrapper id={id} action='success' description={t('common:FORMS.EDIT_SUCCESS')} />,
-        });
+        Toast.show({ type: 'success', text2: t('common:FORMS.EDIT_SUCCESS') });
         setSelectedProp(undefined);
       } else {
-        toast.show({
-          render: (id) => <ToastWrapper id={id} action='success' description={t('common:FORMS.ADD_SUCCESS')} />,
-        });
+        Toast.show({ type: 'success', text2: t('common:FORMS.ADD_SUCCESS') });
       }
       router.back();
     } catch (error) {
-      toast.show({
-        render: (id) => (
-          <ToastWrapper id={id} action='error' description={isError(error) ? error.message : undefined} />
-        ),
-      });
+      Toast.show({ type: 'error', text2: isError(error) ? error.message : undefined });
     }
   };
 
   return (
-    <VStack gap={'$4'} flex={1}>
+    <VStack className='gap-4'>
       <InputWrapper
         control={control}
         name='name'
@@ -116,9 +111,9 @@ const PropFormPage: React.FC = () => {
 
       <InputWrapper control={control} name='soundboard' placeholder={t('collection:LABELS.SOUNDBOARD')} />
 
-      <Button isDisabled={isMutating} onPress={handleSubmit(onSubmit)}>
-        {isMutating ? <ButtonSpinner /> : <ButtonIcon as={Save} />}
-        <ButtonText marginHorizontal={'$2'}>{t('common:COMMON.SAVE')}</ButtonText>
+      <Button disabled={isMutating} onPress={handleSubmit(onSubmit)}>
+        <Save color={colorsTheme.textForeground} />
+        <Text>{t('common:COMMON.SAVE')}</Text>
       </Button>
     </VStack>
   );

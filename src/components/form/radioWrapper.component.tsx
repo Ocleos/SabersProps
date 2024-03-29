@@ -1,18 +1,27 @@
-import { CircleIcon, Radio, RadioIcon, RadioIndicator, RadioLabel } from '@gluestack-ui/themed';
+import { Label } from '~ui/label';
+import { RadioGroupItem } from '~ui/radio-group';
+import { HStack } from '~ui/stack';
 
 interface IRadioWrapperProps {
   value: string;
   label: string;
+  onLabelPress?: (value: string) => void;
 }
 
-const RadioWrapper: React.FC<IRadioWrapperProps> = ({ value, label }) => {
+const RadioWrapper: React.FC<IRadioWrapperProps> = ({ value, label, onLabelPress }) => {
   return (
-    <Radio value={value} m='$2'>
-      <RadioIndicator mr='$2'>
-        <RadioIcon as={CircleIcon} />
-      </RadioIndicator>
-      <RadioLabel>{label}</RadioLabel>
-    </Radio>
+    <HStack className='m-1 items-center gap-2'>
+      <RadioGroupItem aria-labelledby={`label-${value}`} value={value} />
+      <Label
+        nativeID={`label-${value}`}
+        onPress={() => {
+          if (onLabelPress) {
+            onLabelPress(value);
+          }
+        }}>
+        {label}
+      </Label>
+    </HStack>
   );
 };
 

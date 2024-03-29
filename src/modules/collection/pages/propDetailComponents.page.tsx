@@ -1,11 +1,13 @@
-import { Box, Fab, FabIcon, VStack } from '@gluestack-ui/themed';
 import { FlashList } from '@shopify/flash-list';
 import { useRouter } from 'expo-router';
-import { isNil } from 'lodash';
 import { Plus } from 'lucide-react-native';
 import { useEffect } from 'react';
+import { View } from 'react-native';
 import EmptyComponent from '~src/components/empty/empty.component';
 import FilterSearchWrapper from '~src/components/list/filterSearchWrapper.component';
+import { colorsTheme } from '~src/theme/nativewind.theme';
+import { Button } from '~ui/button';
+import { VStack } from '~ui/stack';
 import PropComponentCard from '../components/propDetail/components/propComponentCard.component';
 import { usePropDetailStore } from '../stores/propDetail.store';
 
@@ -23,7 +25,7 @@ const PropDetailComponents: React.FC = () => {
 
   return (
     <>
-      <VStack flex={1} gap={'$4'}>
+      <VStack className='flex-1 gap-4'>
         <FilterSearchWrapper onSearchValue={setSearchValue} searchValue={searchValue} />
 
         <FlashList
@@ -31,20 +33,19 @@ const PropDetailComponents: React.FC = () => {
           renderItem={({ item }) => <PropComponentCard propComponent={item} />}
           estimatedItemSize={150}
           ListEmptyComponent={() => <EmptyComponent />}
-          ItemSeparatorComponent={() => <Box h={'$4'} />}
+          ItemSeparatorComponent={() => <View className='h-4' />}
           keyExtractor={(item, index) => item.id ?? index.toString()}
         />
       </VStack>
 
-      <Fab
-        size='lg'
-        disabled={isNil(propDetail)}
+      <Button
+        size='fab'
         onPress={() => {
           setSelectedComponent(undefined);
           router.push(`/collection/${propDetail?.id}/components/form`);
         }}>
-        <FabIcon as={Plus} size='xl' />
-      </Fab>
+        <Plus color={colorsTheme.textForeground} />
+      </Button>
     </>
   );
 };

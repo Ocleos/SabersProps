@@ -1,6 +1,6 @@
-import { HStack } from '@gluestack-ui/themed';
 import { map } from 'lodash';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
+import { HStack } from '~ui/stack';
 import HomeButton from '../components/homeButton.component';
 import { getModules } from '../utils/home.utils';
 
@@ -8,7 +8,7 @@ const HomePage = () => {
   const modules = useMemo(getModules, []);
 
   return (
-    <HStack flexWrap='wrap' m='-$2'>
+    <HStack className='flex-wrap'>
       {map(modules, (module, index) => (
         <HomeButton key={`homeModule${index}`} module={module} />
       ))}

@@ -1,46 +1,47 @@
-import { Box, Center, HStack, RadioGroup, Switch, Text, VStack } from '@gluestack-ui/themed';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { View } from 'react-native';
 import RadioWrapper from '~src/components/form/radioWrapper.component';
 import { changeLanguage } from '~src/i18n.config';
-import { ThemeContext } from '~src/theme/themeContext.theme';
+import { useColorScheme } from '~src/theme/useColorTheme.theme';
 import { applicationVersion } from '~src/utils/platforms.utils';
+import { RadioGroup } from '~ui/radio-group';
+import { HStack, VStack } from '~ui/stack';
+import { Switch } from '~ui/switch';
+import { Text } from '~ui/text';
 
 const SettingsPage: React.FC = () => {
   const { t } = useTranslation(['common', 'settings']);
-  const themeContext = useContext(ThemeContext);
+
+  const { isDarkColorScheme, toggleColorScheme } = useColorScheme();
 
   const [selectedLanguage, setSelectedLanguage] = useState('fr');
 
-  const onLangChange = (value: string) => {
+  const onLanguageChange = (value: string) => {
     setSelectedLanguage(value);
     changeLanguage(value);
   };
 
   return (
-    <VStack gap={'$4'}>
-      <HStack gap={'$4'} alignItems='center'>
-        <Text flex={2}>{t('settings:SETTINGS.DARK_THEME')}</Text>
-        <Box flex={1} alignItems='center'>
-          <Switch size='lg' value={themeContext.isDarkTheme} onToggle={themeContext.toggleTheme} />
-        </Box>
+    <VStack className='gap-4'>
+      <HStack className='items-center'>
+        <Text className='basis-2/3'>{t('settings:SETTINGS.DARK_THEME')}</Text>
+        <View className='basis-1/3 items-center'>
+          <Switch checked={isDarkColorScheme} onCheckedChange={toggleColorScheme} />
+        </View>
       </HStack>
 
-      <HStack gap={'$4'} alignItems='center'>
-        <Text flex={2}>{t('settings:SETTINGS.LANGUAGES.DESCRIPTION')}</Text>
-        <Box flex={1} alignItems='center'>
-          <RadioGroup value={selectedLanguage} onChange={onLangChange}>
-            <RadioWrapper value='fr' label={t('settings:SETTINGS.LANGUAGES.FRENCH')} />
-            <RadioWrapper value='en' label={t('settings:SETTINGS.LANGUAGES.ENGLISH')} />
+      <HStack className='items-center'>
+        <Text className='basis-2/3'>{t('settings:SETTINGS.LANGUAGES.DESCRIPTION')}</Text>
+        <View className='basis-1/3 items-center'>
+          <RadioGroup value={selectedLanguage} onValueChange={onLanguageChange}>
+            <RadioWrapper value='fr' label={t('settings:SETTINGS.LANGUAGES.FRENCH')} onLabelPress={onLanguageChange} />
+            <RadioWrapper value='en' label={t('settings:SETTINGS.LANGUAGES.ENGLISH')} onLabelPress={onLanguageChange} />
           </RadioGroup>
-        </Box>
+        </View>
       </HStack>
 
-      {applicationVersion && (
-        <Center>
-          <Text>{`v${applicationVersion}`}</Text>
-        </Center>
-      )}
+      {applicationVersion && <Text className='text-center'>{`v${applicationVersion}`}</Text>}
     </VStack>
   );
 };

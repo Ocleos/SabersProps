@@ -1,11 +1,15 @@
-import { Button, ButtonIcon, HStack, Input, InputField, InputIcon, InputSlot } from '@gluestack-ui/themed';
-import { Filter, Search, X } from 'lucide-react-native';
+import { Filter } from 'lucide-react-native';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { colorsTheme } from '~src/theme/nativewind.theme';
+import { Button } from '~ui/button';
+import { Input } from '~ui/input';
+import { HStack } from '~ui/stack';
 
 interface IFilterSearchWrapper {
   searchValue: string;
   onSearchValue: (value: string) => void;
-  onOpenFilter?: (open: boolean) => void;
+  onOpenFilter?: () => void;
 }
 
 const FilterSearchWrapper: React.FC<IFilterSearchWrapper> = (props) => {
@@ -13,23 +17,25 @@ const FilterSearchWrapper: React.FC<IFilterSearchWrapper> = (props) => {
 
   const { onOpenFilter, onSearchValue, searchValue } = props;
 
+  const [textValue, setTextValue] = useState(searchValue);
+
   const onChangeText = (text: string) => {
+    setTextValue(text);
     onSearchValue(text.toLocaleLowerCase());
   };
 
   return (
-    <HStack gap={'$4'}>
-      <Input flex={1} variant='rounded'>
-        <InputIcon as={Search} size='xl' m={'$2'} />
-        <InputField placeholder={t('common:COMMON.SEARCH')} value={searchValue} onChangeText={onChangeText} />
-        <InputSlot onPress={() => onChangeText('')}>
-          <InputIcon as={X} size='xl' mr={'$2'} />
-        </InputSlot>
-      </Input>
+    <HStack className='items-center gap-4'>
+      <Input
+        className='flex-1 grow rounded-full'
+        value={textValue}
+        onChangeText={onChangeText}
+        placeholder={t('common:COMMON.SEARCH')}
+      />
 
       {onOpenFilter && (
-        <Button variant='link' borderRadius={'$full'} onPress={() => onOpenFilter(true)}>
-          <ButtonIcon as={Filter} size='xl' />
+        <Button size='icon' variant='ghost' className='flex-none' onPress={() => onOpenFilter()}>
+          <Filter color={colorsTheme.primary[500]} />
         </Button>
       )}
     </HStack>

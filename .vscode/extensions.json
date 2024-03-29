@@ -10,6 +10,7 @@
     "yoavbls.pretty-ts-errors",
     "biomejs.biome",
     "esbenp.prettier-vscode",
-    "gluestack.gluestack-vscode"
+    "gluestack.gluestack-vscode",
+    "bradlc.vscode-tailwindcss"
   ]
 }

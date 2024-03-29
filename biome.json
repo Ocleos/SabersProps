@@ -32,9 +32,18 @@
   },
   "linter": {
     "enabled": true,
+    "ignore": ["**/components/_ui/primitives/*"],
     "rules": {
       "correctness": {
+        "noUnusedImports": "warn",
         "noUnusedVariables": "error"
+      },
+      "nursery": {
+        "useSortedClasses": {
+          "options": {
+            "functions": ["clsx", "cva", "tw", "cn"]
+          }
+        }
       },
       "recommended": true
     }

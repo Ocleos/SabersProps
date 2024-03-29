@@ -3,12 +3,12 @@ import BadgeWrapper from '../label/badgeWrapper.component';
 
 interface IFilterBadgeProps {
   isSelected: boolean;
-  colorSelected: string;
+  colorSelected?: string;
   label: string;
 }
 
 export const FilterBadge: React.FC<IFilterBadgeProps> = ({ isSelected, colorSelected, label }) => {
-  const colorScheme = isSelected ? colorSelected : 'secondary';
+  const colorScheme = isSelected ? colorSelected : 'neutral';
 
   return <BadgeWrapper colorScheme={colorScheme} label={label} icon={isSelected ? Check : Ban} />;
 };

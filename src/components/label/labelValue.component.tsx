@@ -1,14 +1,16 @@
-import { HStack, Heading, Text } from '@gluestack-ui/themed';
+import { HStack } from '~ui/stack';
+import { Text } from '~ui/text';
+import { H4 } from '~ui/typography';
 
-type Props = {
+interface ILabelValueProps {
   title: string;
   value: string;
-};
+}
 
-const LabelValue: React.FC<Props> = ({ title, value }) => {
+const LabelValue: React.FC<ILabelValueProps> = ({ title, value }) => {
   return (
-    <HStack alignItems='center'>
-      <Heading size='sm'>{`${title} : `}</Heading>
+    <HStack className='items-center'>
+      <H4>{`${title} : `}</H4>
       <Text>{value}</Text>
     </HStack>
   );

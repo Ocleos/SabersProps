@@ -4,27 +4,25 @@ import { BarChart } from 'echarts/charts';
 import { GridComponent } from 'echarts/components';
 import * as echarts from 'echarts/core';
 import { get, keys, map } from 'lodash';
-import { useContext, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useWindowDimensions } from 'react-native';
 import { type PropState, propStates } from '~src/models/propState.model';
 import { PropType, propTypes } from '~src/models/propType.model';
-import { gluestackUIConfig } from '~src/theme/gluestack-ui.config';
-import { ThemeContext } from '~src/theme/themeContext.theme';
+import { colorsTheme, fontFamily } from '~src/theme/nativewind.theme';
+import { useColorScheme } from '~src/theme/useColorTheme.theme';
 import type { StateRepartition } from '../../models/repartition.model';
 
 echarts.use([SVGRenderer, BarChart, GridComponent]);
 
-type RepartitionChartProps = {
+interface IRepartitionChartProps {
   data: StateRepartition;
-};
+}
 
-const RepartitionChart: React.FC<RepartitionChartProps> = ({ data }) => {
+const RepartitionChart: React.FC<IRepartitionChartProps> = ({ data }) => {
   const { width } = useWindowDimensions();
   const svgRef = useRef<HTMLElement>(null);
 
-  const config = gluestackUIConfig;
-
-  const { theme } = useContext(ThemeContext);
+  const { colorScheme } = useColorScheme();
 
   const paddingCard = 64; // ($4 (Layout) + $4 (Card)) * 2
   const maxWidth = width - paddingCard;
@@ -39,7 +37,7 @@ const RepartitionChart: React.FC<RepartitionChartProps> = ({ data }) => {
         right: 0,
       },
       textStyle: {
-        fontFamily: 'Exo2_400Regular',
+        fontFamily: fontFamily.exo2,
       },
       xAxis: {
         type: 'category',
@@ -58,8 +56,8 @@ const RepartitionChart: React.FC<RepartitionChartProps> = ({ data }) => {
           stack: 'total',
           itemStyle: {
             borderWidth: 1,
-            color: get(config.tokens.colors, `${propStates[state].colorScheme}200`),
-            borderColor: get(config.tokens.colors, `${propStates[state].colorScheme}700`),
+            color: get(colorsTheme, `${propStates[state].colorScheme}.200`),
+            borderColor: get(colorsTheme, `${propStates[state].colorScheme}.500`),
           },
           name: propStates[state].label,
           data: data[state].values,
@@ -69,7 +67,7 @@ const RepartitionChart: React.FC<RepartitionChartProps> = ({ data }) => {
 
     let chart: echarts.ECharts;
     if (svgRef.current) {
-      chart = echarts.init(svgRef.current, theme, {
+      chart = echarts.init(svgRef.current, colorScheme, {
         renderer: 'svg',
         width: maxWidth,
         height: 300,
@@ -77,7 +75,7 @@ const RepartitionChart: React.FC<RepartitionChartProps> = ({ data }) => {
       chart.setOption(option);
     }
     return () => chart?.dispose();
-  }, [theme, maxWidth, config, data]);
+  }, [colorScheme, maxWidth, data]);
 
   return <SvgChart ref={svgRef} />;
 };

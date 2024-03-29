@@ -1,13 +1,14 @@
-import { Box, HStack, Text, VStack } from '@gluestack-ui/themed';
 import { ArrowRightLeft, CalendarDays, ShoppingCart, Store, Truck } from 'lucide-react-native';
+import { View } from 'react-native';
 import { useSWRConfig } from 'swr';
-import Card from '~src/components/card/card.component';
 import LabelIcon from '~src/components/label/labelIcon.component';
 import ActionsMenu from '~src/components/menu/actionsMenu.component';
 import type { PropComponent } from '~src/modules/collection/models/propComponent.model';
 import { usePropDetailStore } from '~src/modules/collection/stores/propDetail.store';
 import { CURRENCY_EUROS, FORMAT_DATE, formatDate, formatNumber, formatToCurrency } from '~src/utils/format.utils';
 import { COMPONENTS_URL_ENDPOINT, PROPS_URL_ENDPOINT } from '~src/utils/supabase.utils';
+import { Card, CardContent, CardHeader, CardTitle } from '~ui/card';
+import { HStack, VStack } from '~ui/stack';
 
 interface IPropComponentCard {
   propComponent: PropComponent;
@@ -20,12 +21,9 @@ const PropComponentCard: React.FC<IPropComponentCard> = ({ propComponent }) => {
 
   return (
     <Card>
-      <VStack gap={'$2'}>
-        <HStack gap={'$2'} alignItems='center'>
-          <Text flex={1} fontWeight={'bold'}>
-            {propComponent.label}
-          </Text>
-
+      <CardHeader>
+        <HStack className='items-center gap-2'>
+          <CardTitle className='grow'>{propComponent.label}</CardTitle>
           <ActionsMenu
             onActionSelected={() => setSelectedComponent(propComponent)}
             routeEdit={`/collection/${selectedComponent?.idProp}/components/form`}
@@ -36,31 +34,35 @@ const PropComponentCard: React.FC<IPropComponentCard> = ({ propComponent }) => {
             onDeleteCallback={() => mutate([PROPS_URL_ENDPOINT, selectedComponent?.idProp])}
           />
         </HStack>
+      </CardHeader>
 
-        <HStack>
-          <Box w={'$2/5'}>
-            <LabelIcon label={formatDate(propComponent.date, FORMAT_DATE)} icon={CalendarDays} />
-          </Box>
+      <CardContent>
+        <VStack className='gap-2'>
+          <HStack>
+            <View className='basis-1/2'>
+              <LabelIcon label={formatDate(propComponent.date, FORMAT_DATE)} icon={CalendarDays} />
+            </View>
 
-          <Box w={'$3/5'}>
-            <LabelIcon label={propComponent.seller} icon={Store} />
-          </Box>
-        </HStack>
+            <View className='basis-1/2'>
+              <LabelIcon label={propComponent.seller} icon={Store} />
+            </View>
+          </HStack>
 
-        <HStack>
-          <Box w={'$1/3'}>
-            <LabelIcon label={formatNumber(propComponent.rate, { maximumFractionDigits: 5 })} icon={ArrowRightLeft} />
-          </Box>
+          <HStack>
+            <View className='basis-1/3'>
+              <LabelIcon label={formatNumber(propComponent.rate, { maximumFractionDigits: 5 })} icon={ArrowRightLeft} />
+            </View>
 
-          <Box w={'$1/3'}>
-            <LabelIcon label={formatToCurrency(propComponent.priceEuros, CURRENCY_EUROS)} icon={ShoppingCart} />
-          </Box>
+            <View className='basis-1/3'>
+              <LabelIcon label={formatToCurrency(propComponent.priceEuros, CURRENCY_EUROS)} icon={ShoppingCart} />
+            </View>
 
-          <Box w={'$1/3'}>
-            <LabelIcon label={formatToCurrency(propComponent.feesEuros, CURRENCY_EUROS)} icon={Truck} />
-          </Box>
-        </HStack>
-      </VStack>
+            <View className='basis-1/3'>
+              <LabelIcon label={formatToCurrency(propComponent.feesEuros, CURRENCY_EUROS)} icon={Truck} />
+            </View>
+          </HStack>
+        </VStack>
+      </CardContent>
     </Card>
   );
 };

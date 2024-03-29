@@ -1,10 +1,12 @@
-import { Box, Fab, FabIcon, VStack } from '@gluestack-ui/themed';
 import { FlashList } from '@shopify/flash-list';
 import { useRouter } from 'expo-router';
 import { Plus } from 'lucide-react-native';
+import { View } from 'react-native';
 import useSWR from 'swr';
 import EmptyComponent from '~src/components/empty/empty.component';
+import { colorsTheme } from '~src/theme/nativewind.theme';
 import { NOTES_URL_ENDPOINT, getData } from '~src/utils/supabase.utils';
+import { Button } from '~ui/button';
 import NoteCardComponent from '../components/noteList/noteCard.component';
 import type { Note } from '../models/note.model';
 import { useNotesStore } from '../stores/notes.store';
@@ -18,27 +20,25 @@ const NoteListPage: React.FC = () => {
 
   return (
     <>
-      <VStack flex={1}>
-        <FlashList
-          data={data}
-          renderItem={({ item }) => <NoteCardComponent note={item} />}
-          estimatedItemSize={160}
-          ListEmptyComponent={() => <EmptyComponent />}
-          ItemSeparatorComponent={() => <Box h={'$4'} />}
-          keyExtractor={(item, index) => item.id ?? index.toString()}
-          onRefresh={() => mutate()}
-          refreshing={isLoading}
-        />
-      </VStack>
+      <FlashList
+        data={data}
+        renderItem={({ item }) => <NoteCardComponent note={item} />}
+        estimatedItemSize={160}
+        ListEmptyComponent={() => <EmptyComponent />}
+        ItemSeparatorComponent={() => <View className='h-4' />}
+        keyExtractor={(item, index) => item.id ?? index.toString()}
+        onRefresh={() => mutate()}
+        refreshing={isLoading}
+      />
 
-      <Fab
-        size='lg'
+      <Button
+        size='fab'
         onPress={() => {
           setSelectedNote(undefined);
           router.push('/notes/form');
         }}>
-        <FabIcon as={Plus} size='xl' />
-      </Fab>
+        <Plus color={colorsTheme.textForeground} />
+      </Button>
     </>
   );
 };

@@ -1,13 +1,18 @@
-import { Button, ButtonIcon, Icon, Menu, MenuItem, MenuItemLabel, Text, useToast } from '@gluestack-ui/themed';
 import { useRouter } from 'expo-router';
 import { isError } from 'lodash';
 import { MoreVertical, Pencil, Trash2 } from 'lucide-react-native';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import Toast from 'react-native-toast-message';
 import useSWRMutation from 'swr/mutation';
+import { colorsTheme } from '~src/theme/nativewind.theme';
+import { useColorScheme } from '~src/theme/useColorTheme.theme';
 import { deleteData } from '~src/utils/supabase.utils';
+import { Button } from '~ui/button';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '~ui/dropdown-menu';
+import { Text } from '~ui/text';
 import DeleteModal from '../modal/deleteModal.component';
-import ToastWrapper from '../toast/toastWrapper.component';
 
 type IActionsMenuProps = {
   onActionSelected: () => void;
@@ -22,7 +27,10 @@ type IActionsMenuProps = {
 const ActionsMenu: React.FC<IActionsMenuProps> = (props) => {
   const { t } = useTranslation(['common']);
   const router = useRouter();
-  const toast = useToast();
+
+  const { colorScheme } = useColorScheme();
+  const insets = useSafeAreaInsets();
+  const [open, setOpen] = useState(false);
 
   const { idSelected, nameSelected, onActionSelected, routeEdit, urlEndpoint, onDeleteCallback, resetSelected } = props;
 
@@ -35,6 +43,16 @@ const ActionsMenu: React.FC<IActionsMenuProps> = (props) => {
     resetSelected();
   };
 
+  const onEditPress = () => {
+    onActionSelected();
+    router.navigate(routeEdit);
+  };
+
+  const onDeletePress = () => {
+    onActionSelected();
+    setIsDeleteModalOpen(true);
+  };
+
   const onConfirmDelete = async () => {
     if (idSelected) {
       try {
@@ -44,62 +62,43 @@ const ActionsMenu: React.FC<IActionsMenuProps> = (props) => {
           onDeleteCallback();
         }
 
-        toast.show({
-          render: (id) => <ToastWrapper id={id} action='success' description={t('common:FORMS.DELETE_SUCCESS')} />,
-        });
-
+        Toast.show({ type: 'success', text2: t('common:FORMS.DELETE_SUCCESS') });
         onClose();
       } catch (error) {
-        toast.show({
-          render: (id) => (
-            <ToastWrapper id={id} action='error' description={isError(error) ? error.message : undefined} />
-          ),
-        });
+        Toast.show({ type: 'error', text2: isError(error) ? error.message : undefined });
       }
     }
   };
 
   return (
     <>
-      <Menu
-        selectionMode='single'
-        onSelectionChange={(keys) => {
-          // @ts-ignore TODO type
-          if (keys.size === 1) {
-            onActionSelected();
-            // @ts-ignore TODO type
-            if (keys.currentKey === 'edit') {
-              router.push(routeEdit);
-              // @ts-ignore TODO type
-            } else if (keys.currentKey === 'delete') {
-              setIsDeleteModalOpen(true);
-            }
-          }
-        }}
-        trigger={({ ...triggerProps }) => (
-          <Button variant='link' {...triggerProps}>
-            <ButtonIcon as={MoreVertical} size='xl' />
+      <DropdownMenu open={open} onOpenChange={setOpen}>
+        <DropdownMenuTrigger asChild>
+          <Button size='icon' variant='ghost'>
+            <MoreVertical color={colorsTheme.primary[500]} />
           </Button>
-        )}>
-        <MenuItem key='edit' textValue={t('common:COMMON.EDIT')}>
-          <Icon as={Pencil} size='xl' />
-          <MenuItemLabel ml={'$4'}>{t('common:COMMON.EDIT')}</MenuItemLabel>
-        </MenuItem>
+        </DropdownMenuTrigger>
 
-        <MenuItem key='delete' textValue={t('common:COMMON.DELETE')}>
-          <Icon as={Trash2} size='xl' />
-          <MenuItemLabel ml={'$4'}>{t('common:COMMON.DELETE')}</MenuItemLabel>
-        </MenuItem>
-      </Menu>
+        <DropdownMenuContent className='w-48' insets={{ ...insets, left: 24, right: 24 }}>
+          <DropdownMenuItem onPress={onEditPress}>
+            <Pencil color={colorsTheme.foreground[colorScheme]} />
+            <Text>{t('common:COMMON.EDIT')}</Text>
+          </DropdownMenuItem>
+
+          <DropdownMenuItem onPress={onDeletePress}>
+            <Trash2 color={colorsTheme.foreground[colorScheme]} />
+            <Text>{t('common:COMMON.DELETE')}</Text>
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
 
       <DeleteModal
         isOpen={isDeleteModalOpen}
         onClose={onClose}
-        title={t('common:COMMON.DELETE')}
+        description={t('common:FORMS.DELETE_CONFIRM', { name: nameSelected })}
         onConfirm={onConfirmDelete}
-        isLoading={isMutating}>
-        <Text>{t('common:FORMS.DELETE_CONFIRM', { name: nameSelected })}</Text>
-      </DeleteModal>
+        isLoading={isMutating}
+      />
     </>
   );
 };

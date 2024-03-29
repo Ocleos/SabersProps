@@ -5,8 +5,9 @@
     "baseUrl": ".",
     "paths": {
       "~assets/*": ["./assets/*"],
+      "~ui/*": ["./src/components/_ui/ui/*"],
       "~src/*": ["./src/*"]
     },
-    "moduleSuffixes": [".ios", ".android", ".native", ".web", ""]
+    "moduleSuffixes": ["", ".ios", ".android", ".native", ".web"]
   }
 }

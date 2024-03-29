@@ -1,9 +1,10 @@
-import { Spinner, VStack } from '@gluestack-ui/themed';
 import { isNil } from 'lodash';
 import { useTranslation } from 'react-i18next';
 import useSWR from 'swr';
 import CollapseCard from '~src/components/card/collapseCard.component';
 import { PROPS_PRICES_URL_ENDPOINT, getData } from '~src/utils/supabase.utils';
+import { Skeleton } from '~ui/skeleton';
+import { VStack } from '~ui/stack';
 import type { PricesInfosData } from '../../models/pricesInfosData.model';
 import PricesChart from './pricesChart.component';
 import PricesInfos from './pricesInfos.component';
@@ -15,9 +16,16 @@ const PricesCard = () => {
 
   return (
     <CollapseCard title={t('stats:LABEL.PRICES')} isOpened={false}>
-      {isLoading && <Spinner size='large' />}
+      {isLoading && (
+        <VStack className='gap-4'>
+          <Skeleton className='h-12 w-full' />
+          <Skeleton className='h-12 w-full' />
+          <Skeleton className='h-12 w-full' />
+          <Skeleton className='h-12 w-full' />
+        </VStack>
+      )}
       {!isNil(data) && (
-        <VStack gap='$4'>
+        <VStack className='gap-4'>
           <PricesInfos data={data} />
           <PricesChart data={data} />
         </VStack>

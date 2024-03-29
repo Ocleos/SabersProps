@@ -1,16 +1,18 @@
-import { HStack, Icon, Text } from '@gluestack-ui/themed';
 import type { LucideIcon } from 'lucide-react-native';
+import { colorsTheme } from '~src/theme/nativewind.theme';
+import { HStack } from '~ui/stack';
+import { Text } from '~ui/text';
 
 interface ILabelIcon {
   label: string;
   icon: LucideIcon;
 }
 
-const LabelIcon: React.FC<ILabelIcon> = ({ label, icon }) => {
+const LabelIcon: React.FC<ILabelIcon> = (props) => {
   return (
-    <HStack gap={'$2'}>
-      <Icon as={icon} size={'xl'} color={'$primary500'} />
-      <Text flex={1}>{label}</Text>
+    <HStack className='gap-2'>
+      <props.icon color={colorsTheme.primary[500]} />
+      <Text>{props.label}</Text>
     </HStack>
   );
 };

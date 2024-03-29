@@ -1,8 +1,8 @@
-import { VStack } from '@gluestack-ui/themed';
 import { Cpu, Shapes, User2, Wrench } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
 import CollapseCard from '~src/components/card/collapseCard.component';
 import LabelIcon from '~src/components/label/labelIcon.component';
+import { VStack } from '~ui/stack';
 import type { PropDetail } from '../../../models/propDetail.model';
 
 interface IInformationsCard {
@@ -14,7 +14,7 @@ const InformationsCard: React.FC<IInformationsCard> = ({ prop }) => {
 
   return (
     <CollapseCard title={t('collection:CATEGORIES.INFORMATIONS')} isOpened={true}>
-      <VStack gap={'$2'}>
+      <VStack className='gap-2'>
         <LabelIcon label={prop.manufacturer} icon={Wrench} />
         <LabelIcon label={prop.chassisDesigner ?? ''} icon={Shapes} />
         <LabelIcon label={prop.soundboard ?? ''} icon={Cpu} />

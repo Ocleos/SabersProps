@@ -1,11 +1,10 @@
-import { Box, Button, ButtonIcon, ScrollView, View, useToken } from '@gluestack-ui/themed';
 import { DrawerActions } from '@react-navigation/native';
 import { Stack, useNavigation, useRouter } from 'expo-router';
 import { ArrowLeft, Menu } from 'lucide-react-native';
-import { useContext } from 'react';
-import type { ViewProps } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { ThemeContext } from '~src/theme/themeContext.theme';
+import { ScrollView, View, type ViewProps } from 'react-native';
+import { colorsTheme } from '~src/theme/nativewind.theme';
+import { useColorScheme } from '~src/theme/useColorTheme.theme';
+import { Button } from '~ui/button';
 
 interface IPageLayoutProps {
   children: React.ReactNode;
@@ -22,13 +21,12 @@ const PageLayout: React.FC<IPageLayoutProps> = ({
   hasDrawerToggle = false,
   children,
 }) => {
-  const themeContext = useContext(ThemeContext);
-
   const router = useRouter();
   const navigation = useNavigation();
+  const { isDarkColorScheme, colorScheme } = useColorScheme();
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <View className='flex-1'>
       <Stack.Screen
         options={{
           title,
@@ -36,37 +34,34 @@ const PageLayout: React.FC<IPageLayoutProps> = ({
           headerLeft: () => {
             return hasDrawerToggle ? (
               <Button
-                variant='link'
-                size='lg'
-                p={'$2'}
-                w={'$11'}
+                size='icon'
+                variant='ghost'
+                className='mr-2'
                 onPress={() => navigation.dispatch(DrawerActions.toggleDrawer)}>
-                <ButtonIcon as={Menu} size='xl' />
+                <Menu color={colorsTheme.primary[500]} />
               </Button>
             ) : (
-              <Button variant='link' size='lg' p={'$2'} w={'$11'} onPress={() => router.back()}>
-                <ButtonIcon as={ArrowLeft} size='xl' />
+              <Button size='icon' className='mr-2' variant='ghost' onPress={() => router.back()}>
+                <ArrowLeft color={colorsTheme.primary[500]} />
               </Button>
             );
           },
-          statusBarColor: themeContext.isDarkTheme
-            ? useToken('colors', 'backgroundDark900')
-            : useToken('colors', 'backgroundLight100'),
-          statusBarStyle: themeContext.isDarkTheme ? 'light' : 'dark',
+          statusBarColor: colorsTheme.card[colorScheme],
+          statusBarStyle: isDarkColorScheme ? 'light' : 'dark',
           statusBarAnimation: 'fade',
         }}
       />
 
       {isScrollable ? (
-        <ScrollView flex={1} p={'$4'} {...viewProps}>
-          <Box mb={'$8'}>{children}</Box>
+        <ScrollView className='flex-1 p-4' {...viewProps}>
+          <View className='mb-8'>{children}</View>
         </ScrollView>
       ) : (
-        <View flex={1} p={'$4'} {...viewProps}>
+        <View className='flex-1 p-4' {...viewProps}>
           {children}
         </View>
       )}
-    </SafeAreaView>
+    </View>
   );
 };
 

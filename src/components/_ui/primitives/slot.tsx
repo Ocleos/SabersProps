@@ -102,7 +102,7 @@ export { Image, Pressable, Text, View };
 
 function composeRefs<T>(...refs: (React.Ref<T> | undefined)[]) {
   return (node: T) =>
-    refs.map((ref) => {
+    refs.forEach((ref) => {
       if (typeof ref === 'function') {
         ref(node);
       } else if (ref != null) {

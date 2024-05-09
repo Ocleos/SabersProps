@@ -1,23 +1,15 @@
-import {
-  FormControl,
-  FormControlError,
-  FormControlErrorIcon,
-  FormControlErrorText,
-  FormControlHelper,
-  FormControlHelperText,
-  FormControlLabel,
-  FormControlLabelText,
-} from '@gluestack-ui/themed';
-import { AlertOctagon } from 'lucide-react-native';
+import { Label } from '~ui/label';
+import { HStack, VStack } from '~ui/stack';
+import { Text } from '~ui/text';
+import { AlertOctagon, Info } from '../_ui/Icons';
+import { cn } from '../_ui/lib/utils';
 
 export type FormControlProps = {
-  isInvalid?: boolean;
   isRequired?: boolean;
-  isDisabled?: boolean;
-  isReadOnly?: boolean;
 };
 
 type FormControlWrapperProps = {
+  name: string;
   placeholder?: string;
   error?: string;
   helperText?: string;
@@ -25,33 +17,34 @@ type FormControlWrapperProps = {
 } & FormControlProps;
 
 const FormControlWrapper: React.FC<FormControlWrapperProps> = (props) => {
-  const { placeholder, error, helperText, children } = props;
+  const { name, placeholder, error, helperText, children } = props;
 
   return (
-    <FormControl
-      isDisabled={props.isDisabled}
-      isInvalid={props.isInvalid}
-      isReadOnly={props.isReadOnly}
-      isRequired={props.isRequired}>
-      <FormControlLabel>
-        <FormControlLabelText>{placeholder}</FormControlLabelText>
-      </FormControlLabel>
+    <VStack>
+      <HStack className='gap-1'>
+        <Label nativeID={`${name}-item`} className={cn('pb-1 text-lg', error && 'text-destructive')}>
+          {placeholder}
+        </Label>
+
+        {props.isRequired && <Text className='text-destructive'>*</Text>}
+      </HStack>
 
       {children}
 
       {helperText && (
-        <FormControlHelper>
-          <FormControlHelperText>{helperText}</FormControlHelperText>
-        </FormControlHelper>
+        <HStack className='items-center gap-1 pt-1'>
+          <Info className='text-muted-foreground' size={14} />
+          <Text className='text-muted-foreground text-sm'>{helperText}</Text>
+        </HStack>
       )}
 
       {error && (
-        <FormControlError>
-          <FormControlErrorIcon as={AlertOctagon} />
-          <FormControlErrorText>{error}</FormControlErrorText>
-        </FormControlError>
+        <HStack className='items-center gap-1 pt-1'>
+          <AlertOctagon className='text-destructive' size={14} />
+          <Text className='font-exo2Medium text-destructive text-sm'>{error}</Text>
+        </HStack>
       )}
-    </FormControl>
+    </VStack>
   );
 };
 

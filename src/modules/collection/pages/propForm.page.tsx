@@ -1,4 +1,3 @@
-import { SelectItem } from '@gluestack-ui/themed';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'expo-router';
 import { isError, isNil } from 'lodash';
@@ -17,6 +16,7 @@ import { colorsTheme } from '~src/theme/nativewind.theme';
 import { PROPS_URL_ENDPOINT, postData, putData } from '~src/utils/supabase.utils';
 import { MAX_LENGTH } from '~src/utils/validator.utils';
 import { Button } from '~ui/button';
+import { SelectItem } from '~ui/select';
 import { VStack } from '~ui/stack';
 import { Text } from '~ui/text';
 import { useCollectionStore } from '../stores/collection.store';
@@ -75,7 +75,9 @@ const PropFormPage: React.FC = () => {
         control={control}
         name='type'
         placeholder={t('collection:LABELS.TYPE')}
-        initialSelectedLabel={isEdit ? propTypes[selectedProp.type].label : undefined}
+        initialSelectedValue={
+          isEdit ? { value: selectedProp.type.toString(), label: propTypes[selectedProp.type].label } : undefined
+        }
         formControlProps={{ isRequired: true }}>
         <SelectItem label={t('collection:TYPE.LIGHTSABER')} value={PropType.LIGHTSABER.toString()} />
         <SelectItem label={t('collection:TYPE.PROP')} value={PropType.PROP.toString()} />
@@ -86,7 +88,9 @@ const PropFormPage: React.FC = () => {
         control={control}
         name='state'
         placeholder={t('collection:LABELS.STATE')}
-        initialSelectedLabel={isEdit ? propStates[selectedProp.state].label : undefined}
+        initialSelectedValue={
+          isEdit ? { label: propStates[selectedProp.state].label, value: selectedProp.state.toString() } : undefined
+        }
         formControlProps={{ isRequired: true }}>
         <SelectItem label={t('collection:STATE.PRODUCTION')} value={PropState.PRODUCTION.toString()} />
         <SelectItem label={t('collection:STATE.DESIGN')} value={PropState.DESIGN.toString()} />

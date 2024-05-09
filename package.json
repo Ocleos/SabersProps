@@ -20,9 +20,6 @@
   },
   "dependencies": {
     "@expo-google-fonts/exo-2": "^0.2.3",
-    "@gluestack-style/react": "^1.0.56",
-    "@gluestack-ui/config": "^1.1.18",
-    "@gluestack-ui/themed": "^1.1.25",
     "@gorhom/bottom-sheet": "^4.6.1",
     "@hookform/resolvers": "^3.3.4",
     "@react-navigation/drawer": "^6.6.15",

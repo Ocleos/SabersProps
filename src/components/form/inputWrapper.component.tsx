@@ -1,14 +1,14 @@
-import { Input, InputField } from '@gluestack-ui/themed';
 import { isNil } from 'lodash';
 import type { ComponentProps } from 'react';
 import { type FieldValues, type UseControllerProps, useController } from 'react-hook-form';
+import { Input } from '~ui/input';
 import FormControlWrapper, { type FormControlProps } from './formControlWrapper.component';
 
 type InputWrapperProps = {
   placeholder?: string;
   helperText?: string;
   formControlProps?: FormControlProps;
-  inputProps?: ComponentProps<typeof InputField>;
+  inputProps?: ComponentProps<typeof Input>;
 };
 
 const InputWrapper = <T extends FieldValues>(props: InputWrapperProps & UseControllerProps<T>) => {
@@ -19,29 +19,31 @@ const InputWrapper = <T extends FieldValues>(props: InputWrapperProps & UseContr
 
   const { placeholder, helperText, formControlProps, inputProps } = props;
 
+  const onChange = (entryValue: string) => {
+    let newValue = entryValue;
+    if (inputProps?.keyboardType === 'decimal-pad' || inputProps?.keyboardType === 'numeric') {
+      newValue = entryValue.replace(',', '.');
+    }
+
+    field.onChange(newValue);
+  };
+
   return (
     <FormControlWrapper
+      name={props.name}
       placeholder={placeholder}
       helperText={helperText}
       error={error?.message}
-      isInvalid={invalid}
       {...formControlProps}>
-      <Input>
-        <InputField
-          placeholder={placeholder}
-          value={!isNil(field.value) ? `${field.value}` : ''}
-          onBlur={field.onBlur}
-          onChangeText={(entryValue) => {
-            let newValue = entryValue;
-            if (inputProps?.keyboardType === 'decimal-pad' || inputProps?.keyboardType === 'numeric') {
-              newValue = entryValue.replace(',', '.');
-            }
-
-            field.onChange(newValue);
-          }}
-          {...inputProps}
-        />
-      </Input>
+      <Input
+        aria-labelledby={`${props.name}-item`}
+        placeholder={placeholder}
+        value={!isNil(field.value) ? `${field.value}` : ''}
+        onBlur={field.onBlur}
+        onChangeText={onChange}
+        className={invalid ? 'border-destructive' : ''}
+        {...inputProps}
+      />
     </FormControlWrapper>
   );
 };

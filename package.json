@@ -1,6 +1,6 @@
 {
   "name": "sabersprops",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "main": "expo-router/entry",
   "private": true,
   "description": "Infos about collection of Sabers & Props",

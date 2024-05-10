@@ -42,6 +42,7 @@ const InputWrapper = <T extends FieldValues>(props: InputWrapperProps & UseContr
         onBlur={field.onBlur}
         onChangeText={onChange}
         className={invalid ? 'border-destructive' : ''}
+        editable={!formControlProps?.isDisabled}
         {...inputProps}
       />
     </FormControlWrapper>

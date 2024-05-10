@@ -43,6 +43,7 @@ const TextAreaWrapper = <T extends FieldValues>(props: TextAreaWrapperProps & Us
         value={!isNil(field.value) ? `${field.value}` : ''}
         onBlur={field.onBlur}
         onChangeText={onChange}
+        editable={!formControlProps?.isDisabled}
         {...inputProps}
       />
     </FormControlWrapper>

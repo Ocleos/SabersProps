@@ -6,6 +6,7 @@ import { cn } from '../_ui/lib/utils';
 
 export type FormControlProps = {
   isRequired?: boolean;
+  isDisabled?: boolean;
 };
 
 type FormControlWrapperProps = {

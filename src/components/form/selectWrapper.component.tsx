@@ -40,6 +40,7 @@ const SelectWrapper = <T extends FieldValues>(props: ISelectWrapperProps & UseCo
         }}
         {...selectProps}>
         <SelectTrigger
+          disabled={formControlProps?.isDisabled}
           className={invalid ? 'border-destructive' : ''}
           onLayout={(ev) => {
             setSelectTriggerWidth(ev.nativeEvent.layout.width);

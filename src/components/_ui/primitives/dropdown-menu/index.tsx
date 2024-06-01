@@ -8,9 +8,9 @@ import {
   Text,
   View,
 } from 'react-native';
-import { type LayoutPosition, useRelativePosition } from '~src/components/_ui/primitives/hooks';
-import { Portal as RNPPortal } from '~src/components/_ui/primitives/portal';
-import * as Slot from '~src/components/_ui/primitives/slot';
+import { type LayoutPosition, useRelativePosition } from '~rnr/primitives/hooks';
+import { Portal as RNPPortal } from '~rnr/primitives/portal';
+import * as Slot from '~rnr/primitives/slot';
 import type {
   ForceMountable,
   PositionedContentProps,
@@ -20,7 +20,7 @@ import type {
   SlottableViewProps,
   TextRef,
   ViewRef,
-} from '~src/components/_ui/primitives/types';
+} from '~rnr/primitives/types';
 import type {
   DropdownMenuCheckboxItemProps,
   DropdownMenuItemProps,

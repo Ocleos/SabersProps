@@ -2,11 +2,11 @@ import { get } from 'lodash';
 import type { LucideIcon } from 'lucide-react-native';
 import type { FC } from 'react';
 import type { SvgProps } from 'react-native-svg';
+import { cn } from '~rnr/lib/utils';
+import { Badge } from '~rnr/ui/badge';
+import { HStack } from '~rnr/ui/stack';
+import { Text } from '~rnr/ui/text';
 import { colorsTheme } from '~src/theme/nativewind.theme';
-import { Badge } from '~ui/badge';
-import { HStack } from '~ui/stack';
-import { Text } from '~ui/text';
-import { cn } from '../_ui/lib/utils';
 
 interface IBadgeWrapperProps {
   colorScheme?: string;

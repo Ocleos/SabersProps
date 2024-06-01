@@ -1,6 +1,6 @@
-import { HStack } from '~ui/stack';
-import { Text } from '~ui/text';
-import { H4 } from '~ui/typography';
+import { HStack } from '~rnr/ui/stack';
+import { Text } from '~rnr/ui/text';
+import { H4 } from '~rnr/ui/typography';
 
 interface ILabelValueProps {
   title: string;

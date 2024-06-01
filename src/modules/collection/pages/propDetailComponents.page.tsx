@@ -3,11 +3,11 @@ import { useRouter } from 'expo-router';
 import { Plus } from 'lucide-react-native';
 import { useEffect } from 'react';
 import { View } from 'react-native';
+import { Button } from '~rnr/ui/button';
+import { VStack } from '~rnr/ui/stack';
 import EmptyComponent from '~src/components/empty/empty.component';
 import FilterSearchWrapper from '~src/components/list/filterSearchWrapper.component';
 import { colorsTheme } from '~src/theme/nativewind.theme';
-import { Button } from '~ui/button';
-import { VStack } from '~ui/stack';
 import PropComponentCard from '../components/propDetail/components/propComponentCard.component';
 import { usePropDetailStore } from '../stores/propDetail.store';
 

@@ -1,7 +1,7 @@
 import { type VariantProps, cva } from 'class-variance-authority';
 import * as React from 'react';
 import { View } from 'react-native';
-import { TextClassContext } from '~src/components/_ui/ui/text';
+import { TextClassContext } from '~rnr/ui/text';
 
 const coloredViewVariants = cva('', {
   variants: {

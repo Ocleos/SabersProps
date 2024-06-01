@@ -2,9 +2,9 @@ import { DrawerActions } from '@react-navigation/native';
 import { Stack, useNavigation, useRouter } from 'expo-router';
 import { ArrowLeft, Menu } from 'lucide-react-native';
 import { ScrollView, View, type ViewProps } from 'react-native';
+import { Button } from '~rnr/ui/button';
 import { colorsTheme } from '~src/theme/nativewind.theme';
 import { useColorScheme } from '~src/theme/useColorTheme.theme';
-import { Button } from '~ui/button';
 
 interface IPageLayoutProps {
   children: React.ReactNode;

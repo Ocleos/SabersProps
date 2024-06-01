@@ -1,10 +1,10 @@
 import { useRouter } from 'expo-router';
 import { Languages } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
+import { Button } from '~rnr/ui/button';
+import { VStack } from '~rnr/ui/stack';
+import { Text } from '~rnr/ui/text';
 import { colorsTheme } from '~src/theme/nativewind.theme';
-import { Button } from '~ui/button';
-import { VStack } from '~ui/stack';
-import { Text } from '~ui/text';
 
 const ToolsPage: React.FC = () => {
   const { t } = useTranslation(['tools']);

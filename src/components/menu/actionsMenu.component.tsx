@@ -6,12 +6,12 @@ import { useTranslation } from 'react-i18next';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Toast from 'react-native-toast-message';
 import useSWRMutation from 'swr/mutation';
+import { Button } from '~rnr/ui/button';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '~rnr/ui/dropdown-menu';
+import { Text } from '~rnr/ui/text';
 import { colorsTheme } from '~src/theme/nativewind.theme';
 import { useColorScheme } from '~src/theme/useColorTheme.theme';
 import { deleteData } from '~src/utils/supabase.utils';
-import { Button } from '~ui/button';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '~ui/dropdown-menu';
-import { Text } from '~ui/text';
 import DeleteModal from '../modal/deleteModal.component';
 
 type IActionsMenuProps = {

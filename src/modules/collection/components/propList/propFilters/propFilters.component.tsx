@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
+import { HStack, VStack } from '~rnr/ui/stack';
+import { Large } from '~rnr/ui/typography';
 import { PropState } from '~src/models/propState.model';
 import { PropType } from '~src/models/propType.model';
-import { HStack, VStack } from '~ui/stack';
-import { Large } from '~ui/typography';
 import StateFilter from './stateFilter.component';
 import TypeFilter from './typeFilter.component';
 

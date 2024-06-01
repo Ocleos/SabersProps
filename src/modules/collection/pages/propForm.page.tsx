@@ -7,6 +7,10 @@ import { useTranslation } from 'react-i18next';
 import Toast from 'react-native-toast-message';
 import useSWRMutation from 'swr/mutation';
 import * as Yup from 'yup';
+import { Button } from '~rnr/ui/button';
+import { SelectItem } from '~rnr/ui/select';
+import { VStack } from '~rnr/ui/stack';
+import { Text } from '~rnr/ui/text';
 import InputWrapper from '~src/components/form/inputWrapper.component';
 import SelectWrapper from '~src/components/form/selectWrapper.component';
 import type { Prop } from '~src/models/prop.model';
@@ -15,10 +19,6 @@ import { PropType, propTypes } from '~src/models/propType.model';
 import { colorsTheme } from '~src/theme/nativewind.theme';
 import { PROPS_URL_ENDPOINT, postData, putData } from '~src/utils/supabase.utils';
 import { MAX_LENGTH } from '~src/utils/validator.utils';
-import { Button } from '~ui/button';
-import { SelectItem } from '~ui/select';
-import { VStack } from '~ui/stack';
-import { Text } from '~ui/text';
 import { useCollectionStore } from '../stores/collection.store';
 
 const PropFormPage: React.FC = () => {

@@ -1,9 +1,9 @@
 import { useLocalSearchParams } from 'expo-router';
 import { useEffect } from 'react';
 import useSWR from 'swr';
+import { Skeleton } from '~rnr/ui/skeleton';
+import { VStack } from '~rnr/ui/stack';
 import { PROPS_URL_ENDPOINT } from '~src/utils/supabase.utils';
-import { Skeleton } from '~ui/skeleton';
-import { VStack } from '~ui/stack';
 import InformationsCard from '../components/propDetail/informations/informationsCard.component';
 import PricesCard from '../components/propDetail/informations/pricesCard.component';
 import StatusDetail from '../components/propDetail/informations/statusDetail.component';

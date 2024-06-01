@@ -1,6 +1,6 @@
 import { map } from 'lodash';
 import { useMemo } from 'react';
-import { HStack } from '~ui/stack';
+import { HStack } from '~rnr/ui/stack';
 import HomeButton from '../components/homeButton.component';
 import { getModules } from '../utils/home.utils';
 

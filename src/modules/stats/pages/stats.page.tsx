@@ -1,4 +1,4 @@
-import { VStack } from '~ui/stack';
+import { VStack } from '~rnr/ui/stack';
 import PricesCard from '../components/prices/pricesCard.component';
 import RepartitionCard from '../components/repartition/repartitionCard.component';
 

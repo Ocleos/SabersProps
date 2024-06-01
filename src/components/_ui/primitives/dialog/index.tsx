@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { BackHandler, type GestureResponderEvent, Pressable, Text, View } from 'react-native';
-import { useControllableState } from '~src/components/_ui/primitives/hooks';
-import { Portal as RNPPortal } from '~src/components/_ui/primitives/portal';
-import * as Slot from '~src/components/_ui/primitives/slot';
+import { useControllableState } from '~rnr/primitives/hooks';
+import { Portal as RNPPortal } from '~rnr/primitives/portal';
+import * as Slot from '~rnr/primitives/slot';
 import type {
   PressableRef,
   SlottablePressableProps,
@@ -10,7 +10,7 @@ import type {
   SlottableViewProps,
   TextRef,
   ViewRef,
-} from '~src/components/_ui/primitives/types';
+} from '~rnr/primitives/types';
 import type { DialogContentProps, DialogOverlayProps, DialogPortalProps, DialogRootProps, RootContext } from './types';
 
 const DialogContext = React.createContext<(RootContext & { nativeID: string }) | null>(null);

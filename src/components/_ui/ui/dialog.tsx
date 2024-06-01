@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated';
-import { X } from '~src/components/_ui/Icons';
-import { cn } from '~src/components/_ui/lib/utils';
-import * as DialogPrimitive from '~src/components/_ui/primitives/dialog';
+import { X } from '~rnr/lib/icons/Icons';
+import { cn } from '~rnr/lib/utils';
+import * as DialogPrimitive from '~rnr/primitives/dialog';
 
 const Dialog = DialogPrimitive.Root;
 

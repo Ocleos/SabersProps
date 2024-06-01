@@ -1,11 +1,11 @@
 import { DrawerContent, type DrawerContentComponentProps } from '@react-navigation/drawer';
 import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { Separator } from '~rnr/ui/separator';
+import { HStack } from '~rnr/ui/stack';
+import { H3 } from '~rnr/ui/typography';
 import LogoIcon from '~src/assets/icons/logo.icon';
 import { colorsTheme } from '~src/theme/nativewind.theme';
-import { Separator } from '~ui/separator';
-import { HStack } from '~ui/stack';
-import { H3 } from '~ui/typography';
 
 const DrawerLayout: React.FC<DrawerContentComponentProps> = (props) => {
   return (

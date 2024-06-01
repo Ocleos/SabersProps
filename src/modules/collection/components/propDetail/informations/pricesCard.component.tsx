@@ -1,9 +1,9 @@
 import { CreditCard, HardHat, ShoppingCart, Tags, Truck } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
+import { VStack } from '~rnr/ui/stack';
 import CollapseCard from '~src/components/card/collapseCard.component';
 import LabelIcon from '~src/components/label/labelIcon.component';
 import { formatToCurrency } from '~src/utils/format.utils';
-import { VStack } from '~ui/stack';
 import type { PropDetail } from '../../../models/propDetail.model';
 
 interface IPricesCard {

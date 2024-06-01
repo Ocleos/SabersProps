@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
+import { RadioGroup } from '~rnr/ui/radio-group';
+import { HStack, VStack } from '~rnr/ui/stack';
+import { Switch } from '~rnr/ui/switch';
+import { Text } from '~rnr/ui/text';
 import RadioWrapper from '~src/components/form/radioWrapper.component';
 import { changeLanguage } from '~src/i18n.config';
 import { useColorScheme } from '~src/theme/useColorTheme.theme';
 import { applicationVersion } from '~src/utils/platforms.utils';
-import { RadioGroup } from '~ui/radio-group';
-import { HStack, VStack } from '~ui/stack';
-import { Switch } from '~ui/switch';
-import { Text } from '~ui/text';
 
 const SettingsPage: React.FC = () => {
   const { t } = useTranslation(['common', 'settings']);

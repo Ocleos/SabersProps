@@ -1,10 +1,10 @@
 import { isNil } from 'lodash';
 import { useTranslation } from 'react-i18next';
 import useSWR from 'swr';
+import { Skeleton } from '~rnr/ui/skeleton';
+import { VStack } from '~rnr/ui/stack';
 import CollapseCard from '~src/components/card/collapseCard.component';
 import { PROPS_PRICES_URL_ENDPOINT, getData } from '~src/utils/supabase.utils';
-import { Skeleton } from '~ui/skeleton';
-import { VStack } from '~ui/stack';
 import type { PricesInfosData } from '../../models/pricesInfosData.model';
 import PricesChart from './pricesChart.component';
 import PricesInfos from './pricesInfos.component';

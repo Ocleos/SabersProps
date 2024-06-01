@@ -1,8 +1,8 @@
 import { type VariantProps, cva } from 'class-variance-authority';
 import * as React from 'react';
 import { Pressable } from 'react-native';
-import { cn } from '~src/components/_ui/lib/utils';
-import { TextClassContext } from '~src/components/_ui/ui/text';
+import { cn } from '~rnr/lib/utils';
+import { TextClassContext } from '~rnr/ui/text';
 
 const buttonVariants = cva(
   'group flex flex-row items-center justify-center gap-4 rounded-md web:focus-visible:outline-none web:focus-visible:ring-2 web:focus-visible:ring-ring web:focus-visible:ring-offset-2 web:ring-offset-background web:transition-colors',

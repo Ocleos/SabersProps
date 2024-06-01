@@ -4,7 +4,7 @@ import { Slot } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Toast from 'react-native-toast-message';
-import { PortalHost } from '~src/components/_ui/primitives/portal';
+import { PortalHost } from '~rnr/primitives/portal';
 import { toastConfig } from '~src/components/toast/toastWrapper.component';
 import '~src/i18n.config';
 import { navigationTheme } from '~src/theme/customTheme.theme';

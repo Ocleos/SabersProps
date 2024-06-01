@@ -1,8 +1,8 @@
+import { Card, CardContent, CardHeader, CardTitle } from '~rnr/ui/card';
+import { HStack } from '~rnr/ui/stack';
+import { Text } from '~rnr/ui/text';
 import ActionsMenu from '~src/components/menu/actionsMenu.component';
 import { NOTES_URL_ENDPOINT } from '~src/utils/supabase.utils';
-import { Card, CardContent, CardHeader, CardTitle } from '~ui/card';
-import { HStack } from '~ui/stack';
-import { Text } from '~ui/text';
 import type { Note } from '../../models/note.model';
 import { useNotesStore } from '../../stores/notes.store';
 

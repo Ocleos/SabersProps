@@ -9,13 +9,13 @@ import Toast from 'react-native-toast-message';
 import { useSWRConfig } from 'swr';
 import useSWRMutation from 'swr/mutation';
 import * as yup from 'yup';
+import { Button } from '~rnr/ui/button';
+import { VStack } from '~rnr/ui/stack';
+import { Text } from '~rnr/ui/text';
 import InputWrapper from '~src/components/form/inputWrapper.component';
 import { colorsTheme } from '~src/theme/nativewind.theme';
 import { COMPONENTS_URL_ENDPOINT, PROPS_URL_ENDPOINT, postData, putData } from '~src/utils/supabase.utils';
 import { MAX_LENGTH } from '~src/utils/validator.utils';
-import { Button } from '~ui/button';
-import { VStack } from '~ui/stack';
-import { Text } from '~ui/text';
 import type { PropComponent } from '../models/propComponent.model';
 import { usePropDetailStore } from '../stores/propDetail.store';
 

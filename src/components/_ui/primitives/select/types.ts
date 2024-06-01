@@ -1,4 +1,4 @@
-import type { ForceMountable } from '~src/components/_ui/primitives/types';
+import type { ForceMountable } from '~rnr/primitives/types';
 
 type Option =
   | {

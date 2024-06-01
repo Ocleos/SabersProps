@@ -1,7 +1,7 @@
 import { isNil } from 'lodash';
 import type { ComponentProps } from 'react';
 import { type FieldValues, type UseControllerProps, useController } from 'react-hook-form';
-import { Input } from '~ui/input';
+import { Input } from '~rnr/ui/input';
 import FormControlWrapper, { type FormControlProps } from './formControlWrapper.component';
 
 type InputWrapperProps = {

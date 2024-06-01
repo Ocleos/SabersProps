@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
+import { VStack } from '~rnr/ui/stack';
+import { Large } from '~rnr/ui/typography';
 import NoDataIcon from '~src/assets/noData.icon';
-import { VStack } from '~ui/stack';
-import { Large } from '~ui/typography';
 
 interface IEmptyComponentProps {
   title?: string;

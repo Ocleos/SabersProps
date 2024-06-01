@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Platform } from 'react-native';
 import Animated, { interpolateColor, useAnimatedStyle, useDerivedValue, withTiming } from 'react-native-reanimated';
-import { cn } from '~src/components/_ui/lib/utils';
-import * as SwitchPrimitives from '~src/components/_ui/primitives/switch';
+import { cn } from '~rnr/lib/utils';
+import * as SwitchPrimitives from '~rnr/primitives/switch';
 import { colorsTheme } from '~src/theme/nativewind.theme';
 import { useColorScheme } from '~src/theme/useColorTheme.theme';
 

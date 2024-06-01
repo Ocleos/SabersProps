@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import { Button } from '~ui/button';
-import { Text } from '~ui/text';
+import { Button } from '~rnr/ui/button';
+import { Text } from '~rnr/ui/text';
 import ModalWrapper, { type IModalWrapperProps } from './modalWrapper.component';
 
 interface IDeleteModalProps extends IModalWrapperProps {

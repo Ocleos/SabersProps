@@ -1,6 +1,6 @@
-import { Label } from '~ui/label';
-import { RadioGroupItem } from '~ui/radio-group';
-import { HStack } from '~ui/stack';
+import { Label } from '~rnr/ui/label';
+import { RadioGroupItem } from '~rnr/ui/radio-group';
+import { HStack } from '~rnr/ui/stack';
 
 interface IRadioWrapperProps {
   value: string;

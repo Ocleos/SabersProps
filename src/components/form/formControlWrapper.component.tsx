@@ -1,8 +1,8 @@
-import { Label } from '~ui/label';
-import { HStack, VStack } from '~ui/stack';
-import { Text } from '~ui/text';
-import { AlertOctagon, Info } from '../_ui/Icons';
-import { cn } from '../_ui/lib/utils';
+import { AlertOctagon, Info } from '~rnr/lib/icons/Icons';
+import { cn } from '~rnr/lib/utils';
+import { Label } from '~rnr/ui/label';
+import { HStack, VStack } from '~rnr/ui/stack';
+import { Text } from '~rnr/ui/text';
 
 export type FormControlProps = {
   isRequired?: boolean;

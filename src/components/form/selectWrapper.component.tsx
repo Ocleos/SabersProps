@@ -1,8 +1,8 @@
 import { type ComponentProps, useState } from 'react';
 import { type FieldValues, type UseControllerProps, useController } from 'react-hook-form';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { type Option, Select, SelectContent, SelectGroup, SelectTrigger, SelectValue } from '~ui/select';
-import { cn } from '../_ui/lib/utils';
+import { cn } from '~rnr/lib/utils';
+import { type Option, Select, SelectContent, SelectGroup, SelectTrigger, SelectValue } from '~rnr/ui/select';
 import FormControlWrapper, { type FormControlProps } from './formControlWrapper.component';
 
 type ISelectWrapperProps = {

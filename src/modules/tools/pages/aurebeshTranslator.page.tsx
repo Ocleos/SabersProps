@@ -1,7 +1,7 @@
 import { map } from 'lodash';
 import type React from 'react';
-import { HStack } from '~ui/stack';
-import { Text } from '~ui/text';
+import { HStack } from '~rnr/ui/stack';
+import { Text } from '~rnr/ui/text';
 
 const AurebeshTranslator: React.FC = () => {
   const alphabetCode = [...Array.from(Array(26)).map((_, i) => i + 65), ...Array.from(Array(10)).map((_, i) => i + 48)];

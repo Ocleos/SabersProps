@@ -1,9 +1,9 @@
 import { ChevronDown, ChevronUp } from 'lucide-react-native';
 import { type ComponentProps, useState } from 'react';
 import { Pressable, type View } from 'react-native';
+import { Card, CardContent, CardHeader, CardTitle } from '~rnr/ui/card';
+import { HStack } from '~rnr/ui/stack';
 import { colorsTheme } from '~src/theme/nativewind.theme';
-import { Card, CardContent, CardHeader, CardTitle } from '~ui/card';
-import { HStack } from '~ui/stack';
 
 interface ICollapseCard extends ComponentProps<typeof View> {
   title?: string;

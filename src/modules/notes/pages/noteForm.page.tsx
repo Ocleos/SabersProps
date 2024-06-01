@@ -7,14 +7,14 @@ import { useTranslation } from 'react-i18next';
 import Toast from 'react-native-toast-message';
 import useSWRMutation from 'swr/mutation';
 import * as Yup from 'yup';
+import { Button } from '~rnr/ui/button';
+import { VStack } from '~rnr/ui/stack';
+import { Text } from '~rnr/ui/text';
 import InputWrapper from '~src/components/form/inputWrapper.component';
 import TextAreaWrapper from '~src/components/form/textAreaWrapper.component';
 import { colorsTheme } from '~src/theme/nativewind.theme';
 import { NOTES_URL_ENDPOINT, postData, putData } from '~src/utils/supabase.utils';
 import { MAX_LENGTH } from '~src/utils/validator.utils';
-import { Button } from '~ui/button';
-import { VStack } from '~ui/stack';
-import { Text } from '~ui/text';
 import type { Note } from '../models/note.model';
 import { useNotesStore } from '../stores/notes.store';
 

@@ -1,7 +1,7 @@
 import { type VariantProps, cva } from 'class-variance-authority';
 import * as React from 'react';
 import { View } from 'react-native';
-import { cn } from '~src/components/_ui/lib/utils';
+import { cn } from '~rnr/lib/utils';
 
 const stackVariants = cva('flex', {
   variants: {

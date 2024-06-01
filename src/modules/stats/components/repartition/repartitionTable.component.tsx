@@ -1,15 +1,15 @@
 import { keys, map } from 'lodash';
 import { useTranslation } from 'react-i18next';
 import { View, type ViewProps } from 'react-native';
+import { cn } from '~rnr/lib/utils';
+import { HStack, VStack } from '~rnr/ui/stack';
+import { Text } from '~rnr/ui/text';
 import BlasterIcon from '~src/assets/icons/blaster.icon';
 import DeathTrooperIcon from '~src/assets/icons/deathTrooper.icon';
 import LightsabersIcon from '~src/assets/icons/lightsabers.icon';
-import { cn } from '~src/components/_ui/lib/utils';
 import { type PropState, propStates } from '~src/models/propState.model';
 import { colorsTheme } from '~src/theme/nativewind.theme';
 import { useColorScheme } from '~src/theme/useColorTheme.theme';
-import { HStack, VStack } from '~ui/stack';
-import { Text } from '~ui/text';
 import type { Repartition } from '../../models/repartition.model';
 
 interface IRepartitionTableProps {

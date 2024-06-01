@@ -1,7 +1,7 @@
 import type { LucideIcon } from 'lucide-react-native';
+import { HStack } from '~rnr/ui/stack';
+import { Text } from '~rnr/ui/text';
 import { colorsTheme } from '~src/theme/nativewind.theme';
-import { HStack } from '~ui/stack';
-import { Text } from '~ui/text';
 
 interface ILabelIcon {
   label: string;

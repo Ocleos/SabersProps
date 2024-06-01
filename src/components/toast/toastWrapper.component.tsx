@@ -2,12 +2,12 @@ import { get } from 'lodash';
 import { AlertTriangle, CheckCircle, Info, type LucideIcon, Megaphone, XOctagon } from 'lucide-react-native';
 import { View } from 'react-native';
 import type { ToastConfig } from 'react-native-toast-message';
+import { cn } from '~rnr/lib/utils';
+import { HStack, VStack } from '~rnr/ui/stack';
+import { Text } from '~rnr/ui/text';
+import { Large } from '~rnr/ui/typography';
 import i18n from '~src/i18n.config';
 import { colorsTheme } from '~src/theme/nativewind.theme';
-import { HStack, VStack } from '~ui/stack';
-import { Text } from '~ui/text';
-import { Large } from '~ui/typography';
-import { cn } from '../_ui/lib/utils';
 
 export const toastConfig: ToastConfig = {
   error: (props) => <ToastWrapper action='error' description={props.text2} />,

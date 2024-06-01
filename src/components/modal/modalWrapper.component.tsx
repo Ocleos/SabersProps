@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
-import { Button } from '~ui/button';
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '~ui/dialog';
-import { HStack } from '~ui/stack';
-import { Text } from '~ui/text';
+import { Button } from '~rnr/ui/button';
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '~rnr/ui/dialog';
+import { HStack } from '~rnr/ui/stack';
+import { Text } from '~rnr/ui/text';
 
 export interface IModalWrapperProps {
   title?: string;

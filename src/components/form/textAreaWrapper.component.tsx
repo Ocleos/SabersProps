@@ -1,8 +1,8 @@
 import { isNil } from 'lodash';
 import type { ComponentProps } from 'react';
 import { type FieldValues, type UseControllerProps, useController } from 'react-hook-form';
-import { Textarea } from '~ui/textarea';
-import { cn } from '../_ui/lib/utils';
+import { cn } from '~rnr/lib/utils';
+import { Textarea } from '~rnr/ui/textarea';
 import FormControlWrapper, { type FormControlProps } from './formControlWrapper.component';
 
 type TextAreaWrapperProps = {

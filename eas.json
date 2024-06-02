@@ -7,6 +7,7 @@
     "base": {
       "distribution": "internal",
       "android": {
+        "image": "latest",
         "buildType": "apk"
       }
     },

@@ -37,7 +37,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     url: 'https://u.expo.dev/c10d5799-2d0f-4239-bf9a-f9278fa20c1c',
   },
   runtimeVersion: {
-    policy: 'sdkVersion',
+    policy: 'appVersion',
   },
   plugins: [
     [

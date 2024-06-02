@@ -10,6 +10,7 @@ import ActionsMenu from '~src/components/menu/actionsMenu.component';
 import type { Prop } from '~src/models/prop.model';
 import { propStates } from '~src/models/propState.model';
 import { propTypes } from '~src/models/propType.model';
+import { appRoutes } from '~src/router/routes.utils';
 import { colorsTheme } from '~src/theme/nativewind.theme';
 import { PROPS_URL_ENDPOINT } from '~src/utils/supabase.utils';
 import { useCollectionStore } from '../../stores/collection.store';
@@ -26,14 +27,14 @@ const PropCardComponent: React.FC<IPropCardProps> = ({ prop }) => {
   const PropIcon = propTypes[prop.type].icon;
 
   return (
-    <Pressable onPress={() => router.push(`/collection/${prop.id}/informations`)}>
+    <Pressable onPress={() => router.push(appRoutes.collection.informations(prop.id))}>
       <Card className={cn(`border-${propStates[prop.state].colorScheme}-500`)}>
         <CardHeader>
           <HStack className='items-center gap-2'>
             <CardTitle className='grow'>{prop.name}</CardTitle>
             <ActionsMenu
               onActionSelected={() => setSelectedProp(prop)}
-              routeEdit={'/collection/form'}
+              routeEdit={appRoutes.collection.form}
               urlEndpoint={PROPS_URL_ENDPOINT}
               idSelected={prop?.id}
               nameSelected={prop?.name}

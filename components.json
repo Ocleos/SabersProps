@@ -2,6 +2,6 @@
   "platforms": "native-only",
   "aliases": {
     "components": "~src/components/_ui",
-    "lib": "~src/components/_ui/lib"
+    "lib": "~rnr/lib"
   }
 }

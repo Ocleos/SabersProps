@@ -7,6 +7,7 @@ import { Button } from '~rnr/ui/button';
 import { VStack } from '~rnr/ui/stack';
 import EmptyComponent from '~src/components/empty/empty.component';
 import FilterSearchWrapper from '~src/components/list/filterSearchWrapper.component';
+import { appRoutes } from '~src/router/routes.utils';
 import { colorsTheme } from '~src/theme/nativewind.theme';
 import PropComponentCard from '../components/propDetail/components/propComponentCard.component';
 import { usePropDetailStore } from '../stores/propDetail.store';
@@ -42,7 +43,7 @@ const PropDetailComponents: React.FC = () => {
         size='fab'
         onPress={() => {
           setSelectedComponent(undefined);
-          router.push(`/collection/${propDetail?.id}/components/form`);
+          router.push(appRoutes.collection.components.form(propDetail?.id));
         }}>
         <Plus color={colorsTheme.textForeground} />
       </Button>

@@ -1,7 +1,8 @@
 import { Stack } from 'expo-router';
+import { appRoutes } from '~src/router/routes.utils';
 
 export const unstable_settings = {
-  initialRouteName: '/collection/',
+  initialRouteName: appRoutes.collection.root,
 };
 
 export default () => {

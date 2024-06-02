@@ -5,6 +5,7 @@ import { View } from 'react-native';
 import useSWR from 'swr';
 import { Button } from '~rnr/ui/button';
 import EmptyComponent from '~src/components/empty/empty.component';
+import { appRoutes } from '~src/router/routes.utils';
 import { colorsTheme } from '~src/theme/nativewind.theme';
 import { NOTES_URL_ENDPOINT, getData } from '~src/utils/supabase.utils';
 import NoteCardComponent from '../components/noteList/noteCard.component';
@@ -35,7 +36,7 @@ const NoteListPage: React.FC = () => {
         size='fab'
         onPress={() => {
           setSelectedNote(undefined);
-          router.push('/notes/form');
+          router.push(appRoutes.notes.form);
         }}>
         <Plus color={colorsTheme.textForeground} />
       </Button>

@@ -11,6 +11,7 @@ import EmptyComponent from '~src/components/empty/empty.component';
 import FilterSearchWrapper from '~src/components/list/filterSearchWrapper.component';
 import BottomSheetWrapper from '~src/components/menu/bottomSheetWrapper.component';
 import type { Prop } from '~src/models/prop.model';
+import { appRoutes } from '~src/router/routes.utils';
 import { colorsTheme } from '~src/theme/nativewind.theme';
 import { PROPS_URL_ENDPOINT, getData } from '~src/utils/supabase.utils';
 import PropCardComponent from '../components/propList/propCard.component';
@@ -56,7 +57,7 @@ const PropListPage: React.FC = () => {
         size='fab'
         onPress={() => {
           setSelectedProp(undefined);
-          router.push('/collection/form');
+          router.push(appRoutes.collection.form);
         }}>
         <Plus color={colorsTheme.textForeground} />
       </Button>

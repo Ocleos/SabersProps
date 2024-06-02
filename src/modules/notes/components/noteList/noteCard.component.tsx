@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '~rnr/ui/card';
 import { HStack } from '~rnr/ui/stack';
 import { Text } from '~rnr/ui/text';
 import ActionsMenu from '~src/components/menu/actionsMenu.component';
+import { appRoutes } from '~src/router/routes.utils';
 import { NOTES_URL_ENDPOINT } from '~src/utils/supabase.utils';
 import type { Note } from '../../models/note.model';
 import { useNotesStore } from '../../stores/notes.store';
@@ -20,7 +21,7 @@ const NoteCardComponent: React.FC<INoteCardProps> = ({ note }) => {
           <CardTitle className='grow'>{note.title}</CardTitle>
           <ActionsMenu
             onActionSelected={() => setSelectedNote(note)}
-            routeEdit={'/notes/form'}
+            routeEdit={appRoutes.notes.form}
             urlEndpoint={NOTES_URL_ENDPOINT}
             idSelected={selectedNote?.id}
             nameSelected={selectedNote?.title}

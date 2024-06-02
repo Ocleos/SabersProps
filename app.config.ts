@@ -39,6 +39,17 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   runtimeVersion: {
     policy: 'sdkVersion',
   },
+  plugins: [
+    [
+      'expo-build-properties',
+      {
+        android: {
+          enableProguardInReleaseBuilds: true,
+          enableShrinkResourcesInReleaseBuilds: true,
+        },
+      },
+    ],
+  ],
   extra: {
     apiUrl: 'https://pnfeltfqgvkdgyeqtddd.supabase.co',
     apiKey: process.env.apiKey,

@@ -6759,6 +6759,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"expo-build-properties@npm:~0.12.1":
+  version: 0.12.1
+  resolution: "expo-build-properties@npm:0.12.1"
+  dependencies:
+    ajv: "npm:^8.11.0"
+    semver: "npm:^7.6.0"
+  peerDependencies:
+    expo: "*"
+  checksum: 10/351d487e7f18fba147c52b765f1613c61a62adbd8aaaa40cd6adb8c55b9eec2c610ed09175f2ef3dc3727890e610810ad2d035e0c0445d2321895220104a659c
+  languageName: node
+  linkType: hard
+
 "expo-constants@npm:~16.0.0, expo-constants@npm:~16.0.2":
   version: 16.0.2
   resolution: "expo-constants@npm:16.0.2"
@@ -9868,14 +9880,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lucide-react-native@npm:^0.381.0":
-  version: 0.381.0
-  resolution: "lucide-react-native@npm:0.381.0"
+"lucide-react-native@npm:^0.383.0":
+  version: 0.383.0
+  resolution: "lucide-react-native@npm:0.383.0"
   peerDependencies:
     react: ^16.5.1 || ^17.0.0 || ^18.0.0
     react-native: "*"
     react-native-svg: ^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0
-  checksum: 10/be79ca5daf8502985053a944583c2499483327155be7f6c4cd68d4a0df08a278b56b316f4bffc87903cf3350ee76d2c1035a55d35035562f9422e283371e7e25
+  checksum: 10/86365b646ac5153499d6fd1e6512e98c72170f9121ede73d6bb8a77a32ec5dee88959985c32168d9c6c3b42a3b86136dcde24f1b58ac37ad25bb0faa4d3ddcd2
   languageName: node
   linkType: hard
 
@@ -12746,6 +12758,7 @@ __metadata:
     eas-cli: "npm:^9.1.0"
     echarts: "npm:^5.5.0"
     expo: "npm:~51.0.9"
+    expo-build-properties: "npm:~0.12.1"
     expo-constants: "npm:~16.0.2"
     expo-linear-gradient: "npm:~13.0.2"
     expo-linking: "npm:~6.3.1"
@@ -12757,7 +12770,7 @@ __metadata:
     husky: "npm:^9.0.11"
     i18next: "npm:^23.11.5"
     lodash: "npm:^4.17.21"
-    lucide-react-native: "npm:^0.381.0"
+    lucide-react-native: "npm:^0.383.0"
     nativewind: "npm:4.0.36"
     react: "npm:18.2.0"
     react-dom: "npm:18.2.0"

@@ -5,25 +5,25 @@ import { cn } from '~rnr/lib/utils';
 import { TextClassContext } from '~rnr/ui/text';
 
 const buttonVariants = cva(
-  'group flex flex-row items-center justify-center gap-4 rounded-md web:focus-visible:outline-none web:focus-visible:ring-2 web:focus-visible:ring-ring web:focus-visible:ring-offset-2 web:ring-offset-background web:transition-colors',
+  'group flex flex-row items-center justify-center gap-4 rounded-md web:ring-offset-background web:transition-colors web:focus-visible:outline-none web:focus-visible:ring-2 web:focus-visible:ring-ring web:focus-visible:ring-offset-2',
   {
     variants: {
       variant: {
-        default: 'bg-primary active:opacity-90 web:hover:opacity-90',
-        destructive: 'bg-destructive active:opacity-90 web:hover:opacity-90',
-        success: 'bg-success active:opacity-90 web:hover:opacity-90',
-        info: 'bg-info active:opacity-90 web:hover:opacity-90',
-        warning: 'bg-warning active:opacity-90 web:hover:opacity-90',
+        default: 'bg-primary web:hover:opacity-90 active:opacity-90',
+        destructive: 'bg-destructive web:hover:opacity-90 active:opacity-90',
+        success: 'bg-success web:hover:opacity-90 active:opacity-90',
+        info: 'bg-info web:hover:opacity-90 active:opacity-90',
+        warning: 'bg-warning web:hover:opacity-90 active:opacity-90',
         outline:
-          'border border-input bg-background active:bg-accent web:hover:bg-accent web:hover:text-accent-foreground',
-        secondary: 'bg-secondary active:opacity-80 web:hover:opacity-80',
-        ghost: 'active:bg-accent web:hover:bg-accent web:hover:text-accent-foreground',
-        link: 'web:focus:underline web:hover:underline web:underline-offset-4',
+          'border border-input bg-background web:hover:bg-accent web:hover:text-accent-foreground active:bg-accent',
+        secondary: 'bg-secondary web:hover:opacity-80 active:opacity-80',
+        ghost: 'web:hover:bg-accent web:hover:text-accent-foreground active:bg-accent',
+        link: 'web:underline-offset-4 web:hover:underline web:focus:underline',
       },
       size: {
-        default: 'h-10 px-4 py-2 native:h-12 native:px-5 native:py-3',
+        default: 'h-10 native:h-12 native:px-5 px-4 native:py-3 py-2',
         sm: 'h-9 rounded-md px-3',
-        lg: 'h-11 rounded-md px-8 native:h-14',
+        lg: 'h-11 native:h-14 rounded-md px-8',
         icon: 'h-10 w-10',
         fab: 'absolute right-4 bottom-4 z-20 h-14 w-14 rounded-full',
       },
@@ -36,7 +36,7 @@ const buttonVariants = cva(
 );
 
 const buttonTextVariants = cva(
-  'font-exo2Medium text-foreground text-sm web:whitespace-nowrap native:text-base web:transition-colors',
+  'web:whitespace-nowrap font-exo2Medium native:text-base text-foreground text-sm web:transition-colors',
   {
     variants: {
       variant: {
@@ -74,7 +74,7 @@ const Button = React.forwardRef<React.ElementRef<typeof Pressable>, ButtonProps>
         value={cn(props.disabled && 'web:pointer-events-none', buttonTextVariants({ variant, size }))}>
         <Pressable
           className={cn(
-            props.disabled && 'opacity-50 web:pointer-events-none',
+            props.disabled && 'web:pointer-events-none opacity-50',
             buttonVariants({ variant, size, className }),
           )}
           ref={ref}

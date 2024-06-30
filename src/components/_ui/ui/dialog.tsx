@@ -70,7 +70,7 @@ const DialogContent = React.forwardRef<
         <DialogPrimitive.Content
           ref={ref}
           className={cn(
-            'z-50 max-w-lg gap-4 rounded-lg border border-border bg-background p-4 shadow-lg web:cursor-default web:duration-200',
+            'z-50 max-w-lg web:cursor-default gap-4 rounded-lg border border-border bg-background p-4 shadow-lg web:duration-200',
             open ? 'web:fade-in-0 web:zoom-in-95 web:animate-in' : 'web:fade-out-0 web:zoom-out-95 web:animate-out',
             className,
           )}
@@ -78,7 +78,7 @@ const DialogContent = React.forwardRef<
           {children}
           <DialogPrimitive.Close
             className={
-              'web:group absolute top-4 right-4 rounded-sm p-0.5 opacity-70 web:disabled:pointer-events-none web:hover:opacity-100 web:focus:outline-none web:focus:ring-2 web:focus:ring-ring web:focus:ring-offset-2 web:ring-offset-background web:transition-opacity'
+              'web:group absolute top-4 right-4 rounded-sm p-0.5 opacity-70 web:ring-offset-background web:transition-opacity web:hover:opacity-100 web:focus:outline-none web:focus:ring-2 web:focus:ring-ring web:focus:ring-offset-2 web:disabled:pointer-events-none'
             }>
             <X
               size={Platform.OS === 'web' ? 16 : 18}
@@ -108,7 +108,7 @@ const DialogTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Title
     ref={ref}
-    className={cn('font-exo2SemiBold text-foreground text-lg leading-none tracking-tight native:text-xl', className)}
+    className={cn('font-exo2SemiBold native:text-xl text-foreground text-lg leading-none tracking-tight', className)}
     {...props}
   />
 ));
@@ -120,7 +120,7 @@ const DialogDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Description
     ref={ref}
-    className={cn('font-exo2 text-muted-foreground text-sm native:text-base', className)}
+    className={cn('font-exo2 native:text-base text-muted-foreground text-sm', className)}
     {...props}
   />
 ));

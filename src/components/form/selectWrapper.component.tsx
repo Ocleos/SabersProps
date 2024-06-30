@@ -47,7 +47,7 @@ const SelectWrapper = <T extends FieldValues>(props: ISelectWrapperProps & UseCo
           }}>
           <SelectValue
             className={cn(
-              'font-exo2 text-sm native:text-lg',
+              'font-exo2 native:text-lg text-sm',
               field.value ? 'text-foreground' : 'text-muted-foreground',
             )}
             placeholder={placeholder}

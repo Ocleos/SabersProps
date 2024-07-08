@@ -1,5 +1,5 @@
-import { get } from 'lodash';
 import { AlertTriangle, CheckCircle, Info, type LucideIcon, Megaphone, XOctagon } from 'lucide-react-native';
+import { get } from 'radash';
 import { View } from 'react-native';
 import type { ToastConfig } from 'react-native-toast-message';
 import { cn } from '~rnr/lib/utils';

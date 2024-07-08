@@ -2,8 +2,8 @@ import { SVGRenderer, SvgChart } from '@wuba/react-native-echarts';
 import type { EChartsOption, SeriesOption } from 'echarts';
 import { BarChart } from 'echarts/charts';
 import { GridComponent } from 'echarts/components';
-import * as echarts from 'echarts/core';
-import { get, keys, map } from 'lodash';
+import { type ECharts, init, use } from 'echarts/core';
+import { get } from 'radash';
 import { useEffect, useRef } from 'react';
 import { useWindowDimensions } from 'react-native';
 import { type PropState, propStates } from '~src/models/propState.model';
@@ -12,7 +12,7 @@ import { colorsTheme, fontFamily } from '~src/theme/nativewind.theme';
 import { useColorScheme } from '~src/theme/useColorTheme.theme';
 import type { StateRepartition } from '../../models/repartition.model';
 
-echarts.use([SVGRenderer, BarChart, GridComponent]);
+use([SVGRenderer, BarChart, GridComponent]);
 
 interface IRepartitionChartProps {
   data: StateRepartition;
@@ -48,7 +48,7 @@ const RepartitionChart: React.FC<IRepartitionChartProps> = ({ data }) => {
         type: 'value',
         inverse: true,
       },
-      series: map(keys(data), (stateData): SeriesOption => {
+      series: Object.keys(data).map((stateData): SeriesOption => {
         const state: PropState = Number(stateData);
 
         return {
@@ -65,9 +65,9 @@ const RepartitionChart: React.FC<IRepartitionChartProps> = ({ data }) => {
       }),
     };
 
-    let chart: echarts.ECharts;
+    let chart: ECharts;
     if (svgRef.current) {
-      chart = echarts.init(svgRef.current, colorScheme, {
+      chart = init(svgRef.current, colorScheme, {
         renderer: 'svg',
         width: maxWidth,
         height: 300,

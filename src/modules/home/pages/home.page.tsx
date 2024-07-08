@@ -1,4 +1,3 @@
-import { map } from 'lodash';
 import { useMemo } from 'react';
 import { HStack } from '~rnr/ui/stack';
 import HomeButton from '../components/homeButton.component';
@@ -9,8 +8,8 @@ const HomePage = () => {
 
   return (
     <HStack className='flex-wrap'>
-      {map(modules, (module, index) => (
-        <HomeButton key={`homeModule${index}`} module={module} />
+      {modules.map((module) => (
+        <HomeButton key={module.id} module={module} />
       ))}
     </HStack>
   );

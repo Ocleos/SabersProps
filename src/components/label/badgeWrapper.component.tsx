@@ -1,5 +1,5 @@
-import { get } from 'lodash';
 import type { LucideIcon } from 'lucide-react-native';
+import { get } from 'radash';
 import type { FC } from 'react';
 import type { SvgProps } from 'react-native-svg';
 import { cn } from '~rnr/lib/utils';

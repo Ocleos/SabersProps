@@ -1,4 +1,4 @@
-import { filter, sortBy } from 'lodash';
+import { alphabetical } from 'radash';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 import { searchValueInObject } from '~src/utils/arrays.utils';
@@ -30,12 +30,12 @@ export const usePropDetailStore = create<IPropDetailState>()(
 
     updateComponents: (data: PropComponent[], search: string) => {
       set((state) => {
-        const filteredData = filter(data, (item) => {
+        const filteredData = data.filter((item) => {
           const isSearchIncluded = searchValueInObject(search, item);
 
           return isSearchIncluded;
         });
-        const sortedData = sortBy(filteredData, ['date', 'label']);
+        const sortedData = alphabetical(filteredData, (value) => value.date);
 
         return { ...state, components: sortedData };
       });

@@ -1,4 +1,3 @@
-import { keys, map } from 'lodash';
 import { useTranslation } from 'react-i18next';
 import { View, type ViewProps } from 'react-native';
 import { cn } from '~rnr/lib/utils';
@@ -8,6 +7,7 @@ import BlasterIcon from '~src/assets/icons/blaster.icon';
 import DeathTrooperIcon from '~src/assets/icons/deathTrooper.icon';
 import LightsabersIcon from '~src/assets/icons/lightsabers.icon';
 import { type PropState, propStates } from '~src/models/propState.model';
+import { PropType } from '~src/models/propType.model';
 import { colorsTheme } from '~src/theme/nativewind.theme';
 import { useColorScheme } from '~src/theme/useColorTheme.theme';
 import type { Repartition } from '../../models/repartition.model';
@@ -51,7 +51,7 @@ const RepartitionTable: React.FC<IRepartitionTableProps> = ({ data }) => {
         </Cell>
       </HStack>
 
-      {map(keys(data.states), (stateValue) => {
+      {Object.keys(data.states).map((stateValue) => {
         const state: PropState = Number(stateValue);
 
         return (
@@ -62,8 +62,8 @@ const RepartitionTable: React.FC<IRepartitionTableProps> = ({ data }) => {
               </Text>
             </Cell>
 
-            {map(data.states[state].values, (value, index) => (
-              <Cell key={`valueType${index}`}>
+            {data.states[state].values.map((value, index) => (
+              <Cell key={`valueType${PropType[index + 1]}`}>
                 <Text>{value}</Text>
               </Cell>
             ))}
@@ -80,8 +80,8 @@ const RepartitionTable: React.FC<IRepartitionTableProps> = ({ data }) => {
           <Text className='font-exo2Bold'>{t('common:COMMON.TOTAL')}</Text>
         </Cell>
 
-        {map(data.types, (value, index) => (
-          <Cell key={`totalType${index}`}>
+        {data.types.map((value, index) => (
+          <Cell key={`totalType${PropType[index + 1]}`}>
             <Text>{value}</Text>
           </Cell>
         ))}

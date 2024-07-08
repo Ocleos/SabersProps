@@ -1,9 +1,9 @@
 import { SVGRenderer, SvgChart } from '@wuba/react-native-echarts';
-import type { EChartsOption } from 'echarts';
+import type { EChartsOption, SeriesOption } from 'echarts';
 import { BarChart, ScatterChart } from 'echarts/charts';
 import { GridComponent, TooltipComponent } from 'echarts/components';
-import * as echarts from 'echarts/core';
-import { get, map } from 'lodash';
+import { type ECharts, init, use } from 'echarts/core';
+import { get } from 'radash';
 import { useEffect, useRef } from 'react';
 import { useWindowDimensions } from 'react-native';
 import { colorsTheme, fontFamily } from '~src/theme/nativewind.theme';
@@ -16,7 +16,7 @@ interface IPricesChartProps {
   data: PricesInfosData[];
 }
 
-echarts.use([SVGRenderer, BarChart, GridComponent, TooltipComponent, ScatterChart]);
+use([SVGRenderer, BarChart, GridComponent, TooltipComponent, ScatterChart]);
 
 const PricesChart: React.FC<IPricesChartProps> = ({ data }) => {
   const { width } = useWindowDimensions();
@@ -52,10 +52,10 @@ const PricesChart: React.FC<IPricesChartProps> = ({ data }) => {
       },
       yAxis: {
         type: 'category',
-        data: map(data, 'name'),
+        data: data.map((value) => value.name),
         inverse: true,
       },
-      series: map(pricesChartSeries, (entry) => {
+      series: pricesChartSeries.map((entry) => {
         return {
           name: entry.label,
           type: entry.isVisible ? 'bar' : 'scatter',
@@ -66,14 +66,14 @@ const PricesChart: React.FC<IPricesChartProps> = ({ data }) => {
             color: get(colorsTheme, `${entry.color}.200`),
             borderColor: get(colorsTheme, `${entry.color}.500`),
           },
-          data: map(data, entry.property),
-        };
+          data: data.map((value) => get(value, entry.property)),
+        } as SeriesOption;
       }),
     };
 
-    let chart: echarts.ECharts;
+    let chart: ECharts;
     if (svgRef.current) {
-      chart = echarts.init(svgRef.current, colorScheme, {
+      chart = init(svgRef.current, colorScheme, {
         renderer: 'svg',
         width: maxWidth,
         height: height,

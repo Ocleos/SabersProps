@@ -1,6 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { isError, isNaN as isNaNumber, isNil } from 'lodash';
 import { Save } from 'lucide-react-native';
 import { useEffect } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
@@ -24,7 +23,7 @@ const PropComponentForm = () => {
   const router = useRouter();
 
   const { setSelectedComponent, selectedComponent } = usePropDetailStore();
-  const isEdit = !isNil(selectedComponent);
+  const isEdit = selectedComponent != null;
   const { id: idProp } = useLocalSearchParams<{ id: string }>();
 
   const { trigger, isMutating } = useSWRMutation(
@@ -64,8 +63,8 @@ const PropComponentForm = () => {
     const priceEuros = rateWatch * priceWatch;
     const feesEuros = rateWatch * feesWatch;
 
-    setValue('priceEuros', isNaNumber(priceEuros) ? 0 : priceEuros);
-    setValue('feesEuros', isNaNumber(feesEuros) ? 0 : feesEuros);
+    setValue('priceEuros', Number.isNaN(priceEuros) ? 0 : priceEuros);
+    setValue('feesEuros', Number.isNaN(feesEuros) ? 0 : feesEuros);
   }, [setValue, rateWatch, priceWatch, feesWatch]);
 
   const onSubmit = async (values: PropComponent) => {
@@ -80,7 +79,7 @@ const PropComponentForm = () => {
       mutate([PROPS_URL_ENDPOINT, idProp]);
       router.back();
     } catch (error) {
-      Toast.show({ type: 'error', text2: isError(error) ? error.message : undefined });
+      Toast.show({ type: 'error', text2: error instanceof Error ? error.message : undefined });
     }
   };
 

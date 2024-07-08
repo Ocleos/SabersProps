@@ -1,4 +1,3 @@
-import { isNil } from 'lodash';
 import { useTranslation } from 'react-i18next';
 import useSWR from 'swr';
 import { Skeleton } from '~rnr/ui/skeleton';
@@ -24,7 +23,7 @@ const PricesCard = () => {
           <Skeleton className='h-12 w-full' />
         </VStack>
       )}
-      {!isNil(data) && (
+      {data && (
         <VStack className='gap-4'>
           <PricesInfos data={data} />
           <PricesChart data={data} />

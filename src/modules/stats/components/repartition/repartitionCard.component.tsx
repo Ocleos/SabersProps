@@ -1,4 +1,3 @@
-import { isNil } from 'lodash';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import useSWR from 'swr';
@@ -25,16 +24,16 @@ const RepartitionCard = () => {
 
   return (
     <CollapseCard title={t('stats:LABEL.REPARTITION')} isOpened={false}>
-      {isNil(repartition) ? (
-        <VStack className='gap-4'>
-          <Skeleton className='h-12 w-full' />
-          <Skeleton className='h-12 w-full' />
-          <Skeleton className='h-12 w-full' />
-        </VStack>
-      ) : (
+      {repartition ? (
         <VStack className='gap-4'>
           <RepartitionTable data={repartition} />
           <RepartitionChart data={repartition.states} />
+        </VStack>
+      ) : (
+        <VStack className='gap-4'>
+          <Skeleton className='h-12 w-full' />
+          <Skeleton className='h-12 w-full' />
+          <Skeleton className='h-12 w-full' />
         </VStack>
       )}
     </CollapseCard>

@@ -1,6 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'expo-router';
-import { isError, isNil } from 'lodash';
 import { Save } from 'lucide-react-native';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
@@ -23,7 +22,7 @@ const NoteFormPage: React.FC = () => {
   const router = useRouter();
 
   const { setSelectedNote, selectedNote } = useNotesStore();
-  const isEdit = !isNil(selectedNote);
+  const isEdit = selectedNote != null;
 
   const { trigger, isMutating } = useSWRMutation(NOTES_URL_ENDPOINT, isEdit ? putData<Note> : postData<Note>);
 
@@ -50,7 +49,7 @@ const NoteFormPage: React.FC = () => {
       }
       router.back();
     } catch (error) {
-      Toast.show({ type: 'error', text2: isError(error) ? error.message : undefined });
+      Toast.show({ type: 'error', text2: error instanceof Error ? error.message : undefined });
     }
   };
 

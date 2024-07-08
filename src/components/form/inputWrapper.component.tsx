@@ -1,4 +1,3 @@
-import { isNil } from 'lodash';
 import type { ComponentProps } from 'react';
 import { type FieldValues, type UseControllerProps, useController } from 'react-hook-form';
 import { Input } from '~rnr/ui/input';
@@ -38,7 +37,7 @@ const InputWrapper = <T extends FieldValues>(props: InputWrapperProps & UseContr
       <Input
         aria-labelledby={`${props.name}-item`}
         placeholder={placeholder}
-        value={!isNil(field.value) ? `${field.value}` : ''}
+        value={field.value != null ? `${field.value}` : ''}
         onBlur={field.onBlur}
         onChangeText={onChange}
         className={invalid ? 'border-destructive' : ''}

@@ -1,6 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'expo-router';
-import { isError, isNil } from 'lodash';
 import { Save } from 'lucide-react-native';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
@@ -26,7 +25,7 @@ const PropFormPage: React.FC = () => {
   const router = useRouter();
 
   const { setSelectedProp, selectedProp } = useCollectionStore();
-  const isEdit = !isNil(selectedProp);
+  const isEdit = selectedProp != null;
 
   const { trigger, isMutating } = useSWRMutation(PROPS_URL_ENDPOINT, isEdit ? putData<Prop> : postData<Prop>);
 
@@ -58,7 +57,7 @@ const PropFormPage: React.FC = () => {
       }
       router.back();
     } catch (error) {
-      Toast.show({ type: 'error', text2: isError(error) ? error.message : undefined });
+      Toast.show({ type: 'error', text2: error instanceof Error ? error.message : undefined });
     }
   };
 

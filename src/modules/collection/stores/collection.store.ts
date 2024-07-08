@@ -1,4 +1,4 @@
-import { filter, includes, sortBy } from 'lodash';
+import { alphabetical } from 'radash';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 import type { Prop } from '~src/models/prop.model';
@@ -28,14 +28,14 @@ export const useCollectionStore = create<ICollectionState>()(
 
     updateProps: (data: Prop[], filters: PropFilters) => {
       set((state) => {
-        const filteredData = filter(data, (item) => {
-          const isTypeIncluded = includes(filters.typesFilter, item.type);
-          const isStateIncluded = includes(filters.statesFilter, item.state);
+        const filteredData = data.filter((item) => {
+          const isTypeIncluded = filters.typesFilter.includes(item.type);
+          const isStateIncluded = filters.statesFilter.includes(item.state);
           const isSearchIncluded = searchValueInObject(filters.searchValue, item);
 
           return isSearchIncluded && isStateIncluded && isTypeIncluded;
         });
-        const sortedData = sortBy(filteredData, ['name']);
+        const sortedData = alphabetical(filteredData, (value) => value.name);
 
         return { ...state, props: sortedData };
       });

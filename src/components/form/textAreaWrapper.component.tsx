@@ -1,4 +1,3 @@
-import { isNil } from 'lodash';
 import type { ComponentProps } from 'react';
 import { type FieldValues, type UseControllerProps, useController } from 'react-hook-form';
 import { cn } from '~rnr/lib/utils';
@@ -40,7 +39,7 @@ const TextAreaWrapper = <T extends FieldValues>(props: TextAreaWrapperProps & Us
         aria-labelledby={`${props.name}-item`}
         className={cn('h-40', invalid ? 'border-destructive' : '')}
         placeholder={placeholder}
-        value={!isNil(field.value) ? `${field.value}` : ''}
+        value={field.value != null ? `${field.value}` : ''}
         onBlur={field.onBlur}
         onChangeText={onChange}
         editable={!formControlProps?.isDisabled}

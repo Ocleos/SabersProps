@@ -1,4 +1,3 @@
-import { isNil } from 'lodash';
 import { useTranslation } from 'react-i18next';
 import PageLayout from '~src/components/layout/pageLayout.component';
 import PropFormPage from '~src/modules/collection/pages/propForm.page';
@@ -8,7 +7,7 @@ export default () => {
   const { t } = useTranslation(['collection']);
 
   const { selectedProp } = useCollectionStore();
-  const isEdit = !isNil(selectedProp);
+  const isEdit = selectedProp != null;
 
   const title = isEdit ? t('collection:FORM.EDIT') : t('collection:FORM.ADD');
 

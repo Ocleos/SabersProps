@@ -1,5 +1,4 @@
 import { useRouter } from 'expo-router';
-import { isError } from 'lodash';
 import { MoreVertical, Pencil, Trash2 } from 'lucide-react-native';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -65,7 +64,7 @@ const ActionsMenu: React.FC<IActionsMenuProps> = (props) => {
         Toast.show({ type: 'success', text2: t('common:FORMS.DELETE_SUCCESS') });
         onClose();
       } catch (error) {
-        Toast.show({ type: 'error', text2: isError(error) ? error.message : undefined });
+        Toast.show({ type: 'error', text2: error instanceof Error ? error.message : undefined });
       }
     }
   };

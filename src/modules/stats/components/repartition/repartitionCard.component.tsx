@@ -15,12 +15,7 @@ const RepartitionCard = () => {
 
   const { data } = useSWR(PROPS_URL_ENDPOINT, getData<Prop>);
 
-  const repartition = useMemo(() => {
-    if (data) {
-      return calculateRepartition(data);
-    }
-    return data;
-  }, [data]);
+  const repartition = useMemo(() => (data ? calculateRepartition(data) : undefined), [data]);
 
   return (
     <CollapseCard title={t('stats:LABEL.REPARTITION')} isOpened={false}>

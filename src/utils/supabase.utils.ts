@@ -12,6 +12,7 @@ export const PROPS_URL_ENDPOINT = 'props';
 export const NOTES_URL_ENDPOINT = 'notes';
 export const COMPONENTS_URL_ENDPOINT = 'components';
 export const PROPS_PRICES_URL_ENDPOINT = 'propsPrices';
+export const PROPS_EXPENSE_URL_ENDPOINT = 'propsExpenses';
 
 type Data = {
   id?: string | undefined;

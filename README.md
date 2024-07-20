@@ -1,7 +1,6 @@
 # SabersProps
 
 ![License](https://img.shields.io/github/license/ocleos/sabersprops?label=License&color=10b981)
-![Check](https://img.shields.io/github/check-runs/ocleos/sabersprops/main?label=Check&color=10b981)
 ![Version](https://img.shields.io/github/package-json/version/ocleos/sabersprops?label=Version&color=10b981)
 
 [![Expo](https://img.shields.io/badge/Build_with-Expo-000020?&logo=expo)](https://expo.dev/)
@@ -186,11 +185,6 @@ So if a new tag is created on git, a build pipeline is automatically launched.
   - Props' detail
     - Pictures gallery
     - Edit selling price
-- Stats
-  - Expenses
-    - line chart
-      - months
-      - years
 - Disposition
   - Group
   - Drag & Drop

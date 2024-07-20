@@ -1,10 +1,13 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import useSWR from 'swr';
 import { Skeleton } from '~rnr/ui/skeleton';
 import { VStack } from '~rnr/ui/stack';
+import { Tabs, TabsList, TabsTrigger } from '~rnr/ui/tabs';
+import { Text } from '~rnr/ui/text';
 import CollapseCard from '~src/components/card/collapseCard.component';
 import type { Prop } from '~src/models/prop.model';
+import { PropType, propTypes } from '~src/models/propType.model';
 import { PROPS_URL_ENDPOINT, getData } from '~src/utils/supabase.utils';
 import { calculateRepartition } from './repartition.utils';
 import RepartitionChart from './repartitionChart.component';
@@ -15,6 +18,8 @@ const RepartitionCard = () => {
 
   const { data } = useSWR(PROPS_URL_ENDPOINT, getData<Prop>);
 
+  const [propType, setPropType] = useState(PropType.LIGHTSABER.toString());
+
   const repartition = useMemo(() => (data ? calculateRepartition(data) : undefined), [data]);
 
   return (
@@ -22,7 +27,22 @@ const RepartitionCard = () => {
       {repartition ? (
         <VStack className='gap-4'>
           <RepartitionTable data={repartition} />
-          <RepartitionChart data={repartition.states} />
+
+          <Tabs value={propType} onValueChange={(value) => setPropType(value)}>
+            <TabsList>
+              <TabsTrigger value={PropType.LIGHTSABER.toString()}>
+                <Text>{propTypes[PropType.LIGHTSABER].label}</Text>
+              </TabsTrigger>
+              <TabsTrigger value={PropType.PROP.toString()}>
+                <Text>{propTypes[PropType.PROP].label}</Text>
+              </TabsTrigger>
+              <TabsTrigger value={PropType.COSTUME.toString()}>
+                <Text>{propTypes[PropType.COSTUME].label}</Text>
+              </TabsTrigger>
+            </TabsList>
+          </Tabs>
+
+          <RepartitionChart data={repartition.states} propType={propType} />
         </VStack>
       ) : (
         <VStack className='gap-4'>

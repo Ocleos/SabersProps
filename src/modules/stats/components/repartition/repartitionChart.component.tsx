@@ -1,81 +1,92 @@
 import { SVGRenderer, SvgChart } from '@wuba/react-native-echarts';
-import type { EChartsOption, SeriesOption } from 'echarts';
-import { BarChart } from 'echarts/charts';
-import { GridComponent } from 'echarts/components';
+import type { EChartsOption } from 'echarts';
+import { PieChart } from 'echarts/charts';
+import { TooltipComponent } from 'echarts/components';
 import { type ECharts, init, use } from 'echarts/core';
 import { get } from 'radash';
 import { useEffect, useRef } from 'react';
 import { useWindowDimensions } from 'react-native';
 import { type PropState, propStates } from '~src/models/propState.model';
-import { PropType, propTypes } from '~src/models/propType.model';
 import { colorsTheme, fontFamily } from '~src/theme/nativewind.theme';
 import { useColorScheme } from '~src/theme/useColorTheme.theme';
 import type { StateRepartition } from '../../models/repartition.model';
 
-use([SVGRenderer, BarChart, GridComponent]);
+use([SVGRenderer, PieChart, TooltipComponent]);
 
 interface IRepartitionChartProps {
   data: StateRepartition;
+  propType: string;
 }
 
-const RepartitionChart: React.FC<IRepartitionChartProps> = ({ data }) => {
+const RepartitionChart: React.FC<IRepartitionChartProps> = ({ data, propType }) => {
   const { width } = useWindowDimensions();
   const svgRef = useRef<HTMLElement>(null);
 
   const { colorScheme } = useColorScheme();
 
   const paddingCard = 64; // ($4 (Layout) + $4 (Card)) * 2
-  const maxWidth = width - paddingCard;
+  const maxSize = width - paddingCard;
 
   useEffect(() => {
     const option: EChartsOption = {
       backgroundColor: 'transparent',
       animationEasing: 'circularOut',
-      grid: {
-        top: 32,
-        bottom: 16,
-        right: 0,
-      },
       textStyle: {
         fontFamily: fontFamily.exo2,
       },
-      xAxis: {
-        type: 'category',
-        position: 'top',
-        data: [propTypes[PropType.LIGHTSABER].label, propTypes[PropType.PROP].label, propTypes[PropType.COSTUME].label],
+      tooltip: {
+        trigger: 'item',
       },
-      yAxis: {
-        type: 'value',
-        inverse: true,
-      },
-      series: Object.keys(data).map((stateData): SeriesOption => {
-        const state: PropState = Number(stateData);
-
-        return {
-          type: 'bar',
-          stack: 'total',
+      series: [
+        {
+          name: '',
+          type: 'pie',
+          radius: ['40%', '90%'],
+          avoidLabelOverlap: false,
           itemStyle: {
+            borderRadius: 5,
             borderWidth: 1,
-            color: get(colorsTheme, `${propStates[state].colorScheme}.200`),
-            borderColor: get(colorsTheme, `${propStates[state].colorScheme}.500`),
           },
-          name: propStates[state].label,
-          data: data[state].values,
-        };
-      }),
+          label: {
+            show: false,
+          },
+          emphasis: {
+            label: {
+              show: false,
+            },
+          },
+          labelLine: {
+            show: false,
+          },
+          data: Object.keys(data).map((stateData) => {
+            const state: PropState = Number(stateData);
+
+            const indexType = Number(propType) - 1;
+
+            return {
+              value: data[state].values[indexType],
+              name: propStates[state].label,
+              itemStyle: {
+                color: get(colorsTheme, `${propStates[state].colorScheme}.200`),
+                borderColor: get(colorsTheme, `${propStates[state].colorScheme}.500`),
+              },
+            };
+          }),
+        },
+      ],
     };
 
     let chart: ECharts;
     if (svgRef.current) {
       chart = init(svgRef.current, colorScheme, {
         renderer: 'svg',
-        width: maxWidth,
-        height: 300,
+        width: maxSize,
+        height: maxSize,
       });
       chart.setOption(option);
     }
     return () => chart?.dispose();
-  }, [colorScheme, maxWidth, data]);
+  }, [colorScheme, maxSize, data, propType]);
 
   return <SvgChart ref={svgRef} />;
 };

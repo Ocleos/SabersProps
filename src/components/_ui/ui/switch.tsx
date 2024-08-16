@@ -1,8 +1,8 @@
+import * as SwitchPrimitives from '@rn-primitives/switch';
 import * as React from 'react';
 import { Platform } from 'react-native';
 import Animated, { interpolateColor, useAnimatedStyle, useDerivedValue, withTiming } from 'react-native-reanimated';
 import { cn } from '~rnr/lib/utils';
-import * as SwitchPrimitives from '~rnr/primitives/switch';
 import { colorsTheme } from '~src/theme/nativewind.theme';
 import { useColorScheme } from '~src/theme/useColorTheme.theme';
 
@@ -55,6 +55,7 @@ const SwitchNative = React.forwardRef<
       <SwitchPrimitives.Root
         className={cn(
           'h-8 w-[46px] shrink-0 flex-row items-center rounded-full border-2 border-transparent',
+          props.checked ? 'bg-primary' : 'bg-input',
           className,
         )}
         {...props}

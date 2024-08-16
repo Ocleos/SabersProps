@@ -1,4 +1,4 @@
-import { AlertOctagon, Info } from '~rnr/lib/icons/Icons';
+import { AlertOctagon, Info } from '~rnr/lib/icons/icons';
 import { cn } from '~rnr/lib/utils';
 import { Label } from '~rnr/ui/label';
 import { HStack, VStack } from '~rnr/ui/stack';

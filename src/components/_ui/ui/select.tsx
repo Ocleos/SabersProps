@@ -1,9 +1,9 @@
+import * as SelectPrimitive from '@rn-primitives/select';
 import * as React from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated';
+import { Check, ChevronDown, ChevronUp } from '~rnr/lib/icons/icons';
 import { cn } from '~rnr/lib/utils';
-import * as SelectPrimitive from '~rnr/primitives/select';
-import { Check, ChevronDown, ChevronUp } from '../lib/icons/Icons';
 
 type Option = SelectPrimitive.Option;
 
@@ -131,7 +131,7 @@ const SelectItem = React.forwardRef<
   <SelectPrimitive.Item
     ref={ref}
     className={cn(
-      'web:group relative flex w-full web:cursor-default web:select-none flex-row items-center rounded-sm native:py-2 py-1.5 pr-2 native:pl-10 pl-8 web:outline-none web:focus:bg-accent active:bg-accent',
+      'web:group relative flex w-full web:cursor-default web:select-none flex-row items-center rounded-sm native:py-2 py-1.5 pr-2 native:pl-10 pl-8 web:outline-none web:hover:bg-accent/50 web:focus:bg-accent active:bg-accent',
       props.disabled && 'web:pointer-events-none opacity-50',
       className,
     )}
@@ -141,7 +141,6 @@ const SelectItem = React.forwardRef<
         <Check size={16} strokeWidth={3} className='text-popover-foreground' />
       </SelectPrimitive.ItemIndicator>
     </View>
-
     <SelectPrimitive.ItemText className='native:text-base native:text-lg text-popover-foreground text-sm web:group-focus:text-accent-foreground' />
   </SelectPrimitive.Item>
 ));

@@ -27,7 +27,7 @@ const FilterSearchWrapper: React.FC<IFilterSearchWrapper> = (props) => {
   return (
     <HStack className='items-center gap-4'>
       <Input
-        className='flex-1 grow rounded-full'
+        className='flex-1 grow rounded-full px-6'
         value={textValue}
         onChangeText={onChangeText}
         placeholder={t('common:COMMON.SEARCH')}

@@ -29,7 +29,6 @@ const ActionsMenu: React.FC<IActionsMenuProps> = (props) => {
 
   const { colorScheme } = useColorScheme();
   const insets = useSafeAreaInsets();
-  const [open, setOpen] = useState(false);
 
   const { idSelected, nameSelected, onActionSelected, routeEdit, urlEndpoint, onDeleteCallback, resetSelected } = props;
 
@@ -71,7 +70,7 @@ const ActionsMenu: React.FC<IActionsMenuProps> = (props) => {
 
   return (
     <>
-      <DropdownMenu open={open} onOpenChange={setOpen}>
+      <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button size='icon' variant='ghost'>
             <MoreVertical color={colorsTheme.primary[500]} />

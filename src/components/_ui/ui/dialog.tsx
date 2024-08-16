@@ -1,9 +1,9 @@
+import * as DialogPrimitive from '@rn-primitives/dialog';
 import * as React from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated';
-import { X } from '~rnr/lib/icons/Icons';
+import { X } from '~rnr/lib/icons/icons';
 import { cn } from '~rnr/lib/utils';
-import * as DialogPrimitive from '~rnr/primitives/dialog';
 
 const Dialog = DialogPrimitive.Root;
 
@@ -20,9 +20,8 @@ const DialogOverlayWeb = React.forwardRef<
   const { open } = DialogPrimitive.useRootContext();
   return (
     <DialogPrimitive.Overlay
-      style={StyleSheet.absoluteFill}
       className={cn(
-        'z-50 flex items-center justify-center bg-black/80 p-2',
+        'absolute top-0 right-0 bottom-0 left-0 z-50 flex items-center justify-center bg-black/80 p-2',
         open ? 'web:fade-in-0 web:animate-in' : 'web:fade-out-0 web:animate-out',
         className,
       )}

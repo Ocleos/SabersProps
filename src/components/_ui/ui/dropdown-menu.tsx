@@ -1,9 +1,9 @@
+import * as DropdownMenuPrimitive from '@rn-primitives/dropdown-menu';
 import * as React from 'react';
 import { Platform, type StyleProp, StyleSheet, Text, View, type ViewStyle } from 'react-native';
+import { Check, ChevronDown, ChevronRight, ChevronUp } from '~rnr/lib/icons/icons';
 import { cn } from '~rnr/lib/utils';
-import * as DropdownMenuPrimitive from '~rnr/primitives/dropdown-menu';
 import { TextClassContext } from '~rnr/ui/text';
-import { Check, ChevronDown, ChevronRight, ChevronUp } from '../lib/icons/Icons';
 
 const DropdownMenu = DropdownMenuPrimitive.Root;
 

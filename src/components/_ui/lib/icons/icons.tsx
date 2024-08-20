@@ -1,12 +1,10 @@
-import { AlertOctagon, Check, ChevronDown, ChevronRight, ChevronUp, Info, X } from 'lucide-react-native';
-import { iconWithClassName } from './iconWithClassName';
+import { CheckIcon, ChevronDownIcon, ChevronRightIcon, ChevronUpIcon, XIcon } from 'lucide-react-native';
+import { iconWithClassName } from '~src/utils/icons.utils';
 
-iconWithClassName(AlertOctagon);
-iconWithClassName(Check);
-iconWithClassName(ChevronDown);
-iconWithClassName(ChevronRight);
-iconWithClassName(ChevronUp);
-iconWithClassName(Info);
-iconWithClassName(X);
+iconWithClassName(CheckIcon);
+iconWithClassName(ChevronDownIcon);
+iconWithClassName(ChevronRightIcon);
+iconWithClassName(ChevronUpIcon);
+iconWithClassName(XIcon);
 
-export { AlertOctagon, Check, ChevronDown, ChevronRight, ChevronUp, Info, X };
+export { CheckIcon, ChevronDownIcon, ChevronRightIcon, ChevronUpIcon, XIcon };

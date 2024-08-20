@@ -1,10 +1,11 @@
 import { DrawerActions } from '@react-navigation/native';
 import { Stack, useNavigation, useRouter } from 'expo-router';
-import { ArrowLeft, Menu } from 'lucide-react-native';
+import { ArrowLeftIcon, MenuIcon } from 'lucide-react-native';
 import { ScrollView, View, type ViewProps } from 'react-native';
 import { Button } from '~rnr/ui/button';
 import { colorsTheme } from '~src/theme/nativewind.theme';
 import { useColorScheme } from '~src/theme/useColorTheme.theme';
+import { DEFAULT_ICON_SIZE } from '~src/utils/icons.utils';
 
 interface IPageLayoutProps {
   children: React.ReactNode;
@@ -38,11 +39,11 @@ const PageLayout: React.FC<IPageLayoutProps> = ({
                 variant='ghost'
                 className='mr-2'
                 onPress={() => navigation.dispatch(DrawerActions.toggleDrawer)}>
-                <Menu color={colorsTheme.primary[500]} />
+                <MenuIcon size={DEFAULT_ICON_SIZE} color={colorsTheme.primary[500]} />
               </Button>
             ) : (
               <Button size='icon' className='mr-2' variant='ghost' onPress={() => router.back()}>
-                <ArrowLeft color={colorsTheme.primary[500]} />
+                <ArrowLeftIcon size={DEFAULT_ICON_SIZE} color={colorsTheme.primary[500]} />
               </Button>
             );
           },

@@ -1,4 +1,4 @@
-import { ArrowRightLeft, CalendarDays, ShoppingCart, Store, Truck } from 'lucide-react-native';
+import { ArrowRightLeftIcon, CalendarDaysIcon, ShoppingCartIcon, StoreIcon, TruckIcon } from 'lucide-react-native';
 import { View } from 'react-native';
 import { useSWRConfig } from 'swr';
 import { Card, CardContent, CardHeader, CardTitle } from '~rnr/ui/card';
@@ -40,25 +40,28 @@ const PropComponentCard: React.FC<IPropComponentCard> = ({ propComponent }) => {
         <VStack className='gap-2'>
           <HStack>
             <View className='basis-1/2'>
-              <LabelIcon label={formatDate(propComponent.date, FORMAT_DATE)} icon={CalendarDays} />
+              <LabelIcon label={formatDate(propComponent.date, FORMAT_DATE)} icon={CalendarDaysIcon} />
             </View>
 
             <View className='basis-1/2'>
-              <LabelIcon label={propComponent.seller} icon={Store} />
+              <LabelIcon label={propComponent.seller} icon={StoreIcon} />
             </View>
           </HStack>
 
           <HStack>
             <View className='basis-1/3'>
-              <LabelIcon label={formatNumber(propComponent.rate, { maximumFractionDigits: 5 })} icon={ArrowRightLeft} />
+              <LabelIcon
+                label={formatNumber(propComponent.rate, { maximumFractionDigits: 5 })}
+                icon={ArrowRightLeftIcon}
+              />
             </View>
 
             <View className='basis-1/3'>
-              <LabelIcon label={formatToCurrency(propComponent.priceEuros, CURRENCY_EUROS)} icon={ShoppingCart} />
+              <LabelIcon label={formatToCurrency(propComponent.priceEuros, CURRENCY_EUROS)} icon={ShoppingCartIcon} />
             </View>
 
             <View className='basis-1/3'>
-              <LabelIcon label={formatToCurrency(propComponent.feesEuros, CURRENCY_EUROS)} icon={Truck} />
+              <LabelIcon label={formatToCurrency(propComponent.feesEuros, CURRENCY_EUROS)} icon={TruckIcon} />
             </View>
           </HStack>
         </VStack>

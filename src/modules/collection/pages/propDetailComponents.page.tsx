@@ -1,6 +1,6 @@
 import { FlashList } from '@shopify/flash-list';
 import { useRouter } from 'expo-router';
-import { Plus } from 'lucide-react-native';
+import { PlusIcon } from 'lucide-react-native';
 import { useEffect } from 'react';
 import { View } from 'react-native';
 import { Button } from '~rnr/ui/button';
@@ -9,6 +9,7 @@ import EmptyComponent from '~src/components/empty/empty.component';
 import FilterSearchWrapper from '~src/components/list/filterSearchWrapper.component';
 import { appRoutes } from '~src/router/routes.utils';
 import { colorsTheme } from '~src/theme/nativewind.theme';
+import { DEFAULT_ICON_SIZE } from '~src/utils/icons.utils';
 import PropComponentCard from '../components/propDetail/components/propComponentCard.component';
 import { usePropDetailStore } from '../stores/propDetail.store';
 
@@ -45,7 +46,7 @@ const PropDetailComponents: React.FC = () => {
           setSelectedComponent(undefined);
           router.push(appRoutes.collection.components.form(propDetail?.id));
         }}>
-        <Plus color={colorsTheme.textForeground} />
+        <PlusIcon size={DEFAULT_ICON_SIZE} color={colorsTheme.textForeground} />
       </Button>
     </>
   );

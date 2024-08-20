@@ -1,7 +1,7 @@
 import { type BottomSheetModal, BottomSheetView } from '@gorhom/bottom-sheet';
 import { FlashList } from '@shopify/flash-list';
 import { useRouter } from 'expo-router';
-import { Plus } from 'lucide-react-native';
+import { PlusIcon } from 'lucide-react-native';
 import { useEffect, useRef } from 'react';
 import { View } from 'react-native';
 import useSWR from 'swr';
@@ -13,6 +13,7 @@ import BottomSheetWrapper from '~src/components/menu/bottomSheetWrapper.componen
 import type { Prop } from '~src/models/prop.model';
 import { appRoutes } from '~src/router/routes.utils';
 import { colorsTheme } from '~src/theme/nativewind.theme';
+import { DEFAULT_ICON_SIZE } from '~src/utils/icons.utils';
 import { PROPS_URL_ENDPOINT, getData } from '~src/utils/supabase.utils';
 import PropCardComponent from '../components/propList/propCard.component';
 import PropFilters from '../components/propList/propFilters/propFilters.component';
@@ -59,7 +60,7 @@ const PropListPage: React.FC = () => {
           setSelectedProp(undefined);
           router.push(appRoutes.collection.form);
         }}>
-        <Plus color={colorsTheme.textForeground} />
+        <PlusIcon size={DEFAULT_ICON_SIZE} color={colorsTheme.textForeground} />
       </Button>
 
       <BottomSheetWrapper ref={bottomSheetRef}>

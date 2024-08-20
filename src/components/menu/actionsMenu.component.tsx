@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router';
-import { MoreVertical, Pencil, Trash2 } from 'lucide-react-native';
+import { MoreVerticalIcon, PencilIcon, Trash2Icon } from 'lucide-react-native';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -10,6 +10,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { Text } from '~rnr/ui/text';
 import { colorsTheme } from '~src/theme/nativewind.theme';
 import { useColorScheme } from '~src/theme/useColorTheme.theme';
+import { DEFAULT_ICON_SIZE } from '~src/utils/icons.utils';
 import { deleteData } from '~src/utils/supabase.utils';
 import DeleteModal from '../modal/deleteModal.component';
 
@@ -73,18 +74,18 @@ const ActionsMenu: React.FC<IActionsMenuProps> = (props) => {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button size='icon' variant='ghost'>
-            <MoreVertical color={colorsTheme.primary[500]} />
+            <MoreVerticalIcon size={DEFAULT_ICON_SIZE} color={colorsTheme.primary[500]} />
           </Button>
         </DropdownMenuTrigger>
 
         <DropdownMenuContent className='w-48' insets={{ ...insets, left: 24, right: 24 }}>
           <DropdownMenuItem onPress={onEditPress}>
-            <Pencil color={colorsTheme.foreground[colorScheme]} />
+            <PencilIcon size={DEFAULT_ICON_SIZE} color={colorsTheme.foreground[colorScheme]} />
             <Text>{t('common:COMMON.EDIT')}</Text>
           </DropdownMenuItem>
 
           <DropdownMenuItem onPress={onDeletePress}>
-            <Trash2 color={colorsTheme.foreground[colorScheme]} />
+            <Trash2Icon size={DEFAULT_ICON_SIZE} color={colorsTheme.foreground[colorScheme]} />
             <Text>{t('common:COMMON.DELETE')}</Text>
           </DropdownMenuItem>
         </DropdownMenuContent>

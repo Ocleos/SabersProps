@@ -31,6 +31,10 @@ export const colorsTheme = {
     light: 'hsl(240 10% 4%)',
     dark: 'hsl(0 0% 95%)',
   },
+  mutedForeground: {
+    light: 'hsl(240 4% 46%)',
+    dark: 'hsl(240 5% 65%)',
+  },
   card: {
     light: 'hsl(0 0% 100%)',
     dark: 'hsl(24 10% 10%)',

@@ -4,12 +4,13 @@ import { cn } from '~rnr/lib/utils';
 import { HStack, VStack } from '~rnr/ui/stack';
 import { Text } from '~rnr/ui/text';
 import BlasterIcon from '~src/assets/icons/blaster.icon';
-import DeathTrooperIcon from '~src/assets/icons/deathTrooper.icon';
+import CostumeIcon from '~src/assets/icons/costume.icon';
 import LightsabersIcon from '~src/assets/icons/lightsabers.icon';
 import { type PropState, propStates } from '~src/models/propState.model';
 import { PropType } from '~src/models/propType.model';
 import { colorsTheme } from '~src/theme/nativewind.theme';
 import { useColorScheme } from '~src/theme/useColorTheme.theme';
+import { DEFAULT_ICON_SIZE } from '~src/utils/icons.utils';
 import type { Repartition } from '../../models/repartition.model';
 
 interface IRepartitionTableProps {
@@ -35,15 +36,27 @@ const RepartitionTable: React.FC<IRepartitionTableProps> = ({ data }) => {
         <Cell />
 
         <Cell>
-          <LightsabersIcon color={colorsTheme.foreground[colorScheme]} />
+          <LightsabersIcon
+            width={DEFAULT_ICON_SIZE}
+            height={DEFAULT_ICON_SIZE}
+            color={colorsTheme.foreground[colorScheme]}
+          />
         </Cell>
 
         <Cell>
-          <BlasterIcon color={colorsTheme.foreground[colorScheme]} />
+          <BlasterIcon
+            width={DEFAULT_ICON_SIZE}
+            height={DEFAULT_ICON_SIZE}
+            color={colorsTheme.foreground[colorScheme]}
+          />
         </Cell>
 
         <Cell>
-          <DeathTrooperIcon color={colorsTheme.foreground[colorScheme]} />
+          <CostumeIcon
+            width={DEFAULT_ICON_SIZE}
+            height={DEFAULT_ICON_SIZE}
+            color={colorsTheme.foreground[colorScheme]}
+          />
         </Cell>
 
         <Cell>

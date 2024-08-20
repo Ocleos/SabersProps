@@ -1,7 +1,7 @@
 import * as DropdownMenuPrimitive from '@rn-primitives/dropdown-menu';
 import * as React from 'react';
 import { Platform, type StyleProp, StyleSheet, Text, View, type ViewStyle } from 'react-native';
-import { Check, ChevronDown, ChevronRight, ChevronUp } from '~rnr/lib/icons/icons';
+import { CheckIcon, ChevronDownIcon, ChevronRightIcon, ChevronUpIcon } from '~rnr/lib/icons/icons';
 import { cn } from '~rnr/lib/utils';
 import { TextClassContext } from '~rnr/ui/text';
 
@@ -24,7 +24,8 @@ const DropdownMenuSubTrigger = React.forwardRef<
   }
 >(({ className, inset, children, ...props }, ref) => {
   const { open } = DropdownMenuPrimitive.useSubContext();
-  const Icon = Platform.OS === 'web' ? ChevronRight : open ? ChevronUp : ChevronDown;
+  let Icon = open ? ChevronUpIcon : ChevronDownIcon;
+  Icon = Platform.OS === 'web' ? ChevronRightIcon : Icon;
   return (
     <TextClassContext.Provider
       value={cn('select-none native:text-lg text-primary text-sm', open && 'native:text-accent-foreground')}>
@@ -139,7 +140,7 @@ const DropdownMenuCheckboxItem = React.forwardRef<
     {...props}>
     <View className='absolute left-2 flex h-3.5 w-3.5 items-center justify-center'>
       <DropdownMenuPrimitive.ItemIndicator>
-        <Check size={14} strokeWidth={3} className='text-foreground' />
+        <CheckIcon size={14} strokeWidth={3} className='text-foreground' />
       </DropdownMenuPrimitive.ItemIndicator>
     </View>
     {/* biome-ignore lint/complexity/noUselessFragments: <explanation> */}

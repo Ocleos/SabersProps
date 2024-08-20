@@ -1765,18 +1765,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@expo/eas-build-job@npm:1.0.129":
-  version: 1.0.129
-  resolution: "@expo/eas-build-job@npm:1.0.129"
-  dependencies:
-    "@expo/logger": "npm:1.0.117"
-    joi: "npm:^17.13.1"
-    semver: "npm:^7.6.2"
-    zod: "npm:^3.23.8"
-  checksum: 10/9639ea2b907cbf3ab8e6822db20164321a3eb6e33f3fc1cd284736bebe8feb385ccc49afdd54df7be3728e997fe7b98e3fc145953c8121d9ad0acfae0b5420bc
-  languageName: node
-  linkType: hard
-
 "@expo/eas-build-job@npm:1.0.130":
   version: 1.0.130
   resolution: "@expo/eas-build-job@npm:1.0.130"
@@ -1789,12 +1777,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@expo/eas-json@npm:10.2.3":
-  version: 10.2.3
-  resolution: "@expo/eas-json@npm:10.2.3"
+"@expo/eas-json@npm:10.2.4":
+  version: 10.2.4
+  resolution: "@expo/eas-json@npm:10.2.4"
   dependencies:
     "@babel/code-frame": "npm:7.23.5"
-    "@expo/eas-build-job": "npm:1.0.129"
+    "@expo/eas-build-job": "npm:1.0.130"
     chalk: "npm:4.1.2"
     env-string: "npm:1.0.1"
     fs-extra: "npm:11.2.0"
@@ -1804,7 +1792,7 @@ __metadata:
     semver: "npm:7.5.2"
     terminal-link: "npm:2.1.1"
     tslib: "npm:2.4.1"
-  checksum: 10/59e9a4beca15db11b2701c19339134d26e8afc024bd95c440b1ae73ac79246c3dc447af3cb9080510ac9ef8270b1aef319ef0c5bbd1d3407147e5b34ce555cd1
+  checksum: 10/8ec03ca7b21e5908e5ce6b34d776854c872a5a17d87ec0cf85e9cd11cf1369be1d2afeec6ee7db03b5260d197dc7e546da07889ac2511a18a9623fd73f8a3641
   languageName: node
   linkType: hard
 
@@ -2215,11 +2203,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@expo/steps@npm:1.0.129":
-  version: 1.0.129
-  resolution: "@expo/steps@npm:1.0.129"
+"@expo/steps@npm:1.0.130":
+  version: 1.0.130
+  resolution: "@expo/steps@npm:1.0.130"
   dependencies:
-    "@expo/eas-build-job": "npm:1.0.129"
+    "@expo/eas-build-job": "npm:1.0.130"
     "@expo/logger": "npm:1.0.117"
     "@expo/spawn-async": "npm:^1.7.2"
     arg: "npm:^5.0.2"
@@ -2231,7 +2219,7 @@ __metadata:
     this-file: "npm:^2.0.3"
     uuid: "npm:^9.0.1"
     yaml: "npm:^2.4.3"
-  checksum: 10/ff3e6d9fa3cb80c66301c3d6616e25ab7f467dc2a2f04694f5b439841535f4137ec0aaf353edc6fd121d29e41aaed0be19315d3f503c2f2860ec3804adb28798
+  checksum: 10/2e35f0bbcd1e92e901702f38e973b9498d5765366a25b98e009349b08043597dea9e406f2314031919c3c737519ea8470b0d8456b5150507ee2059f12782900b
   languageName: node
   linkType: hard
 
@@ -5036,11 +5024,11 @@ __metadata:
   linkType: hard
 
 "acorn@npm:^8.4.1, acorn@npm:^8.8.2":
-  version: 8.11.3
-  resolution: "acorn@npm:8.11.3"
+  version: 8.12.1
+  resolution: "acorn@npm:8.12.1"
   bin:
     acorn: bin/acorn
-  checksum: 10/b688e7e3c64d9bfb17b596e1b35e4da9d50553713b3b3630cf5690f2b023a84eac90c56851e6912b483fe60e8b4ea28b254c07e92f17ef83d72d78745a8352dd
+  checksum: 10/d08c2d122bba32d0861e0aa840b2ee25946c286d5dc5990abca991baf8cdbfbe199b05aacb221b979411a2fea36f83e26b5ac4f6b4e0ce49038c62316c1848f0
   languageName: node
   linkType: hard
 
@@ -6793,14 +6781,14 @@ __metadata:
   linkType: hard
 
 "debug@npm:4, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.1, debug@npm:^4.3.2, debug@npm:^4.3.4":
-  version: 4.3.4
-  resolution: "debug@npm:4.3.4"
+  version: 4.3.6
+  resolution: "debug@npm:4.3.6"
   dependencies:
     ms: "npm:2.1.2"
   peerDependenciesMeta:
     supports-color:
       optional: true
-  checksum: 10/0073c3bcbd9cb7d71dd5f6b55be8701af42df3e56e911186dfa46fac3a5b9eb7ce7f377dd1d3be6db8977221f8eb333d945216f645cf56f6b688cd484837d255
+  checksum: 10/d3adb9af7d57a9e809a68f404490cf776122acca16e6359a2702c0f462e510e91f9765c07f707b8ab0d91e03bad57328f3256f5082631cefb5393d0394d50fb7
   languageName: node
   linkType: hard
 
@@ -7156,9 +7144,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eas-cli@npm:^10.2.3":
-  version: 10.2.3
-  resolution: "eas-cli@npm:10.2.3"
+"eas-cli@npm:^10.2.4":
+  version: 10.2.4
+  resolution: "eas-cli@npm:10.2.4"
   dependencies:
     "@expo/apple-utils": "npm:1.7.1"
     "@expo/code-signing-certificates": "npm:0.0.5"
@@ -7166,7 +7154,7 @@ __metadata:
     "@expo/config-plugins": "npm:7.8.4"
     "@expo/config-types": "npm:50.0.0"
     "@expo/eas-build-job": "npm:1.0.130"
-    "@expo/eas-json": "npm:10.2.3"
+    "@expo/eas-json": "npm:10.2.4"
     "@expo/json-file": "npm:8.2.37"
     "@expo/logger": "npm:1.0.117"
     "@expo/multipart-body-parser": "npm:1.1.0"
@@ -7180,7 +7168,7 @@ __metadata:
     "@expo/results": "npm:1.0.0"
     "@expo/rudder-sdk-node": "npm:1.1.1"
     "@expo/spawn-async": "npm:1.7.0"
-    "@expo/steps": "npm:1.0.129"
+    "@expo/steps": "npm:1.0.130"
     "@expo/timeago.js": "npm:1.0.0"
     "@oclif/core": "npm:^1.26.2"
     "@oclif/plugin-autocomplete": "npm:^2.3.10"
@@ -7238,7 +7226,7 @@ __metadata:
     wrap-ansi: "npm:7.0.0"
   bin:
     eas: bin/run
-  checksum: 10/12811d9dd05f76c8b0b2ddafcbd2be5a844bef093dd00b0e7f832a83cb2f8cd4816de20ac1b5a0f1e06608ca1963d16ce17279cfd14a5052c4c7592fbe783327
+  checksum: 10/16f4ce53b5e06e9fb54f6320cf4164d707a4ccb043b764f96ae1d76c7a431acaf32d46811f4daf5016831ae780d5291436b529f3bdd5ff97aae1fa37251afa47
   languageName: node
   linkType: hard
 
@@ -9053,12 +9041,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next@npm:^23.12.7":
-  version: 23.12.7
-  resolution: "i18next@npm:23.12.7"
+"i18next@npm:^23.14.0":
+  version: 23.14.0
+  resolution: "i18next@npm:23.14.0"
   dependencies:
     "@babel/runtime": "npm:^7.23.2"
-  checksum: 10/7c542b7fc67622ac35fb9c503f7683f8d764f6d17988b237b3f017790fd73c07b5b013885b874cbfd2eae36b12ea38b376764a927d391d57b21bad96b29c42b6
+  checksum: 10/661c1b22ae20bf75a616b3a804b96fd55bd04ed880853a05ef93912ed37f65b9546d8f8bbe55dfe2967a5b0f2ce110a7e9f4b7a6a3d90eb097d06c858d2b3e3f
   languageName: node
   linkType: hard
 
@@ -10794,14 +10782,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lucide-react-native@npm:^0.427.0":
-  version: 0.427.0
-  resolution: "lucide-react-native@npm:0.427.0"
+"lucide-react-native@npm:^0.428.0":
+  version: 0.428.0
+  resolution: "lucide-react-native@npm:0.428.0"
   peerDependencies:
     react: ^16.5.1 || ^17.0.0 || ^18.0.0
     react-native: "*"
     react-native-svg: ^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0
-  checksum: 10/6824f397e6d91b410605c6a4587bbf69d679eec4ede189d495c46c2f13566af6f73f86fe04519c3431fd985a97e59f7725f3ac6f771ae3855c4bc915fb8cd6ab
+  checksum: 10/4278df30dd69d8ab371ca81c1ff6d7982ce756ba1a281a23afb8c98f7872a8c6ab6fbea14af6db2415f42824d74fe2ef7897de509f5fc7ab224620099cdeaf7e
   languageName: node
   linkType: hard
 
@@ -13722,7 +13710,7 @@ __metadata:
     clsx: "npm:^2.1.1"
     dayjs: "npm:^1.11.12"
     dotenv: "npm:^16.4.5"
-    eas-cli: "npm:^10.2.3"
+    eas-cli: "npm:^10.2.4"
     echarts: "npm:^5.5.1"
     expo: "npm:~51.0.28"
     expo-build-properties: "npm:~0.12.5"
@@ -13735,8 +13723,8 @@ __metadata:
     expo-system-ui: "npm:~3.0.7"
     expo-updates: "npm:~0.25.22"
     husky: "npm:^9.1.4"
-    i18next: "npm:^23.12.7"
-    lucide-react-native: "npm:^0.427.0"
+    i18next: "npm:^23.14.0"
+    lucide-react-native: "npm:^0.428.0"
     nativewind: "npm:4.0.36"
     radash: "npm:^12.1.0"
     react: "npm:18.2.0"

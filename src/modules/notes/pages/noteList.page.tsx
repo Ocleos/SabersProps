@@ -1,12 +1,13 @@
 import { FlashList } from '@shopify/flash-list';
 import { useRouter } from 'expo-router';
-import { Plus } from 'lucide-react-native';
+import { PlusIcon } from 'lucide-react-native';
 import { View } from 'react-native';
 import useSWR from 'swr';
 import { Button } from '~rnr/ui/button';
 import EmptyComponent from '~src/components/empty/empty.component';
 import { appRoutes } from '~src/router/routes.utils';
 import { colorsTheme } from '~src/theme/nativewind.theme';
+import { DEFAULT_ICON_SIZE } from '~src/utils/icons.utils';
 import { NOTES_URL_ENDPOINT, getData } from '~src/utils/supabase.utils';
 import NoteCardComponent from '../components/noteList/noteCard.component';
 import type { Note } from '../models/note.model';
@@ -38,7 +39,7 @@ const NoteListPage: React.FC = () => {
           setSelectedNote(undefined);
           router.push(appRoutes.notes.form);
         }}>
-        <Plus color={colorsTheme.textForeground} />
+        <PlusIcon size={DEFAULT_ICON_SIZE} color={colorsTheme.textForeground} />
       </Button>
     </>
   );

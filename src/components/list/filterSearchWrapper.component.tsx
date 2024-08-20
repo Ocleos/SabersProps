@@ -1,10 +1,11 @@
-import { Filter } from 'lucide-react-native';
+import { FilterIcon } from 'lucide-react-native';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '~rnr/ui/button';
 import { Input } from '~rnr/ui/input';
 import { HStack } from '~rnr/ui/stack';
 import { colorsTheme } from '~src/theme/nativewind.theme';
+import { DEFAULT_ICON_SIZE } from '~src/utils/icons.utils';
 
 interface IFilterSearchWrapper {
   searchValue: string;
@@ -35,7 +36,7 @@ const FilterSearchWrapper: React.FC<IFilterSearchWrapper> = (props) => {
 
       {onOpenFilter && (
         <Button size='icon' variant='ghost' className='flex-none' onPress={() => onOpenFilter()}>
-          <Filter color={colorsTheme.primary[500]} />
+          <FilterIcon size={DEFAULT_ICON_SIZE} color={colorsTheme.primary[500]} />
         </Button>
       )}
     </HStack>

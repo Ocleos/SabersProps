@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'expo-router';
-import { Save } from 'lucide-react-native';
+import { SaveIcon } from 'lucide-react-native';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import Toast from 'react-native-toast-message';
@@ -16,6 +16,7 @@ import type { Prop } from '~src/models/prop.model';
 import { PropState, propStates } from '~src/models/propState.model';
 import { PropType, propTypes } from '~src/models/propType.model';
 import { colorsTheme } from '~src/theme/nativewind.theme';
+import { DEFAULT_ICON_SIZE } from '~src/utils/icons.utils';
 import { PROPS_URL_ENDPOINT, postData, putData } from '~src/utils/supabase.utils';
 import { MAX_LENGTH } from '~src/utils/validator.utils';
 import { useCollectionStore } from '../stores/collection.store';
@@ -115,7 +116,7 @@ const PropFormPage: React.FC = () => {
       <InputWrapper control={control} name='soundboard' placeholder={t('collection:LABELS.SOUNDBOARD')} />
 
       <Button disabled={isMutating} onPress={handleSubmit(onSubmit)}>
-        <Save color={colorsTheme.textForeground} />
+        <SaveIcon size={DEFAULT_ICON_SIZE} color={colorsTheme.textForeground} />
         <Text>{t('common:COMMON.SAVE')}</Text>
       </Button>
     </VStack>

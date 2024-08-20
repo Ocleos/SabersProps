@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'expo-router';
-import { Save } from 'lucide-react-native';
+import { SaveIcon } from 'lucide-react-native';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import Toast from 'react-native-toast-message';
@@ -12,6 +12,7 @@ import { Text } from '~rnr/ui/text';
 import InputWrapper from '~src/components/form/inputWrapper.component';
 import TextAreaWrapper from '~src/components/form/textAreaWrapper.component';
 import { colorsTheme } from '~src/theme/nativewind.theme';
+import { DEFAULT_ICON_SIZE } from '~src/utils/icons.utils';
 import { NOTES_URL_ENDPOINT, postData, putData } from '~src/utils/supabase.utils';
 import { MAX_LENGTH } from '~src/utils/validator.utils';
 import type { Note } from '../models/note.model';
@@ -71,7 +72,7 @@ const NoteFormPage: React.FC = () => {
       />
 
       <Button disabled={isMutating} onPress={handleSubmit(onSubmit)}>
-        <Save color={colorsTheme.textForeground} />
+        <SaveIcon size={DEFAULT_ICON_SIZE} color={colorsTheme.textForeground} />
         <Text>{t('common:COMMON.SAVE')}</Text>
       </Button>
     </VStack>

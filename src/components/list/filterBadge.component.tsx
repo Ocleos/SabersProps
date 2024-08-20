@@ -1,4 +1,4 @@
-import { Ban, Check } from 'lucide-react-native';
+import { BanIcon, CheckIcon } from 'lucide-react-native';
 import BadgeWrapper from '../label/badgeWrapper.component';
 
 interface IFilterBadgeProps {
@@ -10,7 +10,7 @@ interface IFilterBadgeProps {
 export const FilterBadge: React.FC<IFilterBadgeProps> = ({ isSelected, colorSelected, label }) => {
   const colorScheme = isSelected ? colorSelected : 'neutral';
 
-  return <BadgeWrapper colorScheme={colorScheme} label={label} icon={isSelected ? Check : Ban} />;
+  return <BadgeWrapper colorScheme={colorScheme} label={label} icon={isSelected ? CheckIcon : BanIcon} />;
 };
 
 export default FilterBadge;

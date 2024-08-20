@@ -1,4 +1,4 @@
-import { CreditCard, HardHat, ShoppingCart, Tags, Truck } from 'lucide-react-native';
+import { CreditCardIcon, HardHatIcon, ShoppingCartIcon, TagsIcon, TruckIcon } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
 import { VStack } from '~rnr/ui/stack';
 import CollapseCard from '~src/components/card/collapseCard.component';
@@ -16,11 +16,14 @@ const PricesCard: React.FC<IPricesCard> = ({ prop }) => {
   return (
     <CollapseCard title={t('collection:CATEGORIES.PRICES')} isOpened={true}>
       <VStack className='gap-2'>
-        <LabelIcon label={prop.prices?.price ? formatToCurrency(prop.prices.price) : '-'} icon={CreditCard} />
-        <LabelIcon label={prop.prices?.fees ? formatToCurrency(prop.prices.fees) : '-'} icon={Truck} />
-        <LabelIcon label={prop.prices?.total ? formatToCurrency(prop.prices.total) : '-'} icon={ShoppingCart} />
-        <LabelIcon label={prop.prices?.workPrice ? formatToCurrency(prop.prices.workPrice) : '-'} icon={HardHat} />
-        <LabelIcon label={prop.prices?.sellingPrice ? formatToCurrency(prop.prices.sellingPrice) : '-'} icon={Tags} />
+        <LabelIcon label={prop.prices?.price ? formatToCurrency(prop.prices.price) : '-'} icon={CreditCardIcon} />
+        <LabelIcon label={prop.prices?.fees ? formatToCurrency(prop.prices.fees) : '-'} icon={TruckIcon} />
+        <LabelIcon label={prop.prices?.total ? formatToCurrency(prop.prices.total) : '-'} icon={ShoppingCartIcon} />
+        <LabelIcon label={prop.prices?.workPrice ? formatToCurrency(prop.prices.workPrice) : '-'} icon={HardHatIcon} />
+        <LabelIcon
+          label={prop.prices?.sellingPrice ? formatToCurrency(prop.prices.sellingPrice) : '-'}
+          icon={TagsIcon}
+        />
       </VStack>
     </CollapseCard>
   );

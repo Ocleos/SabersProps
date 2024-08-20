@@ -1,5 +1,5 @@
 import { Stack, Tabs } from 'expo-router';
-import { Cpu, Info } from 'lucide-react-native';
+import { CpuIcon, InfoIcon } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
 
 export default () => {
@@ -17,14 +17,14 @@ export default () => {
           name='informations'
           options={{
             tabBarLabel: t('routing:ROUTING.COLLECTION.INFORMATIONS'),
-            tabBarIcon: (props) => <Info color={props.color} size={props.size} />,
+            tabBarIcon: (props) => <InfoIcon color={props.color} size={props.size} />,
           }}
         />
         <Tabs.Screen
           name='components'
           options={{
             tabBarLabel: t('routing:ROUTING.COLLECTION.COMPONENTS'),
-            tabBarIcon: (props) => <Cpu color={props.color} size={props.size} />,
+            tabBarIcon: (props) => <CpuIcon color={props.color} size={props.size} />,
           }}
         />
       </Tabs>

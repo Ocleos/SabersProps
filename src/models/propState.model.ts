@@ -1,12 +1,12 @@
 import {
-  BadgeEuro,
-  CircleAlert,
-  CircleCheckBig,
-  CircleDashed,
-  CircleDot,
-  CircleDotDashed,
-  CircleEllipsis,
-  CircleFadingPlus,
+  BadgeEuroIcon,
+  CircleAlertIcon,
+  CircleCheckBigIcon,
+  CircleDashedIcon,
+  CircleDotDashedIcon,
+  CircleDotIcon,
+  CircleEllipsisIcon,
+  CircleFadingPlusIcon,
   type LucideIcon,
 } from 'lucide-react-native';
 import i18n from '~src/i18n.config';
@@ -29,20 +29,20 @@ export type IPropState = {
 };
 
 export const propStates: Record<PropState, IPropState> = {
-  [PropState.PRODUCTION]: { colorScheme: 'red', label: i18n.t('collection:STATE.PRODUCTION'), icon: CircleDashed },
-  [PropState.DESIGN]: { colorScheme: 'red', label: i18n.t('collection:STATE.DESIGN'), icon: CircleDotDashed },
+  [PropState.PRODUCTION]: { colorScheme: 'red', label: i18n.t('collection:STATE.PRODUCTION'), icon: CircleDashedIcon },
+  [PropState.DESIGN]: { colorScheme: 'red', label: i18n.t('collection:STATE.DESIGN'), icon: CircleDotDashedIcon },
   [PropState.MISSING_PIECES]: {
     colorScheme: 'orange',
     label: i18n.t('collection:STATE.MISSING_PIECES'),
-    icon: CircleAlert,
+    icon: CircleAlertIcon,
   },
-  [PropState.READY]: { colorScheme: 'orange', label: i18n.t('collection:STATE.READY'), icon: CircleDot },
+  [PropState.READY]: { colorScheme: 'orange', label: i18n.t('collection:STATE.READY'), icon: CircleDotIcon },
   [PropState.IN_PROGRESS]: {
     colorScheme: 'orange',
     label: i18n.t('collection:STATE.IN_PROGRESS'),
-    icon: CircleEllipsis,
+    icon: CircleEllipsisIcon,
   },
-  [PropState.DONE]: { colorScheme: 'green', label: i18n.t('collection:STATE.DONE'), icon: CircleCheckBig },
-  [PropState.ON_SALE]: { colorScheme: 'blue', label: i18n.t('collection:STATE.ON_SALE'), icon: CircleFadingPlus },
-  [PropState.SOLD]: { colorScheme: 'blue', label: i18n.t('collection:STATE.SOLD'), icon: BadgeEuro },
+  [PropState.DONE]: { colorScheme: 'green', label: i18n.t('collection:STATE.DONE'), icon: CircleCheckBigIcon },
+  [PropState.ON_SALE]: { colorScheme: 'blue', label: i18n.t('collection:STATE.ON_SALE'), icon: CircleFadingPlusIcon },
+  [PropState.SOLD]: { colorScheme: 'blue', label: i18n.t('collection:STATE.SOLD'), icon: BadgeEuroIcon },
 };

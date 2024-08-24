@@ -12,12 +12,12 @@ import { Button } from '~rnr/ui/button';
 import { VStack } from '~rnr/ui/stack';
 import { Text } from '~rnr/ui/text';
 import InputWrapper from '~src/components/form/inputWrapper.component';
+import type { PropComponent } from '~src/modules/collection/models/propComponent.model';
+import { usePropDetailStore } from '~src/modules/collection/stores/propDetail.store';
 import { colorsTheme } from '~src/theme/nativewind.theme';
 import { DEFAULT_ICON_SIZE } from '~src/utils/icons.utils';
 import { COMPONENTS_URL_ENDPOINT, PROPS_URL_ENDPOINT, postData, putData } from '~src/utils/supabase.utils';
 import { MAX_LENGTH } from '~src/utils/validator.utils';
-import type { PropComponent } from '../models/propComponent.model';
-import { usePropDetailStore } from '../stores/propDetail.store';
 
 const PropComponentForm = () => {
   const { t } = useTranslation(['common', 'collection']);

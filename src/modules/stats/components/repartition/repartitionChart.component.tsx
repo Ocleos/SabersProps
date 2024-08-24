@@ -7,9 +7,9 @@ import { get } from 'radash';
 import { useEffect, useRef } from 'react';
 import { useWindowDimensions } from 'react-native';
 import { type PropState, propStates } from '~src/models/propState.model';
+import type { StateRepartition } from '~src/modules/stats/models/repartition.model';
 import { colorsTheme, fontFamily } from '~src/theme/nativewind.theme';
 import { useColorScheme } from '~src/theme/useColorTheme.theme';
-import type { StateRepartition } from '../../models/repartition.model';
 
 use([SVGRenderer, PieChart, TooltipComponent]);
 

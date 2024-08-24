@@ -7,11 +7,11 @@ import { Button } from '~rnr/ui/button';
 import { VStack } from '~rnr/ui/stack';
 import EmptyComponent from '~src/components/empty/empty.component';
 import FilterSearchWrapper from '~src/components/list/filterSearchWrapper.component';
+import PropComponentCard from '~src/modules/collection/components/propDetail/components/propComponentCard.component';
+import { usePropDetailStore } from '~src/modules/collection/stores/propDetail.store';
 import { appRoutes } from '~src/router/routes.utils';
 import { colorsTheme } from '~src/theme/nativewind.theme';
 import { DEFAULT_ICON_SIZE } from '~src/utils/icons.utils';
-import PropComponentCard from '../components/propDetail/components/propComponentCard.component';
-import { usePropDetailStore } from '../stores/propDetail.store';
 
 const PropDetailComponents: React.FC = () => {
   const router = useRouter();

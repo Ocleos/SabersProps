@@ -6,10 +6,10 @@ import { type ECharts, init, use } from 'echarts/core';
 import { get } from 'radash';
 import { useEffect, useRef } from 'react';
 import { useWindowDimensions } from 'react-native';
+import type { PricesInfosData } from '~src/modules/stats/models/pricesInfosData.model';
 import { colorsTheme, fontFamily } from '~src/theme/nativewind.theme';
 import { useColorScheme } from '~src/theme/useColorTheme.theme';
 import { formatToCurrency } from '~src/utils/format.utils';
-import type { PricesInfosData } from '../../models/pricesInfosData.model';
 import { pricesChartSeries } from './pricesChart.utils';
 
 interface IPricesChartProps {

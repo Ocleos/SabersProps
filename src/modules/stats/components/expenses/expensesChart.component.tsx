@@ -8,9 +8,9 @@ import { get } from 'radash';
 import { useEffect, useRef } from 'react';
 import { useWindowDimensions } from 'react-native';
 import i18n from '~src/i18n.config';
+import type { ExpensesData } from '~src/modules/stats/models/expense.model';
 import { colorsTheme, fontFamily } from '~src/theme/nativewind.theme';
 import { formatToCurrency } from '~src/utils/format.utils';
-import type { ExpensesData } from '../../models/expense.model';
 import { ExpensesTypes, getZoomByType } from './expenses.utils';
 
 interface IExpensesChartProps {

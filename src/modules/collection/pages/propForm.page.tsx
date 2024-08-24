@@ -15,11 +15,11 @@ import SelectWrapper from '~src/components/form/selectWrapper.component';
 import type { Prop } from '~src/models/prop.model';
 import { PropState, propStates } from '~src/models/propState.model';
 import { PropType, propTypes } from '~src/models/propType.model';
+import { useCollectionStore } from '~src/modules/collection/stores/collection.store';
 import { colorsTheme } from '~src/theme/nativewind.theme';
 import { DEFAULT_ICON_SIZE } from '~src/utils/icons.utils';
 import { PROPS_URL_ENDPOINT, postData, putData } from '~src/utils/supabase.utils';
 import { MAX_LENGTH } from '~src/utils/validator.utils';
-import { useCollectionStore } from '../stores/collection.store';
 
 const PropFormPage: React.FC = () => {
   const { t } = useTranslation(['common', 'collection']);

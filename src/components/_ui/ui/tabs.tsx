@@ -36,7 +36,7 @@ const TabsTrigger = React.forwardRef<
         className={cn(
           'inline-flex flex-1 items-center justify-center web:whitespace-nowrap rounded-md px-3 py-1.5 font-exo2Medium text-sm shadow-none web:ring-offset-background web:transition-all web:focus-visible:outline-none web:focus-visible:ring-2 web:focus-visible:ring-ring web:focus-visible:ring-offset-2',
           props.disabled && 'web:pointer-events-none opacity-50',
-          props.value === value && 'bg-background shadow-foreground/10 shadow-lg',
+          props.value === value && 'bg-card shadow-foreground/10 shadow-lg',
           className,
         )}
         {...props}

@@ -1,5 +1,5 @@
 import { BanIcon, CheckIcon } from 'lucide-react-native';
-import BadgeWrapper from '../label/badgeWrapper.component';
+import BadgeWrapper from '~src/components/label/badgeWrapper.component';
 
 interface IFilterBadgeProps {
   isSelected: boolean;

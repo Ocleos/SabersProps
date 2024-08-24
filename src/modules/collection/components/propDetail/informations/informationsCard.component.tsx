@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { VStack } from '~rnr/ui/stack';
 import CollapseCard from '~src/components/card/collapseCard.component';
 import LabelIcon from '~src/components/label/labelIcon.component';
-import type { PropDetail } from '../../../models/propDetail.model';
+import type { PropDetail } from '~src/modules/collection/models/propDetail.model';
 
 interface IInformationsCard {
   prop: PropDetail;

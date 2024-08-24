@@ -7,8 +7,8 @@ import { Tabs, TabsList, TabsTrigger } from '~rnr/ui/tabs';
 import { Text } from '~rnr/ui/text';
 import { Large } from '~rnr/ui/typography';
 import CollapseCard from '~src/components/card/collapseCard.component';
+import type { Expense } from '~src/modules/stats/models/expense.model';
 import { PROPS_EXPENSE_URL_ENDPOINT, getData } from '~src/utils/supabase.utils';
-import type { Expense } from '../../models/expense.model';
 import { ExpensesTypes, calculateExpenses } from './expenses.utils';
 import ExpensesChart from './expensesChart.component';
 

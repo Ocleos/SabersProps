@@ -2,8 +2,8 @@ import { max, min, sum } from 'radash';
 import { useTranslation } from 'react-i18next';
 import { VStack } from '~rnr/ui/stack';
 import LabelValue from '~src/components/label/labelValue.component';
+import type { PricesInfosData } from '~src/modules/stats/models/pricesInfosData.model';
 import { formatToCurrency } from '~src/utils/format.utils';
-import type { PricesInfosData } from '../../models/pricesInfosData.model';
 
 interface IPricesInfosProps {
   data: PricesInfosData[];

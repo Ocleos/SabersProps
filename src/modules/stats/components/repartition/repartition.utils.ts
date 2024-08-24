@@ -1,5 +1,5 @@
 import type { Prop } from '~src/models/prop.model';
-import type { Repartition } from '../../models/repartition.model';
+import type { Repartition } from '~src/modules/stats/models/repartition.model';
 
 export const calculateRepartition = (data: Prop[]) => {
   const initialData: Repartition = {

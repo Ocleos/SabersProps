@@ -3,8 +3,8 @@ import useSWR from 'swr';
 import { Skeleton } from '~rnr/ui/skeleton';
 import { VStack } from '~rnr/ui/stack';
 import CollapseCard from '~src/components/card/collapseCard.component';
+import type { PricesInfosData } from '~src/modules/stats/models/pricesInfosData.model';
 import { PROPS_PRICES_URL_ENDPOINT, getData } from '~src/utils/supabase.utils';
-import type { PricesInfosData } from '../../models/pricesInfosData.model';
 import PricesChart from './pricesChart.component';
 import PricesInfos from './pricesInfos.component';
 

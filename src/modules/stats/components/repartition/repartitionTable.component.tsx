@@ -8,10 +8,10 @@ import CostumeIcon from '~src/assets/icons/costume.icon';
 import LightsabersIcon from '~src/assets/icons/lightsabers.icon';
 import { type PropState, propStates } from '~src/models/propState.model';
 import { PropType } from '~src/models/propType.model';
+import type { Repartition } from '~src/modules/stats/models/repartition.model';
 import { colorsTheme } from '~src/theme/nativewind.theme';
 import { useColorScheme } from '~src/theme/useColorTheme.theme';
 import { DEFAULT_ICON_SIZE } from '~src/utils/icons.utils';
-import type { Repartition } from '../../models/repartition.model';
 
 interface IRepartitionTableProps {
   data: Repartition;

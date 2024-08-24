@@ -5,13 +5,13 @@ import { View } from 'react-native';
 import useSWR from 'swr';
 import { Button } from '~rnr/ui/button';
 import EmptyComponent from '~src/components/empty/empty.component';
+import NoteCardComponent from '~src/modules/notes/components/noteList/noteCard.component';
+import type { Note } from '~src/modules/notes/models/note.model';
+import { useNotesStore } from '~src/modules/notes/stores/notes.store';
 import { appRoutes } from '~src/router/routes.utils';
 import { colorsTheme } from '~src/theme/nativewind.theme';
 import { DEFAULT_ICON_SIZE } from '~src/utils/icons.utils';
 import { NOTES_URL_ENDPOINT, getData } from '~src/utils/supabase.utils';
-import NoteCardComponent from '../components/noteList/noteCard.component';
-import type { Note } from '../models/note.model';
-import { useNotesStore } from '../stores/notes.store';
 
 const NoteListPage: React.FC = () => {
   const router = useRouter();

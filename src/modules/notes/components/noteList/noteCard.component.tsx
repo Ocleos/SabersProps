@@ -2,10 +2,10 @@ import { Card, CardContent, CardHeader, CardTitle } from '~rnr/ui/card';
 import { HStack } from '~rnr/ui/stack';
 import { Text } from '~rnr/ui/text';
 import ActionsMenu from '~src/components/menu/actionsMenu.component';
+import type { Note } from '~src/modules/notes/models/note.model';
+import { useNotesStore } from '~src/modules/notes/stores/notes.store';
 import { appRoutes } from '~src/router/routes.utils';
 import { NOTES_URL_ENDPOINT } from '~src/utils/supabase.utils';
-import type { Note } from '../../models/note.model';
-import { useNotesStore } from '../../stores/notes.store';
 
 interface INoteCardProps {
   note: Note;

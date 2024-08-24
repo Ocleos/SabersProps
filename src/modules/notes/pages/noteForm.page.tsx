@@ -11,12 +11,12 @@ import { VStack } from '~rnr/ui/stack';
 import { Text } from '~rnr/ui/text';
 import InputWrapper from '~src/components/form/inputWrapper.component';
 import TextAreaWrapper from '~src/components/form/textAreaWrapper.component';
+import type { Note } from '~src/modules/notes/models/note.model';
+import { useNotesStore } from '~src/modules/notes/stores/notes.store';
 import { colorsTheme } from '~src/theme/nativewind.theme';
 import { DEFAULT_ICON_SIZE } from '~src/utils/icons.utils';
 import { NOTES_URL_ENDPOINT, postData, putData } from '~src/utils/supabase.utils';
 import { MAX_LENGTH } from '~src/utils/validator.utils';
-import type { Note } from '../models/note.model';
-import { useNotesStore } from '../stores/notes.store';
 
 const NoteFormPage: React.FC = () => {
   const { t } = useTranslation(['common', 'notes']);

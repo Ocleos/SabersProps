@@ -19,6 +19,7 @@ Application to manage collection of lightsaber and props movies replica.
 - Stats :
   - Category
   - Prices
+  - Expenses
 - Notes management
 - Tools :
   - Aurebesh translator
@@ -32,7 +33,7 @@ Application to manage collection of lightsaber and props movies replica.
 - [NodeJS](https://nodejs.org/fr) : **recommended LTS (v20.15.1)**, minimum v18.18.0
 - [Yarn](https://yarnpkg.com/) v4+
 - IDE ([VSCode](https://code.visualstudio.com/) recommanded)
-- [Android Studio](https://developer.android.com/studio?hl=fr) et/ou [xCode](https://developer.apple.com/xcode/)
+- [Android Studio](https://developer.android.com/studio?hl=fr) and / or [xCode](https://developer.apple.com/xcode/)
 - **Corepack** activé :
 
 ```bash
@@ -185,10 +186,10 @@ So if a new tag is created on git, a build pipeline is automatically launched.
   - Props' detail
     - Pictures gallery
     - Edit selling price
+    - Accessories (Plates, Bag)
 - Disposition
   - Group
   - Drag & Drop
-  - Accessories (Plates, Bag)
 - Export / Import
 - Sync on cloud
 

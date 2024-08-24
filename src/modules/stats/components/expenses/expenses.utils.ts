@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { capitalize, sort } from 'radash';
+import type { Expense, ExpensesData } from '~src/modules/stats/models/expense.model';
 import { FORMAT_DATE, formatDate } from '~src/utils/format.utils';
-import type { Expense, ExpensesData } from '../../models/expense.model';
 
 export enum ExpensesTypes {
   DAYS = 'days',

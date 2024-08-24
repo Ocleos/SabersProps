@@ -2,8 +2,8 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import { Pressable, View } from 'react-native';
 import { H3 } from '~rnr/ui/typography';
+import type { Module } from '~src/modules/home/models/module.models';
 import { colorsTheme } from '~src/theme/nativewind.theme';
-import type { Module } from '../models/module.models';
 
 interface IHomeButtonProps {
   module: Module;

@@ -1,9 +1,9 @@
 import { alphabetical } from 'radash';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
+import type { PropComponent } from '~src/modules/collection/models/propComponent.model';
+import type { PropDetail } from '~src/modules/collection/models/propDetail.model';
 import { searchValueInObject } from '~src/utils/arrays.utils';
-import type { PropComponent } from '../models/propComponent.model';
-import type { PropDetail } from '../models/propDetail.model';
 
 interface IPropDetailState {
   propDetail?: PropDetail;

@@ -11,13 +11,13 @@ import EmptyComponent from '~src/components/empty/empty.component';
 import FilterSearchWrapper from '~src/components/list/filterSearchWrapper.component';
 import BottomSheetWrapper from '~src/components/menu/bottomSheetWrapper.component';
 import type { Prop } from '~src/models/prop.model';
+import PropCardComponent from '~src/modules/collection/components/propList/propCard.component';
+import PropFilters from '~src/modules/collection/components/propList/propFilters/propFilters.component';
+import { useCollectionStore } from '~src/modules/collection/stores/collection.store';
 import { appRoutes } from '~src/router/routes.utils';
 import { colorsTheme } from '~src/theme/nativewind.theme';
 import { DEFAULT_ICON_SIZE } from '~src/utils/icons.utils';
 import { PROPS_URL_ENDPOINT, getData } from '~src/utils/supabase.utils';
-import PropCardComponent from '../components/propList/propCard.component';
-import PropFilters from '../components/propList/propFilters/propFilters.component';
-import { useCollectionStore } from '../stores/collection.store';
 
 const PropListPage: React.FC = () => {
   const router = useRouter();

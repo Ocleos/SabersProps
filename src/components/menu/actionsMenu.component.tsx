@@ -8,11 +8,11 @@ import useSWRMutation from 'swr/mutation';
 import { Button } from '~rnr/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '~rnr/ui/dropdown-menu';
 import { Text } from '~rnr/ui/text';
+import DeleteModal from '~src/components/modal/deleteModal.component';
 import { colorsTheme } from '~src/theme/nativewind.theme';
 import { useColorScheme } from '~src/theme/useColorTheme.theme';
 import { DEFAULT_ICON_SIZE } from '~src/utils/icons.utils';
 import { deleteData } from '~src/utils/supabase.utils';
-import DeleteModal from '../modal/deleteModal.component';
 
 type IActionsMenuProps = {
   onActionSelected: () => void;

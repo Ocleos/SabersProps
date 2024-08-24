@@ -10,10 +10,10 @@ import ActionsMenu from '~src/components/menu/actionsMenu.component';
 import type { Prop } from '~src/models/prop.model';
 import { propStates } from '~src/models/propState.model';
 import { propTypes } from '~src/models/propType.model';
+import { useCollectionStore } from '~src/modules/collection/stores/collection.store';
 import { appRoutes } from '~src/router/routes.utils';
 import { colorsTheme } from '~src/theme/nativewind.theme';
 import { PROPS_URL_ENDPOINT } from '~src/utils/supabase.utils';
-import { useCollectionStore } from '../../stores/collection.store';
 
 interface IPropCardProps {
   prop: Prop;

@@ -1,7 +1,7 @@
 import { VStack } from '~rnr/ui/stack';
-import ExpensesCard from '../components/expenses/expensesCard.component';
-import PricesCard from '../components/prices/pricesCard.component';
-import RepartitionCard from '../components/repartition/repartitionCard.component';
+import ExpensesCard from '~src/modules/stats/components/expenses/expensesCard.component';
+import PricesCard from '~src/modules/stats/components/prices/pricesCard.component';
+import RepartitionCard from '~src/modules/stats/components/repartition/repartitionCard.component';
 
 const Stats: React.FC = () => {
   return (

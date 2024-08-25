@@ -15,6 +15,7 @@ const collectionFr = {
     PRICE: 'Prix',
     RATE: 'Taux',
     SELLER: 'Vendeur',
+    SELLING_PRICE: 'Prix de vente',
     SOUNDBOARD: 'Carte son',
     STATE: 'Statut',
     TYPE: 'Type',
@@ -24,6 +25,7 @@ const collectionFr = {
     ADD_COMPONENT: 'Ajouter un composant',
     EDIT: 'Éditer un prop',
     EDIT_COMPONENT: 'Éditer un composant',
+    EDIT_SELLING_PRICE: 'Éditer le prix de vente',
   },
   STATE: {
     DESIGN: 'Conception',

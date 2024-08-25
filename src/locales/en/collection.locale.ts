@@ -15,6 +15,7 @@ const collectionEn = {
     PRICE: 'Price',
     RATE: 'Rate',
     SELLER: 'Seller',
+    SELLING_PRICE: 'Selling price',
     SOUNDBOARD: 'Soundboard',
     STATE: 'State',
     TYPE: 'Type',
@@ -24,6 +25,7 @@ const collectionEn = {
     ADD_COMPONENT: 'Add a component',
     EDIT: 'Edit a prop',
     EDIT_COMPONENT: 'Edit a component',
+    EDIT_SELLING_PRICE: 'Éditer the selling price',
   },
   STATE: {
     DESIGN: 'Design',

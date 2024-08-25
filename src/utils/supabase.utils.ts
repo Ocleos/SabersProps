@@ -13,6 +13,7 @@ export const NOTES_URL_ENDPOINT = 'notes';
 export const COMPONENTS_URL_ENDPOINT = 'components';
 export const PROPS_PRICES_URL_ENDPOINT = 'propsPrices';
 export const PROPS_EXPENSE_URL_ENDPOINT = 'propsExpenses';
+export const PROPS_SELLING_PRICE_URL_ENDPOINT = 'sellingPrices';
 
 type Data = {
   id?: string | undefined;
@@ -29,6 +30,10 @@ export const postData = async <T extends Data>(url: string, { arg }: { arg: T })
 
 export const putData = async <T extends Data>(url: string, { arg }: { arg: T }) => {
   await supabase.from(url).update(arg).eq('id', arg.id);
+};
+
+export const upsertData = async <T extends Data>(url: string, { arg }: { arg: T }) => {
+  await supabase.from(url).upsert(arg);
 };
 
 export const deleteData = async (url: string, { arg }: { arg: string }) => {

@@ -36,6 +36,7 @@
     "shopify",
     "supabase",
     "tailwindcss",
+    "upsert",
     "zustand"
   ]
 }

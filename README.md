@@ -34,7 +34,7 @@ Application to manage collection of lightsaber and props movies replica.
 - [Yarn](https://yarnpkg.com/) v4+
 - IDE ([VSCode](https://code.visualstudio.com/) recommanded)
 - [Android Studio](https://developer.android.com/studio?hl=fr) and / or [xCode](https://developer.apple.com/xcode/)
-- **Corepack** activé :
+- **Corepack** activated :
 
 ```bash
 corepack enable
@@ -85,6 +85,7 @@ yarn start
 - [React Native Toast Message](https://github.com/calintamas/react-native-toast-message)
 - [React Native Reanimated](https://docs.swmansion.com/react-native-reanimated/)
 - [Font Exo2](https://github.com/expo/google-fonts/tree/master/font-packages/exo-2#readme)
+- [Illustrations](https://storyset.com/)
 
 ### Database, Store & API
 

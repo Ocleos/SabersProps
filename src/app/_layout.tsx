@@ -1,12 +1,14 @@
 import { useFonts } from '@expo-google-fonts/exo-2';
 import { ThemeProvider } from '@react-navigation/native';
+import { PortalHost } from '@rn-primitives/portal';
 import { Slot } from 'expo-router';
+import { Try } from 'expo-router/build/views/Try';
 import * as SplashScreen from 'expo-splash-screen';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Toast from 'react-native-toast-message';
+import ErrorBoundaryComponent from '~src/components/error/errorBoundary.component';
 import { toastConfig } from '~src/components/toast/toastWrapper.component';
 import '~src/i18n.config';
-import { PortalHost } from '@rn-primitives/portal';
 import { navigationTheme } from '~src/theme/customTheme.theme';
 import { fontToLoad } from '~src/theme/fonts.theme';
 import { useColorScheme } from '~src/theme/useColorTheme.theme';
@@ -23,9 +25,11 @@ export default () => {
   return isFontsLoaded ? (
     <SafeAreaProvider onLayout={() => SplashScreen.hideAsync()}>
       <ThemeProvider value={navigationTheme(isDarkColorScheme)}>
-        <Slot />
-        <PortalHost />
-        <Toast position='bottom' config={toastConfig} />
+        <Try catch={() => <ErrorBoundaryComponent />}>
+          <Slot />
+          <PortalHost />
+          <Toast position='bottom' config={toastConfig} />
+        </Try>
       </ThemeProvider>
     </SafeAreaProvider>
   ) : null;

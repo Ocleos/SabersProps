@@ -40,6 +40,8 @@ const commonEn = {
     EDIT_SUCCESS: 'Updated with success',
   },
   ERRORS: {
+    HOME_RETURN: 'Return to home page',
+    PAGE_NOT_FOUND: 'Page not found',
     UNKNOWN_ERROR: 'An unknown error has occurred.',
   },
   VALIDATION: {

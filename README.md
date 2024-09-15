@@ -85,6 +85,7 @@ yarn start
 - [React Native Toast Message](https://github.com/calintamas/react-native-toast-message)
 - [React Native Reanimated](https://docs.swmansion.com/react-native-reanimated/)
 - [Font Exo2](https://github.com/expo/google-fonts/tree/master/font-packages/exo-2#readme)
+- [Illustrations](https://storyset.com/)
 
 ### Database, Store & API
 

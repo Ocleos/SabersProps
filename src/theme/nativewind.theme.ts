@@ -31,6 +31,10 @@ export const colorsTheme = {
     light: 'hsl(240 10% 4%)',
     dark: 'hsl(0 0% 95%)',
   },
+  mutedBackground: {
+    light: 'hsl(240 5% 96%)',
+    dark: 'hsl(0 0% 15%)',
+  },
   mutedForeground: {
     light: 'hsl(240 4% 46%)',
     dark: 'hsl(240 5% 65%)',

@@ -10,6 +10,8 @@ import { PortalHost } from '@rn-primitives/portal';
 import { navigationTheme } from '~src/theme/customTheme.theme';
 import { fontToLoad } from '~src/theme/fonts.theme';
 import { useColorScheme } from '~src/theme/useColorTheme.theme';
+import { Try } from 'expo-router/build/views/Try';
+import ErrorBoundaryComponent from '~src/components/error/errorBoundary.component';
 
 import '~src/theme/global.css';
 
@@ -23,9 +25,11 @@ export default () => {
   return isFontsLoaded ? (
     <SafeAreaProvider onLayout={() => SplashScreen.hideAsync()}>
       <ThemeProvider value={navigationTheme(isDarkColorScheme)}>
-        <Slot />
-        <PortalHost />
-        <Toast position='bottom' config={toastConfig} />
+        <Try catch={() => <ErrorBoundaryComponent />}>
+          <Slot />
+          <PortalHost />
+          <Toast position='bottom' config={toastConfig} />
+        </Try>
       </ThemeProvider>
     </SafeAreaProvider>
   ) : null;

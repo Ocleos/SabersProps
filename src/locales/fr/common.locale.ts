@@ -40,6 +40,8 @@ const commonFr = {
     EDIT_SUCCESS: 'Édité avec succès',
   },
   ERRORS: {
+    HOME_RETURN: 'Retourner à la page d’accueil',
+    PAGE_NOT_FOUND: 'Page inexistante',
     UNKNOWN_ERROR: 'Une erreur inconnue est survenue.',
   },
   VALIDATION: {

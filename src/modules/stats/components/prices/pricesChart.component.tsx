@@ -1,4 +1,4 @@
-import { SVGRenderer, SvgChart } from '@wuba/react-native-echarts';
+import SvgChart, { SVGRenderer } from '@wuba/react-native-echarts/svgChart';
 import type { EChartsOption, SeriesOption } from 'echarts';
 import { BarChart, ScatterChart } from 'echarts/charts';
 import { GridComponent, TooltipComponent } from 'echarts/components';

@@ -1,4 +1,4 @@
-import { SVGRenderer, SvgChart } from '@wuba/react-native-echarts';
+import SvgChart, { SVGRenderer } from '@wuba/react-native-echarts/svgChart';
 import type { EChartsOption } from 'echarts';
 import { PieChart } from 'echarts/charts';
 import { TooltipComponent } from 'echarts/components';

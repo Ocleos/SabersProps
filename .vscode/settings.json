@@ -18,8 +18,8 @@
   "files.insertFinalNewline": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "explorer.fileNesting.patterns": {
-    "app.config.ts": "*.env, babel.config.*, biome.*, components.json, eas.*, metro.config.*, .lintstaged*, .prettier*, commitlint.*, nativewind*, tailwind*, tsconfig*",
-    "package.json": ".yarnrc*, yarn*, .release-it*, .auto-changelog"
+    "app.config.ts": "*.env, babel.config.*, eas.*, metro.config.*, nativewind*, tailwind*, tsconfig*",
+    "package.json": ".yarnrc*, yarn*, .release-it*, .auto-changelog, biome.*, .prettier*, commitlint.*, turbo.json"
   },
   "cSpell.words": ["aurebesh", "sabersprops"],
   "cSpell.ignoreRegExpList": ["/from\\\\s+(['\\\"]).*\\\\1/"],

@@ -40,11 +40,14 @@ Application to manage collection of lightsaber and props movies replica.
 corepack enable
 ```
 
+Monorepo with [TurboRepo](https://turbo.build/) and [Yarn Workspaces](https://yarnpkg.com/features/workspaces)
+
 ## Environment Variables
 
 To run this project, you will need to add the following environment variables to your .env file
 
-`apiKey` : Key for supabase account
+- `EXPO_USE_METRO_WORKSPACE_ROOT=1`: Key to be able to launch app in monorepo
+- `apiKey` : Key for supabase account
 
 ## Installation & Run
 
@@ -63,7 +66,7 @@ yarn install
 - Start the project
 
 ```bash
-yarn start
+yarn turbo dev
 ```
 
 ## Librairies & Tech
@@ -102,7 +105,6 @@ yarn start
 
 - [ECharts](https://echarts.apache.org/en/index.html)
 - [React Native ECharts](https://wuba.github.io/react-native-echarts/)
-- [React Native Skia](https://shopify.github.io/react-native-skia/)
 
 ### Lint
 

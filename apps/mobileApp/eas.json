@@ -5,6 +5,9 @@
   },
   "build": {
     "base": {
+      "env": {
+        "EXPO_USE_METRO_WORKSPACE_ROOT": "1"
+      },
       "distribution": "internal",
       "android": {
         "image": "latest",

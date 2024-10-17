@@ -6,10 +6,15 @@
   "repository": "git@github.com:Ocleos/SabersProps.git",
   "author": "Ocleos",
   "license": "MIT",
-  "workspaces": ["apps/*", "packages/*"],
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
     "dev": "turbo run dev",
+    "check": "turbo run check",
     "clean": "turbo run clean && rm -rf node_modules",
+    "start": "yarn workspace mobileapp start",
     "lint": "biome check . --apply",
     "lint:unsafe": "biome check . --apply-unsafe",
     "format": "biome format . --write",
@@ -17,14 +22,14 @@
     "release": "release-it"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.3",
+    "@biomejs/biome": "^1.9.4",
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
     "@release-it/bumper": "^6.0.1",
     "auto-changelog": "^2.5.0",
     "dotenv": "^16.4.5",
     "husky": "^9.1.6",
-    "release-it": "^17.8.2",
+    "release-it": "^17.10.0",
     "turbo": "^2.1.3"
   },
   "packageManager": "yarn@4.5.0"

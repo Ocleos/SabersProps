@@ -1,5 +1,6 @@
 const collectionEn = {
   CATEGORIES: {
+    ACCESSORIES: 'Accessories',
     COMPONENTS: 'Components',
     INFORMATIONS: 'Informations',
     PRICES: 'Prices',

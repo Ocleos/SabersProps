@@ -1,5 +1,6 @@
 const collectionFr = {
   CATEGORIES: {
+    ACCESSORIES: 'Accessoires',
     COMPONENTS: 'Composants',
     INFORMATIONS: 'Informations',
     PRICES: 'Prix',

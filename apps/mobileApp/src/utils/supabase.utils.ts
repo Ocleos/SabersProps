@@ -14,6 +14,7 @@ export const COMPONENTS_URL_ENDPOINT = 'components';
 export const PROPS_PRICES_URL_ENDPOINT = 'propsPrices';
 export const PROPS_EXPENSE_URL_ENDPOINT = 'propsExpenses';
 export const PROPS_SELLING_PRICE_URL_ENDPOINT = 'sellingPrices';
+export const PROPS_ACCESSORIES_URL_ENDPOINT = 'accessories';
 
 type Data = {
   id?: string | undefined;

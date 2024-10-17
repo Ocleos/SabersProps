@@ -5,6 +5,7 @@
       "cache": false,
       "persistent": true
     },
+    "check": {},
     "lint": {},
     "clean": {
       "cache": false

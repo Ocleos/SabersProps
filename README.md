@@ -44,10 +44,9 @@ Monorepo with [TurboRepo](https://turbo.build/) and [Yarn Workspaces](https://ya
 
 ## Environment Variables
 
-To run this project, you will need to add the following environment variables to your .env file
+To run this project, you will need to add the following environment variables to your **.env.local** file
 
-- `EXPO_USE_METRO_WORKSPACE_ROOT=1`: Key to be able to launch app in monorepo
-- `apiKey` : Key for supabase account
+- `supabaseApiKey` : Key for supabase account
 
 ## Installation & Run
 
@@ -66,7 +65,7 @@ yarn install
 - Start the project
 
 ```bash
-yarn turbo dev
+yarn dev:mobile
 ```
 
 ## Librairies & Tech
@@ -184,12 +183,11 @@ So if a new tag is created on git, a build pipeline is automatically launched.
 
 ## Roadmap
 
-- Automatics test
+- Automatics tests (Unit & E2E)
 - Collection
   - Props' detail
     - Pictures gallery
-    - Edit selling price
-    - Accessories (Plates, Bag)
+- List of accessories to do
 - Disposition
   - Group
   - Drag & Drop

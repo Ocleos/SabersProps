@@ -10,7 +10,7 @@
   },
   "plugins": {
     "@release-it/bumper": {
-      "out": "app.config.ts"
+      "out": ["apps/mobile/app.config.ts", "apps/mobile/package.json"]
     }
   },
   "github": {

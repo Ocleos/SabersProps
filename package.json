@@ -8,16 +8,19 @@
   "license": "MIT",
   "workspaces": [
     "apps/*",
+    "configs/*",
     "packages/*"
   ],
   "scripts": {
     "dev": "turbo run dev",
-    "check": "turbo run check",
-    "clean": "turbo run clean && rm -rf node_modules",
-    "start": "yarn workspace mobileapp start",
-    "lint": "biome check . --apply",
-    "lint:unsafe": "biome check . --apply-unsafe",
+    "dev:mobile": "yarn workspace @sabersprops/mobile start",
+    "build": "turbo run build",
+    "lint": "biome check . --write",
+    "lint:unsafe": "biome check . --write --unsafe",
     "format": "biome format . --write",
+    "check": "turbo run check",
+    "checkDep:mobile": "yarn workspace @sabersprops/mobile expo install --check",
+    "clean": "turbo run clean",
     "prepare": "husky",
     "release": "release-it"
   },
@@ -27,10 +30,9 @@
     "@commitlint/config-conventional": "^19.5.0",
     "@release-it/bumper": "^6.0.1",
     "auto-changelog": "^2.5.0",
-    "dotenv": "^16.4.5",
     "husky": "^9.1.6",
     "release-it": "^17.10.0",
-    "turbo": "^2.1.3"
+    "turbo": "^2.2.3"
   },
-  "packageManager": "yarn@4.5.0"
+  "packageManager": "yarn@4.5.1"
 }

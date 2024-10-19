@@ -5,8 +5,13 @@
       "cache": false,
       "persistent": true
     },
-    "check": {},
-    "lint": {},
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
+    },
+    "check": {
+      "cache": false
+    },
     "clean": {
       "cache": false
     }

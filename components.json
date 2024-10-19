@@ -1,7 +1,0 @@
-{
-  "platforms": "universal",
-  "aliases": {
-    "components": "~src/components/_ui",
-    "lib": "~rnr/lib"
-  }
-}

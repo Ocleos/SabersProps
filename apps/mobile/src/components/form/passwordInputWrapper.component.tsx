@@ -1,30 +1,15 @@
-import { Input } from '@sabersprops/ui';
 import { type FieldValues, type UseControllerProps, useController } from 'react-hook-form';
-import FormControlWrapper, { type FormControlProps } from './formControlWrapper.component';
+import { PasswordInput } from '~ui/components';
+import FormControlWrapper from './formControlWrapper.component';
+import type { InputWrapperProps } from './inputWrapper.component';
 
-export type InputWrapperProps = {
-  placeholder?: string;
-  helperText?: string;
-  formControlProps?: FormControlProps;
-  inputProps?: React.ComponentProps<typeof Input>;
-};
-
-const InputWrapper = <T extends FieldValues>(props: InputWrapperProps & UseControllerProps<T>) => {
+const PasswordInputWrapper = <T extends FieldValues>(props: InputWrapperProps & UseControllerProps<T>) => {
   const {
     field,
     fieldState: { error, invalid },
   } = useController({ control: props.control, name: props.name });
 
   const { placeholder, helperText, formControlProps, inputProps } = props;
-
-  const onChange = (entryValue: string) => {
-    let newValue = entryValue;
-    if (inputProps?.keyboardType === 'decimal-pad' || inputProps?.keyboardType === 'numeric') {
-      newValue = entryValue.replace(',', '.');
-    }
-
-    field.onChange(newValue);
-  };
 
   return (
     <FormControlWrapper
@@ -33,12 +18,12 @@ const InputWrapper = <T extends FieldValues>(props: InputWrapperProps & UseContr
       helperText={helperText}
       error={error?.message}
       {...formControlProps}>
-      <Input
+      <PasswordInput
         aria-labelledby={`${props.name}-item`}
         placeholder={placeholder}
         value={field.value != null ? `${field.value}` : ''}
         onBlur={field.onBlur}
-        onChangeText={onChange}
+        onChangeText={field.onChange}
         className={invalid ? 'border-destructive' : ''}
         editable={!formControlProps?.isDisabled}
         {...inputProps}
@@ -47,4 +32,4 @@ const InputWrapper = <T extends FieldValues>(props: InputWrapperProps & UseContr
   );
 };
 
-export default InputWrapper;
+export default PasswordInputWrapper;

@@ -1,5 +1,8 @@
 const routingEn = {
   ROUTING: {
+    AUTH: {
+      NEW_ACCOUNT: 'New account',
+    },
     COLLECTION: {
       ADD: 'Add',
       COMPONENTS: 'Components',

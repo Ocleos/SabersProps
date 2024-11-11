@@ -1,22 +1,26 @@
 export const appRoutes = {
-  home: '/home',
+  auth: {
+    login: '(auth)/login',
+    signUp: '(auth)/signup',
+  },
+  home: '(root)/home',
   collection: {
-    root: '/collection',
-    form: '/collection/form',
-    informations: (id: string | undefined) => `/collection/${id}/informations`,
+    root: '(root)/collection',
+    form: '(root)/collection/form',
+    informations: (id: string | undefined) => `(root)/collection/${id}/informations`,
     components: {
-      root: (id: string | undefined) => `/collection/${id}/components`,
-      form: (id: string | undefined) => `/collection/${id}/components/form`,
+      root: (id: string | undefined) => `(root)/collection/${id}/components`,
+      form: (id: string | undefined) => `(root)/collection/${id}/components/form`,
     },
   },
-  stats: '/stats',
+  stats: '(root)/stats',
   notes: {
-    root: '/notes',
-    form: '/notes/form',
+    root: '(root)/notes',
+    form: '(root)/notes/form',
   },
   tools: {
-    root: '/tools',
-    aurebeshTranslator: '/tools/aurebeshTranslator',
+    root: '(root)/tools',
+    aurebeshTranslator: '(root)/tools/aurebeshTranslator',
   },
-  settings: '/settings',
+  settings: '(root)/settings',
 };

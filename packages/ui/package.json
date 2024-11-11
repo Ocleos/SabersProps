@@ -21,6 +21,7 @@
     "@rn-primitives/types": "^1.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "lucide-react-native": "^0.456.0",
     "tailwind-merge": "^2.5.4"
   },
   "devDependencies": {
@@ -29,7 +30,7 @@
   },
   "peerDependencies": {
     "@types/react": "~18.2.79",
-    "nativewind": "4.1.10",
+    "nativewind": "*",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "0.74.5",

@@ -46,7 +46,7 @@ const commonFr = {
   },
   VALIDATION: {
     DEFAULT: 'Le champ est invalide',
-    EMAIL: "Le format de l'e-mail est invalide",
+    EMAIL: "Le format de l'email est invalide",
     MAX: 'Le nombre doit être inférieur à {{max}}',
     MIN: 'Le nombre doit être supérieur à {{min}}',
     NEGATIVE: 'La valeur doit être négative',

@@ -1,10 +1,14 @@
-import { DrawerContent, type DrawerContentComponentProps } from '@react-navigation/drawer';
+import { DrawerContent, type DrawerContentComponentProps, DrawerItem } from '@react-navigation/drawer';
 import { H3, HStack, Separator, colorsTheme } from '@sabersprops/ui';
+import { LogOutIcon } from 'lucide-react-native';
+import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import LogoIcon from '~src/assets/icons/logo.icon';
+import { supabase } from '~src/utils/supabase.utils';
 
 const DrawerLayout: React.FC<DrawerContentComponentProps> = (props) => {
+  const { t } = useTranslation(['auth']);
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <HStack className='items-center gap-4 p-4'>
@@ -18,6 +22,15 @@ const DrawerLayout: React.FC<DrawerContentComponentProps> = (props) => {
       <Separator />
 
       <DrawerContent {...props} />
+
+      <Separator />
+
+      <DrawerItem
+        labelStyle={{ fontFamily: 'Exo2_500Medium' }}
+        label={t('auth:LABELS.SIGN_OUT')}
+        icon={(props) => <LogOutIcon color={props.color} size={props.size} />}
+        onPress={() => supabase.auth.signOut()}
+      />
     </SafeAreaView>
   );
 };

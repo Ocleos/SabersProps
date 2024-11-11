@@ -1,7 +1,14 @@
+import * as yup from 'yup';
 import { setLocale } from 'yup';
 import i18n from '~src/i18n.config';
 
 export const MAX_LENGTH = 100;
+
+export const PASSWORD_VALIDATION_RULES = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[_\W]).{8,}$/;
+
+yup.addMethod(yup.string, 'password', function password() {
+  return this.matches(PASSWORD_VALIDATION_RULES, i18n.t('auth:VALIDATION.WEAK_PASSWORD'));
+});
 
 setLocale({
   mixed: {
@@ -28,3 +35,10 @@ setLocale({
     min: ({ min }) => i18n.t('common:VALIDATION.TOO_SHORT', { count: min }),
   },
 });
+
+// Update TS definitions
+declare module 'yup' {
+  interface StringSchema<TType, TContext, TDefault, TFlags> {
+    password(): StringSchema<TType, TContext, TDefault, TFlags>;
+  }
+}

@@ -45,6 +45,9 @@
         "noUnusedImports": "warn",
         "noUnusedVariables": "error"
       },
+      "suspicious": {
+        "noConsole": "warn"
+      },
       "nursery": {
         "useSortedClasses": {
           "level": "warn",

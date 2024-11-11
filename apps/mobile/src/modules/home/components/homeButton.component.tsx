@@ -2,7 +2,7 @@ import { H3, colorsTheme } from '@sabersprops/ui';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import { Pressable, View } from 'react-native';
-import type { Module } from '~src/modules/home/models/module.models';
+import type { Module } from '~src/modules/home/models/module.model';
 
 interface IHomeButtonProps {
   module: Module;

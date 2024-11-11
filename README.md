@@ -13,6 +13,7 @@ Application to manage collection of lightsaber and props movies replica.
 
 ## Features
 
+- Authentication
 - List of props
 - Detail of a prop
 - List of props' pieces
@@ -53,7 +54,7 @@ To run this project, you will need to add the following environment variables to
 - Clone the project
 
 ```bash
-git clone git@github.com:[...]/SabersProps.git
+git clone git@github.com:Ocleos/SabersProps.git
 ```
 
 - Install dependencies
@@ -184,6 +185,11 @@ So if a new tag is created on git, a build pipeline is automatically launched.
 ## Roadmap
 
 - Automatics tests (Unit & E2E)
+- Authentication / Profile
+  - User avatar
+  - Change password
+  - Update User
+  - Password forgotten
 - Collection
   - Props' detail
     - Pictures gallery

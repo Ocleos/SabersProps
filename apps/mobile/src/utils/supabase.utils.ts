@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createClient } from '@supabase/supabase-js';
 import Constants from 'expo-constants';
 
@@ -5,7 +6,12 @@ const apiUrl: string = Constants.expoConfig?.extra?.supabaseApiUrl;
 const apiKey: string = Constants.expoConfig?.extra?.supabaseApiKey;
 
 export const supabase = createClient(apiUrl, apiKey, {
-  auth: { persistSession: false },
+  auth: {
+    storage: AsyncStorage,
+    autoRefreshToken: true,
+    persistSession: true,
+    detectSessionInUrl: false,
+  },
 });
 
 export const PROPS_URL_ENDPOINT = 'props';

@@ -1,6 +1,6 @@
 import { LineChartIcon, PocketKnifeIcon, ScrollTextIcon, SettingsIcon, SwordsIcon } from 'lucide-react-native';
 import i18n from '~src/i18n.config';
-import type { Module } from '~src/modules/home/models/module.models';
+import type { Module } from '~src/modules/home/models/module.model';
 import { appRoutes } from '~src/router/routes.utils';
 
 export const getModules = (): Module[] => {

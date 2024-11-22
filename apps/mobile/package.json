@@ -1,7 +1,7 @@
 {
   "name": "@sabersprops/mobile",
   "version": "1.8.1",
-  "main": "expo-router/entry",
+  "main": "index.ts",
   "scripts": {
     "start": "expo start",
     "check": "tsc --noEmit",

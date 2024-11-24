@@ -1,7 +1,7 @@
 {
   "name": "@sabersprops/mobile",
   "version": "1.8.2",
-  "main": "index.ts",
+  "main": "src/index.js",
   "scripts": {
     "start": "expo start",
     "check": "tsc --noEmit",

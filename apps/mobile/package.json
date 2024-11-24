@@ -1,6 +1,6 @@
 {
   "name": "@sabersprops/mobile",
-  "version": "1.8.2",
+  "version": "1.8.3",
   "main": "src/index.js",
   "scripts": {
     "start": "expo start",

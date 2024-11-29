@@ -11,7 +11,7 @@ export default () => {
       <Stack.Screen
         options={{
           headerShown: false,
-          statusBarColor: colorsTheme.card[colorScheme],
+          statusBarBackgroundColor: colorsTheme.card[colorScheme],
           statusBarStyle: isDarkColorScheme ? 'light' : 'dark',
           statusBarAnimation: 'fade',
         }}

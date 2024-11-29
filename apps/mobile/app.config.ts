@@ -12,11 +12,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   orientation: 'portrait',
   icon: './assets/icon.png',
   userInterfaceStyle: 'automatic',
-  splash: {
-    image: './assets/splash.png',
-    resizeMode: 'contain',
-    backgroundColor: '#000000',
-  },
+  newArchEnabled: true,
   assetBundlePatterns: ['**/*'],
   android: {
     package: 'fr.ocleos.sabersprops',
@@ -48,6 +44,20 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
           enableProguardInReleaseBuilds: true,
           enableShrinkResourcesInReleaseBuilds: true,
         },
+      },
+    ],
+    [
+      'expo-splash-screen',
+      {
+        backgroundColor: '#000000',
+        image: './assets/splash-icon.png',
+        imageWidth: 288,
+      },
+    ],
+    [
+      'expo-router',
+      {
+        sitemap: false,
       },
     ],
   ],

@@ -17,6 +17,11 @@ import '~src/theme/global.css';
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
 
+SplashScreen.setOptions({
+  fade: true,
+  duration: 1000,
+});
+
 export default () => {
   const [isFontsLoaded] = useFonts(fontToLoad);
   const { isDarkColorScheme } = useColorScheme();

@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "main": "./src/index.tsx",
   "scripts": {
-    "check": "tsc"
+    "check": "tsc --noEmit"
   },
   "dependencies": {
     "@rn-primitives/dialog": "^1.1.0",
@@ -19,22 +19,21 @@
     "@rn-primitives/tabs": "^1.1.0",
     "@rn-primitives/toggle": "^1.1.0",
     "@rn-primitives/types": "^1.1.0",
-    "class-variance-authority": "^0.7.0",
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "lucide-react-native": "^0.460.0",
-    "tailwind-merge": "^2.5.4"
+    "lucide-react-native": "^0.462.0",
+    "tailwind-merge": "^2.5.5",
+    "tailwindcss": "^3.4.15"
   },
   "devDependencies": {
     "@react-native-reusables/cli": "^0.1.2",
+    "@types/react": "~18.3.12",
     "typescript": "~5.3.3"
   },
   "peerDependencies": {
-    "@types/react": "~18.2.79",
     "nativewind": "*",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-native": "0.74.5",
-    "tailwindcss": "^3.4.14"
-  },
-  "packageManager": "yarn@4.5.1"
+    "react": "*",
+    "react-dom": "*",
+    "react-native": "*"
+  }
 }

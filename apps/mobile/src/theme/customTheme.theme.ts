@@ -1,8 +1,27 @@
 import type { Theme } from '@react-navigation/native';
 import { colorsTheme } from '@sabersprops/ui';
+import { navigationFontFamily } from './fonts.theme';
 
 export const navigationTheme = (isDarkTheme: boolean): Theme => {
   return {
+    fonts: {
+      regular: {
+        fontFamily: navigationFontFamily,
+        fontWeight: '400',
+      },
+      medium: {
+        fontFamily: navigationFontFamily,
+        fontWeight: '500',
+      },
+      bold: {
+        fontFamily: navigationFontFamily,
+        fontWeight: '700',
+      },
+      heavy: {
+        fontFamily: navigationFontFamily,
+        fontWeight: '800',
+      },
+    },
     dark: isDarkTheme,
     colors: {
       primary: colorsTheme.primary[500],

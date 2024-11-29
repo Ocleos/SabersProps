@@ -35,16 +35,16 @@ const PageLayout: React.FC<IPageLayoutProps> = ({
                 size='icon'
                 variant='ghost'
                 className='mr-2'
-                onPress={() => navigation.dispatch(DrawerActions.toggleDrawer)}>
+                onPressIn={() => navigation.dispatch(DrawerActions.toggleDrawer)}>
                 <MenuIcon size={DEFAULT_ICON_SIZE} color={colorsTheme.primary[500]} />
               </Button>
             ) : (
-              <Button size='icon' className='mr-2' variant='ghost' onPress={() => router.back()}>
+              <Button size='icon' className='mr-2' variant='ghost' onPressIn={() => router.back()}>
                 <ArrowLeftIcon size={DEFAULT_ICON_SIZE} color={colorsTheme.primary[500]} />
               </Button>
             );
           },
-          statusBarColor: colorsTheme.card[colorScheme],
+          statusBarBackgroundColor: colorsTheme.card[colorScheme],
           statusBarStyle: isDarkColorScheme ? 'light' : 'dark',
           statusBarAnimation: 'fade',
         }}

@@ -16,12 +16,18 @@ Application to manage collection of lightsaber and props movies replica.
 - Authentication
 - List of props
 - Detail of a prop
+  - Informations
+  - Accessories
+  - Prices
 - List of props' pieces
 - Stats :
   - Category
   - Prices
   - Expenses
 - Notes management
+- Todos :
+  - Props
+  - Accessory
 - Tools :
   - Aurebesh translator
 - Light / Black theme
@@ -188,12 +194,11 @@ So if a new tag is created on git, a build pipeline is automatically launched.
 - Authentication / Profile
   - User avatar
   - Change password
-  - Update User
+  - Update / Delete User
   - Password forgotten
 - Collection
   - Props' detail
     - Pictures gallery
-- List of accessories to do
 - Disposition
   - Group
   - Drag & Drop

@@ -7,7 +7,7 @@ import useSWRMutation from 'swr/mutation';
 import CollapseCard from '~src/components/card/collapseCard.component';
 import type { PropAccessory } from '~src/modules/collection/models/propAccessory.model';
 import type { PropDetail } from '~src/modules/collection/models/propDetail.model';
-import { PROPS_ACCESSORIES_URL_ENDPOINT, PROPS_URL_ENDPOINT, upsertData } from '~src/utils/supabase.utils';
+import { ACCESSORIES_URL_ENDPOINT, PROPS_URL_ENDPOINT, upsertData } from '~src/utils/supabase.utils';
 
 interface IAccessoriesCard {
   prop: PropDetail;
@@ -22,7 +22,7 @@ const AccessoriesCard: React.FC<IAccessoriesCard> = ({ prop }) => {
   const [hasKeyring, setHasKeyring] = useState<boolean>(accessories?.keyring ?? false);
   const [hasDisplayPlaque, setHasDisplayPlaque] = useState<boolean>(accessories?.displayPlaque ?? false);
 
-  const { trigger } = useSWRMutation(PROPS_ACCESSORIES_URL_ENDPOINT, upsertData<PropAccessory>);
+  const { trigger } = useSWRMutation(ACCESSORIES_URL_ENDPOINT, upsertData<PropAccessory>);
   const { mutate } = useSWRConfig();
 
   const onUpdateAccessory = async (value: boolean, index: number) => {

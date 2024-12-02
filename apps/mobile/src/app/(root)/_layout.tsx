@@ -3,6 +3,7 @@ import { Drawer } from 'expo-router/drawer';
 import {
   HomeIcon,
   LineChartIcon,
+  ListTodoIcon,
   PocketKnifeIcon,
   ScrollTextIcon,
   SettingsIcon,
@@ -51,6 +52,14 @@ export default () => {
         options={{
           drawerLabel: t('routing:ROUTING.NOTES.INITIAL'),
           drawerIcon: (props) => <ScrollTextIcon color={props.color} size={props.size} />,
+        }}
+      />
+
+      <Drawer.Screen
+        name='todos'
+        options={{
+          drawerLabel: t('routing:ROUTING.TODOS.INITIAL'),
+          drawerIcon: (props) => <ListTodoIcon color={props.color} size={props.size} />,
         }}
       />
 

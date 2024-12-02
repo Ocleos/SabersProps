@@ -22,6 +22,9 @@ const routingFr = {
     STATS: {
       INITIAL: 'Stats',
     },
+    TODOS: {
+      INITIAL: 'A Faire',
+    },
     TOOLS: {
       INITIAL: 'Outils',
     },

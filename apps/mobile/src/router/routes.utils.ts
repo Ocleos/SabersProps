@@ -18,6 +18,7 @@ export const appRoutes = {
     root: '(root)/notes',
     form: '(root)/notes/form',
   },
+  todos: '(root)/todos',
   tools: {
     root: '(root)/tools',
     aurebeshTranslator: '(root)/tools/aurebeshTranslator',

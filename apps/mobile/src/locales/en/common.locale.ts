@@ -20,6 +20,7 @@ const commonEn = {
     OFF: 'Off',
     OK: 'Ok',
     ON: 'On',
+    PROP: 'Prop',
     RENAME: 'Rename',
     SAVE: 'Save',
     SEARCH: 'Search',

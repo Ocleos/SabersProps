@@ -43,6 +43,11 @@ const collectionEn = {
     LIGHTSABER: 'Lightsaber',
     PROP: 'Prop',
   },
+  TYPE_ACCESSORY: {
+    BAG: 'Bag',
+    KEYRING: 'Keyring',
+    DISPLAY_PLAQUE: 'Display plaque',
+  },
 };
 
 export default collectionEn;

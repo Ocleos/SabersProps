@@ -20,7 +20,7 @@
     "@sabersprops/ui": "workspace:*",
     "@shopify/flash-list": "1.7.1",
     "@supabase/supabase-js": "^2.46.2",
-    "@wuba/react-native-echarts": "^2.0.1",
+    "@wuba/react-native-echarts": "^2.0.2",
     "dayjs": "^1.11.13",
     "echarts": "^5.5.1",
     "expo": "~52.0.12",

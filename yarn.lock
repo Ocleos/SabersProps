@@ -4199,7 +4199,7 @@ __metadata:
     "@shopify/flash-list": "npm:1.7.1"
     "@supabase/supabase-js": "npm:^2.46.2"
     "@types/react": "npm:~18.3.12"
-    "@wuba/react-native-echarts": "npm:^2.0.1"
+    "@wuba/react-native-echarts": "npm:^2.0.2"
     dayjs: "npm:^1.11.13"
     dotenv: "npm:^16.4.5"
     eas-cli: "npm:^13.4.2"
@@ -4723,9 +4723,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wuba/react-native-echarts@npm:^2.0.1":
-  version: 2.0.1
-  resolution: "@wuba/react-native-echarts@npm:2.0.1"
+"@wuba/react-native-echarts@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "@wuba/react-native-echarts@npm:2.0.2"
   dependencies:
     "@xmldom/xmldom": "npm:^0.8.6"
     entities: "npm:^4.4.0"
@@ -4737,7 +4737,7 @@ __metadata:
     react-native-gesture-handler: "*"
     react-native-svg: "*"
     zrender: "*"
-  checksum: 10/f7eba6e8149b9d88db89a4d4ff9eca9d3e2c0369fdd201e3f212e4fe13901c644350e119d7d9f3652b4886d5412806e5de0c24ad13ea5c899e63eab9e07d638c
+  checksum: 10/21268219422ab748948159bce67aa167cd44c2bd06b03f40e143eccee106a8a1b870ca265729d140609ca13c4a6f7eb6ca48ee3f77e6c4efdcf9e0a16500478c
   languageName: node
   linkType: hard
 

@@ -123,7 +123,6 @@ yarn dev:mobile
 - [DayJS](https://day.js.org/)
 - [Radash](https://radash-docs.vercel.app/docs/getting-started)
 - [i18next](https://www.i18next.com/)
-- [Dotenv](https://www.dotenv.org/)
 
 ### Deployment
 

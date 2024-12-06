@@ -1,4 +1,5 @@
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
+import { fontFamily } from '@sabersprops/ui';
 import { Drawer } from 'expo-router/drawer';
 import {
   HomeIcon,
@@ -21,7 +22,7 @@ export default () => {
       drawerContent={(props) => <DrawerLayout {...props} />}
       screenOptions={{
         headerShown: false,
-        drawerLabelStyle: { fontFamily: 'Exo2_500Medium' },
+        drawerLabelStyle: { fontFamily: fontFamily.exo2Medium },
       }}>
       <Drawer.Screen
         name='home'

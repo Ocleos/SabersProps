@@ -1,4 +1,3 @@
-import 'dotenv/config';
 import type { ConfigContext, ExpoConfig } from 'expo/config';
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
@@ -42,7 +41,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       {
         android: {
           enableProguardInReleaseBuilds: true,
-          enableShrinkResourcesInReleaseBuilds: true,
+          enableShrinkResourcesInReleaseBuilds: false,
         },
       },
     ],

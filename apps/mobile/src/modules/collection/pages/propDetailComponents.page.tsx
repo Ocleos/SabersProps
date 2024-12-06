@@ -34,6 +34,8 @@ const PropDetailComponents: React.FC = () => {
           ListEmptyComponent={() => <EmptyComponent />}
           ItemSeparatorComponent={() => <View className='h-4' />}
           keyExtractor={(item, index) => item.id ?? index.toString()}
+          showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
         />
       </VStack>
 

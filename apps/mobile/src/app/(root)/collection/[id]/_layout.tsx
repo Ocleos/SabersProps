@@ -1,3 +1,4 @@
+import { fontFamily } from '@sabersprops/ui';
 import { Stack, Tabs } from 'expo-router';
 import { CpuIcon, InfoIcon } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
@@ -11,7 +12,7 @@ export default () => {
       <Tabs
         screenOptions={{
           headerShown: false,
-          tabBarLabelStyle: { fontFamily: 'Exo2_400Regular', fontSize: 14 },
+          tabBarLabelStyle: { fontFamily: fontFamily.exo2, fontSize: 14 },
         }}>
         <Tabs.Screen
           name='informations'

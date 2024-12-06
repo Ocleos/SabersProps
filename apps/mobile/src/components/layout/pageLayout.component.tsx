@@ -1,5 +1,5 @@
 import { DrawerActions } from '@react-navigation/native';
-import { Button, DEFAULT_ICON_SIZE, colorsTheme, useColorScheme } from '@sabersprops/ui';
+import { Button, DEFAULT_ICON_SIZE, colorsTheme, fontFamily, useColorScheme } from '@sabersprops/ui';
 import { Stack, useNavigation, useRouter } from 'expo-router';
 import { ArrowLeftIcon, MenuIcon } from 'lucide-react-native';
 import { ScrollView, View, type ViewProps } from 'react-native';
@@ -28,7 +28,7 @@ const PageLayout: React.FC<IPageLayoutProps> = ({
       <Stack.Screen
         options={{
           title,
-          headerTitleStyle: { fontFamily: 'Exo2_500Medium' },
+          headerTitleStyle: { fontFamily: fontFamily.exo2Medium },
           headerLeft: () => {
             return hasDrawerToggle ? (
               <Button

@@ -48,6 +48,8 @@ const PropListPage: React.FC = () => {
           keyExtractor={(item, index) => item.id ?? index.toString()}
           onRefresh={() => mutate()}
           refreshing={isLoading}
+          showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
         />
       </VStack>
 

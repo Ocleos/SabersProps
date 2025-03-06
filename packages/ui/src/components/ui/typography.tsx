@@ -80,6 +80,7 @@ const P = React.forwardRef<TextRef, SlottableTextProps>(({ className, asChild = 
   const Component = asChild ? Slot.Text : RNText;
   return <Component className={cn('web:select-text text-base text-foreground', className)} ref={ref} {...props} />;
 });
+
 P.displayName = 'P';
 
 const BlockQuote = React.forwardRef<TextRef, SlottableTextProps>(({ className, asChild = false, ...props }, ref) => {

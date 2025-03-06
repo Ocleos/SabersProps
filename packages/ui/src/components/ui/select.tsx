@@ -74,7 +74,7 @@ const SelectContent = React.forwardRef<
   return (
     <SelectPrimitive.Portal hostName={portalHost}>
       <SelectPrimitive.Overlay style={Platform.OS !== 'web' ? StyleSheet.absoluteFill : undefined}>
-        <Animated.View entering={FadeIn} exiting={FadeOut}>
+        <Animated.View className='z-50' entering={FadeIn} exiting={FadeOut}>
           <SelectPrimitive.Content
             ref={ref}
             className={cn(
@@ -133,7 +133,7 @@ const SelectItem = React.forwardRef<SelectPrimitive.ItemRef, SelectPrimitive.Ite
           <Check size={16} strokeWidth={3} className='text-popover-foreground' />
         </SelectPrimitive.ItemIndicator>
       </View>
-      <SelectPrimitive.ItemText className='native:text-base native:text-lg text-popover-foreground text-sm web:group-focus:text-accent-foreground' />
+      <SelectPrimitive.ItemText className='native:text-base text-popover-foreground text-sm web:group-focus:text-accent-foreground' />
     </SelectPrimitive.Item>
   ),
 );

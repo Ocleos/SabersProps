@@ -5,7 +5,7 @@ import { TextClassContext } from '~ui/components/ui/text';
 import { cn } from '~ui/lib/utils';
 
 const buttonVariants = cva(
-  'group flex flex-row items-center justify-center gap-4 rounded-md web:ring-offset-background web:transition-colors web:focus-visible:outline-none web:focus-visible:ring-2 web:focus-visible:ring-ring web:focus-visible:ring-offset-2',
+  'group gap⁻4 flex flex-row items-center justify-center rounded-md web:ring-offset-background web:transition-colors web:focus-visible:outline-none web:focus-visible:ring-2 web:focus-visible:ring-ring web:focus-visible:ring-offset-2',
   {
     variants: {
       variant: {

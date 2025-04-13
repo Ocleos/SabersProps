@@ -14,36 +14,36 @@ export const supabase = createClient(apiUrl, apiKey, {
   },
 });
 
-export const PROPS_URL_ENDPOINT = 'props';
-export const NOTES_URL_ENDPOINT = 'notes';
-export const COMPONENTS_URL_ENDPOINT = 'components';
-export const PROPS_PRICES_URL_ENDPOINT = 'propsPrices';
-export const PROPS_EXPENSE_URL_ENDPOINT = 'propsExpenses';
-export const PROPS_SELLING_PRICE_URL_ENDPOINT = 'sellingPrices';
-export const ACCESSORIES_URL_ENDPOINT = 'accessories';
-export const PROPS_ACCESSORIES_URL_ENDPOINT = 'propsAccessories';
+export const ACCESSORIES_TABLE = 'accessories';
+export const COMPONENTS_TABLE = 'components';
+export const NOTES_TABLE = 'notes';
+export const PROPS_TABLE = 'props';
+export const PROPS_ACCESSORIES_TABLE = 'propsAccessories';
+export const PROPS_EXPENSE_TABLE = 'propsExpenses';
+export const PROPS_PRICES_TABLE = 'propsPrices';
+export const PROPS_SELLING_PRICE_TABLE = 'sellingPrices';
 
 type Data = {
   id?: string | undefined;
 };
 
-export const getData = async <T extends Data>(url: string) => {
-  const { data } = await supabase.from(url).select();
+export const getData = async <T extends Data>(tableName: string) => {
+  const { data } = await supabase.from(tableName).select();
   return data as T[];
 };
 
-export const postData = async <T extends Data>(url: string, { arg }: { arg: T }) => {
-  await supabase.from(url).insert(arg);
+export const postData = async <T extends Data>(tableName: string, value: T) => {
+  await supabase.from(tableName).insert(value);
 };
 
-export const putData = async <T extends Data>(url: string, { arg }: { arg: T }) => {
-  await supabase.from(url).update(arg).eq('id', arg.id);
+export const putData = async <T extends Data>(tableName: string, value: T) => {
+  await supabase.from(tableName).update(value).eq('id', value.id);
 };
 
-export const upsertData = async <T extends Data>(url: string, { arg }: { arg: T }) => {
-  await supabase.from(url).upsert(arg);
+export const upsertData = async <T extends Data>(tableName: string, value: T) => {
+  await supabase.from(tableName).upsert(value);
 };
 
-export const deleteData = async (url: string, { arg }: { arg: string }) => {
-  await supabase.from(url).delete().eq('id', arg);
+export const deleteData = async (tableName: string, id: string) => {
+  await supabase.from(tableName).delete().eq('id', id);
 };

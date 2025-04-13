@@ -2,25 +2,21 @@ import { Button, DEFAULT_ICON_SIZE, VStack, colorsTheme } from '@sabersprops/ui'
 import { FlashList } from '@shopify/flash-list';
 import { useRouter } from 'expo-router';
 import { PlusIcon } from 'lucide-react-native';
-import { useEffect } from 'react';
+import { useMemo } from 'react';
 import { View } from 'react-native';
 import EmptyComponent from '~src/components/empty/empty.component';
 import FilterSearchWrapper from '~src/components/list/filterSearchWrapper.component';
 import PropComponentCard from '~src/modules/collection/components/propDetail/components/propComponentCard.component';
 import { usePropDetailStore } from '~src/modules/collection/stores/propDetail.store';
 import { appRoutes } from '~src/router/routes.utils';
+import { onFilterComponents } from '../utils/props.utils';
 
 const PropDetailComponents: React.FC = () => {
   const router = useRouter();
 
-  const { propDetail, components, searchValue, updateComponents, setSearchValue, setSelectedComponent } =
-    usePropDetailStore();
+  const { propDetail, searchValue, setSearchValue, setSelectedComponent } = usePropDetailStore();
 
-  useEffect(() => {
-    if (propDetail) {
-      updateComponents(propDetail.components, searchValue);
-    }
-  }, [updateComponents, propDetail, searchValue]);
+  const components = useMemo(() => onFilterComponents(propDetail?.components, searchValue), [propDetail, searchValue]);
 
   return (
     <>

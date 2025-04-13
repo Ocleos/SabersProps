@@ -1,11 +1,11 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Button, DEFAULT_ICON_SIZE, SelectItem, Text, VStack, colorsTheme } from '@sabersprops/ui';
+import { Button, DEFAULT_ICON_SIZE, HStack, SelectItem, Text, VStack, colorsTheme } from '@sabersprops/ui';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'expo-router';
 import { SaveIcon } from 'lucide-react-native';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import Toast from 'react-native-toast-message';
-import useSWRMutation from 'swr/mutation';
 import * as Yup from 'yup';
 import InputWrapper from '~src/components/form/inputWrapper.component';
 import SelectWrapper from '~src/components/form/selectWrapper.component';
@@ -13,17 +13,27 @@ import type { Prop } from '~src/models/prop.model';
 import { PropState, propStates } from '~src/models/propState.model';
 import { PropType, propTypes } from '~src/models/propType.model';
 import { useCollectionStore } from '~src/modules/collection/stores/collection.store';
-import { PROPS_URL_ENDPOINT, postData, putData } from '~src/utils/supabase.utils';
+import { propsKeys } from '~src/utils/queryKeys.utils';
+import { PROPS_TABLE, postData, putData } from '~src/utils/supabase.utils';
 import { MAX_LENGTH } from '~src/utils/validator.utils';
 
 const PropFormPage: React.FC = () => {
   const { t } = useTranslation(['common', 'collection']);
   const router = useRouter();
+  const queryClient = useQueryClient();
 
   const { setSelectedProp, selectedProp } = useCollectionStore();
   const isEdit = selectedProp != null;
 
-  const { trigger, isMutating } = useSWRMutation(PROPS_URL_ENDPOINT, isEdit ? putData<Prop> : postData<Prop>);
+  const { mutate, isPending } = useMutation({
+    mutationFn: (data: Prop) => (isEdit ? putData<Prop>(PROPS_TABLE, data) : postData<Prop>(PROPS_TABLE, data)),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: propsKeys.root() });
+      Toast.show({ type: 'success', text2: isEdit ? t('common:FORMS.EDIT_SUCCESS') : t('common:FORMS.ADD_SUCCESS') });
+      setSelectedProp(undefined);
+      router.back();
+    },
+  });
 
   const validationSchema: Yup.ObjectSchema<Prop> = Yup.object().shape({
     id: Yup.string().optional(),
@@ -43,18 +53,7 @@ const PropFormPage: React.FC = () => {
   });
 
   const onSubmit = async (values: Prop) => {
-    try {
-      await trigger(values);
-      if (isEdit) {
-        Toast.show({ type: 'success', text2: t('common:FORMS.EDIT_SUCCESS') });
-        setSelectedProp(undefined);
-      } else {
-        Toast.show({ type: 'success', text2: t('common:FORMS.ADD_SUCCESS') });
-      }
-      router.back();
-    } catch (error) {
-      Toast.show({ type: 'error', text2: error instanceof Error ? error.message : undefined });
-    }
+    await mutate(values);
   };
 
   return (
@@ -110,9 +109,11 @@ const PropFormPage: React.FC = () => {
 
       <InputWrapper control={control} name='soundboard' placeholder={t('collection:LABELS.SOUNDBOARD')} />
 
-      <Button disabled={isMutating} onPress={handleSubmit(onSubmit)}>
-        <SaveIcon size={DEFAULT_ICON_SIZE} color={colorsTheme.textForeground} />
-        <Text>{t('common:COMMON.SAVE')}</Text>
+      <Button disabled={isPending} onPress={handleSubmit(onSubmit)}>
+        <HStack className='gap-2'>
+          <SaveIcon size={DEFAULT_ICON_SIZE} color={colorsTheme.textForeground} />
+          <Text>{t('common:COMMON.SAVE')}</Text>
+        </HStack>
       </Button>
     </VStack>
   );

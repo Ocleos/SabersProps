@@ -1,11 +1,12 @@
 import { type BottomSheetModal, BottomSheetView } from '@gorhom/bottom-sheet';
+import { useIsFocused } from '@react-navigation/native';
 import { Button, DEFAULT_ICON_SIZE, VStack, colorsTheme } from '@sabersprops/ui';
 import { FlashList } from '@shopify/flash-list';
+import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'expo-router';
 import { PlusIcon } from 'lucide-react-native';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { View } from 'react-native';
-import useSWR from 'swr';
 import EmptyComponent from '~src/components/empty/empty.component';
 import FilterSearchWrapper from '~src/components/list/filterSearchWrapper.component';
 import BottomSheetWrapper from '~src/components/menu/bottomSheetWrapper.component';
@@ -14,21 +15,24 @@ import PropCardComponent from '~src/modules/collection/components/propList/propC
 import PropFilters from '~src/modules/collection/components/propList/propFilters/propFilters.component';
 import { useCollectionStore } from '~src/modules/collection/stores/collection.store';
 import { appRoutes } from '~src/router/routes.utils';
-import { PROPS_URL_ENDPOINT, getData } from '~src/utils/supabase.utils';
+import { propsKeys } from '~src/utils/queryKeys.utils';
+import { PROPS_TABLE, getData } from '~src/utils/supabase.utils';
+import { onFilterProps } from '../utils/props.utils';
 
 const PropListPage: React.FC = () => {
   const router = useRouter();
+  const isFocused = useIsFocused();
 
-  const { isLoading, data, mutate } = useSWR(PROPS_URL_ENDPOINT, getData<Prop>);
   const bottomSheetRef = useRef<BottomSheetModal>(null);
 
-  const { props, filters, setSearchValue, updateProps, setSelectedProp } = useCollectionStore();
+  const { filters, setSearchValue, setSelectedProp } = useCollectionStore();
 
-  useEffect(() => {
-    if (data) {
-      updateProps(data, filters);
-    }
-  }, [updateProps, data, filters]);
+  const { isLoading, data, refetch } = useQuery({
+    queryKey: propsKeys.root(),
+    queryFn: async () => await getData<Prop>(PROPS_TABLE),
+    subscribed: isFocused,
+    select: (data) => onFilterProps(data, filters),
+  });
 
   return (
     <>
@@ -40,13 +44,13 @@ const PropListPage: React.FC = () => {
         />
 
         <FlashList
-          data={props}
+          data={data}
           renderItem={({ item }) => <PropCardComponent prop={item} />}
           estimatedItemSize={160}
           ListEmptyComponent={() => <EmptyComponent />}
           ItemSeparatorComponent={() => <View className='h-4' />}
           keyExtractor={(item, index) => item.id ?? index.toString()}
-          onRefresh={() => mutate()}
+          onRefresh={() => refetch()}
           refreshing={isLoading}
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}

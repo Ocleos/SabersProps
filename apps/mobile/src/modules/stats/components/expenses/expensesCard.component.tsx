@@ -1,21 +1,27 @@
+import { useIsFocused } from '@react-navigation/native';
 import { Large, Skeleton, Tabs, TabsList, TabsTrigger, Text, VStack } from '@sabersprops/ui';
-import { useMemo, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import useSWR from 'swr';
 import CollapseCard from '~src/components/card/collapseCard.component';
-import type { Expense } from '~src/modules/stats/models/expense.model';
-import { PROPS_EXPENSE_URL_ENDPOINT, getData } from '~src/utils/supabase.utils';
+import { propsKeys } from '~src/utils/queryKeys.utils';
+import { PROPS_EXPENSE_TABLE, getData } from '~src/utils/supabase.utils';
+import type { Expense } from '../../models/expense.model';
 import { ExpensesTypes, calculateExpenses } from './expenses.utils';
 import ExpensesChart from './expensesChart.component';
 
 const ExpensesCard = () => {
   const { t } = useTranslation(['stats']);
+  const isFocused = useIsFocused();
 
-  const { data, isLoading } = useSWR(PROPS_EXPENSE_URL_ENDPOINT, getData<Expense>);
+  const { data: expenses, isLoading } = useQuery({
+    queryKey: propsKeys.statsExpenses(),
+    queryFn: async () => await getData<Expense>(PROPS_EXPENSE_TABLE),
+    subscribed: isFocused,
+    select: (data) => calculateExpenses(data),
+  });
 
   const [expensesType, setExpensesType] = useState(ExpensesTypes.YEARS);
-
-  const expenses = useMemo(() => (data ? calculateExpenses(data) : undefined), [data]);
 
   return (
     <CollapseCard title={t('stats:LABEL.EXPENSES')} isOpened={false}>

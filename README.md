@@ -99,7 +99,7 @@ yarn dev:mobile
 ### Database, Store & API
 
 - [Supabase](https://supabase.com/)
-- [SWR](https://swr.vercel.app/)
+- [TanStack Query](https://tanstack.com/query/latest)
 - [Zustand](https://zustand-demo.pmnd.rs/)
 
 ### Forms

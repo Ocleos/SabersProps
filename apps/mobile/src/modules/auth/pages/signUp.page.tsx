@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Button, DEFAULT_ICON_SIZE, Text, VStack, colorsTheme } from '@sabersprops/ui';
+import { Button, DEFAULT_ICON_SIZE, HStack, Text, VStack, colorsTheme } from '@sabersprops/ui';
 import { router } from 'expo-router';
 import { SaveIcon } from 'lucide-react-native';
 import { useState } from 'react';
@@ -80,8 +80,10 @@ const SignUpPage = () => {
       />
 
       <Button disabled={isLoading} onPress={handleSubmit(onSignUp)}>
-        <SaveIcon size={DEFAULT_ICON_SIZE} color={colorsTheme.textForeground} />
-        <Text>{t('common:COMMON.SAVE')}</Text>
+        <HStack className='gap-2'>
+          <SaveIcon size={DEFAULT_ICON_SIZE} color={colorsTheme.textForeground} />
+          <Text>{t('common:COMMON.SAVE')}</Text>
+        </HStack>
       </Button>
     </VStack>
   );

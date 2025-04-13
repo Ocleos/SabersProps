@@ -1,23 +1,24 @@
 import { Skeleton, VStack } from '@sabersprops/ui';
+import { useQuery } from '@tanstack/react-query';
 import { useLocalSearchParams } from 'expo-router';
 import { useEffect } from 'react';
-import useSWR from 'swr';
 import InformationsCard from '~src/modules/collection/components/propDetail/informations/informationsCard.component';
 import PricesCard from '~src/modules/collection/components/propDetail/informations/pricesCard.component';
 import StatusDetail from '~src/modules/collection/components/propDetail/informations/statusDetail.component';
 import { getPropDetail } from '~src/modules/collection/services/props.api';
-import { usePropDetailStore } from '~src/modules/collection/stores/propDetail.store';
-import { PROPS_URL_ENDPOINT } from '~src/utils/supabase.utils';
+import { propsKeys } from '~src/utils/queryKeys.utils';
 import AccessoriesCard from '../components/propDetail/informations/accessoriesCard.components';
+import { usePropDetailStore } from '../stores/propDetail.store';
 
-const PropDetailInformations: React.FC = () => {
+const PropDetailInformations = () => {
   const { id } = useLocalSearchParams<{ id: string }>();
 
-  const { data: propDetail, isLoading } = useSWR(id ? [PROPS_URL_ENDPOINT, id] : null, ([url, id]) =>
-    getPropDetail(url, id),
-  );
-
   const { updatePropDetail } = usePropDetailStore();
+
+  const { data: propDetail, isLoading } = useQuery({
+    queryKey: propsKeys.detail(id),
+    queryFn: async () => await getPropDetail(id),
+  });
 
   useEffect(() => {
     updatePropDetail(propDetail);

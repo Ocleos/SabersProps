@@ -1,13 +1,11 @@
 import { Button, Large, Text, VStack } from '@sabersprops/ui';
-import { useRouter } from 'expo-router';
+import * as Updates from 'expo-updates';
 import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
 import ErrorBoundaryIcon from '~src/assets/errorBoundary.icon';
-import { appRoutes } from '~src/router/routes.utils';
 
 const ErrorBoundaryComponent: React.FC = () => {
   const { t } = useTranslation('common');
-  const router = useRouter();
 
   return (
     <VStack className='max-w-xs gap-10 self-center'>
@@ -17,7 +15,7 @@ const ErrorBoundaryComponent: React.FC = () => {
 
       <Large className='text-center'>{t('common:ERRORS.UNKNOWN_ERROR')}</Large>
 
-      <Button onPress={() => router.replace(appRoutes.home)}>
+      <Button onPress={() => Updates.reloadAsync()}>
         <Text>{t('common:ERRORS.HOME_RETURN')}</Text>
       </Button>
     </VStack>

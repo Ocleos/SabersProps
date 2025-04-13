@@ -1,20 +1,27 @@
+import { useIsFocused } from '@react-navigation/native';
 import { Button, DEFAULT_ICON_SIZE, colorsTheme } from '@sabersprops/ui';
 import { FlashList } from '@shopify/flash-list';
+import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'expo-router';
 import { PlusIcon } from 'lucide-react-native';
 import { View } from 'react-native';
-import useSWR from 'swr';
 import EmptyComponent from '~src/components/empty/empty.component';
 import NoteCardComponent from '~src/modules/notes/components/noteList/noteCard.component';
-import type { Note } from '~src/modules/notes/models/note.model';
 import { useNotesStore } from '~src/modules/notes/stores/notes.store';
 import { appRoutes } from '~src/router/routes.utils';
-import { NOTES_URL_ENDPOINT, getData } from '~src/utils/supabase.utils';
+import { notesKeys } from '~src/utils/queryKeys.utils';
+import { NOTES_TABLE, getData } from '~src/utils/supabase.utils';
+import type { Note } from '../models/note.model';
 
 const NoteListPage: React.FC = () => {
   const router = useRouter();
+  const isFocused = useIsFocused();
 
-  const { isLoading, data, mutate } = useSWR(NOTES_URL_ENDPOINT, getData<Note>);
+  const { isLoading, data, refetch } = useQuery({
+    queryKey: notesKeys.root(),
+    queryFn: async () => await getData<Note>(NOTES_TABLE),
+    subscribed: isFocused,
+  });
 
   const { setSelectedNote } = useNotesStore();
 
@@ -27,7 +34,7 @@ const NoteListPage: React.FC = () => {
         ListEmptyComponent={() => <EmptyComponent />}
         ItemSeparatorComponent={() => <View className='h-4' />}
         keyExtractor={(item, index) => item.id ?? index.toString()}
-        onRefresh={() => mutate()}
+        onRefresh={() => refetch()}
         refreshing={isLoading}
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}

@@ -1,22 +1,21 @@
 import { Card, CardContent, CardHeader, CardTitle, HStack, VStack } from '@sabersprops/ui';
 import { ArrowRightLeftIcon, CalendarDaysIcon, ShoppingCartIcon, StoreIcon, TruckIcon } from 'lucide-react-native';
 import { View } from 'react-native';
-import { useSWRConfig } from 'swr';
 import LabelIcon from '~src/components/label/labelIcon.component';
 import ActionsMenu from '~src/components/menu/actionsMenu.component';
 import type { PropComponent } from '~src/modules/collection/models/propComponent.model';
 import { usePropDetailStore } from '~src/modules/collection/stores/propDetail.store';
+import { appRoutes } from '~src/router/routes.utils';
 import { CURRENCY_EUROS, FORMAT_DATE, formatDate, formatNumber, formatToCurrency } from '~src/utils/format.utils';
-import { COMPONENTS_URL_ENDPOINT, PROPS_URL_ENDPOINT } from '~src/utils/supabase.utils';
+import { propsKeys } from '~src/utils/queryKeys.utils';
+import { COMPONENTS_TABLE } from '~src/utils/supabase.utils';
 
 interface IPropComponentCard {
   propComponent: PropComponent;
 }
 
 const PropComponentCard: React.FC<IPropComponentCard> = ({ propComponent }) => {
-  const { selectedComponent, setSelectedComponent } = usePropDetailStore();
-
-  const { mutate } = useSWRConfig();
+  const { setSelectedComponent } = usePropDetailStore();
 
   return (
     <Card>
@@ -25,12 +24,12 @@ const PropComponentCard: React.FC<IPropComponentCard> = ({ propComponent }) => {
           <CardTitle className='grow'>{propComponent.label}</CardTitle>
           <ActionsMenu
             onActionSelected={() => setSelectedComponent(propComponent)}
-            routeEdit={`/collection/${selectedComponent?.idProp}/components/form`}
-            urlEndpoint={COMPONENTS_URL_ENDPOINT}
-            idSelected={selectedComponent?.id}
-            nameSelected={selectedComponent?.label}
+            routeEdit={appRoutes.collection.components.form(propComponent.idProp)}
+            tableName={COMPONENTS_TABLE}
+            invalidateQueryKey={propsKeys.root()}
+            idSelected={propComponent.id}
+            nameSelected={propComponent.label}
             resetSelected={() => setSelectedComponent(undefined)}
-            onDeleteCallback={() => mutate([PROPS_URL_ENDPOINT, selectedComponent?.idProp])}
           />
         </HStack>
       </CardHeader>

@@ -1,33 +1,40 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Button, DEFAULT_ICON_SIZE, Text, VStack, colorsTheme } from '@sabersprops/ui';
+import { Button, DEFAULT_ICON_SIZE, HStack, Text, VStack, colorsTheme } from '@sabersprops/ui';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { SaveIcon } from 'lucide-react-native';
 import { useEffect } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import Toast from 'react-native-toast-message';
-import { useSWRConfig } from 'swr';
-import useSWRMutation from 'swr/mutation';
 import * as yup from 'yup';
 import InputWrapper from '~src/components/form/inputWrapper.component';
 import type { PropComponent } from '~src/modules/collection/models/propComponent.model';
 import { usePropDetailStore } from '~src/modules/collection/stores/propDetail.store';
-import { COMPONENTS_URL_ENDPOINT, PROPS_URL_ENDPOINT, postData, putData } from '~src/utils/supabase.utils';
+import { propsKeys } from '~src/utils/queryKeys.utils';
+import { COMPONENTS_TABLE, postData, putData } from '~src/utils/supabase.utils';
 import { MAX_LENGTH } from '~src/utils/validator.utils';
 
 const PropComponentForm = () => {
   const { t } = useTranslation(['common', 'collection']);
   const router = useRouter();
+  const queryClient = useQueryClient();
 
   const { setSelectedComponent, selectedComponent } = usePropDetailStore();
   const isEdit = selectedComponent != null;
   const { id: idProp } = useLocalSearchParams<{ id: string }>();
 
-  const { trigger, isMutating } = useSWRMutation(
-    COMPONENTS_URL_ENDPOINT,
-    isEdit ? putData<PropComponent> : postData<PropComponent>,
-  );
-  const { mutate } = useSWRConfig();
+  const { mutate, isPending } = useMutation({
+    mutationFn: (data: PropComponent) =>
+      isEdit ? putData<PropComponent>(COMPONENTS_TABLE, data) : postData<PropComponent>(COMPONENTS_TABLE, data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: propsKeys.detail(idProp) });
+      queryClient.invalidateQueries({ queryKey: propsKeys.stats() });
+      Toast.show({ type: 'success', text2: isEdit ? t('common:FORMS.EDIT_SUCCESS') : t('common:FORMS.ADD_SUCCESS') });
+      setSelectedComponent(undefined);
+      router.back();
+    },
+  });
 
   const validationSchema: yup.ObjectSchema<PropComponent> = yup.object().shape({
     id: yup.string().optional(),
@@ -65,19 +72,7 @@ const PropComponentForm = () => {
   }, [setValue, rateWatch, priceWatch, feesWatch]);
 
   const onSubmit = async (values: PropComponent) => {
-    try {
-      await trigger(values);
-      if (isEdit) {
-        Toast.show({ type: 'success', text2: t('common:FORMS.EDIT_SUCCESS') });
-        setSelectedComponent(undefined);
-      } else {
-        Toast.show({ type: 'success', text2: t('common:FORMS.ADD_SUCCESS') });
-      }
-      mutate([PROPS_URL_ENDPOINT, idProp]);
-      router.back();
-    } catch (error) {
-      Toast.show({ type: 'error', text2: error instanceof Error ? error.message : undefined });
-    }
+    await mutate(values);
   };
 
   return (
@@ -143,9 +138,11 @@ const PropComponentForm = () => {
         formControlProps={{ isDisabled: true }}
       />
 
-      <Button disabled={isMutating} onPress={handleSubmit(onSubmit)}>
-        <SaveIcon size={DEFAULT_ICON_SIZE} color={colorsTheme.textForeground} />
-        <Text>{t('common:COMMON.SAVE')}</Text>
+      <Button disabled={isPending} onPress={handleSubmit(onSubmit)}>
+        <HStack className='gap-2'>
+          <SaveIcon size={DEFAULT_ICON_SIZE} color={colorsTheme.textForeground} />
+          <Text>{t('common:COMMON.SAVE')}</Text>
+        </HStack>
       </Button>
     </VStack>
   );

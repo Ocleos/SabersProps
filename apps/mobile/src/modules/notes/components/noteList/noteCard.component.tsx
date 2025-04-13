@@ -3,7 +3,8 @@ import ActionsMenu from '~src/components/menu/actionsMenu.component';
 import type { Note } from '~src/modules/notes/models/note.model';
 import { useNotesStore } from '~src/modules/notes/stores/notes.store';
 import { appRoutes } from '~src/router/routes.utils';
-import { NOTES_URL_ENDPOINT } from '~src/utils/supabase.utils';
+import { notesKeys } from '~src/utils/queryKeys.utils';
+import { NOTES_TABLE } from '~src/utils/supabase.utils';
 
 interface INoteCardProps {
   note: Note;
@@ -17,16 +18,19 @@ const NoteCardComponent: React.FC<INoteCardProps> = ({ note }) => {
       <CardHeader>
         <HStack className='items-center gap-2'>
           <CardTitle className='grow'>{note.title}</CardTitle>
+
           <ActionsMenu
             onActionSelected={() => setSelectedNote(note)}
             routeEdit={appRoutes.notes.form}
-            urlEndpoint={NOTES_URL_ENDPOINT}
+            tableName={NOTES_TABLE}
+            invalidateQueryKey={notesKeys.root()}
             idSelected={selectedNote?.id}
             nameSelected={selectedNote?.title}
             resetSelected={() => setSelectedNote(undefined)}
           />
         </HStack>
       </CardHeader>
+
       <CardContent>
         <Text numberOfLines={3}>{note.description}</Text>
       </CardContent>

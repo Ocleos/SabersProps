@@ -72,8 +72,10 @@ const LoginPage = () => {
             />
 
             <Button disabled={isLoading} onPress={handleSubmit(onLogin)}>
-              <LogInIcon size={DEFAULT_ICON_SIZE} color={colorsTheme.textForeground} />
-              <Text>{t('auth:LABELS.SIGN_IN')}</Text>
+              <HStack className='gap-2'>
+                <LogInIcon size={DEFAULT_ICON_SIZE} color={colorsTheme.textForeground} />
+                <Text>{t('auth:LABELS.SIGN_IN')}</Text>
+              </HStack>
             </Button>
 
             <Button variant={'link'} onPress={() => router.push(appRoutes.auth.signUp)}>

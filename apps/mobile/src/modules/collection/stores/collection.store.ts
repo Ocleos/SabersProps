@@ -1,45 +1,26 @@
-import { alphabetical } from 'radash';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 import type { Prop } from '~src/models/prop.model';
 import { type PropFilters, defaultPropFilters } from '~src/models/propFilters.model';
 import type { PropState } from '~src/models/propState.model';
 import type { PropType } from '~src/models/propType.model';
-import { addOrRemove, searchValueInObject } from '~src/utils/arrays.utils';
+import { addOrRemove } from '~src/utils/arrays.utils';
 
 interface ICollectionState {
-  props: Prop[];
   selectedProp?: Prop;
   filters: PropFilters;
 
   updateProps: (data: Prop[], filters: PropFilters) => void;
   setSelectedProp: (prop?: Prop) => void;
   setSearchValue: (search: string) => void;
-
   updateTypeFilter: (type: PropType) => void;
   updateStateFilter: (propState: PropState) => void;
 }
 
 export const useCollectionStore = create<ICollectionState>()(
   devtools((set) => ({
-    props: [],
     selectedProp: undefined,
     filters: defaultPropFilters,
-
-    updateProps: (data: Prop[], filters: PropFilters) => {
-      set((state) => {
-        const filteredData = data.filter((item) => {
-          const isTypeIncluded = filters.typesFilter.includes(item.type);
-          const isStateIncluded = filters.statesFilter.includes(item.state);
-          const isSearchIncluded = searchValueInObject(filters.searchValue, item);
-
-          return isSearchIncluded && isStateIncluded && isTypeIncluded;
-        });
-        const sortedData = alphabetical(filteredData, (value) => value.name);
-
-        return { ...state, props: sortedData };
-      });
-    },
 
     setSelectedProp: (prop?: Prop) => {
       set((state) => ({ ...state, selectedProp: prop }));

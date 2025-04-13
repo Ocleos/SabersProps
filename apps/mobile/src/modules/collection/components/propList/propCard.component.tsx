@@ -19,7 +19,8 @@ import { propStates } from '~src/models/propState.model';
 import { propTypes } from '~src/models/propType.model';
 import { useCollectionStore } from '~src/modules/collection/stores/collection.store';
 import { appRoutes } from '~src/router/routes.utils';
-import { PROPS_URL_ENDPOINT } from '~src/utils/supabase.utils';
+import { propsKeys } from '~src/utils/queryKeys.utils';
+import { PROPS_TABLE } from '~src/utils/supabase.utils';
 
 interface IPropCardProps {
   prop: Prop;
@@ -41,7 +42,8 @@ const PropCardComponent: React.FC<IPropCardProps> = ({ prop }) => {
             <ActionsMenu
               onActionSelected={() => setSelectedProp(prop)}
               routeEdit={appRoutes.collection.form}
-              urlEndpoint={PROPS_URL_ENDPOINT}
+              tableName={PROPS_TABLE}
+              invalidateQueryKey={propsKeys.root()}
               idSelected={prop?.id}
               nameSelected={prop?.name}
               resetSelected={() => setSelectedProp(undefined)}

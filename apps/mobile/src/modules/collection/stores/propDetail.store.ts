@@ -1,18 +1,14 @@
-import { alphabetical } from 'radash';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 import type { PropComponent } from '~src/modules/collection/models/propComponent.model';
 import type { PropDetail } from '~src/modules/collection/models/propDetail.model';
-import { searchValueInObject } from '~src/utils/arrays.utils';
 
 interface IPropDetailState {
   propDetail?: PropDetail;
-  components: PropComponent[];
   selectedComponent?: PropComponent;
   searchValue: string;
 
   updatePropDetail: (data: PropDetail | undefined) => void;
-  updateComponents: (data: PropComponent[], search: string) => void;
   setSelectedComponent: (component?: PropComponent) => void;
   setSearchValue: (search: string) => void;
 }
@@ -20,25 +16,11 @@ interface IPropDetailState {
 export const usePropDetailStore = create<IPropDetailState>()(
   devtools((set) => ({
     propDetail: undefined,
-    components: [],
     selectedComponent: undefined,
     searchValue: '',
 
     updatePropDetail: (data: PropDetail | undefined) => {
       set((state) => ({ ...state, propDetail: data }));
-    },
-
-    updateComponents: (data: PropComponent[], search: string) => {
-      set((state) => {
-        const filteredData = data.filter((item) => {
-          const isSearchIncluded = searchValueInObject(search, item);
-
-          return isSearchIncluded;
-        });
-        const sortedData = alphabetical(filteredData, (value) => value.date);
-
-        return { ...state, components: sortedData };
-      });
     },
 
     setSelectedComponent: (propComponent?: PropComponent) => {

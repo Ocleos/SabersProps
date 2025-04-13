@@ -1,10 +1,12 @@
-import { colorsTheme } from '@sabersprops/ui';
+import { colorsTheme, useColorScheme } from '@sabersprops/ui';
 import { Circle, G, Path, Rect, Svg, type SvgProps } from 'react-native-svg';
 
 const ErrorBoundaryIcon: React.FC<SvgProps> = (props) => {
+  const { colorScheme } = useColorScheme();
+
   const colorPrimary = colorsTheme.primary[500];
-  const colorDetail = colorsTheme.mutedBackground.dark;
-  const colorOpposite = colorsTheme.foreground.dark;
+  const colorDetail = colorsTheme.mutedBackground[colorScheme];
+  const colorOpposite = colorsTheme.foreground[colorScheme];
 
   return (
     <Svg viewBox='0 0 500 500' {...props}>

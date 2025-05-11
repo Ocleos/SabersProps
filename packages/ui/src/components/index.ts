@@ -1,5 +1,7 @@
 export * from './ui/badge';
 export * from './ui/button';
+export * from './ui/calendar';
+export * from './ui/calendarInput';
 export * from './ui/card';
 export * from './ui/coloredView';
 export * from './ui/dialog';

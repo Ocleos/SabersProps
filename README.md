@@ -93,6 +93,7 @@ yarn dev:mobile
 - [Bottom-Sheet](https://ui.gorhom.dev/components/bottom-sheet)
 - [React Native Toast Message](https://github.com/calintamas/react-native-toast-message)
 - [React Native Reanimated](https://docs.swmansion.com/react-native-reanimated/)
+- [React Native UI DatePicker](https://github.com/farhoudshapouran/react-native-ui-datepicker)
 - [Font Exo2](https://github.com/expo/google-fonts/tree/master/font-packages/exo-2#readme)
 - [Illustrations](https://storyset.com/)
 

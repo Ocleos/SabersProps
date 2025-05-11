@@ -8,9 +8,11 @@ import { useForm, useWatch } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import Toast from 'react-native-toast-message';
 import * as yup from 'yup';
+import CalendarInputWrapper from '~src/components/form/calendarInputWrapper.component';
 import InputWrapper from '~src/components/form/inputWrapper.component';
 import type { PropComponent } from '~src/modules/collection/models/propComponent.model';
 import { usePropDetailStore } from '~src/modules/collection/stores/propDetail.store';
+import { FORMAT_DATE } from '~src/utils/format.utils';
 import { propsKeys } from '~src/utils/queryKeys.utils';
 import { COMPONENTS_TABLE, postData, putData } from '~src/utils/supabase.utils';
 import { MAX_LENGTH } from '~src/utils/validator.utils';
@@ -84,11 +86,12 @@ const PropComponentForm = () => {
         formControlProps={{ isRequired: true }}
       />
 
-      <InputWrapper
+      <CalendarInputWrapper
         control={control}
         name='date'
         placeholder={t('collection:LABELS.DATE')}
         formControlProps={{ isRequired: true }}
+        dateFormat={FORMAT_DATE}
       />
 
       <InputWrapper

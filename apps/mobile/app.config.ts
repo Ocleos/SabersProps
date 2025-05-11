@@ -4,7 +4,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: 'SabersProps',
   slug: 'SabersProps',
-  version: '1.9.1',
+  version: '1.10.0',
   owner: 'ocleos',
   scheme: 'sabersprops',
   jsEngine: 'hermes',

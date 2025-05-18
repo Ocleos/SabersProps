@@ -11,7 +11,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   orientation: 'portrait',
   icon: './assets/icon.png',
   userInterfaceStyle: 'automatic',
-  newArchEnabled: false,
   assetBundlePatterns: ['**/*'],
   android: {
     package: 'fr.ocleos.sabersprops',

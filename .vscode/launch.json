@@ -4,6 +4,7 @@
       "android": {},
       "eas": {
         "android": {
+          "buildUUID": "9030f38e-70cc-44e9-a212-62caa98d7e95",
           "profile": "development"
         }
       },

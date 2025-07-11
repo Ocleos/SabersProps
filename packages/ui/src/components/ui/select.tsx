@@ -1,5 +1,5 @@
 import * as SelectPrimitive from '@rn-primitives/select';
-import * as React from 'react';
+import type * as React from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated';
 import { Check } from '~ui/lib/icons/Check';
@@ -15,8 +15,16 @@ const SelectGroup = SelectPrimitive.Group;
 
 const SelectValue = SelectPrimitive.Value;
 
-const SelectTrigger = React.forwardRef<SelectPrimitive.TriggerRef, SelectPrimitive.TriggerProps>(
-  ({ className, children, ...props }, ref) => (
+function SelectTrigger({
+  ref,
+  className,
+  children,
+  ...props
+}: SelectPrimitive.TriggerProps & {
+  ref?: React.RefObject<SelectPrimitive.TriggerRef>;
+  children?: React.ReactNode;
+}) {
+  return (
     <SelectPrimitive.Trigger
       className={cn(
         'flex h-10 native:h-12 flex-row items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-muted-foreground text-sm web:ring-offset-background web:focus:outline-none web:focus:ring-2 web:focus:ring-ring web:focus:ring-offset-2 [&>span]:line-clamp-1',
@@ -25,18 +33,16 @@ const SelectTrigger = React.forwardRef<SelectPrimitive.TriggerRef, SelectPrimiti
       )}
       ref={ref}
       {...props}>
-      {/* biome-ignore lint/complexity/noUselessFragments: TS Errors */}
-      <>{children}</>
-      <ChevronDown aria-hidden={true} className='text-primary' size={16} />
+      {children}
+      <ChevronDown aria-hidden={true} className='text-foreground opacity-50' size={16} />
     </SelectPrimitive.Trigger>
-  ),
-);
-SelectTrigger.displayName = SelectPrimitive.Trigger.displayName;
+  );
+}
 
 /**
  * Platform: WEB ONLY
  */
-const SelectScrollUpButton = ({ className, ...props }: SelectPrimitive.ScrollUpButtonProps) => {
+function SelectScrollUpButton({ className, ...props }: SelectPrimitive.ScrollUpButtonProps) {
   if (Platform.OS !== 'web') {
     return null;
   }
@@ -47,12 +53,12 @@ const SelectScrollUpButton = ({ className, ...props }: SelectPrimitive.ScrollUpB
       <ChevronUp className='text-foreground' size={14} />
     </SelectPrimitive.ScrollUpButton>
   );
-};
+}
 
 /**
  * Platform: WEB ONLY
  */
-const SelectScrollDownButton = ({ className, ...props }: SelectPrimitive.ScrollDownButtonProps) => {
+function SelectScrollDownButton({ className, ...props }: SelectPrimitive.ScrollDownButtonProps) {
   if (Platform.OS !== 'web') {
     return null;
   }
@@ -63,12 +69,19 @@ const SelectScrollDownButton = ({ className, ...props }: SelectPrimitive.ScrollD
       <ChevronDown className='text-foreground' size={14} />
     </SelectPrimitive.ScrollDownButton>
   );
-};
+}
 
-const SelectContent = React.forwardRef<
-  SelectPrimitive.ContentRef,
-  SelectPrimitive.ContentProps & { portalHost?: string }
->(({ className, children, position = 'popper', portalHost, ...props }, ref) => {
+function SelectContent({
+  className,
+  children,
+  position = 'popper',
+  portalHost,
+  ...props
+}: SelectPrimitive.ContentProps & {
+  ref?: React.RefObject<SelectPrimitive.ContentRef>;
+  className?: string;
+  portalHost?: string;
+}) {
   const { open } = SelectPrimitive.useRootContext();
 
   return (
@@ -84,7 +97,6 @@ const SelectContent = React.forwardRef<
               className,
             )}
             position={position}
-            ref={ref}
             {...props}>
             <SelectScrollUpButton />
             <SelectPrimitive.Viewport
@@ -101,32 +113,39 @@ const SelectContent = React.forwardRef<
       </SelectPrimitive.Overlay>
     </SelectPrimitive.Portal>
   );
-});
-SelectContent.displayName = SelectPrimitive.Content.displayName;
+}
 
-const SelectLabel = React.forwardRef<SelectPrimitive.LabelRef, SelectPrimitive.LabelProps>(
-  ({ className, ...props }, ref) => (
+function SelectLabel({
+  className,
+  ...props
+}: SelectPrimitive.LabelProps & {
+  ref?: React.RefObject<SelectPrimitive.LabelRef>;
+}) {
+  return (
     <SelectPrimitive.Label
       className={cn(
         'py-1.5 pr-2 native:pb-2 native:pl-10 pl-8 font-exo2Semibold native:text-base text-popover-foreground text-sm',
         className,
       )}
-      ref={ref}
       {...props}
     />
-  ),
-);
-SelectLabel.displayName = SelectPrimitive.Label.displayName;
+  );
+}
 
-const SelectItem = React.forwardRef<SelectPrimitive.ItemRef, SelectPrimitive.ItemProps>(
-  ({ className, children, ...props }, ref) => (
+function SelectItem({
+  className,
+  children,
+  ...props
+}: SelectPrimitive.ItemProps & {
+  ref?: React.RefObject<SelectPrimitive.ItemRef>;
+}) {
+  return (
     <SelectPrimitive.Item
       className={cn(
         'web:group relative flex w-full web:cursor-default web:select-none flex-row items-center rounded-sm native:py-2 py-1.5 pr-2 native:pl-10 pl-8 web:outline-none web:hover:bg-accent/50 web:focus:bg-accent active:bg-accent',
         props.disabled && 'web:pointer-events-none opacity-50',
         className,
       )}
-      ref={ref}
       {...props}>
       <View className='absolute left-2 native:left-3.5 flex h-3.5 w-3.5 items-center justify-center native:pt-px'>
         <SelectPrimitive.ItemIndicator>
@@ -135,16 +154,17 @@ const SelectItem = React.forwardRef<SelectPrimitive.ItemRef, SelectPrimitive.Ite
       </View>
       <SelectPrimitive.ItemText className='native:text-base text-popover-foreground text-sm web:group-focus:text-accent-foreground' />
     </SelectPrimitive.Item>
-  ),
-);
-SelectItem.displayName = SelectPrimitive.Item.displayName;
+  );
+}
 
-const SelectSeparator = React.forwardRef<SelectPrimitive.SeparatorRef, SelectPrimitive.SeparatorProps>(
-  ({ className, ...props }, ref) => (
-    <SelectPrimitive.Separator className={cn('-mx-1 my-1 h-px bg-muted', className)} ref={ref} {...props} />
-  ),
-);
-SelectSeparator.displayName = SelectPrimitive.Separator.displayName;
+function SelectSeparator({
+  className,
+  ...props
+}: SelectPrimitive.SeparatorProps & {
+  ref?: React.RefObject<SelectPrimitive.SeparatorRef>;
+}) {
+  return <SelectPrimitive.Separator className={cn('-mx-1 my-1 h-px bg-muted', className)} {...props} />;
+}
 
 export {
   Select,

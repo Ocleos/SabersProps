@@ -1,11 +1,11 @@
 import { cva, type VariantProps } from 'class-variance-authority';
-import { forwardRef } from 'react';
+import type * as React from 'react';
 import { Pressable } from 'react-native';
 import { TextClassContext } from '~ui/components/ui/text';
 import { cn } from '~ui/lib/utils';
 
 const buttonVariants = cva(
-  'group gap⁻4 flex flex-row items-center justify-center rounded-md web:ring-offset-background web:transition-colors web:focus-visible:outline-none web:focus-visible:ring-2 web:focus-visible:ring-ring web:focus-visible:ring-offset-2',
+  'group flex flex-row items-center justify-center gap-4 rounded-md web:ring-offset-background web:transition-colors web:focus-visible:outline-none web:focus-visible:ring-2 web:focus-visible:ring-ring web:focus-visible:ring-offset-2',
   {
     defaultVariants: {
       size: 'default',
@@ -65,26 +65,23 @@ const buttonTextVariants = cva(
   },
 );
 
-type ButtonProps = React.ComponentPropsWithoutRef<typeof Pressable> & VariantProps<typeof buttonVariants>;
+type ButtonProps = React.ComponentProps<typeof Pressable> & VariantProps<typeof buttonVariants>;
 
-const Button = forwardRef<React.ElementRef<typeof Pressable>, ButtonProps>(
-  ({ className, variant, size, ...props }, ref) => {
-    return (
-      <TextClassContext.Provider value={buttonTextVariants({ className: 'web:pointer-events-none', size, variant })}>
-        <Pressable
-          className={cn(
-            props.disabled && 'web:pointer-events-none opacity-50',
-            buttonVariants({ className, size, variant }),
-          )}
-          ref={ref}
-          role='button'
-          {...props}
-        />
-      </TextClassContext.Provider>
-    );
-  },
-);
-Button.displayName = 'Button';
+function Button({ ref, className, variant, size, ...props }: ButtonProps) {
+  return (
+    <TextClassContext.Provider value={buttonTextVariants({ className: 'web:pointer-events-none', size, variant })}>
+      <Pressable
+        className={cn(
+          props.disabled && 'web:pointer-events-none opacity-50',
+          buttonVariants({ className, size, variant }),
+        )}
+        ref={ref}
+        role='button'
+        {...props}
+      />
+    </TextClassContext.Provider>
+  );
+}
 
 export { Button, buttonTextVariants, buttonVariants };
 export type { ButtonProps };

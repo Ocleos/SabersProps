@@ -17,15 +17,15 @@ export default () => {
         <Tabs.Screen
           name='informations'
           options={{
-            tabBarLabel: t('routing:ROUTING.COLLECTION.INFORMATIONS'),
             tabBarIcon: (props) => <InfoIcon color={props.color} size={props.size} />,
+            tabBarLabel: t('routing:ROUTING.COLLECTION.INFORMATIONS'),
           }}
         />
         <Tabs.Screen
           name='components'
           options={{
-            tabBarLabel: t('routing:ROUTING.COLLECTION.COMPONENTS'),
             tabBarIcon: (props) => <CpuIcon color={props.color} size={props.size} />,
+            tabBarLabel: t('routing:ROUTING.COLLECTION.COMPONENTS'),
           }}
         />
       </Tabs>

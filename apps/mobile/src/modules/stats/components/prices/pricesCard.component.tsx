@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 import CollapseCard from '~src/components/card/collapseCard.component';
 import { propsKeys } from '~src/utils/queryKeys.utils';
-import { PROPS_PRICES_TABLE, getData } from '~src/utils/supabase.utils';
+import { getData, PROPS_PRICES_TABLE } from '~src/utils/supabase.utils';
 import type { PricesInfosData } from '../../models/pricesInfosData.model';
 import PricesChart from './pricesChart.component';
 import PricesInfos from './pricesInfos.component';
@@ -15,13 +15,13 @@ const PricesCard = () => {
   const isFocused = useIsFocused();
 
   const { data, isLoading } = useQuery({
-    queryKey: propsKeys.statsPrices(),
     queryFn: async () => await getData<PricesInfosData>(PROPS_PRICES_TABLE),
+    queryKey: propsKeys.statsPrices(),
     subscribed: isFocused,
   });
 
   return (
-    <CollapseCard title={t('stats:LABEL.PRICES')} isOpened={false}>
+    <CollapseCard isOpened={false} title={t('stats:LABEL.PRICES')}>
       {isLoading && (
         <VStack className='gap-4'>
           <Skeleton className='h-12 w-full' />

@@ -20,13 +20,13 @@ const NoteCardComponent: React.FC<INoteCardProps> = ({ note }) => {
           <CardTitle className='grow'>{note.title}</CardTitle>
 
           <ActionsMenu
+            idSelected={selectedNote?.id}
+            invalidateQueryKey={notesKeys.root()}
+            nameSelected={selectedNote?.title}
             onActionSelected={() => setSelectedNote(note)}
+            resetSelected={() => setSelectedNote(undefined)}
             routeEdit={appRoutes.notes.form}
             tableName={NOTES_TABLE}
-            invalidateQueryKey={notesKeys.root()}
-            idSelected={selectedNote?.id}
-            nameSelected={selectedNote?.title}
-            resetSelected={() => setSelectedNote(undefined)}
           />
         </HStack>
       </CardHeader>

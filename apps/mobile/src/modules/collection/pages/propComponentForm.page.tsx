@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Button, DEFAULT_ICON_SIZE, HStack, Text, VStack, colorsTheme } from '@sabersprops/ui';
+import { Button, colorsTheme, DEFAULT_ICON_SIZE, HStack, Text, VStack } from '@sabersprops/ui';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { SaveIcon } from 'lucide-react-native';
@@ -32,33 +32,33 @@ const PropComponentForm = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: propsKeys.detail(idProp) });
       queryClient.invalidateQueries({ queryKey: propsKeys.stats() });
-      Toast.show({ type: 'success', text2: isEdit ? t('common:FORMS.EDIT_SUCCESS') : t('common:FORMS.ADD_SUCCESS') });
+      Toast.show({ text2: isEdit ? t('common:FORMS.EDIT_SUCCESS') : t('common:FORMS.ADD_SUCCESS'), type: 'success' });
       setSelectedComponent(undefined);
       router.back();
     },
   });
 
   const validationSchema: yup.ObjectSchema<PropComponent> = yup.object().shape({
+    date: yup.string().required(),
+    fees: yup.number().required().min(0),
+    feesEuros: yup.number().required(),
     id: yup.string().optional(),
     idProp: yup.string().defined(),
-    seller: yup.string().required().max(MAX_LENGTH),
-    date: yup.string().required(),
     label: yup.string().required().max(MAX_LENGTH),
-    rate: yup.number().required().min(0),
     price: yup.number().required().min(0),
-    fees: yup.number().required().min(0),
     priceEuros: yup.number().required(),
-    feesEuros: yup.number().required(),
+    rate: yup.number().required().min(0),
+    seller: yup.string().required().max(MAX_LENGTH),
   });
 
   const { control, handleSubmit, setValue } = useForm<PropComponent>({
-    mode: 'onChange',
-    resolver: yupResolver(validationSchema),
     defaultValues: isEdit
       ? selectedComponent
       : {
           idProp: idProp,
         },
+    mode: 'onChange',
+    resolver: yupResolver(validationSchema),
   });
 
   const rateWatch = useWatch({ control, name: 'rate' });
@@ -81,69 +81,69 @@ const PropComponentForm = () => {
     <VStack className='gap-4'>
       <InputWrapper
         control={control}
+        formControlProps={{ isRequired: true }}
         name='seller'
         placeholder={t('collection:LABELS.SELLER')}
-        formControlProps={{ isRequired: true }}
       />
 
       <CalendarInputWrapper
         control={control}
+        dateFormat={FORMAT_DATE}
+        formControlProps={{ isRequired: true }}
         name='date'
         placeholder={t('collection:LABELS.DATE')}
-        formControlProps={{ isRequired: true }}
-        dateFormat={FORMAT_DATE}
       />
 
       <InputWrapper
         control={control}
+        formControlProps={{ isRequired: true }}
         name='label'
         placeholder={t('collection:LABELS.LABEL')}
-        formControlProps={{ isRequired: true }}
       />
 
       <InputWrapper
         control={control}
+        formControlProps={{ isRequired: true }}
+        inputProps={{ keyboardType: 'numeric' }}
         name='rate'
         placeholder={t('collection:LABELS.RATE')}
-        inputProps={{ keyboardType: 'numeric' }}
-        formControlProps={{ isRequired: true }}
       />
 
       <InputWrapper
         control={control}
+        formControlProps={{ isRequired: true }}
+        inputProps={{ keyboardType: 'numeric' }}
         name='price'
         placeholder={t('collection:LABELS.PRICE')}
-        inputProps={{ keyboardType: 'numeric' }}
-        formControlProps={{ isRequired: true }}
       />
 
       <InputWrapper
         control={control}
+        formControlProps={{ isDisabled: true }}
+        inputProps={{ keyboardType: 'numeric' }}
         name='priceEuros'
         placeholder={`${t('collection:LABELS.PRICE')} (€)`}
-        inputProps={{ keyboardType: 'numeric' }}
-        formControlProps={{ isDisabled: true }}
       />
 
       <InputWrapper
         control={control}
+        formControlProps={{ isRequired: true }}
+        inputProps={{ keyboardType: 'numeric' }}
         name='fees'
         placeholder={t('collection:LABELS.FEES')}
-        inputProps={{ keyboardType: 'numeric' }}
-        formControlProps={{ isRequired: true }}
       />
 
       <InputWrapper
         control={control}
+        formControlProps={{ isDisabled: true }}
+        inputProps={{ keyboardType: 'numeric' }}
         name='feesEuros'
         placeholder={`${t('collection:LABELS.FEES')} (€)`}
-        inputProps={{ keyboardType: 'numeric' }}
-        formControlProps={{ isDisabled: true }}
       />
 
       <Button disabled={isPending} onPress={handleSubmit(onSubmit)}>
         <HStack className='gap-2'>
-          <SaveIcon size={DEFAULT_ICON_SIZE} color={colorsTheme.textForeground} />
+          <SaveIcon color={colorsTheme.textForeground} size={DEFAULT_ICON_SIZE} />
           <Text>{t('common:COMMON.SAVE')}</Text>
         </HStack>
       </Button>

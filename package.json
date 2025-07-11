@@ -1,31 +1,8 @@
 {
-  "name": "sabersprops",
-  "version": "1.10.0",
-  "private": true,
-  "description": "Infos about collection of Sabers & Props",
-  "repository": "git@github.com:Ocleos/SabersProps.git",
   "author": "Ocleos",
-  "license": "MIT",
-  "workspaces": [
-    "apps/*",
-    "configs/*",
-    "packages/*"
-  ],
-  "scripts": {
-    "dev": "turbo run dev",
-    "dev:mobile": "yarn workspace @sabersprops/mobile start",
-    "build": "turbo run build",
-    "lint": "biome check . --write",
-    "lint:unsafe": "biome check . --write --unsafe",
-    "format": "biome format . --write",
-    "check": "turbo run check",
-    "checkDep:mobile": "yarn workspace @sabersprops/mobile expo install --check",
-    "clean": "turbo run clean",
-    "prepare": "husky",
-    "release": "release-it"
-  },
+  "description": "Infos about collection of Sabers & Props",
   "devDependencies": {
-    "@biomejs/biome": "^1.9.4",
+    "@biomejs/biome": "^2.1.1",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "@release-it/bumper": "^7.0.5",
@@ -34,5 +11,28 @@
     "release-it": "^19.0.2",
     "turbo": "^2.5.3"
   },
-  "packageManager": "yarn@4.9.1"
+  "license": "MIT",
+  "name": "sabersprops",
+  "packageManager": "yarn@4.9.2",
+  "private": true,
+  "repository": "git@github.com:Ocleos/SabersProps.git",
+  "scripts": {
+    "build": "turbo run build",
+    "check": "turbo run check",
+    "checkDep:mobile": "yarn workspace @sabersprops/mobile expo install --check",
+    "clean": "turbo run clean",
+    "dev": "turbo run dev",
+    "dev:mobile": "yarn workspace @sabersprops/mobile start",
+    "format": "biome format . --write",
+    "lint": "biome check . --write",
+    "lint:unsafe": "biome check . --write --unsafe",
+    "prepare": "husky",
+    "release": "release-it"
+  },
+  "version": "1.10.0",
+  "workspaces": [
+    "apps/*",
+    "configs/*",
+    "packages/*"
+  ]
 }

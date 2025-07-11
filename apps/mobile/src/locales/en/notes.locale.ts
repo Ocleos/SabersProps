@@ -3,8 +3,8 @@ const notesEn = {
     ADD_TITLE: 'Add a note',
     EDIT_TITLE: 'Edit a note',
     LABELS: {
-      TITLE: 'Title',
       DESCRIPTION: 'Description',
+      TITLE: 'Title',
     },
   },
 };

@@ -5,9 +5,9 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import CollapseCard from '~src/components/card/collapseCard.component';
 import { propsKeys } from '~src/utils/queryKeys.utils';
-import { PROPS_EXPENSE_TABLE, getData } from '~src/utils/supabase.utils';
+import { getData, PROPS_EXPENSE_TABLE } from '~src/utils/supabase.utils';
 import type { Expense } from '../../models/expense.model';
-import { ExpensesTypes, calculateExpenses } from './expenses.utils';
+import { calculateExpenses, ExpensesTypes } from './expenses.utils';
 import ExpensesChart from './expensesChart.component';
 
 const ExpensesCard = () => {
@@ -15,16 +15,16 @@ const ExpensesCard = () => {
   const isFocused = useIsFocused();
 
   const { data: expenses, isLoading } = useQuery({
-    queryKey: propsKeys.statsExpenses(),
     queryFn: async () => await getData<Expense>(PROPS_EXPENSE_TABLE),
-    subscribed: isFocused,
+    queryKey: propsKeys.statsExpenses(),
     select: (data) => calculateExpenses(data),
+    subscribed: isFocused,
   });
 
   const [expensesType, setExpensesType] = useState(ExpensesTypes.YEARS);
 
   return (
-    <CollapseCard title={t('stats:LABEL.EXPENSES')} isOpened={false}>
+    <CollapseCard isOpened={false} title={t('stats:LABEL.EXPENSES')}>
       {isLoading && (
         <VStack className='gap-4'>
           <Skeleton className='h-12 w-full' />
@@ -35,7 +35,7 @@ const ExpensesCard = () => {
       )}
       {expenses && (
         <VStack className='gap-4'>
-          <Tabs value={expensesType} onValueChange={(value) => setExpensesType(value as ExpensesTypes)}>
+          <Tabs onValueChange={(value) => setExpensesType(value as ExpensesTypes)} value={expensesType}>
             <TabsList>
               <TabsTrigger value={ExpensesTypes.DAYS}>
                 <Text>{t('stats:LABEL.EXPENSES_TABS.DAILY')}</Text>

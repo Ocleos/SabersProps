@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Button, DEFAULT_ICON_SIZE, HStack, SelectItem, Text, VStack, colorsTheme } from '@sabersprops/ui';
+import { Button, colorsTheme, DEFAULT_ICON_SIZE, HStack, SelectItem, Text, VStack } from '@sabersprops/ui';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'expo-router';
 import { SaveIcon } from 'lucide-react-native';
@@ -29,27 +29,27 @@ const PropFormPage: React.FC = () => {
     mutationFn: (data: Prop) => (isEdit ? putData<Prop>(PROPS_TABLE, data) : postData<Prop>(PROPS_TABLE, data)),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: propsKeys.root() });
-      Toast.show({ type: 'success', text2: isEdit ? t('common:FORMS.EDIT_SUCCESS') : t('common:FORMS.ADD_SUCCESS') });
+      Toast.show({ text2: isEdit ? t('common:FORMS.EDIT_SUCCESS') : t('common:FORMS.ADD_SUCCESS'), type: 'success' });
       setSelectedProp(undefined);
       router.back();
     },
   });
 
   const validationSchema: Yup.ObjectSchema<Prop> = Yup.object().shape({
-    id: Yup.string().optional(),
-    name: Yup.string().required().max(MAX_LENGTH),
-    state: Yup.number().required(),
-    type: Yup.number().required(),
-    manufacturer: Yup.string().required().max(MAX_LENGTH),
     character: Yup.string().nullable().max(MAX_LENGTH),
     chassisDesigner: Yup.string().nullable().max(MAX_LENGTH),
+    id: Yup.string().optional(),
+    manufacturer: Yup.string().required().max(MAX_LENGTH),
+    name: Yup.string().required().max(MAX_LENGTH),
     soundboard: Yup.string().nullable().max(MAX_LENGTH),
+    state: Yup.number().required(),
+    type: Yup.number().required(),
   });
 
   const { control, handleSubmit } = useForm<Prop>({
+    defaultValues: isEdit ? selectedProp : {},
     mode: 'onChange',
     resolver: yupResolver(validationSchema),
-    defaultValues: isEdit ? selectedProp : {},
   });
 
   const onSubmit = async (values: Prop) => {
@@ -60,19 +60,19 @@ const PropFormPage: React.FC = () => {
     <VStack className='gap-4'>
       <InputWrapper
         control={control}
+        formControlProps={{ isRequired: true }}
         name='name'
         placeholder={t('collection:LABELS.NAME')}
-        formControlProps={{ isRequired: true }}
       />
 
       <SelectWrapper
         control={control}
-        name='type'
-        placeholder={t('collection:LABELS.TYPE')}
+        formControlProps={{ isRequired: true }}
         initialSelectedValue={
-          isEdit ? { value: selectedProp.type.toString(), label: propTypes[selectedProp.type].label } : undefined
+          isEdit ? { label: propTypes[selectedProp.type].label, value: selectedProp.type.toString() } : undefined
         }
-        formControlProps={{ isRequired: true }}>
+        name='type'
+        placeholder={t('collection:LABELS.TYPE')}>
         <SelectItem label={t('collection:TYPE.LIGHTSABER')} value={PropType.LIGHTSABER.toString()} />
         <SelectItem label={t('collection:TYPE.PROP')} value={PropType.PROP.toString()} />
         <SelectItem label={t('collection:TYPE.COSTUME')} value={PropType.COSTUME.toString()} />
@@ -80,12 +80,12 @@ const PropFormPage: React.FC = () => {
 
       <SelectWrapper
         control={control}
-        name='state'
-        placeholder={t('collection:LABELS.STATE')}
+        formControlProps={{ isRequired: true }}
         initialSelectedValue={
           isEdit ? { label: propStates[selectedProp.state].label, value: selectedProp.state.toString() } : undefined
         }
-        formControlProps={{ isRequired: true }}>
+        name='state'
+        placeholder={t('collection:LABELS.STATE')}>
         <SelectItem label={t('collection:STATE.PRODUCTION')} value={PropState.PRODUCTION.toString()} />
         <SelectItem label={t('collection:STATE.DESIGN')} value={PropState.DESIGN.toString()} />
         <SelectItem label={t('collection:STATE.MISSING_PIECES')} value={PropState.MISSING_PIECES.toString()} />
@@ -98,9 +98,9 @@ const PropFormPage: React.FC = () => {
 
       <InputWrapper
         control={control}
+        formControlProps={{ isRequired: true }}
         name='manufacturer'
         placeholder={t('collection:LABELS.MANUFACTURER')}
-        formControlProps={{ isRequired: true }}
       />
 
       <InputWrapper control={control} name='character' placeholder={t('collection:LABELS.CHARACTER')} />
@@ -111,7 +111,7 @@ const PropFormPage: React.FC = () => {
 
       <Button disabled={isPending} onPress={handleSubmit(onSubmit)}>
         <HStack className='gap-2'>
-          <SaveIcon size={DEFAULT_ICON_SIZE} color={colorsTheme.textForeground} />
+          <SaveIcon color={colorsTheme.textForeground} size={DEFAULT_ICON_SIZE} />
           <Text>{t('common:COMMON.SAVE')}</Text>
         </HStack>
       </Button>

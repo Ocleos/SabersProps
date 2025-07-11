@@ -11,9 +11,9 @@ export default () => {
       <Stack.Screen
         options={{
           headerShown: false,
+          statusBarAnimation: 'fade',
           statusBarBackgroundColor: colorsTheme.card[colorScheme],
           statusBarStyle: isDarkColorScheme ? 'light' : 'dark',
-          statusBarAnimation: 'fade',
         }}
       />
       <LoginPage />

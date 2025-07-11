@@ -1,17 +1,17 @@
 {
   "configurations": [
     {
-      "type": "radon-ide",
-      "request": "launch",
-      "name": "Radon IDE panel",
-      "ios": {},
       "android": {},
-      "isExpo": true,
       "eas": {
         "android": {
           "profile": "development"
         }
-      }
+      },
+      "ios": {},
+      "isExpo": true,
+      "name": "Radon IDE panel",
+      "request": "launch",
+      "type": "radon-ide"
     }
   ]
 }

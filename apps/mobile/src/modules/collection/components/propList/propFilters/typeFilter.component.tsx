@@ -14,7 +14,7 @@ const TypeFilter: React.FC<ITypeFilterProps> = ({ type }) => {
 
   return (
     <TouchableHighlight onPress={() => updateTypeFilter(type)}>
-      <FilterBadge isSelected={isSelected} colorSelected='primary' label={propTypes[type].label} />
+      <FilterBadge colorSelected='primary' isSelected={isSelected} label={propTypes[type].label} />
     </TouchableHighlight>
   );
 };

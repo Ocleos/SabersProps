@@ -29,53 +29,53 @@ const PricesChart: React.FC<IPricesChartProps> = ({ data }) => {
 
   useEffect(() => {
     const option: EChartsOption = {
-      backgroundColor: 'transparent',
       animationEasing: 'circularOut',
+      backgroundColor: 'transparent',
       grid: {
-        top: 16,
         bottom: 16,
-        right: 16,
-        left: 16,
         containLabel: true,
+        left: 16,
+        right: 16,
+        top: 16,
+      },
+      series: pricesChartSeries.map((entry) => {
+        return {
+          data: data.map((value) => get(value, entry.property)),
+          itemStyle: {
+            borderColor: get(colorsTheme, `${entry.color}.500`),
+            borderWidth: 1,
+            color: get(colorsTheme, `${entry.color}.200`),
+          },
+          name: entry.label,
+          stack: entry.isVisible ? 'prices' : entry.property,
+          symbolSize: entry.property === 'total' ? 0 : 10,
+          type: entry.isVisible ? 'bar' : 'scatter',
+        } as SeriesOption;
+      }),
+      textStyle: {
+        fontFamily: fontFamily.exo2,
       },
       tooltip: {
         trigger: 'axis',
         valueFormatter: (value) => (value ? formatToCurrency(Number(value)) : '--'),
       },
-      textStyle: {
-        fontFamily: fontFamily.exo2,
-      },
       xAxis: {
-        type: 'value',
         position: 'top',
+        type: 'value',
       },
       yAxis: {
-        type: 'category',
         data: data.map((value) => value.name),
         inverse: true,
+        type: 'category',
       },
-      series: pricesChartSeries.map((entry) => {
-        return {
-          name: entry.label,
-          type: entry.isVisible ? 'bar' : 'scatter',
-          stack: entry.isVisible ? 'prices' : entry.property,
-          symbolSize: entry.property === 'total' ? 0 : 10,
-          itemStyle: {
-            borderWidth: 1,
-            color: get(colorsTheme, `${entry.color}.200`),
-            borderColor: get(colorsTheme, `${entry.color}.500`),
-          },
-          data: data.map((value) => get(value, entry.property)),
-        } as SeriesOption;
-      }),
     };
 
     let chart: ECharts;
     if (svgRef.current) {
       chart = init(svgRef.current, colorScheme, {
+        height: height,
         renderer: 'svg',
         width: maxWidth,
-        height: height,
       });
       chart.setOption(option);
     }

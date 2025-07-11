@@ -14,5 +14,5 @@ export const getPropDetail = async (id: string) => {
 
   const { data: accessories } = await supabase.from(ACCESSORIES_TABLE).select('*').eq('id', id).maybeSingle();
 
-  return { ...data, prices, accessories } as PropDetail;
+  return { ...data, accessories, prices } as PropDetail;
 };

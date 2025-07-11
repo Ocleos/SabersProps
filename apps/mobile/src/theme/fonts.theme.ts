@@ -24,6 +24,7 @@ export const Aurebesh = require('~assets/fonts/Aurebesh.otf');
 export const navigationFontFamily = 'Exo2';
 
 export const fontToLoad = {
+  Aurebesh,
   Exo2_100Thin,
   Exo2_100Thin_Italic,
   Exo2_200ExtraLight,
@@ -42,5 +43,4 @@ export const fontToLoad = {
   Exo2_800ExtraBold_Italic,
   Exo2_900Black,
   Exo2_900Black_Italic,
-  Aurebesh,
 };

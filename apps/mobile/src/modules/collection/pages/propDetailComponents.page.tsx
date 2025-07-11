@@ -1,4 +1,4 @@
-import { Button, DEFAULT_ICON_SIZE, VStack, colorsTheme } from '@sabersprops/ui';
+import { Button, colorsTheme, DEFAULT_ICON_SIZE, VStack } from '@sabersprops/ui';
 import { FlashList } from '@shopify/flash-list';
 import { useRouter } from 'expo-router';
 import { PlusIcon } from 'lucide-react-native';
@@ -25,23 +25,23 @@ const PropDetailComponents: React.FC = () => {
 
         <FlashList
           data={components}
-          renderItem={({ item }) => <PropComponentCard propComponent={item} />}
           estimatedItemSize={150}
-          ListEmptyComponent={() => <EmptyComponent />}
           ItemSeparatorComponent={() => <View className='h-4' />}
           keyExtractor={(item, index) => item.id ?? index.toString()}
+          ListEmptyComponent={() => <EmptyComponent />}
+          renderItem={({ item }) => <PropComponentCard propComponent={item} />}
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}
         />
       </VStack>
 
       <Button
-        size='fab'
         onPress={() => {
           setSelectedComponent(undefined);
           router.push(appRoutes.collection.components.form(propDetail?.id));
-        }}>
-        <PlusIcon size={DEFAULT_ICON_SIZE} color={colorsTheme.textForeground} />
+        }}
+        size='fab'>
+        <PlusIcon color={colorsTheme.textForeground} size={DEFAULT_ICON_SIZE} />
       </Button>
     </>
   );

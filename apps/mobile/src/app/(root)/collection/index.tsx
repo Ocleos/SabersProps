@@ -6,7 +6,7 @@ export default () => {
   const { t } = useTranslation(['routing']);
 
   return (
-    <PageLayout title={t('routing:ROUTING.COLLECTION.INITIAL')} hasDrawerToggle={true}>
+    <PageLayout hasDrawerToggle={true} title={t('routing:ROUTING.COLLECTION.INITIAL')}>
       <PropListPage />
     </PageLayout>
   );

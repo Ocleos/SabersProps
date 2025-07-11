@@ -1,5 +1,5 @@
 import { useIsFocused } from '@react-navigation/native';
-import { Button, DEFAULT_ICON_SIZE, colorsTheme } from '@sabersprops/ui';
+import { Button, colorsTheme, DEFAULT_ICON_SIZE } from '@sabersprops/ui';
 import { FlashList } from '@shopify/flash-list';
 import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'expo-router';
@@ -10,7 +10,7 @@ import NoteCardComponent from '~src/modules/notes/components/noteList/noteCard.c
 import { useNotesStore } from '~src/modules/notes/stores/notes.store';
 import { appRoutes } from '~src/router/routes.utils';
 import { notesKeys } from '~src/utils/queryKeys.utils';
-import { NOTES_TABLE, getData } from '~src/utils/supabase.utils';
+import { getData, NOTES_TABLE } from '~src/utils/supabase.utils';
 import type { Note } from '../models/note.model';
 
 const NoteListPage: React.FC = () => {
@@ -18,8 +18,8 @@ const NoteListPage: React.FC = () => {
   const isFocused = useIsFocused();
 
   const { isLoading, data, refetch } = useQuery({
-    queryKey: notesKeys.root(),
     queryFn: async () => await getData<Note>(NOTES_TABLE),
+    queryKey: notesKeys.root(),
     subscribed: isFocused,
   });
 
@@ -29,24 +29,24 @@ const NoteListPage: React.FC = () => {
     <>
       <FlashList
         data={data}
-        renderItem={({ item }) => <NoteCardComponent note={item} />}
         estimatedItemSize={160}
-        ListEmptyComponent={() => <EmptyComponent />}
         ItemSeparatorComponent={() => <View className='h-4' />}
         keyExtractor={(item, index) => item.id ?? index.toString()}
+        ListEmptyComponent={() => <EmptyComponent />}
         onRefresh={() => refetch()}
         refreshing={isLoading}
+        renderItem={({ item }) => <NoteCardComponent note={item} />}
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
       />
 
       <Button
-        size='fab'
         onPress={() => {
           setSelectedNote(undefined);
           router.push(appRoutes.notes.form);
-        }}>
-        <PlusIcon size={DEFAULT_ICON_SIZE} color={colorsTheme.textForeground} />
+        }}
+        size='fab'>
+        <PlusIcon color={colorsTheme.textForeground} size={DEFAULT_ICON_SIZE} />
       </Button>
     </>
   );

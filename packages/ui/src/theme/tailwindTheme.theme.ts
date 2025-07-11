@@ -1,26 +1,54 @@
 import { colorsTheme } from './colorsTheme.theme';
 import { fontFamily } from './fontFamily.theme';
+
 const { hairlineWidth } = require('nativewind/theme');
 
 export const tailwindTheme = {
+  animation: {
+    'accordion-down': 'accordion-down 0.2s ease-out',
+    'accordion-up': 'accordion-up 0.2s ease-out',
+  },
+  borderWidth: {
+    hairline: hairlineWidth(),
+  },
   colors: {
-    border: 'hsl(var(--border))',
-    input: 'hsl(var(--input))',
-    ring: 'hsl(var(--ring))',
+    accent: {
+      DEFAULT: 'hsl(var(--accent))',
+      foreground: 'hsl(var(--accent-foreground))',
+    },
     background: 'hsl(var(--background))',
+    border: 'hsl(var(--border))',
+    card: {
+      DEFAULT: 'hsl(var(--card))',
+      foreground: 'hsl(var(--card-foreground))',
+    },
+    destructive: {
+      DEFAULT: 'hsl(var(--destructive))',
+      foreground: 'hsl(var(--destructive-foreground))',
+    },
     foreground: 'hsl(var(--foreground))',
+    info: {
+      DEFAULT: 'hsl(var(--info))',
+      foreground: 'hsl(var(--info-foreground))',
+    },
+    input: 'hsl(var(--input))',
+    muted: {
+      DEFAULT: 'hsl(var(--muted))',
+      foreground: 'hsl(var(--muted-foreground))',
+    },
+    popover: {
+      DEFAULT: 'hsl(var(--popover))',
+      foreground: 'hsl(var(--popover-foreground))',
+    },
     primary: {
       DEFAULT: 'hsl(var(--primary))',
       foreground: 'hsl(var(--primary-foreground))',
       ...colorsTheme.primary,
     },
+    ring: 'hsl(var(--ring))',
     secondary: {
       DEFAULT: 'hsl(var(--secondary))',
       foreground: 'hsl(var(--secondary-foreground))',
-    },
-    destructive: {
-      DEFAULT: 'hsl(var(--destructive))',
-      foreground: 'hsl(var(--destructive-foreground))',
     },
     success: {
       DEFAULT: 'hsl(var(--success))',
@@ -30,31 +58,8 @@ export const tailwindTheme = {
       DEFAULT: 'hsl(var(--warning))',
       foreground: 'hsl(var(--warning-foreground))',
     },
-    info: {
-      DEFAULT: 'hsl(var(--info))',
-      foreground: 'hsl(var(--info-foreground))',
-    },
-    muted: {
-      DEFAULT: 'hsl(var(--muted))',
-      foreground: 'hsl(var(--muted-foreground))',
-    },
-    accent: {
-      DEFAULT: 'hsl(var(--accent))',
-      foreground: 'hsl(var(--accent-foreground))',
-    },
-    popover: {
-      DEFAULT: 'hsl(var(--popover))',
-      foreground: 'hsl(var(--popover-foreground))',
-    },
-    card: {
-      DEFAULT: 'hsl(var(--card))',
-      foreground: 'hsl(var(--card-foreground))',
-    },
   },
   fontFamily: fontFamily,
-  borderWidth: {
-    hairline: hairlineWidth(),
-  },
   keyframes: {
     'accordion-down': {
       from: { height: '0' },
@@ -64,9 +69,5 @@ export const tailwindTheme = {
       from: { height: 'var(--radix-accordion-content-height)' },
       to: { height: '0' },
     },
-  },
-  animation: {
-    'accordion-down': 'accordion-down 0.2s ease-out',
-    'accordion-up': 'accordion-up 0.2s ease-out',
   },
 };

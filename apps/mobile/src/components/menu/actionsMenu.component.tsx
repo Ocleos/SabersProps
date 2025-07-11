@@ -1,12 +1,12 @@
 import {
   Button,
+  colorsTheme,
   DEFAULT_ICON_SIZE,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
   Text,
-  colorsTheme,
   useColorScheme,
 } from '@sabersprops/ui';
 import { type QueryKey, useMutation, useQueryClient } from '@tanstack/react-query';
@@ -60,7 +60,7 @@ const ActionsMenu: React.FC<IActionsMenuProps> = (props) => {
         onDeleteCallback();
       }
 
-      Toast.show({ type: 'success', text2: t('common:FORMS.DELETE_SUCCESS') });
+      Toast.show({ text2: t('common:FORMS.DELETE_SUCCESS'), type: 'success' });
       onClose();
     },
   });
@@ -91,29 +91,29 @@ const ActionsMenu: React.FC<IActionsMenuProps> = (props) => {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button size='icon' variant='ghost'>
-            <MoreVerticalIcon size={DEFAULT_ICON_SIZE} color={colorsTheme.primary[500]} />
+            <MoreVerticalIcon color={colorsTheme.primary[500]} size={DEFAULT_ICON_SIZE} />
           </Button>
         </DropdownMenuTrigger>
 
         <DropdownMenuContent className='w-48' insets={{ ...insets, left: 24, right: 24 }}>
           <DropdownMenuItem onPress={onEditPress}>
-            <PencilIcon size={DEFAULT_ICON_SIZE} color={colorsTheme.foreground[colorScheme]} />
+            <PencilIcon color={colorsTheme.foreground[colorScheme]} size={DEFAULT_ICON_SIZE} />
             <Text>{t('common:COMMON.EDIT')}</Text>
           </DropdownMenuItem>
 
           <DropdownMenuItem onPress={onDeletePress}>
-            <Trash2Icon size={DEFAULT_ICON_SIZE} color={colorsTheme.foreground[colorScheme]} />
+            <Trash2Icon color={colorsTheme.foreground[colorScheme]} size={DEFAULT_ICON_SIZE} />
             <Text>{t('common:COMMON.DELETE')}</Text>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
 
       <DeleteModal
+        description={t('common:FORMS.DELETE_CONFIRM', { name: nameSelected })}
+        isLoading={isPending}
         isOpen={isDeleteModalOpen}
         onClose={onClose}
-        description={t('common:FORMS.DELETE_CONFIRM', { name: nameSelected })}
         onConfirm={onConfirmDelete}
-        isLoading={isPending}
       />
     </>
   );

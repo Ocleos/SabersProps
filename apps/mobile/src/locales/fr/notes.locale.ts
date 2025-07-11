@@ -3,8 +3,8 @@ const notesFr = {
     ADD_TITLE: 'Ajouter une note',
     EDIT_TITLE: 'Éditer une note',
     LABELS: {
-      TITLE: 'Titre',
       DESCRIPTION: 'Description',
+      TITLE: 'Titre',
     },
   },
 };

@@ -31,12 +31,12 @@ export const calculateExpensesByMonths = (data: Expense[]) => {
       // Update previous value
       accumulator[index] = {
         ...accumulator[index],
-        price: accumulator[index].price + currentValue.price,
         fees: accumulator[index].fees + currentValue.fees,
+        price: accumulator[index].price + currentValue.price,
       };
     } else {
       // Add current value
-      accumulator.push({ ...currentValue, label: capitalize(formatDate(currentValue.date, 'MMM YY')), date: month });
+      accumulator.push({ ...currentValue, date: month, label: capitalize(formatDate(currentValue.date, 'MMM YY')) });
     }
 
     return accumulator;
@@ -53,12 +53,12 @@ export const calculateExpensesByYears = (data: Expense[]) => {
       // Update previous value
       accumulator[index] = {
         ...accumulator[index],
-        price: accumulator[index].price + currentValue.price,
         fees: accumulator[index].fees + currentValue.fees,
+        price: accumulator[index].price + currentValue.price,
       };
     } else {
       // Add current value
-      accumulator.push({ ...currentValue, label: year.toString(), date: year.toString() });
+      accumulator.push({ ...currentValue, date: year.toString(), label: year.toString() });
     }
 
     return accumulator;
@@ -76,15 +76,15 @@ export const calculateExpensesGlobalByMonths = (data: Expense[]) => {
         // Update previous value
         accumulator[index] = {
           ...accumulator[index],
-          price: accumulator[index].price + currentValue.price,
           fees: accumulator[index].fees + currentValue.fees,
+          price: accumulator[index].price + currentValue.price,
         };
       } else {
         // Add current value
         accumulator.push({
           ...currentValue,
-          label: capitalize(formatDate(currentValue.date, 'MMM')),
           date: month.toString(),
+          label: capitalize(formatDate(currentValue.date, 'MMM')),
         });
       }
 
@@ -97,9 +97,9 @@ export const calculateExpensesGlobalByMonths = (data: Expense[]) => {
 export const calculateExpenses = (data: Expense[]) => {
   const expenses: ExpensesData = {
     days: data.map((expense) => ({ ...expense, label: formatDate(expense.date, FORMAT_DATE) })),
+    globalMonths: calculateExpensesGlobalByMonths(data),
     months: calculateExpensesByMonths(data),
     years: calculateExpensesByYears(data),
-    globalMonths: calculateExpensesGlobalByMonths(data),
   };
 
   return expenses;

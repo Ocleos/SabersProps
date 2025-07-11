@@ -7,10 +7,10 @@ const apiKey: string = Constants.expoConfig?.extra?.supabaseApiKey;
 
 export const supabase = createClient(apiUrl, apiKey, {
   auth: {
-    storage: AsyncStorage,
     autoRefreshToken: true,
-    persistSession: true,
     detectSessionInUrl: false,
+    persistSession: true,
+    storage: AsyncStorage,
   },
 });
 

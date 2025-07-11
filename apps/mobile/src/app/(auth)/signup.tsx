@@ -6,7 +6,7 @@ export default () => {
   const { t } = useTranslation(['routing']);
 
   return (
-    <PageLayout title={t('routing:ROUTING.AUTH.NEW_ACCOUNT')} hasDrawerToggle={false} isScrollable={true}>
+    <PageLayout hasDrawerToggle={false} isScrollable={true} title={t('routing:ROUTING.AUTH.NEW_ACCOUNT')}>
       <SignUpPage />
     </PageLayout>
   );

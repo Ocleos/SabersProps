@@ -14,12 +14,12 @@ const DeleteModal: React.FC<IDeleteModalProps> = (props) => {
   return (
     <ModalWrapper
       hasCancelButton={true}
-      title={t('common:COMMON.DELETE')}
       mainButton={
         <Button disabled={isLoading} onPress={onConfirm} variant='destructive'>
           <Text>{t('common:COMMON.DELETE')}</Text>
         </Button>
       }
+      title={t('common:COMMON.DELETE')}
       {...props}
     />
   );

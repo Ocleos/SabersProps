@@ -32,10 +32,10 @@ const AccessoriesCard: React.FC<IAccessoriesCard> = ({ prop }) => {
 
   const onUpdateAccessory = async (value: boolean, index: number) => {
     const valueToSave = accessories ?? {
-      id: prop.id,
       bag: false,
-      keyring: false,
       displayPlaque: false,
+      id: prop.id,
+      keyring: false,
     };
 
     switch (index) {
@@ -57,19 +57,19 @@ const AccessoriesCard: React.FC<IAccessoriesCard> = ({ prop }) => {
   };
 
   return (
-    <CollapseCard title={t('collection:CATEGORIES.ACCESSORIES')} isOpened={true}>
+    <CollapseCard isOpened={true} title={t('collection:CATEGORIES.ACCESSORIES')}>
       <HStack className='gap-4'>
-        <Toggle pressed={hasBag} onPressedChange={(pressed) => onUpdateAccessory(pressed, 0)} variant={'outline'}>
+        <Toggle onPressedChange={(pressed) => onUpdateAccessory(pressed, 0)} pressed={hasBag} variant={'outline'}>
           <ToggleIcon icon={ShoppingBagIcon} />
         </Toggle>
 
-        <Toggle pressed={hasKeyring} onPressedChange={(pressed) => onUpdateAccessory(pressed, 1)} variant={'outline'}>
+        <Toggle onPressedChange={(pressed) => onUpdateAccessory(pressed, 1)} pressed={hasKeyring} variant={'outline'}>
           <ToggleIcon icon={KeyRoundIcon} />
         </Toggle>
 
         <Toggle
-          pressed={hasDisplayPlaque}
           onPressedChange={(pressed) => onUpdateAccessory(pressed, 2)}
+          pressed={hasDisplayPlaque}
           variant={'outline'}>
           <ToggleIcon icon={TagIcon} />
         </Toggle>

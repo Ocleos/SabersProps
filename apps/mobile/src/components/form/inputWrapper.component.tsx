@@ -28,19 +28,19 @@ const InputWrapper = <T extends FieldValues>(props: InputWrapperProps & UseContr
 
   return (
     <FormControlWrapper
+      error={error?.message}
+      helperText={helperText}
       name={props.name}
       placeholder={placeholder}
-      helperText={helperText}
-      error={error?.message}
       {...formControlProps}>
       <Input
         aria-labelledby={`${props.name}-item`}
-        placeholder={placeholder}
-        value={field.value != null ? `${field.value}` : ''}
-        onBlur={field.onBlur}
-        onChangeText={onChange}
         className={invalid ? 'border-destructive' : ''}
         editable={!formControlProps?.isDisabled}
+        onBlur={field.onBlur}
+        onChangeText={onChange}
+        placeholder={placeholder}
+        value={field.value != null ? `${field.value}` : ''}
         {...inputProps}
       />
     </FormControlWrapper>

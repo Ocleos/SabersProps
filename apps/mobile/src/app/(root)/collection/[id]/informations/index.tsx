@@ -10,7 +10,7 @@ export default () => {
   const title = propDetail?.name ?? t('routing:ROUTING.COLLECTION.INFORMATIONS');
 
   return (
-    <PageLayout title={title} isScrollable={true}>
+    <PageLayout isScrollable={true} title={title}>
       <PropDetailInformations />
     </PageLayout>
   );

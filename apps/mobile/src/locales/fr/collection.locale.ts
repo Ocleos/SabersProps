@@ -5,6 +5,13 @@ const collectionFr = {
     INFORMATIONS: 'Informations',
     PRICES: 'Prix',
   },
+  FORM: {
+    ADD: 'Ajouter un prop',
+    ADD_COMPONENT: 'Ajouter un composant',
+    EDIT: 'Éditer un prop',
+    EDIT_COMPONENT: 'Éditer un composant',
+    EDIT_SELLING_PRICE: 'Éditer le prix de vente',
+  },
   LABELS: {
     CHARACTER: 'Personnage',
     CHASSIS_DESIGNER: 'Concepteur chassis',
@@ -20,13 +27,6 @@ const collectionFr = {
     SOUNDBOARD: 'Carte son',
     STATE: 'Statut',
     TYPE: 'Type',
-  },
-  FORM: {
-    ADD: 'Ajouter un prop',
-    ADD_COMPONENT: 'Ajouter un composant',
-    EDIT: 'Éditer un prop',
-    EDIT_COMPONENT: 'Éditer un composant',
-    EDIT_SELLING_PRICE: 'Éditer le prix de vente',
   },
   STATE: {
     DESIGN: 'Conception',
@@ -45,8 +45,8 @@ const collectionFr = {
   },
   TYPE_ACCESSORY: {
     BAG: 'Pochette',
-    KEYRING: 'Porte-clés',
     DISPLAY_PLAQUE: 'Plaque',
+    KEYRING: 'Porte-clés',
   },
 };
 

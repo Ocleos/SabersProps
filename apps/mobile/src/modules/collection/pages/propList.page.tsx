@@ -1,6 +1,6 @@
 import { type BottomSheetModal, BottomSheetView } from '@gorhom/bottom-sheet';
 import { useIsFocused } from '@react-navigation/native';
-import { Button, DEFAULT_ICON_SIZE, VStack, colorsTheme } from '@sabersprops/ui';
+import { Button, colorsTheme, DEFAULT_ICON_SIZE, VStack } from '@sabersprops/ui';
 import { FlashList } from '@shopify/flash-list';
 import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'expo-router';
@@ -16,7 +16,7 @@ import PropFilters from '~src/modules/collection/components/propList/propFilters
 import { useCollectionStore } from '~src/modules/collection/stores/collection.store';
 import { appRoutes } from '~src/router/routes.utils';
 import { propsKeys } from '~src/utils/queryKeys.utils';
-import { PROPS_TABLE, getData } from '~src/utils/supabase.utils';
+import { getData, PROPS_TABLE } from '~src/utils/supabase.utils';
 import { onFilterProps } from '../utils/props.utils';
 
 const PropListPage: React.FC = () => {
@@ -28,42 +28,42 @@ const PropListPage: React.FC = () => {
   const { filters, setSearchValue, setSelectedProp } = useCollectionStore();
 
   const { isLoading, data, refetch } = useQuery({
-    queryKey: propsKeys.root(),
     queryFn: async () => await getData<Prop>(PROPS_TABLE),
-    subscribed: isFocused,
+    queryKey: propsKeys.root(),
     select: (data) => onFilterProps(data, filters),
+    subscribed: isFocused,
   });
 
   return (
     <>
       <VStack className='flex-1 gap-4'>
         <FilterSearchWrapper
+          onOpenFilter={() => bottomSheetRef.current?.present()}
           onSearchValue={setSearchValue}
           searchValue={filters.searchValue}
-          onOpenFilter={() => bottomSheetRef.current?.present()}
         />
 
         <FlashList
           data={data}
-          renderItem={({ item }) => <PropCardComponent prop={item} />}
           estimatedItemSize={160}
-          ListEmptyComponent={() => <EmptyComponent />}
           ItemSeparatorComponent={() => <View className='h-4' />}
           keyExtractor={(item, index) => item.id ?? index.toString()}
+          ListEmptyComponent={() => <EmptyComponent />}
           onRefresh={() => refetch()}
           refreshing={isLoading}
+          renderItem={({ item }) => <PropCardComponent prop={item} />}
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}
         />
       </VStack>
 
       <Button
-        size='fab'
         onPress={() => {
           setSelectedProp(undefined);
           router.push(appRoutes.collection.form);
-        }}>
-        <PlusIcon size={DEFAULT_ICON_SIZE} color={colorsTheme.textForeground} />
+        }}
+        size='fab'>
+        <PlusIcon color={colorsTheme.textForeground} size={DEFAULT_ICON_SIZE} />
       </Button>
 
       <BottomSheetWrapper ref={bottomSheetRef}>

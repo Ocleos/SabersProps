@@ -28,20 +28,30 @@ const RepartitionChart: React.FC<IRepartitionChartProps> = ({ data, propType }) 
 
   useEffect(() => {
     const option: EChartsOption = {
-      backgroundColor: 'transparent',
       animationEasing: 'circularOut',
-      textStyle: {
-        fontFamily: fontFamily.exo2,
-      },
-      tooltip: {
-        trigger: 'item',
-      },
+      backgroundColor: 'transparent',
       series: [
         {
-          name: '',
-          type: 'pie',
-          radius: ['40%', '90%'],
           avoidLabelOverlap: false,
+          data: Object.keys(data).map((stateData) => {
+            const state: PropState = Number(stateData);
+
+            const indexType = Number(propType) - 1;
+
+            return {
+              itemStyle: {
+                borderColor: get(colorsTheme, `${propStates[state].colorScheme}.500`),
+                color: get(colorsTheme, `${propStates[state].colorScheme}.200`),
+              },
+              name: propStates[state].label,
+              value: data[state].values[indexType],
+            };
+          }),
+          emphasis: {
+            label: {
+              show: false,
+            },
+          },
           itemStyle: {
             borderRadius: 5,
             borderWidth: 1,
@@ -49,38 +59,28 @@ const RepartitionChart: React.FC<IRepartitionChartProps> = ({ data, propType }) 
           label: {
             show: false,
           },
-          emphasis: {
-            label: {
-              show: false,
-            },
-          },
           labelLine: {
             show: false,
           },
-          data: Object.keys(data).map((stateData) => {
-            const state: PropState = Number(stateData);
-
-            const indexType = Number(propType) - 1;
-
-            return {
-              value: data[state].values[indexType],
-              name: propStates[state].label,
-              itemStyle: {
-                color: get(colorsTheme, `${propStates[state].colorScheme}.200`),
-                borderColor: get(colorsTheme, `${propStates[state].colorScheme}.500`),
-              },
-            };
-          }),
+          name: '',
+          radius: ['40%', '90%'],
+          type: 'pie',
         },
       ],
+      textStyle: {
+        fontFamily: fontFamily.exo2,
+      },
+      tooltip: {
+        trigger: 'item',
+      },
     };
 
     let chart: ECharts;
     if (svgRef.current) {
       chart = init(svgRef.current, colorScheme, {
+        height: maxSize,
         renderer: 'svg',
         width: maxSize,
-        height: maxSize,
       });
       chart.setOption(option);
     }

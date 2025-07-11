@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Button, Card, CardContent, DEFAULT_ICON_SIZE, H1, HStack, Text, VStack, colorsTheme } from '@sabersprops/ui';
+import { Button, Card, CardContent, colorsTheme, DEFAULT_ICON_SIZE, H1, HStack, Text, VStack } from '@sabersprops/ui';
 import { router } from 'expo-router';
 import { LogInIcon } from 'lucide-react-native';
 import { useState } from 'react';
@@ -27,9 +27,9 @@ const LoginPage = () => {
   });
 
   const { control, handleSubmit } = useForm<Login>({
+    defaultValues: {},
     mode: 'onChange',
     resolver: yupResolver(validationSchema),
-    defaultValues: {},
   });
 
   const onLogin = async (values: Login) => {
@@ -41,7 +41,7 @@ const LoginPage = () => {
     });
 
     if (error) {
-      Toast.show({ type: 'error', text2: error instanceof Error ? error.message : undefined });
+      Toast.show({ text2: error instanceof Error ? error.message : undefined, type: 'error' });
     }
 
     setIsLoading(false);
@@ -50,7 +50,7 @@ const LoginPage = () => {
   return (
     <View className='h-full items-center justify-around'>
       <HStack className='items-center gap-4'>
-        <LogoIcon color={colorsTheme.primary[500]} width={48} height={48} />
+        <LogoIcon color={colorsTheme.primary[500]} height={48} width={48} />
         <H1 className='text-primary'>SabersProps</H1>
       </HStack>
 
@@ -59,26 +59,26 @@ const LoginPage = () => {
           <VStack className='gap-4'>
             <InputWrapper
               control={control}
+              formControlProps={{ isRequired: true }}
               name='email'
               placeholder={t('auth:LABELS.EMAIL')}
-              formControlProps={{ isRequired: true }}
             />
 
             <PasswordInputWrapper
               control={control}
+              formControlProps={{ isRequired: true }}
               name='password'
               placeholder={t('auth:LABELS.PASSWORD')}
-              formControlProps={{ isRequired: true }}
             />
 
             <Button disabled={isLoading} onPress={handleSubmit(onLogin)}>
               <HStack className='gap-2'>
-                <LogInIcon size={DEFAULT_ICON_SIZE} color={colorsTheme.textForeground} />
+                <LogInIcon color={colorsTheme.textForeground} size={DEFAULT_ICON_SIZE} />
                 <Text>{t('auth:LABELS.SIGN_IN')}</Text>
               </HStack>
             </Button>
 
-            <Button variant={'link'} onPress={() => router.push(appRoutes.auth.signUp)}>
+            <Button onPress={() => router.push(appRoutes.auth.signUp)} variant={'link'}>
               <Text>{t('auth:LABELS.SIGN_UP')}</Text>
             </Button>
           </VStack>

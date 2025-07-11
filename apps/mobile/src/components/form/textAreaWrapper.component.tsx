@@ -1,4 +1,4 @@
-import { Textarea, cn } from '@sabersprops/ui';
+import { cn, Textarea } from '@sabersprops/ui';
 import { type FieldValues, type UseControllerProps, useController } from 'react-hook-form';
 import FormControlWrapper, { type FormControlProps } from './formControlWrapper.component';
 
@@ -28,19 +28,19 @@ const TextAreaWrapper = <T extends FieldValues>(props: TextAreaWrapperProps & Us
 
   return (
     <FormControlWrapper
+      error={error?.message}
+      helperText={helperText}
       name={props.name}
       placeholder={placeholder}
-      helperText={helperText}
-      error={error?.message}
       {...formControlProps}>
       <Textarea
         aria-labelledby={`${props.name}-item`}
         className={cn('h-40', invalid ? 'border-destructive' : '')}
-        placeholder={placeholder}
-        value={field.value != null ? `${field.value}` : ''}
+        editable={!formControlProps?.isDisabled}
         onBlur={field.onBlur}
         onChangeText={onChange}
-        editable={!formControlProps?.isDisabled}
+        placeholder={placeholder}
+        value={field.value != null ? `${field.value}` : ''}
         {...inputProps}
       />
     </FormControlWrapper>

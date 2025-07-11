@@ -23,13 +23,13 @@ const PropComponentCard: React.FC<IPropComponentCard> = ({ propComponent }) => {
         <HStack className='items-center gap-2'>
           <CardTitle className='grow'>{propComponent.label}</CardTitle>
           <ActionsMenu
+            idSelected={propComponent.id}
+            invalidateQueryKey={propsKeys.root()}
+            nameSelected={propComponent.label}
             onActionSelected={() => setSelectedComponent(propComponent)}
+            resetSelected={() => setSelectedComponent(undefined)}
             routeEdit={appRoutes.collection.components.form(propComponent.idProp)}
             tableName={COMPONENTS_TABLE}
-            invalidateQueryKey={propsKeys.root()}
-            idSelected={propComponent.id}
-            nameSelected={propComponent.label}
-            resetSelected={() => setSelectedComponent(undefined)}
           />
         </HStack>
       </CardHeader>
@@ -38,28 +38,28 @@ const PropComponentCard: React.FC<IPropComponentCard> = ({ propComponent }) => {
         <VStack className='gap-2'>
           <HStack>
             <View className='basis-1/2'>
-              <LabelIcon label={formatDate(propComponent.date, FORMAT_DATE)} icon={CalendarDaysIcon} />
+              <LabelIcon icon={CalendarDaysIcon} label={formatDate(propComponent.date, FORMAT_DATE)} />
             </View>
 
             <View className='basis-1/2'>
-              <LabelIcon label={propComponent.seller} icon={StoreIcon} />
+              <LabelIcon icon={StoreIcon} label={propComponent.seller} />
             </View>
           </HStack>
 
           <HStack>
             <View className='basis-1/3'>
               <LabelIcon
-                label={formatNumber(propComponent.rate, { maximumFractionDigits: 5 })}
                 icon={ArrowRightLeftIcon}
+                label={formatNumber(propComponent.rate, { maximumFractionDigits: 5 })}
               />
             </View>
 
             <View className='basis-1/3'>
-              <LabelIcon label={formatToCurrency(propComponent.priceEuros, CURRENCY_EUROS)} icon={ShoppingCartIcon} />
+              <LabelIcon icon={ShoppingCartIcon} label={formatToCurrency(propComponent.priceEuros, CURRENCY_EUROS)} />
             </View>
 
             <View className='basis-1/3'>
-              <LabelIcon label={formatToCurrency(propComponent.feesEuros, CURRENCY_EUROS)} icon={TruckIcon} />
+              <LabelIcon icon={TruckIcon} label={formatToCurrency(propComponent.feesEuros, CURRENCY_EUROS)} />
             </View>
           </HStack>
         </VStack>

@@ -1,4 +1,4 @@
-import { Button, DEFAULT_ICON_SIZE, HStack, Input, colorsTheme } from '@sabersprops/ui';
+import { Button, colorsTheme, DEFAULT_ICON_SIZE, HStack, Input } from '@sabersprops/ui';
 import { FilterIcon } from 'lucide-react-native';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -25,14 +25,14 @@ const FilterSearchWrapper: React.FC<IFilterSearchWrapper> = (props) => {
     <HStack className='items-center gap-4'>
       <Input
         className='flex-1 grow rounded-full px-6'
-        value={textValue}
         onChangeText={onChangeText}
         placeholder={t('common:COMMON.SEARCH')}
+        value={textValue}
       />
 
       {onOpenFilter && (
-        <Button size='icon' variant='ghost' className='flex-none' onPress={() => onOpenFilter()}>
-          <FilterIcon size={DEFAULT_ICON_SIZE} color={colorsTheme.primary[500]} />
+        <Button className='flex-none' onPress={() => onOpenFilter()} size='icon' variant='ghost'>
+          <FilterIcon color={colorsTheme.primary[500]} size={DEFAULT_ICON_SIZE} />
         </Button>
       )}
     </HStack>

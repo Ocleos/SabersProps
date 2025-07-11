@@ -1,4 +1,4 @@
-import { HStack, Label, Text, VStack, cn, colorsTheme, useColorScheme } from '@sabersprops/ui';
+import { cn, colorsTheme, HStack, Label, Text, useColorScheme, VStack } from '@sabersprops/ui';
 import { AlertOctagonIcon, InfoIcon } from 'lucide-react-native';
 
 export type FormControlProps = {
@@ -22,7 +22,7 @@ const FormControlWrapper: React.FC<FormControlWrapperProps> = (props) => {
   return (
     <VStack>
       <HStack className='gap-1'>
-        <Label nativeID={`${name}-item`} className={cn('pb-1 text-lg', error && 'text-destructive')}>
+        <Label className={cn('pb-1 text-lg', error && 'text-destructive')} nativeID={`${name}-item`}>
           {placeholder}
         </Label>
 

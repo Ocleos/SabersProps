@@ -3,11 +3,11 @@ export const notesKeys = {
 };
 
 export const propsKeys = {
-  root: () => ['props'],
   detail: (id: string) => [...propsKeys.root(), 'detail', id],
+  root: () => ['props'],
   stats: () => [...propsKeys.root(), 'stats'],
-  statsRepartition: () => [...propsKeys.stats(), 'repartition'],
-  statsPrices: () => [...propsKeys.stats(), 'prices'],
   statsExpenses: () => [...propsKeys.stats(), 'expenses'],
+  statsPrices: () => [...propsKeys.stats(), 'prices'],
+  statsRepartition: () => [...propsKeys.stats(), 'repartition'],
   todos: () => [...propsKeys.root(), 'todos'],
 };

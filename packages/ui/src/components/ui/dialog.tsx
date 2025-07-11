@@ -36,12 +36,12 @@ const DialogOverlayNative = React.forwardRef<DialogPrimitive.OverlayRef, DialogP
   ({ className, children, ...props }, ref) => {
     return (
       <DialogPrimitive.Overlay
-        style={StyleSheet.absoluteFill}
         className={cn('flex items-center justify-center bg-black/80 p-2', className)}
+        style={StyleSheet.absoluteFill}
         {...props}
         ref={ref}>
         <Animated.View entering={FadeIn.duration(150)} exiting={FadeOut.duration(150)}>
-          {/* biome-ignore lint/complexity/noUselessFragments: <explanation> */}
+          {/** biome-ignore lint/complexity/noUselessFragments: TS Errors */}
           <>{children}</>
         </Animated.View>
       </DialogPrimitive.Overlay>
@@ -52,8 +52,8 @@ const DialogOverlayNative = React.forwardRef<DialogPrimitive.OverlayRef, DialogP
 DialogOverlayNative.displayName = 'DialogOverlayNative';
 
 const DialogOverlay = Platform.select({
-  web: DialogOverlayWeb,
   default: DialogOverlayNative,
+  web: DialogOverlayWeb,
 });
 
 const DialogContent = React.forwardRef<
@@ -65,12 +65,12 @@ const DialogContent = React.forwardRef<
     <DialogPortal hostName={portalHost}>
       <DialogOverlay>
         <DialogPrimitive.Content
-          ref={ref}
           className={cn(
             'max-w-lg web:cursor-default gap-4 rounded-lg border border-border bg-background p-4 shadow-lg web:duration-200',
             open ? 'web:fade-in-0 web:zoom-in-95 web:animate-in' : 'web:fade-out-0 web:zoom-out-95 web:animate-out',
             className,
           )}
+          ref={ref}
           {...props}>
           {children}
           <DialogPrimitive.Close
@@ -78,8 +78,8 @@ const DialogContent = React.forwardRef<
               'web:group absolute top-4 right-4 rounded-sm p-0.5 opacity-70 web:ring-offset-background web:transition-opacity web:hover:opacity-100 web:focus:outline-none web:focus:ring-2 web:focus:ring-ring web:focus:ring-offset-2 web:disabled:pointer-events-none'
             }>
             <X
-              size={Platform.OS === 'web' ? 16 : 18}
               className={cn('text-muted-foreground', open && 'text-accent-foreground')}
+              size={Platform.OS === 'web' ? 16 : 18}
             />
           </DialogPrimitive.Close>
         </DialogPrimitive.Content>
@@ -102,8 +102,8 @@ DialogFooter.displayName = 'DialogFooter';
 const DialogTitle = React.forwardRef<DialogPrimitive.TitleRef, DialogPrimitive.TitleProps>(
   ({ className, ...props }, ref) => (
     <DialogPrimitive.Title
-      ref={ref}
       className={cn('font-exo2SemiBold native:text-xl text-foreground text-lg leading-none tracking-tight', className)}
+      ref={ref}
       {...props}
     />
   ),
@@ -113,8 +113,8 @@ DialogTitle.displayName = DialogPrimitive.Title.displayName;
 const DialogDescription = React.forwardRef<DialogPrimitive.DescriptionRef, DialogPrimitive.DescriptionProps>(
   ({ className, ...props }, ref) => (
     <DialogPrimitive.Description
-      ref={ref}
       className={cn('font-exo2 native:text-base text-muted-foreground text-sm', className)}
+      ref={ref}
       {...props}
     />
   ),

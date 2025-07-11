@@ -12,7 +12,7 @@ const PageNotFoundComponent: React.FC = () => {
   return (
     <VStack className='max-w-xs gap-10 self-center'>
       <View className='mx-10 mt-10 items-center'>
-        <PageNotFoundIcon width={250} height={250} />
+        <PageNotFoundIcon height={250} width={250} />
       </View>
 
       <Large className='text-center'>{t('common:ERRORS.PAGE_NOT_FOUND')}</Large>

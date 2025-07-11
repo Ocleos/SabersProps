@@ -4,19 +4,19 @@
     "requireBranch": "main",
     "tagName": "preview/v${version}"
   },
+  "github": {
+    "release": false
+  },
   "hooks": {
-    "before:init": ["git pull", "yarn biome ci ."],
-    "after:bump": "npx auto-changelog -v preview/v${version}"
+    "after:bump": "npx auto-changelog -v preview/v${version}",
+    "before:init": ["git pull", "yarn biome ci ."]
+  },
+  "npm": {
+    "publish": false
   },
   "plugins": {
     "@release-it/bumper": {
       "out": ["apps/mobile/app.config.ts", "apps/mobile/package.json"]
     }
-  },
-  "github": {
-    "release": false
-  },
-  "npm": {
-    "publish": false
   }
 }

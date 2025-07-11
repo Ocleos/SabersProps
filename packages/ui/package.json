@@ -1,11 +1,4 @@
 {
-  "name": "@sabersprops/ui",
-  "private": true,
-  "version": "0.0.0",
-  "main": "./src/index.tsx",
-  "scripts": {
-    "check": "tsc --noEmit"
-  },
   "dependencies": {
     "@gorhom/bottom-sheet": "^5.1.4",
     "@rn-primitives/dialog": "^1.1.0",
@@ -32,10 +25,17 @@
     "@types/react": "~18.3.19",
     "typescript": "~5.3.3"
   },
+  "main": "./src/index.tsx",
+  "name": "@sabersprops/ui",
   "peerDependencies": {
     "nativewind": "*",
     "react": "*",
     "react-dom": "*",
     "react-native": "*"
-  }
+  },
+  "private": true,
+  "scripts": {
+    "check": "tsc --noEmit"
+  },
+  "version": "0.0.0"
 }

@@ -1,4 +1,4 @@
-import { type Option, Select, SelectContent, SelectGroup, SelectTrigger, SelectValue, cn } from '@sabersprops/ui';
+import { cn, type Option, Select, SelectContent, SelectGroup, SelectTrigger, SelectValue } from '@sabersprops/ui';
 import { useState } from 'react';
 import { type FieldValues, type UseControllerProps, useController } from 'react-hook-form';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -26,10 +26,10 @@ const SelectWrapper = <T extends FieldValues>(props: ISelectWrapperProps & UseCo
 
   return (
     <FormControlWrapper
+      error={error?.message}
+      helperText={helperText}
       name={props.name}
       placeholder={placeholder}
-      helperText={helperText}
-      error={error?.message}
       {...formControlProps}>
       <Select
         aria-labelledby={`${props.name}-item`}
@@ -39,8 +39,8 @@ const SelectWrapper = <T extends FieldValues>(props: ISelectWrapperProps & UseCo
         }}
         {...selectProps}>
         <SelectTrigger
-          disabled={formControlProps?.isDisabled}
           className={invalid ? 'border-destructive' : ''}
+          disabled={formControlProps?.isDisabled}
           onLayout={(ev) => {
             setSelectTriggerWidth(ev.nativeEvent.layout.width);
           }}>

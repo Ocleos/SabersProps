@@ -16,19 +16,19 @@ interface IPropDetailState {
 export const usePropDetailStore = create<IPropDetailState>()(
   devtools((set) => ({
     propDetail: undefined,
-    selectedComponent: undefined,
     searchValue: '',
+    selectedComponent: undefined,
 
-    updatePropDetail: (data: PropDetail | undefined) => {
-      set((state) => ({ ...state, propDetail: data }));
+    setSearchValue: (search: string) => {
+      set((state) => ({ ...state, searchValue: search }));
     },
 
     setSelectedComponent: (propComponent?: PropComponent) => {
       set((state) => ({ ...state, selectedComponent: propComponent }));
     },
 
-    setSearchValue: (search: string) => {
-      set((state) => ({ ...state, searchValue: search }));
+    updatePropDetail: (data: PropDetail | undefined) => {
+      set((state) => ({ ...state, propDetail: data }));
     },
   })),
 );

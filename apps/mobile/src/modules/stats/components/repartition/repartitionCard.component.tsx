@@ -7,7 +7,7 @@ import CollapseCard from '~src/components/card/collapseCard.component';
 import type { Prop } from '~src/models/prop.model';
 import { PropType, propTypes } from '~src/models/propType.model';
 import { propsKeys } from '~src/utils/queryKeys.utils';
-import { PROPS_TABLE, getData } from '~src/utils/supabase.utils';
+import { getData, PROPS_TABLE } from '~src/utils/supabase.utils';
 import { calculateRepartition } from './repartition.utils';
 import RepartitionChart from './repartitionChart.component';
 import RepartitionTable from './repartitionTable.component';
@@ -17,16 +17,16 @@ const RepartitionCard = () => {
   const isFocused = useIsFocused();
 
   const { data: repartition, isLoading } = useQuery({
-    queryKey: propsKeys.statsRepartition(),
     queryFn: async () => await getData<Prop>(PROPS_TABLE),
-    subscribed: isFocused,
+    queryKey: propsKeys.statsRepartition(),
     select: (data) => calculateRepartition(data),
+    subscribed: isFocused,
   });
 
   const [propType, setPropType] = useState(PropType.LIGHTSABER.toString());
 
   return (
-    <CollapseCard title={t('stats:LABEL.REPARTITION')} isOpened={false}>
+    <CollapseCard isOpened={false} title={t('stats:LABEL.REPARTITION')}>
       {isLoading && (
         <VStack className='gap-4'>
           <Skeleton className='h-12 w-full' />
@@ -38,7 +38,7 @@ const RepartitionCard = () => {
         <VStack className='gap-4'>
           <RepartitionTable data={repartition} />
 
-          <Tabs value={propType} onValueChange={(value) => setPropType(value)}>
+          <Tabs onValueChange={(value) => setPropType(value)} value={propType}>
             <TabsList>
               <TabsTrigger value={PropType.LIGHTSABER.toString()}>
                 <Text>{propTypes[PropType.LIGHTSABER].label}</Text>

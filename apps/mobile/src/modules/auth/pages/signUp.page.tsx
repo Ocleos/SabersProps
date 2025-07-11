@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Button, DEFAULT_ICON_SIZE, HStack, Text, VStack, colorsTheme } from '@sabersprops/ui';
+import { Button, colorsTheme, DEFAULT_ICON_SIZE, HStack, Text, VStack } from '@sabersprops/ui';
 import { router } from 'expo-router';
 import { SaveIcon } from 'lucide-react-native';
 import { useState } from 'react';
@@ -20,15 +20,15 @@ const SignUpPage = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const validationSchema: Yup.ObjectSchema<NewAccount> = Yup.object().shape({
+    displayName: Yup.string().required().max(MAX_LENGTH),
     email: Yup.string().required().email(),
     password: Yup.string().required().password(),
-    displayName: Yup.string().required().max(MAX_LENGTH),
   });
 
   const { control, handleSubmit } = useForm<NewAccount>({
+    defaultValues: {},
     mode: 'onChange',
     resolver: yupResolver(validationSchema),
-    defaultValues: {},
   });
 
   const onSignUp = async (values: NewAccount) => {
@@ -36,20 +36,20 @@ const SignUpPage = () => {
 
     const { data, error } = await supabase.auth.signUp({
       email: values.email,
-      password: values.password,
       options: {
         data: {
           displayName: values.displayName,
         },
       },
+      password: values.password,
     });
 
     if (error) {
-      Toast.show({ type: 'error', text2: error instanceof Error ? error.message : undefined });
+      Toast.show({ text2: error instanceof Error ? error.message : undefined, type: 'error' });
     }
 
     if (data) {
-      Toast.show({ type: 'success', text2: t('auth:MESSAGES.CREATE_SUCCESS') });
+      Toast.show({ text2: t('auth:MESSAGES.CREATE_SUCCESS'), type: 'success' });
       router.replace(appRoutes.auth.login);
     }
 
@@ -60,28 +60,28 @@ const SignUpPage = () => {
     <VStack className='gap-4'>
       <InputWrapper
         control={control}
+        formControlProps={{ isRequired: true }}
         name='email'
         placeholder={t('auth:LABELS.EMAIL')}
-        formControlProps={{ isRequired: true }}
       />
 
       <InputWrapper
         control={control}
+        formControlProps={{ isRequired: true }}
         name='displayName'
         placeholder={t('auth:LABELS.DISPLAY_NAME')}
-        formControlProps={{ isRequired: true }}
       />
 
       <PasswordInputWrapper
         control={control}
+        formControlProps={{ isRequired: true }}
         name='password'
         placeholder={t('auth:LABELS.PASSWORD')}
-        formControlProps={{ isRequired: true }}
       />
 
       <Button disabled={isLoading} onPress={handleSubmit(onSignUp)}>
         <HStack className='gap-2'>
-          <SaveIcon size={DEFAULT_ICON_SIZE} color={colorsTheme.textForeground} />
+          <SaveIcon color={colorsTheme.textForeground} size={DEFAULT_ICON_SIZE} />
           <Text>{t('common:COMMON.SAVE')}</Text>
         </HStack>
       </Button>

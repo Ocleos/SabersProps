@@ -3,25 +3,25 @@ export const appRoutes = {
     login: '(auth)/login',
     signUp: '(auth)/signup',
   },
-  home: '(root)/home',
   collection: {
-    root: '(root)/collection',
+    components: {
+      form: (id: string | undefined) => `(root)/collection/${id}/components/form`,
+      root: (id: string | undefined) => `(root)/collection/${id}/components`,
+    },
     form: '(root)/collection/form',
     informations: (id: string | undefined) => `(root)/collection/${id}/informations`,
-    components: {
-      root: (id: string | undefined) => `(root)/collection/${id}/components`,
-      form: (id: string | undefined) => `(root)/collection/${id}/components/form`,
-    },
+    root: '(root)/collection',
   },
-  stats: '(root)/stats',
+  home: '(root)/home',
   notes: {
-    root: '(root)/notes',
     form: '(root)/notes/form',
-  },
-  todos: '(root)/todos',
-  tools: {
-    root: '(root)/tools',
-    aurebeshTranslator: '(root)/tools/aurebeshTranslator',
+    root: '(root)/notes',
   },
   settings: '(root)/settings',
+  stats: '(root)/stats',
+  todos: '(root)/todos',
+  tools: {
+    aurebeshTranslator: '(root)/tools/aurebeshTranslator',
+    root: '(root)/tools',
+  },
 };

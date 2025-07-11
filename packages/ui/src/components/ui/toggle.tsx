@@ -1,5 +1,5 @@
 import * as TogglePrimitive from '@rn-primitives/toggle';
-import { type VariantProps, cva } from 'class-variance-authority';
+import { cva, type VariantProps } from 'class-variance-authority';
 import type { LucideIcon } from 'lucide-react-native';
 import * as React from 'react';
 import { TextClassContext } from '~ui/components/ui/text';
@@ -11,39 +11,39 @@ import { useColorScheme } from '~ui/theme/useColorTheme.theme';
 const toggleVariants = cva(
   'web:group web:inline-flex items-center justify-center rounded-md web:ring-offset-background web:transition-colors web:hover:bg-muted web:focus-visible:outline-none web:focus-visible:ring-2 web:focus-visible:ring-ring web:focus-visible:ring-offset-2 active:bg-muted',
   {
+    defaultVariants: {
+      size: 'default',
+      variant: 'default',
+    },
     variants: {
+      size: {
+        default: 'h-10 native:h-12 native:px-[12] px-3',
+        lg: 'h-11 native:h-14 native:px-6 px-5',
+        sm: 'h-9 native:h-10 native:px-[9] px-2.5',
+      },
       variant: {
         default: 'bg-transparent',
         outline: 'border border-input bg-transparent web:hover:bg-accent active:bg-accent',
       },
-      size: {
-        default: 'h-10 native:h-12 native:px-[12] px-3',
-        sm: 'h-9 native:h-10 native:px-[9] px-2.5',
-        lg: 'h-11 native:h-14 native:px-6 px-5',
-      },
-    },
-    defaultVariants: {
-      variant: 'default',
-      size: 'default',
     },
   },
 );
 
 const toggleTextVariants = cva('font-exo2Medium native:text-base text-foreground text-sm', {
+  defaultVariants: {
+    size: 'default',
+    variant: 'default',
+  },
   variants: {
+    size: {
+      default: '',
+      lg: '',
+      sm: '',
+    },
     variant: {
       default: '',
       outline: 'web:group-hover:text-accent-foreground web:group-active:text-accent-foreground',
     },
-    size: {
-      default: '',
-      sm: '',
-      lg: '',
-    },
-  },
-  defaultVariants: {
-    variant: 'default',
-    size: 'default',
   },
 });
 
@@ -53,18 +53,18 @@ const Toggle = React.forwardRef<
 >(({ className, variant, size, ...props }, ref) => (
   <TextClassContext.Provider
     value={cn(
-      toggleTextVariants({ variant, size }),
+      toggleTextVariants({ size, variant }),
       props.pressed ? 'text-accent-foreground' : 'web:group-hover:text-muted-foreground',
       className,
     )}>
     <TogglePrimitive.Root
-      ref={ref}
       className={cn(
-        toggleVariants({ variant, size }),
+        toggleVariants({ size, variant }),
         props.disabled && 'web:pointer-events-none opacity-50',
         props.pressed && 'border-primary',
         className,
       )}
+      ref={ref}
       {...props}
     />
   </TextClassContext.Provider>

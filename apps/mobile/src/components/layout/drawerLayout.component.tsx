@@ -1,5 +1,5 @@
 import { DrawerContent, type DrawerContentComponentProps, DrawerItem } from '@react-navigation/drawer';
-import { H3, HStack, Separator, colorsTheme, fontFamily } from '@sabersprops/ui';
+import { colorsTheme, fontFamily, H3, HStack, Separator } from '@sabersprops/ui';
 import { LogOutIcon } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
@@ -26,9 +26,9 @@ const DrawerLayout: React.FC<DrawerContentComponentProps> = (props) => {
       <Separator />
 
       <DrawerItem
-        labelStyle={{ fontFamily: fontFamily.exo2Medium }}
-        label={t('auth:LABELS.SIGN_OUT')}
         icon={(props) => <LogOutIcon color={props.color} size={props.size} />}
+        label={t('auth:LABELS.SIGN_OUT')}
+        labelStyle={{ fontFamily: fontFamily.exo2Medium }}
         onPress={() => supabase.auth.signOut()}
       />
     </SafeAreaView>

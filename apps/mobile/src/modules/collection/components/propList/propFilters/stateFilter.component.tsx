@@ -15,8 +15,8 @@ const StateFilter: React.FC<IStateFilterProps> = ({ state }) => {
   return (
     <TouchableHighlight onPress={() => updateStateFilter(state)}>
       <FilterBadge
-        isSelected={isSelected}
         colorSelected={propStates[state].colorScheme}
+        isSelected={isSelected}
         label={propStates[state].label}
       />
     </TouchableHighlight>

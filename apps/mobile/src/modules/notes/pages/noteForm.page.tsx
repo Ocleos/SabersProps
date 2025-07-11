@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Button, DEFAULT_ICON_SIZE, HStack, Text, VStack, colorsTheme } from '@sabersprops/ui';
+import { Button, colorsTheme, DEFAULT_ICON_SIZE, HStack, Text, VStack } from '@sabersprops/ui';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'expo-router';
 import { SaveIcon } from 'lucide-react-native';
@@ -27,22 +27,22 @@ const NoteFormPage: React.FC = () => {
     mutationFn: (data: Note) => (isEdit ? putData<Note>(NOTES_TABLE, data) : postData<Note>(NOTES_TABLE, data)),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: notesKeys.root() });
-      Toast.show({ type: 'success', text2: isEdit ? t('common:FORMS.EDIT_SUCCESS') : t('common:FORMS.ADD_SUCCESS') });
+      Toast.show({ text2: isEdit ? t('common:FORMS.EDIT_SUCCESS') : t('common:FORMS.ADD_SUCCESS'), type: 'success' });
       setSelectedNote(undefined);
       router.back();
     },
   });
 
   const validationSchema: Yup.ObjectSchema<Note> = Yup.object().shape({
+    description: Yup.string().required(),
     id: Yup.string().optional(),
     title: Yup.string().required().max(MAX_LENGTH),
-    description: Yup.string().required(),
   });
 
   const { control, handleSubmit } = useForm<Note>({
+    defaultValues: isEdit ? selectedNote : {},
     mode: 'onChange',
     resolver: yupResolver(validationSchema),
-    defaultValues: isEdit ? selectedNote : {},
   });
 
   const onSubmit = async (values: Note) => {
@@ -53,22 +53,22 @@ const NoteFormPage: React.FC = () => {
     <VStack className='gap-4'>
       <InputWrapper
         control={control}
+        formControlProps={{ isRequired: true }}
         name='title'
         placeholder={t('notes:FORM.LABELS.TITLE')}
-        formControlProps={{ isRequired: true }}
       />
 
       <TextAreaWrapper
         control={control}
-        name='description'
-        placeholder={t('notes:FORM.LABELS.DESCRIPTION')}
         formControlProps={{ isRequired: true }}
         inputProps={{ multiline: true, numberOfLines: 10 }}
+        name='description'
+        placeholder={t('notes:FORM.LABELS.DESCRIPTION')}
       />
 
       <Button disabled={isPending} onPress={handleSubmit(onSubmit)}>
         <HStack className='gap-2'>
-          <SaveIcon size={DEFAULT_ICON_SIZE} color={colorsTheme.textForeground} />
+          <SaveIcon color={colorsTheme.textForeground} size={DEFAULT_ICON_SIZE} />
           <Text>{t('common:COMMON.SAVE')}</Text>
         </HStack>
       </Button>

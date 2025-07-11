@@ -13,12 +13,12 @@ const InformationsCard: React.FC<IInformationsCard> = ({ prop }) => {
   const { t } = useTranslation(['collection']);
 
   return (
-    <CollapseCard title={t('collection:CATEGORIES.INFORMATIONS')} isOpened={true}>
+    <CollapseCard isOpened={true} title={t('collection:CATEGORIES.INFORMATIONS')}>
       <VStack className='gap-2'>
-        <LabelIcon label={prop.manufacturer} icon={WrenchIcon} />
-        <LabelIcon label={prop.chassisDesigner ?? ''} icon={ShapesIcon} />
-        <LabelIcon label={prop.soundboard ?? ''} icon={CpuIcon} />
-        <LabelIcon label={prop.character ?? ''} icon={User2Icon} />
+        <LabelIcon icon={WrenchIcon} label={prop.manufacturer} />
+        <LabelIcon icon={ShapesIcon} label={prop.chassisDesigner ?? ''} />
+        <LabelIcon icon={CpuIcon} label={prop.soundboard ?? ''} />
+        <LabelIcon icon={User2Icon} label={prop.character ?? ''} />
       </VStack>
     </CollapseCard>
   );

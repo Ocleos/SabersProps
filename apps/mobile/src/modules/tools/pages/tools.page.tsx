@@ -1,4 +1,4 @@
-import { Button, DEFAULT_ICON_SIZE, HStack, Text, VStack, colorsTheme } from '@sabersprops/ui';
+import { Button, colorsTheme, DEFAULT_ICON_SIZE, HStack, Text, VStack } from '@sabersprops/ui';
 import { useRouter } from 'expo-router';
 import { LanguagesIcon } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
@@ -12,7 +12,7 @@ const ToolsPage: React.FC = () => {
     <VStack className='gap-4'>
       <Button onPress={() => router.navigate(appRoutes.tools.aurebeshTranslator)}>
         <HStack className='gap-2'>
-          <LanguagesIcon size={DEFAULT_ICON_SIZE} color={colorsTheme.textForeground} />
+          <LanguagesIcon color={colorsTheme.textForeground} size={DEFAULT_ICON_SIZE} />
           <Text>{t('tools:TOOLS.TRANSLATOR.TITLE')}</Text>
         </HStack>
       </Button>

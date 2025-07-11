@@ -13,14 +13,14 @@ const StatusDetail: React.FC<IStatusDetail> = ({ prop }) => {
   return (
     <HStack>
       <View className='basis-1/2 items-center'>
-        <BadgeWrapper label={propTypes[prop.type].label} colorScheme='primary' icon={propTypes[prop.type].icon} />
+        <BadgeWrapper colorScheme='primary' icon={propTypes[prop.type].icon} label={propTypes[prop.type].label} />
       </View>
 
       <View className='basis-1/2 items-center'>
         <BadgeWrapper
           colorScheme={propStates[prop.state].colorScheme}
-          label={propStates[prop.state].label}
           icon={propStates[prop.state].icon}
+          label={propStates[prop.state].label}
         />
       </View>
     </HStack>

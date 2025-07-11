@@ -31,14 +31,52 @@ const ExpensesChart: React.FC<IExpensesChartProps> = ({ type, data }) => {
 
   useEffect(() => {
     const option: EChartsOption = {
-      backgroundColor: 'transparent',
       animationEasing: 'circularOut',
+      backgroundColor: 'transparent',
+      dataZoom:
+        type !== ExpensesTypes.GLOBAL_MONTHS
+          ? [
+              {
+                end: 100,
+                start: getZoomByType(type),
+                type: 'inside',
+              },
+              {
+                end: 100,
+                start: getZoomByType(type),
+              },
+            ]
+          : undefined,
       grid: {
-        top: 32,
-        right: 0,
-        left: 48,
         bottom: type !== ExpensesTypes.GLOBAL_MONTHS ? 64 : 32,
+        left: 48,
+        right: 0,
+        top: 32,
       },
+      series: [
+        {
+          data: data[type].map((value) => value.price),
+          itemStyle: {
+            color: get(colorsTheme, 'primary.500'),
+          },
+          name: i18n.t('stats:LABEL.PRICE'),
+          sampling: 'lttb',
+          symbol: 'circle',
+          symbolSize: 6,
+          type: 'line',
+        },
+        {
+          data: data[type].map((value) => value.fees),
+          itemStyle: {
+            color: get(colorsTheme, 'blue.500'),
+          },
+          name: i18n.t('stats:LABEL.FEES'),
+          sampling: 'lttb',
+          symbol: 'diamond',
+          symbolSize: 6,
+          type: 'line',
+        },
+      ],
       textStyle: {
         fontFamily: fontFamily.exo2,
       },
@@ -47,62 +85,24 @@ const ExpensesChart: React.FC<IExpensesChartProps> = ({ type, data }) => {
         valueFormatter: (value) => (value ? formatToCurrency(Number(value)) : '--'),
       },
       xAxis: {
-        type: 'category',
-        boundaryGap: true,
         axisTick: {
           alignWithLabel: true,
         },
+        boundaryGap: true,
         data: data[type].map((value) => value.label ?? ''),
+        type: 'category',
       },
       yAxis: {
         type: 'value',
       },
-      dataZoom:
-        type !== ExpensesTypes.GLOBAL_MONTHS
-          ? [
-              {
-                type: 'inside',
-                start: getZoomByType(type),
-                end: 100,
-              },
-              {
-                start: getZoomByType(type),
-                end: 100,
-              },
-            ]
-          : undefined,
-      series: [
-        {
-          name: i18n.t('stats:LABEL.PRICE'),
-          type: 'line',
-          symbol: 'circle',
-          symbolSize: 6,
-          sampling: 'lttb',
-          itemStyle: {
-            color: get(colorsTheme, 'primary.500'),
-          },
-          data: data[type].map((value) => value.price),
-        },
-        {
-          name: i18n.t('stats:LABEL.FEES'),
-          type: 'line',
-          symbol: 'diamond',
-          symbolSize: 6,
-          sampling: 'lttb',
-          itemStyle: {
-            color: get(colorsTheme, 'blue.500'),
-          },
-          data: data[type].map((value) => value.fees),
-        },
-      ],
     };
 
     let chart: ECharts;
     if (svgRef.current) {
       chart = init(svgRef.current, colorScheme, {
+        height: 300,
         renderer: 'svg',
         width: maxWidth,
-        height: 300,
       });
       chart.setOption(option);
     }

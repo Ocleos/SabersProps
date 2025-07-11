@@ -11,17 +11,17 @@ const BottomSheetWrapper = forwardRef<BottomSheetModal, IBottomSheetWrapperProps
 
   return (
     <BottomSheetModal
-      ref={ref}
-      enableDynamicSizing
-      enablePanDownToClose
-      snapPoints={['75%']}
       backdropComponent={(props) => <BottomSheetBackdrop appearsOnIndex={0} disappearsOnIndex={-1} {...props} />}
       backgroundStyle={{
         backgroundColor: colorsTheme.card[colorScheme],
         borderColor: colorsTheme.border[colorScheme],
         borderWidth: 1,
       }}
-      handleIndicatorStyle={{ backgroundColor: colorsTheme.foreground[colorScheme] }}>
+      enableDynamicSizing
+      enablePanDownToClose
+      handleIndicatorStyle={{ backgroundColor: colorsTheme.foreground[colorScheme] }}
+      ref={ref}
+      snapPoints={['75%']}>
       {children}
     </BottomSheetModal>
   );

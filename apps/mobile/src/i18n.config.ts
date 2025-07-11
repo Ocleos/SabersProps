@@ -1,11 +1,10 @@
 import dayjs from 'dayjs';
+import localizedFormat from 'dayjs/plugin/localizedFormat';
+import utc from 'dayjs/plugin/utc';
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import en from './locales/en/_en.locale';
 import fr from './locales/fr/_fr.locale';
-
-import localizedFormat from 'dayjs/plugin/localizedFormat';
-import utc from 'dayjs/plugin/utc';
 
 // Localization for dayjs
 require('dayjs/locale/fr');
@@ -19,20 +18,20 @@ dayjs.extend(utc);
 i18n
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
-    returnNull: false,
     compatibilityJSON: 'v4',
-    resources: {
-      fr,
-      en,
-    },
-    lng: 'fr',
+    defaultNS: 'common',
     fallbackLng: 'fr',
-    supportedLngs: ['fr', 'en'],
     interpolation: {
       escapeValue: false, // react already safes from xss
     },
+    lng: 'fr',
     ns: ['common'],
-    defaultNS: 'common',
+    resources: {
+      en,
+      fr,
+    },
+    returnNull: false,
+    supportedLngs: ['fr', 'en'],
   });
 
 export const changeLanguage = (lang: string) => {

@@ -29,20 +29,20 @@ export type IPropState = {
 };
 
 export const propStates: Record<PropState, IPropState> = {
-  [PropState.PRODUCTION]: { colorScheme: 'red', label: i18n.t('collection:STATE.PRODUCTION'), icon: CircleDashedIcon },
-  [PropState.DESIGN]: { colorScheme: 'red', label: i18n.t('collection:STATE.DESIGN'), icon: CircleDotDashedIcon },
+  [PropState.PRODUCTION]: { colorScheme: 'red', icon: CircleDashedIcon, label: i18n.t('collection:STATE.PRODUCTION') },
+  [PropState.DESIGN]: { colorScheme: 'red', icon: CircleDotDashedIcon, label: i18n.t('collection:STATE.DESIGN') },
   [PropState.MISSING_PIECES]: {
     colorScheme: 'orange',
-    label: i18n.t('collection:STATE.MISSING_PIECES'),
     icon: CircleAlertIcon,
+    label: i18n.t('collection:STATE.MISSING_PIECES'),
   },
-  [PropState.READY]: { colorScheme: 'orange', label: i18n.t('collection:STATE.READY'), icon: CircleDotIcon },
+  [PropState.READY]: { colorScheme: 'orange', icon: CircleDotIcon, label: i18n.t('collection:STATE.READY') },
   [PropState.IN_PROGRESS]: {
     colorScheme: 'orange',
-    label: i18n.t('collection:STATE.IN_PROGRESS'),
     icon: CircleEllipsisIcon,
+    label: i18n.t('collection:STATE.IN_PROGRESS'),
   },
-  [PropState.DONE]: { colorScheme: 'green', label: i18n.t('collection:STATE.DONE'), icon: CircleCheckBigIcon },
-  [PropState.ON_SALE]: { colorScheme: 'blue', label: i18n.t('collection:STATE.ON_SALE'), icon: CircleFadingPlusIcon },
-  [PropState.SOLD]: { colorScheme: 'blue', label: i18n.t('collection:STATE.SOLD'), icon: BadgeEuroIcon },
+  [PropState.DONE]: { colorScheme: 'green', icon: CircleCheckBigIcon, label: i18n.t('collection:STATE.DONE') },
+  [PropState.ON_SALE]: { colorScheme: 'blue', icon: CircleFadingPlusIcon, label: i18n.t('collection:STATE.ON_SALE') },
+  [PropState.SOLD]: { colorScheme: 'blue', icon: BadgeEuroIcon, label: i18n.t('collection:STATE.SOLD') },
 };

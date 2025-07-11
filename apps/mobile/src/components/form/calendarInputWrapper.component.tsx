@@ -32,20 +32,20 @@ const CalendarInputWrapper = <T extends FieldValues>(props: CalendarInputWrapper
   return (
     <>
       <FormControlWrapper
+        error={error?.message}
+        helperText={helperText}
         name={props.name}
         placeholder={placeholder}
-        helperText={helperText}
-        error={error?.message}
         {...formControlProps}>
         <Pressable onPress={() => bottomSheetRef.current?.present()}>
           <CalendarInput
             aria-labelledby={`${props.name}-item`}
-            placeholder={placeholder}
-            value={field.value != null ? formatDate(field.value, dateFormat) : ''}
-            onBlur={field.onBlur}
-            onChangeText={field.onChange}
             className={invalid ? 'border-destructive' : ''}
             editable={!formControlProps?.isDisabled}
+            onBlur={field.onBlur}
+            onChangeText={field.onChange}
+            placeholder={placeholder}
+            value={field.value != null ? formatDate(field.value, dateFormat) : ''}
             {...inputProps}
           />
         </Pressable>
@@ -55,10 +55,10 @@ const CalendarInputWrapper = <T extends FieldValues>(props: CalendarInputWrapper
         <BottomSheetView>
           <VStack className='gap-4 p-4'>
             <Calendar
-              mode='single'
               date={field.value}
-              onChange={({ date }) => onChangeDate(dayjs(date))}
               locale={i18n.language}
+              mode='single'
+              onChange={({ date }) => onChangeDate(dayjs(date))}
             />
           </VStack>
         </BottomSheetView>

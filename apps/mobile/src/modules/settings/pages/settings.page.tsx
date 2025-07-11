@@ -1,4 +1,4 @@
-import { HStack, RadioGroup, Switch, Text, VStack, useColorScheme } from '@sabersprops/ui';
+import { HStack, RadioGroup, Switch, Text, useColorScheme, VStack } from '@sabersprops/ui';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
@@ -30,9 +30,9 @@ const SettingsPage: React.FC = () => {
       <HStack className='items-center'>
         <Text className='basis-2/3'>{t('settings:SETTINGS.LANGUAGES.DESCRIPTION')}</Text>
         <View className='basis-1/3 items-center'>
-          <RadioGroup value={selectedLanguage} onValueChange={onLanguageChange}>
-            <RadioWrapper value='fr' label={t('settings:SETTINGS.LANGUAGES.FRENCH')} onLabelPress={onLanguageChange} />
-            <RadioWrapper value='en' label={t('settings:SETTINGS.LANGUAGES.ENGLISH')} onLabelPress={onLanguageChange} />
+          <RadioGroup onValueChange={onLanguageChange} value={selectedLanguage}>
+            <RadioWrapper label={t('settings:SETTINGS.LANGUAGES.FRENCH')} onLabelPress={onLanguageChange} value='fr' />
+            <RadioWrapper label={t('settings:SETTINGS.LANGUAGES.ENGLISH')} onLabelPress={onLanguageChange} value='en' />
           </RadioGroup>
         </View>
       </HStack>

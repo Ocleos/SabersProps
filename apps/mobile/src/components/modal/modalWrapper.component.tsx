@@ -29,12 +29,12 @@ const ModalWrapper: React.FC<IModalWrapperProps> = (props) => {
 
   return (
     <Dialog
-      open={isOpen}
       onOpenChange={(value) => {
         if (!value) {
           onClose();
         }
-      }}>
+      }}
+      open={isOpen}>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
@@ -45,7 +45,7 @@ const ModalWrapper: React.FC<IModalWrapperProps> = (props) => {
         <DialogFooter>
           <HStack className='justify-end gap-4'>
             {hasCancelButton && (
-              <Button variant='outline' onPress={onClose}>
+              <Button onPress={onClose} variant='outline'>
                 <Text>{t('common:COMMON.CANCEL')}</Text>
               </Button>
             )}

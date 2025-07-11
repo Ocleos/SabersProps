@@ -1,5 +1,5 @@
 import { DrawerActions } from '@react-navigation/native';
-import { Button, DEFAULT_ICON_SIZE, colorsTheme, fontFamily, useColorScheme } from '@sabersprops/ui';
+import { Button, colorsTheme, DEFAULT_ICON_SIZE, fontFamily, useColorScheme } from '@sabersprops/ui';
 import { Stack, useNavigation, useRouter } from 'expo-router';
 import { ArrowLeftIcon, MenuIcon } from 'lucide-react-native';
 import { ScrollView, View, type ViewProps } from 'react-native';
@@ -27,26 +27,26 @@ const PageLayout: React.FC<IPageLayoutProps> = ({
     <View className='flex-1'>
       <Stack.Screen
         options={{
-          title,
-          headerTitleStyle: { fontFamily: fontFamily.exo2Medium },
           headerLeft: () => {
             return hasDrawerToggle ? (
               <Button
-                size='icon'
-                variant='ghost'
                 className='mr-2'
-                onPressIn={() => navigation.dispatch(DrawerActions.toggleDrawer)}>
-                <MenuIcon size={DEFAULT_ICON_SIZE} color={colorsTheme.primary[500]} />
+                onPressIn={() => navigation.dispatch(DrawerActions.toggleDrawer)}
+                size='icon'
+                variant='ghost'>
+                <MenuIcon color={colorsTheme.primary[500]} size={DEFAULT_ICON_SIZE} />
               </Button>
             ) : (
-              <Button size='icon' className='mr-2' variant='ghost' onPressIn={() => router.back()}>
-                <ArrowLeftIcon size={DEFAULT_ICON_SIZE} color={colorsTheme.primary[500]} />
+              <Button className='mr-2' onPressIn={() => router.back()} size='icon' variant='ghost'>
+                <ArrowLeftIcon color={colorsTheme.primary[500]} size={DEFAULT_ICON_SIZE} />
               </Button>
             );
           },
+          headerTitleStyle: { fontFamily: fontFamily.exo2Medium },
+          statusBarAnimation: 'fade',
           statusBarBackgroundColor: colorsTheme.card[colorScheme],
           statusBarStyle: isDarkColorScheme ? 'light' : 'dark',
-          statusBarAnimation: 'fade',
+          title,
         }}
       />
 

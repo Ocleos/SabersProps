@@ -10,7 +10,7 @@ const ErrorBoundaryComponent: React.FC = () => {
   return (
     <VStack className='max-w-xs gap-10 self-center'>
       <View className='mx-10 mt-10 items-center'>
-        <ErrorBoundaryIcon width={250} height={250} />
+        <ErrorBoundaryIcon height={250} width={250} />
       </View>
 
       <Large className='text-center'>{t('common:ERRORS.UNKNOWN_ERROR')}</Large>

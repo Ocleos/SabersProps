@@ -12,7 +12,7 @@ export default () => {
   const title = isEdit ? t('notes:FORM.EDIT_TITLE') : t('notes:FORM.ADD_TITLE');
 
   return (
-    <PageLayout title={title} isScrollable={true}>
+    <PageLayout isScrollable={true} title={title}>
       <NoteFormPage />
     </PageLayout>
   );

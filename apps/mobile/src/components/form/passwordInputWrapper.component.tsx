@@ -13,19 +13,19 @@ const PasswordInputWrapper = <T extends FieldValues>(props: InputWrapperProps & 
 
   return (
     <FormControlWrapper
+      error={error?.message}
+      helperText={helperText}
       name={props.name}
       placeholder={placeholder}
-      helperText={helperText}
-      error={error?.message}
       {...formControlProps}>
       <PasswordInput
         aria-labelledby={`${props.name}-item`}
-        placeholder={placeholder}
-        value={field.value != null ? `${field.value}` : ''}
-        onBlur={field.onBlur}
-        onChangeText={field.onChange}
         className={invalid ? 'border-destructive' : ''}
         editable={!formControlProps?.isDisabled}
+        onBlur={field.onBlur}
+        onChangeText={field.onChange}
+        placeholder={placeholder}
+        value={field.value != null ? `${field.value}` : ''}
         {...inputProps}
       />
     </FormControlWrapper>

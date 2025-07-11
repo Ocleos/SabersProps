@@ -1,15 +1,4 @@
 {
-  "name": "@sabersprops/mobile",
-  "version": "1.10.0",
-  "main": "expo-router/entry",
-  "scripts": {
-    "start": "expo start",
-    "check": "tsc --noEmit",
-    "clean": "rm -rf .expo",
-    "build:dev": "eas build --platform android --profile development",
-    "build:preview": "eas build --platform android --profile preview",
-    "build:prod": "eas build --platform android --profile production --auto-submit"
-  },
   "dependencies": {
     "@expo-google-fonts/exo-2": "^0.3.0",
     "@gorhom/bottom-sheet": "^5.1.4",
@@ -70,5 +59,16 @@
         ]
       }
     }
-  }
+  },
+  "main": "expo-router/entry",
+  "name": "@sabersprops/mobile",
+  "scripts": {
+    "build:dev": "eas build --platform android --profile development",
+    "build:preview": "eas build --platform android --profile preview",
+    "build:prod": "eas build --platform android --profile production --auto-submit",
+    "check": "tsc --noEmit",
+    "clean": "rm -rf .expo",
+    "start": "expo start"
+  },
+  "version": "1.10.0"
 }

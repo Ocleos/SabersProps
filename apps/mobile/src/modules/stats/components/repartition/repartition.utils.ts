@@ -3,8 +3,6 @@ import type { Repartition } from '~src/modules/stats/models/repartition.model';
 
 export const calculateRepartition = (data: Prop[]) => {
   const initialData: Repartition = {
-    total: 0,
-    types: [0, 0, 0],
     states: {
       1: { total: 0, values: [0, 0, 0] },
       2: { total: 0, values: [0, 0, 0] },
@@ -15,6 +13,8 @@ export const calculateRepartition = (data: Prop[]) => {
       7: { total: 0, values: [0, 0, 0] },
       8: { total: 0, values: [0, 0, 0] },
     },
+    total: 0,
+    types: [0, 0, 0],
   };
 
   const values = data.reduce((result, currentProp) => {

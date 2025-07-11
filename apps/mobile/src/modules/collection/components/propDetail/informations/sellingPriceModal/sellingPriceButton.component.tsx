@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Button, DEFAULT_ICON_SIZE, Text, colorsTheme } from '@sabersprops/ui';
+import { Button, colorsTheme, DEFAULT_ICON_SIZE, Text } from '@sabersprops/ui';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { PencilIcon } from 'lucide-react-native';
 import { useState } from 'react';
@@ -31,7 +31,7 @@ const SellingPriceButton: React.FC<ISellingPriceButtonProps> = ({ prop }) => {
         queryClient.invalidateQueries({ queryKey: propsKeys.detail(prop.id) });
       }
       queryClient.invalidateQueries({ queryKey: propsKeys.statsPrices() });
-      Toast.show({ type: 'success', text2: t('common:FORMS.EDIT_SUCCESS') });
+      Toast.show({ text2: t('common:FORMS.EDIT_SUCCESS'), type: 'success' });
       setIsOpen(false);
     },
   });
@@ -42,12 +42,12 @@ const SellingPriceButton: React.FC<ISellingPriceButtonProps> = ({ prop }) => {
   });
 
   const { control, handleSubmit } = useForm<PropSellingPrice>({
-    mode: 'onChange',
-    resolver: yupResolver(validationSchema),
     defaultValues: {
       id: prop.id,
       sellingPrice: prop.prices?.sellingPrice,
     },
+    mode: 'onChange',
+    resolver: yupResolver(validationSchema),
   });
 
   const onSubmit = async (values: PropSellingPrice) => {
@@ -56,29 +56,29 @@ const SellingPriceButton: React.FC<ISellingPriceButtonProps> = ({ prop }) => {
 
   return (
     <>
-      <Button size='icon' variant='ghost' onPress={() => setIsOpen(true)}>
-        <PencilIcon size={DEFAULT_ICON_SIZE} color={colorsTheme.primary[500]} />
+      <Button onPress={() => setIsOpen(true)} size='icon' variant='ghost'>
+        <PencilIcon color={colorsTheme.primary[500]} size={DEFAULT_ICON_SIZE} />
       </Button>
 
       <ModalWrapper
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
-        title={t('collection:FORM.EDIT_SELLING_PRICE')}
         content={
           <InputWrapper
             control={control}
+            formControlProps={{ isRequired: true }}
+            inputProps={{ keyboardType: 'numeric' }}
             name='sellingPrice'
             placeholder={t('collection:LABELS.SELLING_PRICE')}
-            inputProps={{ keyboardType: 'numeric' }}
-            formControlProps={{ isRequired: true }}
           />
         }
+        hasCancelButton
+        isOpen={isOpen}
         mainButton={
           <Button disabled={isPending} onPress={handleSubmit(onSubmit)}>
             <Text>{t('common:COMMON.SAVE')}</Text>
           </Button>
         }
-        hasCancelButton
+        onClose={() => setIsOpen(false)}
+        title={t('collection:FORM.EDIT_SELLING_PRICE')}
       />
     </>
   );

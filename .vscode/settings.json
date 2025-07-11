@@ -1,27 +1,7 @@
 {
-  "editor.linkedEditing": true,
-  "editor.tabSize": 2,
-  "editor.codeActionsOnSave": {
-    "source.fixAll": "explicit",
-    "quickfix.biome": "explicit",
-    "source.organizeImports": "explicit",
-    "source.organizeImports.biome": "explicit"
-  },
-  "editor.defaultFormatter": "biomejs.biome",
   "[markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "editor.formatOnSave": true,
-  "editor.wordWrap": "wordWrapColumn",
-  "editor.wordWrapColumn": 120,
-  "files.eol": "\n",
-  "files.insertFinalNewline": true,
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "explorer.fileNesting.patterns": {
-    "app.config.ts": "*.env, babel.config.*, eas.*, metro.config.*, nativewind*, tailwind*, tsconfig*",
-    "package.json": ".yarnrc*, yarn*, .release-it*, .auto-changelog, biome.*, .prettier*, commitlint.*, turbo.json"
-  },
-  "cSpell.words": ["aurebesh", "sabersprops"],
   "cSpell.ignoreRegExpList": ["/from\\\\s+(['\\\"]).*\\\\1/"],
   "cSpell.ignoreWords": [
     "actionsheet",
@@ -39,5 +19,27 @@
     "tailwindcss",
     "upsert",
     "zustand"
-  ]
+  ],
+  "cSpell.words": ["aurebesh", "sabersprops"],
+  "editor.codeActionsOnSave": {
+    "quickfix.biome": "explicit",
+    "source.action.useSortedAttributes.biome": "explicit",
+    "source.action.useSortedKeys.biome": "explicit",
+    "source.action.useSortedProperties.biome": "explicit",
+    "source.fixAll": "explicit",
+    "source.organizeImports.biome": "explicit"
+  },
+  "editor.defaultFormatter": "biomejs.biome",
+  "editor.formatOnSave": true,
+  "editor.linkedEditing": true,
+  "editor.tabSize": 2,
+  "editor.wordWrap": "wordWrapColumn",
+  "editor.wordWrapColumn": 120,
+  "explorer.fileNesting.patterns": {
+    "app.config.ts": "*.env, babel.config.*, eas.*, metro.config.*, nativewind*, tailwind*, tsconfig*",
+    "package.json": ".yarnrc*, yarn*, .release-it*, .auto-changelog, biome.*, .prettier*, commitlint.*, turbo.json"
+  },
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "typescript.updateImportsOnFileMove.enabled": "always"
 }

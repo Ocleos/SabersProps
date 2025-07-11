@@ -6,7 +6,7 @@ export default () => {
   const { t } = useTranslation(['routing']);
 
   return (
-    <PageLayout title={t('routing:ROUTING.TOOLS.INITIAL')} hasDrawerToggle={true}>
+    <PageLayout hasDrawerToggle={true} title={t('routing:ROUTING.TOOLS.INITIAL')}>
       <ToolsPage />
     </PageLayout>
   );

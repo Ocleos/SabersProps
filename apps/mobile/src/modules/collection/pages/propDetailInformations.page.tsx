@@ -16,8 +16,8 @@ const PropDetailInformations = () => {
   const { updatePropDetail } = usePropDetailStore();
 
   const { data: propDetail, isLoading } = useQuery({
-    queryKey: propsKeys.detail(id),
     queryFn: async () => await getPropDetail(id),
+    queryKey: propsKeys.detail(id),
   });
 
   useEffect(() => {

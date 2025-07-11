@@ -1,4 +1,4 @@
-import { DEFAULT_ICON_SIZE, HStack, Text, colorsTheme } from '@sabersprops/ui';
+import { colorsTheme, DEFAULT_ICON_SIZE, HStack, Text } from '@sabersprops/ui';
 import type { LucideIcon } from 'lucide-react-native';
 
 interface ILabelIcon {

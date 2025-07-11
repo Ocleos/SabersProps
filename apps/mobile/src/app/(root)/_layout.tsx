@@ -21,62 +21,62 @@ export default () => {
     <Drawer
       drawerContent={(props) => <DrawerLayout {...props} />}
       screenOptions={{
-        headerShown: false,
         drawerLabelStyle: { fontFamily: fontFamily.exo2Medium },
+        headerShown: false,
       }}>
       <Drawer.Screen
         name='home'
         options={{
-          drawerLabel: t('routing:ROUTING.HOME.INITIAL'),
           drawerIcon: (props) => <HomeIcon color={props.color} size={props.size} />,
+          drawerLabel: t('routing:ROUTING.HOME.INITIAL'),
         }}
       />
 
       <Drawer.Screen
         name='collection'
         options={{
-          drawerLabel: t('routing:ROUTING.COLLECTION.INITIAL'),
           drawerIcon: (props) => <SwordsIcon color={props.color} size={props.size} />,
+          drawerLabel: t('routing:ROUTING.COLLECTION.INITIAL'),
         }}
       />
 
       <Drawer.Screen
         name='stats'
         options={{
-          drawerLabel: t('routing:ROUTING.STATS.INITIAL'),
           drawerIcon: (props) => <LineChartIcon color={props.color} size={props.size} />,
+          drawerLabel: t('routing:ROUTING.STATS.INITIAL'),
         }}
       />
 
       <Drawer.Screen
         name='notes'
         options={{
-          drawerLabel: t('routing:ROUTING.NOTES.INITIAL'),
           drawerIcon: (props) => <ScrollTextIcon color={props.color} size={props.size} />,
+          drawerLabel: t('routing:ROUTING.NOTES.INITIAL'),
         }}
       />
 
       <Drawer.Screen
         name='todos'
         options={{
-          drawerLabel: t('routing:ROUTING.TODOS.INITIAL'),
           drawerIcon: (props) => <ListTodoIcon color={props.color} size={props.size} />,
+          drawerLabel: t('routing:ROUTING.TODOS.INITIAL'),
         }}
       />
 
       <Drawer.Screen
         name='tools'
         options={{
-          drawerLabel: t('routing:ROUTING.TOOLS.INITIAL'),
           drawerIcon: (props) => <PocketKnifeIcon color={props.color} size={props.size} />,
+          drawerLabel: t('routing:ROUTING.TOOLS.INITIAL'),
         }}
       />
 
       <Drawer.Screen
         name='settings'
         options={{
-          drawerLabel: t('routing:ROUTING.SETTINGS.INITIAL'),
           drawerIcon: (props) => <SettingsIcon color={props.color} size={props.size} />,
+          drawerLabel: t('routing:ROUTING.SETTINGS.INITIAL'),
         }}
       />
     </Drawer>

@@ -1,4 +1,4 @@
-import { Badge, HStack, Text, cn, colorsTheme } from '@sabersprops/ui';
+import { Badge, cn, colorsTheme, HStack, Text } from '@sabersprops/ui';
 import type { LucideIcon } from 'lucide-react-native';
 import { get } from 'radash';
 import type { SvgProps } from 'react-native-svg';
@@ -18,8 +18,8 @@ const BadgeWrapper: React.FC<IBadgeWrapperProps> = (props) => {
         {props.icon && (
           <props.icon
             color={colorScheme ? get(colorsTheme, `${colorScheme}.600`) : colorsTheme.textForeground}
-            width={16}
             height={16}
+            width={16}
           />
         )}
         <Text className={cn('font-exo2', colorScheme ? `text-${colorScheme}-600` : '')}>{label}</Text>

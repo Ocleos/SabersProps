@@ -1,13 +1,16 @@
-import { type VariantProps, cva } from 'class-variance-authority';
+import { cva, type VariantProps } from 'class-variance-authority';
 import { forwardRef } from 'react';
 import { View } from 'react-native';
 import { TextClassContext } from '~ui/components/ui/text';
 
 const coloredViewVariants = cva('', {
+  defaultVariants: {
+    variant: 'default',
+  },
   variants: {
     variant: {
-      default: 'border-primary-500 bg-primary-200',
       blue: 'border-blue-500 bg-blue-200',
+      default: 'border-primary-500 bg-primary-200',
       green: 'border-green-500 bg-green-200',
       neutral: 'border-neutral-500 bg-neutral-200',
       orange: 'border-orange-500 bg-orange-200',
@@ -15,25 +18,22 @@ const coloredViewVariants = cva('', {
       yellow: 'border-yellow-500 bg-yellow-200',
     },
   },
-  defaultVariants: {
-    variant: 'default',
-  },
 });
 
 const coloredViewTextVariants = cva('', {
+  defaultVariants: {
+    variant: 'default',
+  },
   variants: {
     variant: {
-      default: 'text-primary-600',
-      red: 'text-red-600',
       blue: 'text-blue-600',
+      default: 'text-primary-600',
       green: 'text-green-600',
       neutral: 'text-neutral-600',
       orange: 'text-orange-600',
+      red: 'text-red-600',
       yellow: 'text-yellow-600',
     },
-  },
-  defaultVariants: {
-    variant: 'default',
   },
 });
 
@@ -43,7 +43,7 @@ const ColoredView = forwardRef<React.ElementRef<typeof View>, ColoredViewProps>(
   ({ className, variant, ...props }, ref) => {
     return (
       <TextClassContext.Provider value={coloredViewTextVariants({ variant })}>
-        <View className={coloredViewVariants({ variant, className })} ref={ref} {...props} />
+        <View className={coloredViewVariants({ className, variant })} ref={ref} {...props} />
       </TextClassContext.Provider>
     );
   },

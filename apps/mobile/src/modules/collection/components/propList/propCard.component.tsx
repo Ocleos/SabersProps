@@ -3,13 +3,13 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
+  cn,
+  colorsTheme,
   HStack,
   Large,
   Separator,
   Text,
   VStack,
-  cn,
-  colorsTheme,
 } from '@sabersprops/ui';
 import { useRouter } from 'expo-router';
 import { Pressable, View } from 'react-native';
@@ -40,13 +40,13 @@ const PropCardComponent: React.FC<IPropCardProps> = ({ prop }) => {
           <HStack className='items-center gap-2'>
             <CardTitle className='grow'>{prop.name}</CardTitle>
             <ActionsMenu
+              idSelected={prop?.id}
+              invalidateQueryKey={propsKeys.root()}
+              nameSelected={prop?.name}
               onActionSelected={() => setSelectedProp(prop)}
+              resetSelected={() => setSelectedProp(undefined)}
               routeEdit={appRoutes.collection.form}
               tableName={PROPS_TABLE}
-              invalidateQueryKey={propsKeys.root()}
-              idSelected={prop?.id}
-              nameSelected={prop?.name}
-              resetSelected={() => setSelectedProp(undefined)}
             />
           </HStack>
         </CardHeader>
@@ -56,14 +56,14 @@ const PropCardComponent: React.FC<IPropCardProps> = ({ prop }) => {
             <Large>{prop.character}</Large>
             <HStack className='gap-2'>
               <Text>{prop.manufacturer}</Text>
-              <Separator orientation='vertical' className='bg-primary' />
+              <Separator className='bg-primary' orientation='vertical' />
               <Text>{prop.chassisDesigner}</Text>
             </HStack>
             <Text>{prop.soundboard}</Text>
           </VStack>
 
           <View className='absolute right-2 bottom-2 opacity-30'>
-            <PropIcon width={96} height={96} color={colorsTheme.primary[500]} />
+            <PropIcon color={colorsTheme.primary[500]} height={96} width={96} />
           </View>
         </CardContent>
       </Card>

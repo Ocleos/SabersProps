@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle, DEFAULT_ICON_SIZE, HStack, colorsTheme } from '@sabersprops/ui';
+import { Card, CardContent, CardHeader, CardTitle, colorsTheme, DEFAULT_ICON_SIZE, HStack } from '@sabersprops/ui';
 import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react-native';
 import { useState } from 'react';
 import { Pressable, type View } from 'react-native';
@@ -20,9 +20,9 @@ const CollapseCard: React.FC<ICollapseCard> = (props) => {
           <HStack className='items-center gap-2'>
             <CardTitle className='grow'>{title}</CardTitle>
             {isOpen ? (
-              <ChevronUpIcon size={DEFAULT_ICON_SIZE} color={colorsTheme.primary[500]} />
+              <ChevronUpIcon color={colorsTheme.primary[500]} size={DEFAULT_ICON_SIZE} />
             ) : (
-              <ChevronDownIcon size={DEFAULT_ICON_SIZE} color={colorsTheme.primary[500]} />
+              <ChevronDownIcon color={colorsTheme.primary[500]} size={DEFAULT_ICON_SIZE} />
             )}
           </HStack>
         </Pressable>

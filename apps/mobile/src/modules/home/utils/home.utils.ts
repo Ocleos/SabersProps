@@ -13,20 +13,20 @@ import { appRoutes } from '~src/router/routes.utils';
 export const getModules = (): Module[] => {
   return [
     {
-      id: 'collection',
-      title: i18n.t('routing:ROUTING.COLLECTION.INITIAL'),
       icon: SwordsIcon,
+      id: 'collection',
       route: appRoutes.collection.root,
+      title: i18n.t('routing:ROUTING.COLLECTION.INITIAL'),
     },
-    { id: 'stats', title: i18n.t('routing:ROUTING.STATS.INITIAL'), icon: LineChartIcon, route: appRoutes.stats },
-    { id: 'notes', title: i18n.t('routing:ROUTING.NOTES.INITIAL'), icon: ScrollTextIcon, route: appRoutes.notes.root },
-    { id: 'todos', title: i18n.t('routing:ROUTING.TODOS.INITIAL'), icon: ListTodoIcon, route: appRoutes.todos },
-    { id: 'tools', title: i18n.t('routing:ROUTING.TOOLS.INITIAL'), icon: PocketKnifeIcon, route: appRoutes.tools.root },
+    { icon: LineChartIcon, id: 'stats', route: appRoutes.stats, title: i18n.t('routing:ROUTING.STATS.INITIAL') },
+    { icon: ScrollTextIcon, id: 'notes', route: appRoutes.notes.root, title: i18n.t('routing:ROUTING.NOTES.INITIAL') },
+    { icon: ListTodoIcon, id: 'todos', route: appRoutes.todos, title: i18n.t('routing:ROUTING.TODOS.INITIAL') },
+    { icon: PocketKnifeIcon, id: 'tools', route: appRoutes.tools.root, title: i18n.t('routing:ROUTING.TOOLS.INITIAL') },
     {
-      id: 'settings',
-      title: i18n.t('routing:ROUTING.SETTINGS.INITIAL'),
       icon: SettingsIcon,
+      id: 'settings',
       route: appRoutes.settings,
+      title: i18n.t('routing:ROUTING.SETTINGS.INITIAL'),
     },
   ];
 };

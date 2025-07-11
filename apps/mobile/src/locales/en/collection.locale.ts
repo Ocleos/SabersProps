@@ -5,6 +5,13 @@ const collectionEn = {
     INFORMATIONS: 'Informations',
     PRICES: 'Prices',
   },
+  FORM: {
+    ADD: 'Add a prop',
+    ADD_COMPONENT: 'Add a component',
+    EDIT: 'Edit a prop',
+    EDIT_COMPONENT: 'Edit a component',
+    EDIT_SELLING_PRICE: 'Éditer the selling price',
+  },
   LABELS: {
     CHARACTER: 'Character',
     CHASSIS_DESIGNER: 'Chassis designer',
@@ -20,13 +27,6 @@ const collectionEn = {
     SOUNDBOARD: 'Soundboard',
     STATE: 'State',
     TYPE: 'Type',
-  },
-  FORM: {
-    ADD: 'Add a prop',
-    ADD_COMPONENT: 'Add a component',
-    EDIT: 'Edit a prop',
-    EDIT_COMPONENT: 'Edit a component',
-    EDIT_SELLING_PRICE: 'Éditer the selling price',
   },
   STATE: {
     DESIGN: 'Design',
@@ -45,8 +45,8 @@ const collectionEn = {
   },
   TYPE_ACCESSORY: {
     BAG: 'Bag',
-    KEYRING: 'Keyring',
     DISPLAY_PLAQUE: 'Display plaque',
+    KEYRING: 'Keyring',
   },
 };
 

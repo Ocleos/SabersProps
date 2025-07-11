@@ -1,4 +1,4 @@
-import { DEFAULT_ICON_SIZE, HStack, Large, Text, VStack, cn, colorsTheme } from '@sabersprops/ui';
+import { cn, colorsTheme, DEFAULT_ICON_SIZE, HStack, Large, Text, VStack } from '@sabersprops/ui';
 import {
   AlertTriangleIcon,
   CheckCircleIcon,
@@ -13,11 +13,11 @@ import type { ToastConfig } from 'react-native-toast-message';
 import i18n from '~src/i18n.config';
 
 export const toastConfig: ToastConfig = {
-  error: (props) => <ToastWrapper action='error' description={props.text2} />,
-  warning: (props) => <ToastWrapper action='warning' description={props.text2} />,
-  success: (props) => <ToastWrapper action='success' description={props.text2} />,
-  info: (props) => <ToastWrapper action='info' description={props.text2} />,
   attention: (props) => <ToastWrapper action='attention' description={props.text2} />,
+  error: (props) => <ToastWrapper action='error' description={props.text2} />,
+  info: (props) => <ToastWrapper action='info' description={props.text2} />,
+  success: (props) => <ToastWrapper action='success' description={props.text2} />,
+  warning: (props) => <ToastWrapper action='warning' description={props.text2} />,
 };
 
 type ToastWrapperProps = {
@@ -67,7 +67,7 @@ const ToastWrapper: React.FC<ToastWrapperProps> = ({ description, action }) => {
     <View className={cn(['rounded-md border-l-8 bg-popover p-4', `border-${colorScheme}-500`])}>
       <HStack className='gap-4'>
         <View className='items-center justify-center'>
-          <ToastIcon size={DEFAULT_ICON_SIZE} color={get(colorsTheme, `${colorScheme}.500`)} />
+          <ToastIcon color={get(colorsTheme, `${colorScheme}.500`)} size={DEFAULT_ICON_SIZE} />
         </View>
         <VStack className='gap-1'>
           <Large className='text-popover-foreground'>{title}</Large>

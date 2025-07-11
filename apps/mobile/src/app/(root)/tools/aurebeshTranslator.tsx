@@ -6,7 +6,7 @@ export default () => {
   const { t } = useTranslation(['tools']);
 
   return (
-    <PageLayout title={t('tools:TOOLS.TRANSLATOR.TITLE')} isScrollable={true}>
+    <PageLayout isScrollable={true} title={t('tools:TOOLS.TRANSLATOR.TITLE')}>
       <AurebeshTranslator />
     </PageLayout>
   );

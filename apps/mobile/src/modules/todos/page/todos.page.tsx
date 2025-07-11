@@ -2,7 +2,7 @@ import { useIsFocused } from '@react-navigation/native';
 import { Skeleton, VStack } from '@sabersprops/ui';
 import { useQuery } from '@tanstack/react-query';
 import { propsKeys } from '~src/utils/queryKeys.utils';
-import { PROPS_ACCESSORIES_TABLE, getData } from '~src/utils/supabase.utils';
+import { getData, PROPS_ACCESSORIES_TABLE } from '~src/utils/supabase.utils';
 import TodoCard from '../components/todoCard.component';
 import type { TodoAccessories } from '../models/todoAccessories.model';
 import { TodoType } from '../models/todoType.model';
@@ -11,8 +11,8 @@ const Todos: React.FC = () => {
   const isFocused = useIsFocused();
 
   const { data, isLoading } = useQuery({
-    queryKey: propsKeys.todos(),
     queryFn: async () => await getData<TodoAccessories>(PROPS_ACCESSORIES_TABLE),
+    queryKey: propsKeys.todos(),
     subscribed: isFocused,
   });
 

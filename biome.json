@@ -1,35 +1,37 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
-  "files": {
-    "ignoreUnknown": true,
-    "ignore": ["**/node_modules/*.*", "**/.expo/*"]
-  },
-  "overrides": [
-    {
-      "include": ["**/package.json"],
-      "formatter": {
-        "lineWidth": 1
+  "$schema": "https://biomejs.dev/schemas/2.1.1/schema.json",
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on",
+        "useSortedAttributes": "on",
+        "useSortedKeys": "on",
+        "useSortedProperties": "on"
       }
     }
-  ],
+  },
+  "files": {
+    "ignoreUnknown": true,
+    "includes": ["**", "!**/node_modules/**/*.*", "!**/.expo/**/*"]
+  },
   "formatter": {
     "enabled": true,
     "formatWithErrors": true,
-    "indentWidth": 2,
     "indentStyle": "space",
-    "lineWidth": 120,
-    "lineEnding": "lf"
+    "indentWidth": 2,
+    "lineEnding": "lf",
+    "lineWidth": 120
   },
   "javascript": {
     "formatter": {
       "arrowParentheses": "always",
+      "bracketSameLine": true,
+      "bracketSpacing": true,
       "jsxQuoteStyle": "single",
       "quoteProperties": "asNeeded",
       "quoteStyle": "single",
       "semicolons": "always",
-      "trailingCommas": "all",
-      "bracketSameLine": true,
-      "bracketSpacing": true
+      "trailingCommas": "all"
     }
   },
   "json": {
@@ -45,9 +47,6 @@
         "noUnusedImports": "warn",
         "noUnusedVariables": "error"
       },
-      "suspicious": {
-        "noConsole": "warn"
-      },
       "nursery": {
         "useSortedClasses": {
           "level": "warn",
@@ -56,12 +55,20 @@
           }
         }
       },
-      "recommended": true
+      "recommended": true,
+      "suspicious": {
+        "noConsole": "warn"
+      }
     }
   },
-  "organizeImports": {
-    "enabled": true
-  },
+  "overrides": [
+    {
+      "formatter": {
+        "lineWidth": 1
+      },
+      "includes": ["**/package.json"]
+    }
+  ],
   "vcs": {
     "clientKind": "git",
     "enabled": true,

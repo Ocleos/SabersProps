@@ -20,18 +20,18 @@ import '~src/theme/global.css';
 SplashScreen.preventAutoHideAsync();
 
 SplashScreen.setOptions({
-  fade: true,
   duration: 1000,
+  fade: true,
 });
 
 const queryClient = new QueryClient({
   defaultOptions: {
-    queries: { staleTime: 1000 * 60 * 5, gcTime: 1000 * 60 * 10 },
     mutations: {
       onError: (error) => {
-        Toast.show({ type: 'error', text2: error instanceof Error ? error.message : undefined });
+        Toast.show({ text2: error instanceof Error ? error.message : undefined, type: 'error' });
       },
     },
+    queries: { gcTime: 1000 * 60 * 10, staleTime: 1000 * 60 * 5 },
   },
 });
 
@@ -51,7 +51,7 @@ export default () => {
             )}>
             <Slot />
             <PortalHost />
-            <Toast position='bottom' config={toastConfig} />
+            <Toast config={toastConfig} position='bottom' />
           </Try>
         </QueryClientProvider>
       </ThemeProvider>

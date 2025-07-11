@@ -47,8 +47,8 @@ const SwitchNative = React.forwardRef<SwitchPrimitives.RootRef, SwitchPrimitives
     }));
     return (
       <Animated.View
-        style={animatedRootStyle}
-        className={cn('h-8 w-[46px] rounded-full', props.disabled && 'opacity-50')}>
+        className={cn('h-8 w-[46px] rounded-full', props.disabled && 'opacity-50')}
+        style={animatedRootStyle}>
         <SwitchPrimitives.Root
           className={cn(
             'h-8 w-[46px] shrink-0 flex-row items-center rounded-full border-2 border-transparent',
@@ -70,8 +70,8 @@ const SwitchNative = React.forwardRef<SwitchPrimitives.RootRef, SwitchPrimitives
 SwitchNative.displayName = 'SwitchNative';
 
 const Switch = Platform.select({
-  web: SwitchWeb,
   default: SwitchNative,
+  web: SwitchWeb,
 });
 
 export { Switch };

@@ -1,5 +1,4 @@
 import { cva, type VariantProps } from 'class-variance-authority';
-import { forwardRef } from 'react';
 import { View } from 'react-native';
 import { TextClassContext } from '~ui/components/ui/text';
 
@@ -37,18 +36,15 @@ const coloredViewTextVariants = cva('', {
   },
 });
 
-type ColoredViewProps = React.ComponentPropsWithoutRef<typeof View> & VariantProps<typeof coloredViewVariants>;
+type ColoredViewProps = React.ComponentPropsWithRef<typeof View> & VariantProps<typeof coloredViewVariants>;
 
-const ColoredView = forwardRef<React.ElementRef<typeof View>, ColoredViewProps>(
-  ({ className, variant, ...props }, ref) => {
-    return (
-      <TextClassContext.Provider value={coloredViewTextVariants({ variant })}>
-        <View className={coloredViewVariants({ className, variant })} ref={ref} {...props} />
-      </TextClassContext.Provider>
-    );
-  },
-);
-ColoredView.displayName = 'ColoredView';
+const ColoredView: React.FC<ColoredViewProps> = ({ className, variant, ref, ...props }) => {
+  return (
+    <TextClassContext.Provider value={coloredViewTextVariants({ variant })}>
+      <View className={coloredViewVariants({ className, variant })} ref={ref} {...props} />
+    </TextClassContext.Provider>
+  );
+};
 
 export { ColoredView, coloredViewTextVariants, coloredViewVariants };
 export type { ColoredViewProps };

@@ -1,0 +1,54 @@
+diff --git a/node_modules/react-native-ui-datepicker/lib/typescript/datetime-picker.d.ts b/node_modules/react-native-ui-datepicker/lib/typescript/datetime-picker.d.ts
+index 8cbb6dd..1f7f13f 100644
+--- a/node_modules/react-native-ui-datepicker/lib/typescript/datetime-picker.d.ts
++++ b/node_modules/react-native-ui-datepicker/lib/typescript/datetime-picker.d.ts
+@@ -15,6 +15,7 @@ export interface DatePickerMultipleProps extends DatePickerBaseProps {
+     dates?: DateType[];
+     onChange?: MultiChange;
+ }
+-declare const DateTimePicker: (props: DatePickerSingleProps | DatePickerRangeProps | DatePickerMultipleProps) => JSX.Element;
++export type DateTimePickerProps = DatePickerSingleProps | DatePickerRangeProps | DatePickerMultipleProps
++declare const DateTimePicker: (props: DateTimePickerProps) => JSX.Element;
+ export default DateTimePicker;
+ //# sourceMappingURL=datetime-picker.d.ts.map
+diff --git a/node_modules/react-native-ui-datepicker/lib/typescript/index.d.ts b/node_modules/react-native-ui-datepicker/lib/typescript/index.d.ts
+index 98b9b6b..5bfd67e 100644
+--- a/node_modules/react-native-ui-datepicker/lib/typescript/index.d.ts
++++ b/node_modules/react-native-ui-datepicker/lib/typescript/index.d.ts
+@@ -3,5 +3,6 @@ import './polyfill';
+ import DateTimePicker from './datetime-picker';
+ export type { DateType, CalendarMode, CalendarDay, CalendarWeek, CalendarMonth, CalendarYear, CalendarComponents, } from './types';
+ export { useDefaultClassNames, useDefaultStyles } from './theme';
++export type { DateTimePickerProps } from './datetime-picker';
+ export default DateTimePicker;
+ //# sourceMappingURL=index.d.ts.map
+diff --git a/node_modules/react-native-ui-datepicker/src/datetime-picker.tsx b/node_modules/react-native-ui-datepicker/src/datetime-picker.tsx
+index 8deb622..4d9c962 100644
+--- a/node_modules/react-native-ui-datepicker/src/datetime-picker.tsx
++++ b/node_modules/react-native-ui-datepicker/src/datetime-picker.tsx
+@@ -68,8 +68,10 @@ export interface DatePickerMultipleProps extends DatePickerBaseProps {
+   onChange?: MultiChange;
+ }
+ 
++export type DateTimePickerProps = DatePickerSingleProps | DatePickerRangeProps | DatePickerMultipleProps
++
+ const DateTimePicker = (
+-  props: DatePickerSingleProps | DatePickerRangeProps | DatePickerMultipleProps
++  props: DateTimePickerProps
+ ) => {
+   const {
+     mode = 'single',
+diff --git a/node_modules/react-native-ui-datepicker/src/index.ts b/node_modules/react-native-ui-datepicker/src/index.ts
+index b323a69..5992c12 100644
+--- a/node_modules/react-native-ui-datepicker/src/index.ts
++++ b/node_modules/react-native-ui-datepicker/src/index.ts
+@@ -11,6 +11,9 @@ export type {
+   CalendarYear,
+   CalendarComponents,
+ } from './types';
++
+ export { useDefaultClassNames, useDefaultStyles } from './theme';
+ 
++export type { DateTimePickerProps } from './datetime-picker';
++
+ export default DateTimePicker;

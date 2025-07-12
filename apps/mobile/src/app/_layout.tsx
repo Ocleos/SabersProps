@@ -31,7 +31,7 @@ const queryClient = new QueryClient({
         Toast.show({ text2: error instanceof Error ? error.message : undefined, type: 'error' });
       },
     },
-    queries: { gcTime: 1000 * 60 * 10, staleTime: 1000 * 60 * 5 },
+    queries: { gcTime: 1000 * 60 * 10, staleTime: 1000 * 60 * 2 },
   },
 });
 

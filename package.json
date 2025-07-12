@@ -8,8 +8,9 @@
     "@release-it/bumper": "^7.0.5",
     "auto-changelog": "^2.5.0",
     "husky": "^9.1.7",
-    "release-it": "^19.0.2",
-    "turbo": "^2.5.3"
+    "patch-package": "^8.0.0",
+    "release-it": "^19.0.3",
+    "turbo": "^2.5.4"
   },
   "license": "MIT",
   "name": "sabersprops",
@@ -26,6 +27,7 @@
     "format": "biome format . --write",
     "lint": "biome check . --write",
     "lint:unsafe": "biome check . --write --unsafe",
+    "postinstall": "patch-package",
     "prepare": "husky",
     "release": "release-it"
   },

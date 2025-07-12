@@ -1,12 +1,13 @@
 import { BottomSheetBackdrop, BottomSheetModal } from '@gorhom/bottom-sheet';
 import { colorsTheme, useColorScheme } from '@sabersprops/ui';
-import { forwardRef } from 'react';
+import type { RefObject } from 'react';
 
 interface IBottomSheetWrapperProps {
   children: React.ReactNode;
+  ref: RefObject<BottomSheetModal | null>;
 }
 
-const BottomSheetWrapper = forwardRef<BottomSheetModal, IBottomSheetWrapperProps>(({ children }, ref) => {
+const BottomSheetWrapper: React.FC<IBottomSheetWrapperProps> = ({ children, ref }) => {
   const { colorScheme } = useColorScheme();
 
   return (
@@ -25,6 +26,6 @@ const BottomSheetWrapper = forwardRef<BottomSheetModal, IBottomSheetWrapperProps
       {children}
     </BottomSheetModal>
   );
-});
+};
 
 export default BottomSheetWrapper;

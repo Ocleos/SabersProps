@@ -1,5 +1,4 @@
 import { cva, type VariantProps } from 'class-variance-authority';
-import { forwardRef } from 'react';
 import { View } from 'react-native';
 import { cn } from '~ui/lib/utils';
 
@@ -15,22 +14,19 @@ const stackVariants = cva('flex', {
   },
 });
 
-type StackProps = React.ComponentPropsWithoutRef<typeof View> & VariantProps<typeof stackVariants>;
+type StackProps = React.ComponentPropsWithRef<typeof View> & VariantProps<typeof stackVariants>;
 
-const Stack = forwardRef<React.ElementRef<typeof View>, StackProps>(({ className, variant, ...props }, ref) => {
-  return <View className={cn(stackVariants({ className, variant }))} ref={ref} {...props} />;
-});
-Stack.displayName = 'Stack';
+const Stack: React.FC<StackProps> = ({ className, variant, ...props }) => {
+  return <View className={cn(stackVariants({ className, variant }))} {...props} />;
+};
 
-const HStack = forwardRef<React.ElementRef<typeof View>, StackProps>(({ className, variant, ...props }, ref) => {
-  return <Stack className={className} ref={ref} variant='horizontal' {...props} />;
-});
-Stack.displayName = 'HStack';
+const HStack: React.FC<StackProps> = ({ className, variant, ...props }) => {
+  return <Stack className={className} variant='horizontal' {...props} />;
+};
 
-const VStack = forwardRef<React.ElementRef<typeof View>, StackProps>(({ className, variant, ...props }, ref) => {
-  return <Stack className={className} ref={ref} variant='vertical' {...props} />;
-});
-Stack.displayName = 'VStack';
+const VStack: React.FC<StackProps> = ({ className, variant, ...props }) => {
+  return <Stack className={className} variant='vertical' {...props} />;
+};
 
 export { HStack, Stack, VStack, stackVariants };
 export type { StackProps };

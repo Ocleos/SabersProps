@@ -1,11 +1,6 @@
-import DateTimePicker, { useDefaultClassNames } from 'react-native-ui-datepicker';
-import type {
-  DatePickerMultipleProps,
-  DatePickerRangeProps,
-  DatePickerSingleProps,
-} from 'react-native-ui-datepicker/lib/typescript/datetime-picker';
+import DateTimePicker, { type DateTimePickerProps, useDefaultClassNames } from 'react-native-ui-datepicker';
 
-const Calendar: React.FC<DatePickerSingleProps | DatePickerRangeProps | DatePickerMultipleProps> = (props) => {
+const Calendar: React.FC<DateTimePickerProps> = (props) => {
   const defaultClassNames = useDefaultClassNames();
 
   return (

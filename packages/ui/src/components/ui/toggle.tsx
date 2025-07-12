@@ -3,7 +3,9 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import type { LucideIcon } from 'lucide-react-native';
 import * as React from 'react';
 import { TextClassContext } from '~ui/components/ui/text';
+import { DEFAULT_ICON_SIZE } from '~ui/lib/icons/icons.utils';
 import { cn } from '~ui/lib/utils';
+import { colorsTheme, useColorScheme } from '~ui/theme';
 
 const toggleVariants = cva(
   'web:group web:inline-flex items-center justify-center rounded-md web:ring-offset-background web:transition-colors web:hover:bg-muted web:focus-visible:outline-none web:focus-visible:ring-2 web:focus-visible:ring-ring web:focus-visible:ring-offset-2 active:bg-muted',
@@ -82,7 +84,15 @@ function ToggleIcon({
   icon: LucideIcon;
 }) {
   const textClass = React.useContext(TextClassContext);
-  return <Icon className={cn(textClass, className)} {...props} />;
+  const { colorScheme } = useColorScheme();
+  return (
+    <Icon
+      className={cn(textClass, className)}
+      color={colorsTheme.foreground[colorScheme]}
+      size={DEFAULT_ICON_SIZE}
+      {...props}
+    />
+  );
 }
 
 export { Toggle, ToggleIcon, toggleTextVariants, toggleVariants };

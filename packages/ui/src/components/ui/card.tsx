@@ -36,7 +36,6 @@ function CardTitle({
     <Text
       aria-level={3}
       className={cn('font-exo2SemiBold text-2xl text-card-foreground leading-none tracking-tight', className)}
-      role='heading'
       {...props}
     />
   );

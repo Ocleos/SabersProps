@@ -22,11 +22,11 @@
   ],
   "cSpell.words": ["aurebesh", "sabersprops"],
   "editor.codeActionsOnSave": {
-    "quickfix.biome": "explicit",
     "source.action.useSortedAttributes.biome": "explicit",
     "source.action.useSortedKeys.biome": "explicit",
     "source.action.useSortedProperties.biome": "explicit",
     "source.fixAll": "explicit",
+    "source.fixAll.biome": "explicit",
     "source.organizeImports.biome": "explicit"
   },
   "editor.defaultFormatter": "biomejs.biome",

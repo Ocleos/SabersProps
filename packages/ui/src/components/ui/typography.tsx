@@ -1,6 +1,6 @@
 import * as Slot from '@rn-primitives/slot';
 import type * as React from 'react';
-import { Platform, Text as RNText } from 'react-native';
+import { Text as RNText } from 'react-native';
 import { cn } from '~ui/lib/utils';
 
 type TypographyProps = React.ComponentProps<typeof RNText> & {
@@ -17,7 +17,6 @@ function H1({ className, asChild = false, ...props }: TypographyProps) {
         'web:select-text web:scroll-m-20 font-exo2ExtraBold text-4xl text-foreground tracking-tight lg:text-5xl',
         className,
       )}
-      role='heading'
       {...props}
     />
   );
@@ -32,7 +31,6 @@ function H2({ className, asChild = false, ...props }: TypographyProps) {
         'web:select-text web:scroll-m-20 border-border border-b pb-2 font-exo2SemiBold text-3xl text-foreground tracking-tight first:mt-0',
         className,
       )}
-      role='heading'
       {...props}
     />
   );
@@ -47,7 +45,6 @@ function H3({ className, asChild = false, ...props }: TypographyProps) {
         'web:select-text web:scroll-m-20 font-exo2SemiBold text-2xl text-foreground tracking-tight',
         className,
       )}
-      role='heading'
       {...props}
     />
   );
@@ -62,7 +59,6 @@ function H4({ className, asChild = false, ...props }: TypographyProps) {
         'web:select-text web:scroll-m-20 font-exo2SemiBold text-foreground text-xl tracking-tight',
         className,
       )}
-      role='heading'
       {...props}
     />
   );
@@ -81,8 +77,6 @@ function BlockQuote({ className, asChild = false, ...props }: TypographyProps) {
         'mt-6 native:mt-4 web:select-text border-border border-l-2 native:pl-3 pl-6 text-base text-foreground italic',
         className,
       )}
-      // @ts-ignore - role of blockquote renders blockquote element on the web
-      role={Platform.OS === 'web' ? 'blockquote' : undefined}
       {...props}
     />
   );
@@ -96,8 +90,6 @@ function Code({ className, asChild = false, ...props }: TypographyProps) {
         'relative web:select-text rounded-md bg-muted px-[0.3rem] py-[0.2rem] font-exo2SemiBold text-foreground text-sm',
         className,
       )}
-      // @ts-ignore - role of code renders code element on the web
-      role={Platform.OS === 'web' ? 'code' : undefined}
       {...props}
     />
   );

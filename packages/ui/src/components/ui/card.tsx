@@ -1,75 +1,58 @@
-import type * as React from 'react';
-import { Text, type TextProps, View, type ViewProps } from 'react-native';
-import { TextClassContext } from '~ui/components/ui/text';
+import { View, type ViewProps } from 'react-native';
+import { Text, TextClassContext } from '~ui/components/ui/text';
 import { cn } from '~ui/lib/utils';
 
-function Card({
-  className,
-  ...props
-}: ViewProps & {
-  ref?: React.RefObject<View>;
-}) {
-  return (
-    <View
-      className={cn('rounded-lg border border-border bg-card shadow-foreground/10 shadow-sm', className)}
-      {...props}
-    />
-  );
-}
-
-function CardHeader({
-  className,
-  ...props
-}: ViewProps & {
-  ref?: React.RefObject<View>;
-}) {
-  return <View className={cn('flex flex-col space-y-1.5 p-4', className)} {...props} />;
-}
-
-function CardTitle({
-  className,
-  ...props
-}: TextProps & {
-  ref?: React.RefObject<Text>;
-}) {
-  return (
-    <Text
-      aria-level={3}
-      className={cn('font-exo2SemiBold text-2xl text-card-foreground leading-none tracking-tight', className)}
-      {...props}
-    />
-  );
-}
-
-function CardDescription({
-  className,
-  ...props
-}: TextProps & {
-  ref?: React.RefObject<Text>;
-}) {
-  return <Text className={cn('font-exo2 text-muted-foreground text-sm', className)} {...props} />;
-}
-
-function CardContent({
-  className,
-  ...props
-}: ViewProps & {
-  ref?: React.RefObject<View>;
-}) {
+function Card({ className, ...props }: ViewProps & React.RefAttributes<View>) {
   return (
     <TextClassContext.Provider value='text-card-foreground'>
-      <View className={cn('p-4 pt-0', className)} {...props} />
+      <View
+        className={cn(
+          'flex flex-col gap-6 rounded-xl border border-border bg-card py-6 shadow-black/5 shadow-sm',
+          'gap-2 py-4', // Override
+          className,
+        )}
+        {...props}
+      />
     </TextClassContext.Provider>
   );
 }
 
-function CardFooter({
-  className,
-  ...props
-}: ViewProps & {
-  ref?: React.RefObject<View>;
-}) {
-  return <View className={cn('flex flex-row items-center p-4 pt-0', className)} {...props} />;
+function CardHeader({ className, ...props }: ViewProps & React.RefAttributes<View>) {
+  return (
+    <View
+      className={cn(
+        'flex flex-col gap-1.5 px-6',
+        'gap-2 px-4', // Override
+        className,
+      )}
+      {...props}
+    />
+  );
+}
+
+function CardTitle({ className, ...props }: React.ComponentProps<typeof Text> & React.RefAttributes<Text>) {
+  return <Text className={cn('flex-1', className)} variant='h3' {...props} />;
+}
+
+function CardDescription({ className, ...props }: React.ComponentProps<typeof Text> & React.RefAttributes<Text>) {
+  return <Text className={cn('text-muted-foreground text-sm', className)} {...props} />;
+}
+
+function CardContent({ className, ...props }: ViewProps & React.RefAttributes<View>) {
+  return <View className={cn('px-4', className)} {...props} />;
+}
+
+function CardFooter({ className, ...props }: ViewProps & React.RefAttributes<View>) {
+  return (
+    <View
+      className={cn(
+        'flex flex-row items-center px-6',
+        'px-4', // Override
+        className,
+      )}
+      {...props}
+    />
+  );
 }
 
 export { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle };

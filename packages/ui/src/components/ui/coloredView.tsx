@@ -8,13 +8,13 @@ const coloredViewVariants = cva('', {
   },
   variants: {
     variant: {
-      blue: 'border-blue-500 bg-blue-200',
-      default: 'border-primary-500 bg-primary-200',
-      green: 'border-green-500 bg-green-200',
-      neutral: 'border-neutral-500 bg-neutral-200',
-      orange: 'border-orange-500 bg-orange-200',
-      red: 'border-red-500 bg-red-200',
-      yellow: 'border-yellow-500 bg-yellow-200',
+      blue: 'border-blue-500 bg-blue-200 text-blue-500',
+      default: 'border-primary-500 bg-primary-200 text-primary-500',
+      green: 'border-green-500 bg-green-200 text-green-500',
+      neutral: 'border-neutral-500 bg-neutral-200 text-neutral-500',
+      orange: 'border-orange-500 bg-orange-200 text-orange-500',
+      red: 'border-red-500 bg-red-200 text-red-500',
+      yellow: 'border-yellow-500 bg-yellow-200 text-yellow-500',
     },
   },
 });

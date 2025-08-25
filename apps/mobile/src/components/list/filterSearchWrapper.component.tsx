@@ -1,4 +1,4 @@
-import { Button, colorsTheme, DEFAULT_ICON_SIZE, HStack, Input } from '@sabersprops/ui';
+import { Button, HStack, Icon, Input } from '@sabersprops/ui';
 import { FilterIcon } from 'lucide-react-native';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -32,7 +32,7 @@ const FilterSearchWrapper: React.FC<IFilterSearchWrapper> = (props) => {
 
       {onOpenFilter && (
         <Button className='flex-none' onPress={() => onOpenFilter()} size='icon' variant='ghost'>
-          <FilterIcon color={colorsTheme.primary[500]} size={DEFAULT_ICON_SIZE} />
+          <Icon as={FilterIcon} className='text-primary' />
         </Button>
       )}
     </HStack>

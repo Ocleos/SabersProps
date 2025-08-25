@@ -1,5 +1,5 @@
 import { useIsFocused } from '@react-navigation/native';
-import { Button, colorsTheme, DEFAULT_ICON_SIZE } from '@sabersprops/ui';
+import { Button, Icon } from '@sabersprops/ui';
 import { FlashList } from '@shopify/flash-list';
 import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'expo-router';
@@ -46,7 +46,7 @@ const NoteListPage: React.FC = () => {
           router.push(appRoutes.notes.form);
         }}
         size='fab'>
-        <PlusIcon color={colorsTheme.textForeground} size={DEFAULT_ICON_SIZE} />
+        <Icon as={PlusIcon} className='text-primary-foreground' />
       </Button>
     </>
   );

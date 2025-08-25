@@ -1,4 +1,4 @@
-import { colorsTheme, DEFAULT_ICON_SIZE, HStack, Text } from '@sabersprops/ui';
+import { HStack, Icon, Text } from '@sabersprops/ui';
 import { SquareCheckBigIcon, SquareIcon } from 'lucide-react-native';
 
 type TodoItemProps = {
@@ -9,12 +9,7 @@ type TodoItemProps = {
 const TodoItem: React.FC<TodoItemProps> = ({ name, value }) => {
   return (
     <HStack className='items-center gap-2'>
-      {value ? (
-        <SquareCheckBigIcon color={colorsTheme.primary[500]} size={DEFAULT_ICON_SIZE} />
-      ) : (
-        <SquareIcon color={colorsTheme.primary[500]} size={DEFAULT_ICON_SIZE} />
-      )}
-
+      <Icon as={value ? SquareCheckBigIcon : SquareIcon} className='text-primary' />
       <Text className={value ? 'text-muted-foreground line-through' : 'text-foreground'}>{name}</Text>
     </HStack>
   );

@@ -1,21 +1,22 @@
-import type * as React from 'react';
-import { TextInput, type TextInputProps } from 'react-native';
+import { Platform, TextInput, type TextInputProps } from 'react-native';
 import { cn } from '~ui/lib/utils';
 
 function Textarea({
   className,
   multiline = true,
-  numberOfLines = 4,
+  numberOfLines = Platform.select({ native: 8, web: 2 }), // On web, numberOfLines also determines initial height. On native, it determines the maximum height.
   placeholderClassName,
   ...props
-}: TextInputProps & {
-  ref?: React.RefObject<TextInput>;
-}) {
+}: TextInputProps & React.RefAttributes<TextInput>) {
   return (
     <TextInput
       className={cn(
-        'web:flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 font-exo2 native:text-lg text-base text-foreground native:leading-[1.25] web:ring-offset-background placeholder:text-muted-foreground focus:border-primary web:focus-visible:outline-none web:focus-visible:ring-2 web:focus-visible:ring-ring web:focus-visible:ring-offset-2 active:border-primary lg:text-sm',
-        props.editable === false && 'web:cursor-not-allowed opacity-50',
+        'flex min-h-16 w-full flex-row rounded-md border border-input bg-transparent px-3 py-2 text-base text-foreground shadow-black/5 shadow-sm md:text-sm dark:bg-input/30',
+        'bg-background font-exo2 focus:border-primary active:border-primary dark:bg-background', // override
+        Platform.select({
+          web: 'field-sizing-content resize-y outline-none transition-[color,box-shadow] placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40',
+        }),
+        props.editable === false && 'opacity-50',
         className,
       )}
       multiline={multiline}

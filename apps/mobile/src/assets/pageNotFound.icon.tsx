@@ -1,12 +1,12 @@
-import { colorsTheme, useColorScheme } from '@sabersprops/ui';
+import { THEME, useColorScheme } from '@sabersprops/ui';
 import { Circle, Ellipse, G, Path, Rect, Svg, type SvgProps } from 'react-native-svg';
 
 const PageNotFoundIcon: React.FC<SvgProps> = (props) => {
-  const { isDarkColorScheme } = useColorScheme();
+  const { colorScheme } = useColorScheme();
 
-  const colorPrimary = colorsTheme.primary[500];
-  const colorDetail = isDarkColorScheme ? colorsTheme.mutedBackground.light : colorsTheme.mutedBackground.dark;
-  const colorOpposite = isDarkColorScheme ? colorsTheme.foreground.light : colorsTheme.foreground.dark;
+  const colorPrimary = THEME[colorScheme].primary;
+  const colorDetail = THEME[colorScheme].muted;
+  const colorOpposite = THEME[colorScheme].foreground;
 
   return (
     <Svg viewBox='0 0 750 500' {...props}>

@@ -1,4 +1,4 @@
-import { cn, type Option, Select, SelectContent, SelectGroup, SelectTrigger, SelectValue } from '@sabersprops/ui';
+import { type Option, Select, SelectContent, SelectGroup, SelectTrigger, SelectValue } from '@sabersprops/ui';
 import { useState } from 'react';
 import { type FieldValues, type UseControllerProps, useController } from 'react-hook-form';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -44,13 +44,7 @@ const SelectWrapper = <T extends FieldValues>(props: ISelectWrapperProps & UseCo
           onLayout={(ev) => {
             setSelectTriggerWidth(ev.nativeEvent.layout.width);
           }}>
-          <SelectValue
-            className={cn(
-              'font-exo2 native:text-lg text-sm',
-              field.value ? 'text-foreground' : 'text-muted-foreground',
-            )}
-            placeholder={placeholder}
-          />
+          <SelectValue placeholder={placeholder} />
         </SelectTrigger>
 
         <SelectContent insets={insets} style={{ width: selectTriggerWidth }}>

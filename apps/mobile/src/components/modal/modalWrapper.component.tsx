@@ -8,6 +8,7 @@ import {
   DialogTitle,
   HStack,
   Text,
+  VStack,
 } from '@sabersprops/ui';
 import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
@@ -38,9 +39,12 @@ const ModalWrapper: React.FC<IModalWrapperProps> = (props) => {
       <DialogContent>
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
+        </DialogHeader>
+
+        <VStack className='gap-2'>
           {description && <DialogDescription>{description}</DialogDescription>}
           {content && <View className='min-w-80'>{content}</View>}
-        </DialogHeader>
+        </VStack>
 
         <DialogFooter>
           <HStack className='justify-end gap-4'>

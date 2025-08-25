@@ -1,4 +1,4 @@
-import { colorsTheme, fontFamily, useColorScheme } from '@sabersprops/ui';
+import { fontFamily, THEME, useColorScheme } from '@sabersprops/ui';
 import SvgChart, { SVGRenderer } from '@wuba/react-native-echarts/svgChart';
 import type { EChartsOption } from 'echarts';
 import { PieChart } from 'echarts/charts';
@@ -40,8 +40,8 @@ const RepartitionChart: React.FC<IRepartitionChartProps> = ({ data, propType }) 
 
             return {
               itemStyle: {
-                borderColor: get(colorsTheme, `${propStates[state].colorScheme}.500`),
-                color: get(colorsTheme, `${propStates[state].colorScheme}.200`),
+                borderColor: get(THEME.colors, `${propStates[state].colorScheme}.500`),
+                color: get(THEME.colors, `${propStates[state].colorScheme}.200`),
               },
               name: propStates[state].label,
               value: data[state].values[indexType],

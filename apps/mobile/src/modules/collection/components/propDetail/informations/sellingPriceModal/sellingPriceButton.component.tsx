@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Button, colorsTheme, DEFAULT_ICON_SIZE, Text } from '@sabersprops/ui';
+import { Button, Icon, Text } from '@sabersprops/ui';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { PencilIcon } from 'lucide-react-native';
 import { useState } from 'react';
@@ -57,7 +57,7 @@ const SellingPriceButton: React.FC<ISellingPriceButtonProps> = ({ prop }) => {
   return (
     <>
       <Button onPress={() => setIsOpen(true)} size='icon' variant='ghost'>
-        <PencilIcon color={colorsTheme.primary[500]} size={DEFAULT_ICON_SIZE} />
+        <Icon as={PencilIcon} className='text-primary' />
       </Button>
 
       <ModalWrapper

@@ -1,4 +1,4 @@
-import { colorsTheme, DEFAULT_ICON_SIZE, HStack, Text } from '@sabersprops/ui';
+import { HStack, Icon, Text } from '@sabersprops/ui';
 import type { LucideIcon } from 'lucide-react-native';
 
 interface ILabelIcon {
@@ -9,7 +9,7 @@ interface ILabelIcon {
 const LabelIcon: React.FC<ILabelIcon> = (props) => {
   return (
     <HStack className='gap-2'>
-      <props.icon color={colorsTheme.primary[500]} size={DEFAULT_ICON_SIZE} />
+      <Icon as={props.icon} className='text-primary' />
       <Text>{props.label}</Text>
     </HStack>
   );

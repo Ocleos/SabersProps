@@ -1,5 +1,5 @@
 import { useIsFocused } from '@react-navigation/native';
-import { Large, Skeleton, Tabs, TabsList, TabsTrigger, Text, VStack } from '@sabersprops/ui';
+import { Skeleton, Tabs, TabsList, TabsTrigger, Text, VStack } from '@sabersprops/ui';
 import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -52,7 +52,7 @@ const ExpensesCard = () => {
           <ExpensesChart data={expenses} type={expensesType} />
 
           <VStack className='gap-2'>
-            <Large>{t('stats:LABEL.EXPENSES_TOTAL_MONTHLY')}</Large>
+            <Text variant='large'>{t('stats:LABEL.EXPENSES_TOTAL_MONTHLY')}</Text>
             <ExpensesChart data={expenses} type={ExpensesTypes.GLOBAL_MONTHS} />
           </VStack>
         </VStack>

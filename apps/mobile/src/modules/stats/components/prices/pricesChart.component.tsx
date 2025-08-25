@@ -1,4 +1,4 @@
-import { colorsTheme, fontFamily, useColorScheme } from '@sabersprops/ui';
+import { fontFamily, THEME, useColorScheme } from '@sabersprops/ui';
 import SvgChart, { SVGRenderer } from '@wuba/react-native-echarts/svgChart';
 import type { EChartsOption, SeriesOption } from 'echarts';
 import { BarChart, ScatterChart } from 'echarts/charts';
@@ -42,9 +42,9 @@ const PricesChart: React.FC<IPricesChartProps> = ({ data }) => {
         return {
           data: data.map((value) => get(value, entry.property)),
           itemStyle: {
-            borderColor: get(colorsTheme, `${entry.color}.500`),
+            borderColor: get(THEME.colors, `${entry.color}.500`),
             borderWidth: 1,
-            color: get(colorsTheme, `${entry.color}.200`),
+            color: get(THEME.colors, `${entry.color}.200`),
           },
           name: entry.label,
           stack: entry.isVisible ? 'prices' : entry.property,

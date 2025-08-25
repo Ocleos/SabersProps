@@ -1,5 +1,5 @@
 import { cva, type VariantProps } from 'class-variance-authority';
-import { View } from 'react-native';
+import { View, type ViewProps } from 'react-native';
 import { cn } from '~ui/lib/utils';
 
 const stackVariants = cva('flex', {
@@ -14,7 +14,7 @@ const stackVariants = cva('flex', {
   },
 });
 
-type StackProps = React.ComponentPropsWithRef<typeof View> & VariantProps<typeof stackVariants>;
+type StackProps = ViewProps & React.RefAttributes<View> & VariantProps<typeof stackVariants>;
 
 const Stack: React.FC<StackProps> = ({ className, variant, ...props }) => {
   return <View className={cn(stackVariants({ className, variant }))} {...props} />;

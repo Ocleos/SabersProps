@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Button, colorsTheme, DEFAULT_ICON_SIZE, HStack, SelectItem, Text, VStack } from '@sabersprops/ui';
+import { Button, HStack, Icon, SelectItem, Text, VStack } from '@sabersprops/ui';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'expo-router';
 import { SaveIcon } from 'lucide-react-native';
@@ -111,7 +111,7 @@ const PropFormPage: React.FC = () => {
 
       <Button disabled={isPending} onPress={handleSubmit(onSubmit)}>
         <HStack className='gap-2'>
-          <SaveIcon color={colorsTheme.textForeground} size={DEFAULT_ICON_SIZE} />
+          <Icon as={SaveIcon} className='text-primary-foreground' />
           <Text>{t('common:COMMON.SAVE')}</Text>
         </HStack>
       </Button>

@@ -1,6 +1,6 @@
 import { useFonts } from '@expo-google-fonts/exo-2';
 import { ThemeProvider } from '@react-navigation/native';
-import { PortalHost, useColorScheme } from '@sabersprops/ui';
+import { getNavigationTheme, PortalHost, useColorScheme } from '@sabersprops/ui';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Slot } from 'expo-router';
 import { Try } from 'expo-router/build/views/Try';
@@ -11,10 +11,9 @@ import Toast from 'react-native-toast-message';
 import ErrorBoundaryComponent from '~src/components/error/errorBoundary.component';
 import { toastConfig } from '~src/components/toast/toastWrapper.component';
 import '~src/i18n.config';
-import { navigationTheme } from '~src/theme/customTheme.theme';
 import { fontToLoad } from '~src/theme/fonts.theme';
 
-import '~src/theme/global.css';
+import '~src/global.css';
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -41,7 +40,7 @@ export default () => {
 
   return isFontsLoaded ? (
     <SafeAreaProvider onLayout={() => SplashScreen.hideAsync()}>
-      <ThemeProvider value={navigationTheme(isDarkColorScheme)}>
+      <ThemeProvider value={getNavigationTheme(isDarkColorScheme)}>
         <QueryClientProvider client={queryClient}>
           <Try
             catch={() => (

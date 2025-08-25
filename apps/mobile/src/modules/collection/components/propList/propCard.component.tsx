@@ -1,16 +1,4 @@
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  cn,
-  colorsTheme,
-  HStack,
-  Large,
-  Separator,
-  Text,
-  VStack,
-} from '@sabersprops/ui';
+import { Card, CardContent, CardHeader, CardTitle, cn, HStack, Separator, Text, THEME, VStack } from '@sabersprops/ui';
 import { useRouter } from 'expo-router';
 import { Pressable, View } from 'react-native';
 import ActionsMenu from '~src/components/menu/actionsMenu.component';
@@ -53,7 +41,7 @@ const PropCardComponent: React.FC<IPropCardProps> = ({ prop }) => {
 
         <CardContent>
           <VStack className='gap-2'>
-            <Large>{prop.character}</Large>
+            <Text variant='large'>{prop.character}</Text>
             <HStack className='gap-2'>
               <Text>{prop.manufacturer}</Text>
               <Separator className='bg-primary' orientation='vertical' />
@@ -62,8 +50,8 @@ const PropCardComponent: React.FC<IPropCardProps> = ({ prop }) => {
             <Text>{prop.soundboard}</Text>
           </VStack>
 
-          <View className='absolute right-2 bottom-2 opacity-30'>
-            <PropIcon color={colorsTheme.primary[500]} height={96} width={96} />
+          <View className='absolute right-2 bottom-0 opacity-30'>
+            <PropIcon color={THEME.colors.primary[500]} height={96} width={96} />
           </View>
         </CardContent>
       </Card>

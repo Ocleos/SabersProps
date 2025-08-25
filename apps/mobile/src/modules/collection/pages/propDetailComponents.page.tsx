@@ -1,4 +1,4 @@
-import { Button, colorsTheme, DEFAULT_ICON_SIZE, VStack } from '@sabersprops/ui';
+import { Button, Icon, VStack } from '@sabersprops/ui';
 import { FlashList } from '@shopify/flash-list';
 import { useRouter } from 'expo-router';
 import { PlusIcon } from 'lucide-react-native';
@@ -41,7 +41,7 @@ const PropDetailComponents: React.FC = () => {
           router.push(appRoutes.collection.components.form(propDetail?.id));
         }}
         size='fab'>
-        <PlusIcon color={colorsTheme.textForeground} size={DEFAULT_ICON_SIZE} />
+        <Icon as={PlusIcon} className='text-primary-foreground' />
       </Button>
     </>
   );

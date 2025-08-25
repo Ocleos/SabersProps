@@ -1,20 +1,19 @@
 import * as TabsPrimitive from '@rn-primitives/tabs';
-import type * as React from 'react';
+import { Platform } from 'react-native';
 import { TextClassContext } from '~ui/components/ui/text';
 import { cn } from '~ui/lib/utils';
 
-const Tabs = TabsPrimitive.Root;
+function Tabs({ className, ...props }: TabsPrimitive.RootProps & React.RefAttributes<TabsPrimitive.RootRef>) {
+  return <TabsPrimitive.Root className={cn('flex flex-col gap-2', className)} {...props} />;
+}
 
-function TabsList({
-  className,
-  ...props
-}: TabsPrimitive.ListProps & {
-  ref?: React.RefObject<TabsPrimitive.ListRef>;
-}) {
+function TabsList({ className, ...props }: TabsPrimitive.ListProps & React.RefAttributes<TabsPrimitive.ListRef>) {
   return (
     <TabsPrimitive.List
       className={cn(
-        'web:inline-flex h-10 native:h-12 w-full flex-row items-center justify-center rounded-md bg-muted p-1 native:px-1.5',
+        'flex h-9 flex-row items-center justify-center rounded-lg bg-muted p-[3px]',
+        'w-full', // Override
+        Platform.select({ native: 'mr-auto', web: 'inline-flex w-fit' }),
         className,
       )}
       {...props}
@@ -25,21 +24,23 @@ function TabsList({
 function TabsTrigger({
   className,
   ...props
-}: TabsPrimitive.TriggerProps & {
-  ref?: React.RefObject<TabsPrimitive.TriggerRef>;
-}) {
+}: TabsPrimitive.TriggerProps & React.RefAttributes<TabsPrimitive.TriggerRef>) {
   const { value } = TabsPrimitive.useRootContext();
   return (
     <TextClassContext.Provider
       value={cn(
-        'font-exo2Medium native:text-base text-muted-foreground text-sm web:transition-all',
-        value === props.value && 'text-foreground',
+        'font-exo2Medium text-foreground text-sm dark:text-muted-foreground',
+        value === props.value && 'dark:text-foreground',
       )}>
       <TabsPrimitive.Trigger
         className={cn(
-          'inline-flex flex-1 items-center justify-center web:whitespace-nowrap rounded-md px-3 py-1.5 font-exo2Medium text-sm shadow-none web:ring-offset-background web:transition-all web:focus-visible:outline-none web:focus-visible:ring-2 web:focus-visible:ring-ring web:focus-visible:ring-offset-2',
-          props.disabled && 'web:pointer-events-none opacity-50',
-          props.value === value && 'bg-card shadow-foreground/10 shadow-lg',
+          'flex h-[calc(100%-1px)] flex-row items-center justify-center gap-1.5 rounded-md border border-transparent px-2 py-1 shadow-black/5 shadow-none',
+          'flex-1', // Override
+          Platform.select({
+            web: 'inline-flex cursor-default whitespace-nowrap transition-[color,box-shadow] focus-visible:border-ring focus-visible:outline-1 focus-visible:outline-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0',
+          }),
+          props.disabled && 'opacity-50',
+          props.value === value && 'bg-card dark:border-foreground/10',
           className,
         )}
         {...props}
@@ -51,17 +52,9 @@ function TabsTrigger({
 function TabsContent({
   className,
   ...props
-}: TabsPrimitive.ContentProps & {
-  ref?: React.RefObject<TabsPrimitive.ContentRef>;
-}) {
+}: TabsPrimitive.ContentProps & React.RefAttributes<TabsPrimitive.ContentRef>) {
   return (
-    <TabsPrimitive.Content
-      className={cn(
-        'web:ring-offset-background web:focus-visible:outline-none web:focus-visible:ring-2 web:focus-visible:ring-ring web:focus-visible:ring-offset-2',
-        className,
-      )}
-      {...props}
-    />
+    <TabsPrimitive.Content className={cn(Platform.select({ web: 'flex-1 outline-none' }), className)} {...props} />
   );
 }
 

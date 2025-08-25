@@ -1,4 +1,4 @@
-import { colorsTheme, useColorScheme } from '@sabersprops/ui';
+import { THEME, useColorScheme } from '@sabersprops/ui';
 import { Stack } from 'expo-router';
 import { View } from 'react-native';
 import LoginPage from '~src/modules/auth/pages/login.page';
@@ -12,7 +12,7 @@ export default () => {
         options={{
           headerShown: false,
           statusBarAnimation: 'fade',
-          statusBarBackgroundColor: colorsTheme.card[colorScheme],
+          statusBarBackgroundColor: THEME[colorScheme].card,
           statusBarStyle: isDarkColorScheme ? 'light' : 'dark',
         }}
       />

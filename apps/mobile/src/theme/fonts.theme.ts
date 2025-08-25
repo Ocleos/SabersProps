@@ -21,8 +21,6 @@ import {
 
 export const Aurebesh = require('~assets/fonts/Aurebesh.otf');
 
-export const navigationFontFamily = 'Exo2';
-
 export const fontToLoad = {
   Aurebesh,
   Exo2_100Thin,

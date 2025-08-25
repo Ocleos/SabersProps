@@ -1,4 +1,4 @@
-import { HStack, Large, VStack } from '@sabersprops/ui';
+import { HStack, Text, VStack } from '@sabersprops/ui';
 import { useTranslation } from 'react-i18next';
 import { PropState } from '~src/models/propState.model';
 import { PropType } from '~src/models/propType.model';
@@ -11,7 +11,7 @@ const PropFilters: React.FC = () => {
   return (
     <VStack className='gap-4 p-4'>
       <VStack className='gap-2'>
-        <Large>{t('collection:LABELS.TYPE')}</Large>
+        <Text variant='large'>{t('collection:LABELS.TYPE')}</Text>
         <HStack className='flex-wrap gap-2'>
           <TypeFilter type={PropType.LIGHTSABER} />
           <TypeFilter type={PropType.PROP} />
@@ -20,7 +20,7 @@ const PropFilters: React.FC = () => {
       </VStack>
 
       <VStack className='gap-2'>
-        <Large>{t('collection:LABELS.STATE')}</Large>
+        <Text variant='large'>{t('collection:LABELS.STATE')}</Text>
         <HStack className='flex-wrap gap-2'>
           <StateFilter state={PropState.PRODUCTION} />
           <StateFilter state={PropState.DESIGN} />

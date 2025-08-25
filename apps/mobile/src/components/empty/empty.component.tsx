@@ -1,4 +1,4 @@
-import { Large, VStack } from '@sabersprops/ui';
+import { Text, VStack } from '@sabersprops/ui';
 import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
 import NoDataIcon from '~src/assets/noData.icon';
@@ -15,7 +15,9 @@ const EmptyComponent: React.FC<IEmptyComponentProps> = ({ title }) => {
       <View className='mt-10 items-center'>
         <NoDataIcon />
       </View>
-      <Large className='text-center'>{title ?? t('common:COMMON.NO_DATA')}</Large>
+      <Text className='text-center' variant='large'>
+        {title ?? t('common:COMMON.NO_DATA')}
+      </Text>
     </VStack>
   );
 };

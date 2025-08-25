@@ -60,18 +60,18 @@ const AccessoriesCard: React.FC<IAccessoriesCard> = ({ prop }) => {
     <CollapseCard isOpened={true} title={t('collection:CATEGORIES.ACCESSORIES')}>
       <HStack className='gap-4'>
         <Toggle onPressedChange={(pressed) => onUpdateAccessory(pressed, 0)} pressed={hasBag} variant={'outline'}>
-          <ToggleIcon icon={ShoppingBagIcon} />
+          <ToggleIcon as={ShoppingBagIcon} />
         </Toggle>
 
         <Toggle onPressedChange={(pressed) => onUpdateAccessory(pressed, 1)} pressed={hasKeyring} variant={'outline'}>
-          <ToggleIcon icon={KeyRoundIcon} />
+          <ToggleIcon as={KeyRoundIcon} />
         </Toggle>
 
         <Toggle
           onPressedChange={(pressed) => onUpdateAccessory(pressed, 2)}
           pressed={hasDisplayPlaque}
           variant={'outline'}>
-          <ToggleIcon icon={TagIcon} />
+          <ToggleIcon as={TagIcon} />
         </Toggle>
       </HStack>
     </CollapseCard>

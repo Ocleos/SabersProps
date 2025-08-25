@@ -1,14 +1,18 @@
 import * as TogglePrimitive from '@rn-primitives/toggle';
 import { cva, type VariantProps } from 'class-variance-authority';
-import type { LucideIcon } from 'lucide-react-native';
 import * as React from 'react';
+import { Platform } from 'react-native';
+import { Icon } from '~ui/components/ui/icon';
 import { TextClassContext } from '~ui/components/ui/text';
-import { DEFAULT_ICON_SIZE } from '~ui/lib/icons/icons.utils';
 import { cn } from '~ui/lib/utils';
-import { colorsTheme, useColorScheme } from '~ui/theme';
 
 const toggleVariants = cva(
-  'web:group web:inline-flex items-center justify-center rounded-md web:ring-offset-background web:transition-colors web:hover:bg-muted web:focus-visible:outline-none web:focus-visible:ring-2 web:focus-visible:ring-ring web:focus-visible:ring-offset-2 active:bg-muted',
+  cn(
+    'group flex flex-row items-center justify-center gap-2 rounded-md active:bg-muted',
+    Platform.select({
+      web: 'inline-flex cursor-default whitespace-nowrap outline-none transition-[color,box-shadow] hover:bg-muted hover:text-muted-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none',
+    }),
+  ),
   {
     defaultVariants: {
       size: 'default',
@@ -16,57 +20,40 @@ const toggleVariants = cva(
     },
     variants: {
       size: {
-        default: 'h-10 native:h-12 native:px-[12] px-3',
-        lg: 'h-11 native:h-14 native:px-6 px-5',
-        sm: 'h-9 native:h-10 native:px-[9] px-2.5',
+        default: 'h-10 min-w-10 px-2.5 sm:h-9 sm:min-w-9 sm:px-2',
+        lg: 'h-11 min-w-11 px-3 sm:h-10 sm:min-w-10 sm:px-2.5',
+        sm: 'h-9 min-w-9 px-2 sm:h-8 sm:min-w-8 sm:px-1.5',
       },
       variant: {
-        default: 'bg-transparent',
-        outline: 'border border-input bg-transparent web:hover:bg-accent active:bg-accent',
+        default: 'bg-background',
+        outline: cn(
+          'border border-input bg-background shadow-black/5 shadow-sm active:bg-accent',
+          Platform.select({
+            web: 'hover:bg-accent hover:text-accent-foreground',
+          }),
+        ),
       },
     },
   },
 );
-
-const toggleTextVariants = cva('font-exo2Medium native:text-base text-foreground text-sm', {
-  defaultVariants: {
-    size: 'default',
-    variant: 'default',
-  },
-  variants: {
-    size: {
-      default: '',
-      lg: '',
-      sm: '',
-    },
-    variant: {
-      default: '',
-      outline: 'web:group-hover:text-accent-foreground web:group-active:text-accent-foreground',
-    },
-  },
-});
 
 function Toggle({
   className,
   variant,
   size,
   ...props
-}: TogglePrimitive.RootProps &
-  VariantProps<typeof toggleVariants> &
-  VariantProps<typeof toggleVariants> & {
-    ref?: React.RefObject<TogglePrimitive.RootRef>;
-  }) {
+}: TogglePrimitive.RootProps & VariantProps<typeof toggleVariants> & React.RefAttributes<TogglePrimitive.RootRef>) {
   return (
     <TextClassContext.Provider
       value={cn(
-        toggleTextVariants({ size, variant }),
-        props.pressed ? 'text-accent-foreground' : 'web:group-hover:text-muted-foreground',
+        'font-exo2Medium text-foreground text-sm',
+        props.pressed ? 'text-accent-foreground' : Platform.select({ web: 'group-hover:text-muted-foreground' }),
         className,
       )}>
       <TogglePrimitive.Root
         className={cn(
           toggleVariants({ size, variant }),
-          props.disabled && 'web:pointer-events-none opacity-50',
+          props.disabled && 'opacity-50',
           props.pressed && 'border-primary',
           className,
         )}
@@ -76,23 +63,9 @@ function Toggle({
   );
 }
 
-function ToggleIcon({
-  className,
-  icon: Icon,
-  ...props
-}: React.ComponentPropsWithoutRef<LucideIcon> & {
-  icon: LucideIcon;
-}) {
+function ToggleIcon({ className, ...props }: React.ComponentProps<typeof Icon>) {
   const textClass = React.useContext(TextClassContext);
-  const { colorScheme } = useColorScheme();
-  return (
-    <Icon
-      className={cn(textClass, className)}
-      color={colorsTheme.foreground[colorScheme]}
-      size={DEFAULT_ICON_SIZE}
-      {...props}
-    />
-  );
+  return <Icon className={cn('size-6 shrink-0', textClass, className)} {...props} />;
 }
 
-export { Toggle, ToggleIcon, toggleTextVariants, toggleVariants };
+export { Toggle, ToggleIcon, toggleVariants };

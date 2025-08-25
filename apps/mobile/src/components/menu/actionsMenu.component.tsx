@@ -1,13 +1,11 @@
 import {
   Button,
-  colorsTheme,
-  DEFAULT_ICON_SIZE,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  Icon,
   Text,
-  useColorScheme,
 } from '@sabersprops/ui';
 import { type QueryKey, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'expo-router';
@@ -35,7 +33,6 @@ const ActionsMenu: React.FC<IActionsMenuProps> = (props) => {
   const router = useRouter();
   const queryClient = useQueryClient();
 
-  const { colorScheme } = useColorScheme();
   const insets = useSafeAreaInsets();
 
   const {
@@ -88,21 +85,21 @@ const ActionsMenu: React.FC<IActionsMenuProps> = (props) => {
 
   return (
     <>
-      <DropdownMenu>
+      <DropdownMenu className='-mr-2'>
         <DropdownMenuTrigger asChild>
           <Button size='icon' variant='ghost'>
-            <MoreVerticalIcon color={colorsTheme.primary[500]} size={DEFAULT_ICON_SIZE} />
+            <Icon as={MoreVerticalIcon} className='text-primary' />
           </Button>
         </DropdownMenuTrigger>
 
         <DropdownMenuContent className='w-48' insets={{ ...insets, left: 24, right: 24 }}>
           <DropdownMenuItem onPress={onEditPress}>
-            <PencilIcon color={colorsTheme.foreground[colorScheme]} size={DEFAULT_ICON_SIZE} />
+            <Icon as={PencilIcon} className='text-foreground' />
             <Text>{t('common:COMMON.EDIT')}</Text>
           </DropdownMenuItem>
 
           <DropdownMenuItem onPress={onDeletePress}>
-            <Trash2Icon color={colorsTheme.foreground[colorScheme]} size={DEFAULT_ICON_SIZE} />
+            <Icon as={Trash2Icon} className='text-foreground' />
             <Text>{t('common:COMMON.DELETE')}</Text>
           </DropdownMenuItem>
         </DropdownMenuContent>

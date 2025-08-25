@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Button, Card, CardContent, colorsTheme, DEFAULT_ICON_SIZE, H1, HStack, Text, VStack } from '@sabersprops/ui';
+import { Button, Card, CardContent, HStack, Icon, Text, THEME, VStack } from '@sabersprops/ui';
 import { router } from 'expo-router';
 import { LogInIcon } from 'lucide-react-native';
 import { useState } from 'react';
@@ -50,8 +50,10 @@ const LoginPage = () => {
   return (
     <View className='h-full items-center justify-around'>
       <HStack className='items-center gap-4'>
-        <LogoIcon color={colorsTheme.primary[500]} height={48} width={48} />
-        <H1 className='text-primary'>SabersProps</H1>
+        <LogoIcon color={THEME.colors.primary[500]} height={48} width={48} />
+        <Text className='text-primary' variant={'h1'}>
+          SabersProps
+        </Text>
       </HStack>
 
       <Card className='w-full max-w-96 pt-4'>
@@ -73,7 +75,7 @@ const LoginPage = () => {
 
             <Button disabled={isLoading} onPress={handleSubmit(onLogin)}>
               <HStack className='gap-2'>
-                <LogInIcon color={colorsTheme.textForeground} size={DEFAULT_ICON_SIZE} />
+                <Icon as={LogInIcon} className='text-primary-foreground' />
                 <Text>{t('auth:LABELS.SIGN_IN')}</Text>
               </HStack>
             </Button>

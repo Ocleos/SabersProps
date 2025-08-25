@@ -1,4 +1,4 @@
-import { Button, Large, Text, VStack } from '@sabersprops/ui';
+import { Button, Text, VStack } from '@sabersprops/ui';
 import { useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
@@ -15,7 +15,9 @@ const PageNotFoundComponent: React.FC = () => {
         <PageNotFoundIcon height={250} width={250} />
       </View>
 
-      <Large className='text-center'>{t('common:ERRORS.PAGE_NOT_FOUND')}</Large>
+      <Text className='text-center' variant='large'>
+        {t('common:ERRORS.PAGE_NOT_FOUND')}
+      </Text>
 
       <Button onPress={() => router.replace(appRoutes.home)}>
         <Text>{t('common:ERRORS.HOME_RETURN')}</Text>

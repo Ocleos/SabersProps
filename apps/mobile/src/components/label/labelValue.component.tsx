@@ -1,4 +1,4 @@
-import { H4, HStack, Text } from '@sabersprops/ui';
+import { HStack, Text } from '@sabersprops/ui';
 
 interface ILabelValueProps {
   title: string;
@@ -7,8 +7,8 @@ interface ILabelValueProps {
 
 const LabelValue: React.FC<ILabelValueProps> = ({ title, value }) => {
   return (
-    <HStack className='items-center'>
-      <H4>{`${title} : `}</H4>
+    <HStack className='items-baseline'>
+      <Text variant='h4'>{`${title} : `}</Text>
       <Text>{value}</Text>
     </HStack>
   );

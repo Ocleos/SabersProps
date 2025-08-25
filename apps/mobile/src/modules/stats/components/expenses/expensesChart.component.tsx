@@ -1,11 +1,10 @@
-import { colorsTheme, fontFamily } from '@sabersprops/ui';
+import { fontFamily, THEME } from '@sabersprops/ui';
 import SvgChart, { SVGRenderer } from '@wuba/react-native-echarts/svgChart';
 import type { EChartsOption } from 'echarts';
 import { LineChart } from 'echarts/charts';
 import { DataZoomComponent, GridComponent, TooltipComponent } from 'echarts/components';
 import { type ECharts, init, use } from 'echarts/core';
 import { useColorScheme } from 'nativewind';
-import { get } from 'radash';
 import { useEffect, useRef } from 'react';
 import { useWindowDimensions } from 'react-native';
 import i18n from '~src/i18n.config';
@@ -57,7 +56,7 @@ const ExpensesChart: React.FC<IExpensesChartProps> = ({ type, data }) => {
         {
           data: data[type].map((value) => value.price),
           itemStyle: {
-            color: get(colorsTheme, 'primary.500'),
+            color: THEME.colors.primary[500],
           },
           name: i18n.t('stats:LABEL.PRICE'),
           sampling: 'lttb',
@@ -68,7 +67,7 @@ const ExpensesChart: React.FC<IExpensesChartProps> = ({ type, data }) => {
         {
           data: data[type].map((value) => value.fees),
           itemStyle: {
-            color: get(colorsTheme, 'blue.500'),
+            color: THEME.colors.blue[500],
           },
           name: i18n.t('stats:LABEL.FEES'),
           sampling: 'lttb',

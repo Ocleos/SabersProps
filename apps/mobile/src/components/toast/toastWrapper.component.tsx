@@ -1,4 +1,4 @@
-import { cn, colorsTheme, DEFAULT_ICON_SIZE, HStack, Large, Text, VStack } from '@sabersprops/ui';
+import { cn, HStack, Icon, Text, VStack } from '@sabersprops/ui';
 import {
   AlertTriangleIcon,
   CheckCircleIcon,
@@ -7,7 +7,6 @@ import {
   MegaphoneIcon,
   XOctagonIcon,
 } from 'lucide-react-native';
-import { get } from 'radash';
 import { View } from 'react-native';
 import type { ToastConfig } from 'react-native-toast-message';
 import i18n from '~src/i18n.config';
@@ -26,37 +25,37 @@ type ToastWrapperProps = {
 };
 
 const ToastWrapper: React.FC<ToastWrapperProps> = ({ description, action }) => {
-  let ToastIcon: LucideIcon;
+  let toastIcon: LucideIcon;
   let title: string;
   let colorScheme: string;
 
   switch (action) {
     case 'attention': {
-      ToastIcon = MegaphoneIcon;
+      toastIcon = MegaphoneIcon;
       title = i18n.t('common:COMMON.ANNOUNCE');
       colorScheme = 'neutral';
       break;
     }
     case 'error': {
-      ToastIcon = XOctagonIcon;
+      toastIcon = XOctagonIcon;
       title = i18n.t('common:COMMON.ERROR');
       colorScheme = 'red';
       break;
     }
     case 'info': {
-      ToastIcon = InfoIcon;
+      toastIcon = InfoIcon;
       title = i18n.t('common:COMMON.INFO');
       colorScheme = 'blue';
       break;
     }
     case 'success': {
-      ToastIcon = CheckCircleIcon;
+      toastIcon = CheckCircleIcon;
       title = i18n.t('common:COMMON.SUCCESS');
       colorScheme = 'green';
       break;
     }
     case 'warning': {
-      ToastIcon = AlertTriangleIcon;
+      toastIcon = AlertTriangleIcon;
       title = i18n.t('common:COMMON.WARNING');
       colorScheme = 'orange';
       break;
@@ -67,10 +66,12 @@ const ToastWrapper: React.FC<ToastWrapperProps> = ({ description, action }) => {
     <View className={cn(['rounded-md border-l-8 bg-popover p-4', `border-${colorScheme}-500`])}>
       <HStack className='gap-4'>
         <View className='items-center justify-center'>
-          <ToastIcon color={get(colorsTheme, `${colorScheme}.500`)} size={DEFAULT_ICON_SIZE} />
+          <Icon as={toastIcon} className={`text-${colorScheme}-500`} />
         </View>
         <VStack className='gap-1'>
-          <Large className='text-popover-foreground'>{title}</Large>
+          <Text className='text-popover-foreground' variant='large'>
+            {title}
+          </Text>
           <Text className='text-popover-foreground'>{description}</Text>
         </VStack>
       </HStack>

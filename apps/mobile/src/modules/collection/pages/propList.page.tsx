@@ -1,6 +1,6 @@
 import { type BottomSheetModal, BottomSheetView } from '@gorhom/bottom-sheet';
 import { useIsFocused } from '@react-navigation/native';
-import { Button, colorsTheme, DEFAULT_ICON_SIZE, VStack } from '@sabersprops/ui';
+import { Button, Icon, VStack } from '@sabersprops/ui';
 import { FlashList } from '@shopify/flash-list';
 import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'expo-router';
@@ -63,7 +63,7 @@ const PropListPage: React.FC = () => {
           router.push(appRoutes.collection.form);
         }}
         size='fab'>
-        <PlusIcon color={colorsTheme.textForeground} size={DEFAULT_ICON_SIZE} />
+        <Icon as={PlusIcon} className='text-primary-foreground' />
       </Button>
 
       <BottomSheetWrapper ref={bottomSheetRef}>

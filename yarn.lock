@@ -4483,6 +4483,7 @@ __metadata:
     react-native-ui-datepicker: "npm:^3.1.2"
     tailwind-merge: "npm:^2.6.0"
     tailwindcss: "npm:^3.4.17"
+    tailwindcss-animate: "npm:^1.0.7"
     typescript: "npm:~5.8.3"
   peerDependencies:
     nativewind: "*"

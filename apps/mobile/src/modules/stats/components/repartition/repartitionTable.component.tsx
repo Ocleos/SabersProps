@@ -1,4 +1,4 @@
-import { cn, colorsTheme, DEFAULT_ICON_SIZE, HStack, Text, useColorScheme, VStack } from '@sabersprops/ui';
+import { cn, DEFAULT_ICON_SIZE, HStack, Text, THEME, useColorScheme, VStack } from '@sabersprops/ui';
 import { useTranslation } from 'react-i18next';
 import { View, type ViewProps } from 'react-native';
 import BlasterIcon from '~src/assets/icons/blaster.icon';
@@ -31,27 +31,15 @@ const RepartitionTable: React.FC<IRepartitionTableProps> = ({ data }) => {
         <Cell />
 
         <Cell>
-          <LightsabersIcon
-            color={colorsTheme.foreground[colorScheme]}
-            height={DEFAULT_ICON_SIZE}
-            width={DEFAULT_ICON_SIZE}
-          />
+          <LightsabersIcon color={THEME[colorScheme].foreground} height={DEFAULT_ICON_SIZE} width={DEFAULT_ICON_SIZE} />
         </Cell>
 
         <Cell>
-          <BlasterIcon
-            color={colorsTheme.foreground[colorScheme]}
-            height={DEFAULT_ICON_SIZE}
-            width={DEFAULT_ICON_SIZE}
-          />
+          <BlasterIcon color={THEME[colorScheme].foreground} height={DEFAULT_ICON_SIZE} width={DEFAULT_ICON_SIZE} />
         </Cell>
 
         <Cell>
-          <CostumeIcon
-            color={colorsTheme.foreground[colorScheme]}
-            height={DEFAULT_ICON_SIZE}
-            width={DEFAULT_ICON_SIZE}
-          />
+          <CostumeIcon color={THEME[colorScheme].foreground} height={DEFAULT_ICON_SIZE} width={DEFAULT_ICON_SIZE} />
         </Cell>
 
         <Cell>

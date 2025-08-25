@@ -1,4 +1,4 @@
-import { Button, Large, Text, VStack } from '@sabersprops/ui';
+import { Button, Text, VStack } from '@sabersprops/ui';
 import * as Updates from 'expo-updates';
 import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
@@ -13,7 +13,9 @@ const ErrorBoundaryComponent: React.FC = () => {
         <ErrorBoundaryIcon height={250} width={250} />
       </View>
 
-      <Large className='text-center'>{t('common:ERRORS.UNKNOWN_ERROR')}</Large>
+      <Text className='text-center' variant='large'>
+        {t('common:ERRORS.UNKNOWN_ERROR')}
+      </Text>
 
       <Button onPress={() => Updates.reloadAsync()}>
         <Text>{t('common:ERRORS.HOME_RETURN')}</Text>

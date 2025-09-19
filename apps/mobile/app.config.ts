@@ -61,7 +61,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     url: 'https://u.expo.dev/c10d5799-2d0f-4239-bf9a-f9278fa20c1c',
   },
   userInterfaceStyle: 'automatic',
-  version: '1.11.0',
+  version: '1.12.0',
   web: {
     bundler: 'metro',
     favicon: './assets/favicon.png',

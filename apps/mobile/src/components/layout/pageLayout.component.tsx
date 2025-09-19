@@ -3,12 +3,14 @@ import { Button, fontFamily, Icon, THEME, useColorScheme } from '@sabersprops/ui
 import { Stack, useNavigation, useRouter } from 'expo-router';
 import { ArrowLeftIcon, MenuIcon } from 'lucide-react-native';
 import { ScrollView, View, type ViewProps } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface IPageLayoutProps {
   children: React.ReactNode;
   title?: string;
   viewProps?: ViewProps;
   isScrollable?: boolean;
+  isSafe?: boolean;
   hasDrawerToggle?: boolean;
 }
 
@@ -16,12 +18,15 @@ const PageLayout: React.FC<IPageLayoutProps> = ({
   title,
   viewProps,
   isScrollable,
+  isSafe,
   hasDrawerToggle = false,
   children,
 }) => {
   const router = useRouter();
   const navigation = useNavigation();
   const { isDarkColorScheme, colorScheme } = useColorScheme();
+
+  const { bottom } = useSafeAreaInsets();
 
   return (
     <View className='flex-1'>
@@ -51,11 +56,16 @@ const PageLayout: React.FC<IPageLayoutProps> = ({
       />
 
       {isScrollable ? (
-        <ScrollView className='flex-1 p-4' {...viewProps}>
+        <ScrollView
+          className='flex-1 p-4'
+          showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
+          {...viewProps}>
           <View className='mb-8'>{children}</View>
+          <View style={{ height: isSafe ? 0 : bottom }} />
         </ScrollView>
       ) : (
-        <View className='flex-1 p-4' {...viewProps}>
+        <View className='flex-1 p-4 pb-0' style={{ marginBottom: isSafe ? 0 : bottom }} {...viewProps}>
           {children}
         </View>
       )}

@@ -1,11 +1,9 @@
 import { useIsFocused } from '@react-navigation/native';
 import { Button, Icon } from '@sabersprops/ui';
-import { FlashList } from '@shopify/flash-list';
 import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'expo-router';
 import { PlusIcon } from 'lucide-react-native';
-import { View } from 'react-native';
-import EmptyComponent from '~src/components/empty/empty.component';
+import FlashListWrapper from '~src/components/list/flashListWrapper.component';
 import NoteCardComponent from '~src/modules/notes/components/noteList/noteCard.component';
 import { useNotesStore } from '~src/modules/notes/stores/notes.store';
 import { appRoutes } from '~src/router/routes.utils';
@@ -27,17 +25,12 @@ const NoteListPage: React.FC = () => {
 
   return (
     <>
-      <FlashList
+      <FlashListWrapper
         data={data}
-        estimatedItemSize={160}
-        ItemSeparatorComponent={() => <View className='h-4' />}
         keyExtractor={(item, index) => item.id ?? index.toString()}
-        ListEmptyComponent={() => <EmptyComponent />}
         onRefresh={() => refetch()}
         refreshing={isLoading}
         renderItem={({ item }) => <NoteCardComponent note={item} />}
-        showsHorizontalScrollIndicator={false}
-        showsVerticalScrollIndicator={false}
       />
 
       <Button

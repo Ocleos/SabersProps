@@ -10,7 +10,7 @@ export default () => {
   const title = propDetail?.name ?? t('routing:ROUTING.COLLECTION.COMPONENTS');
 
   return (
-    <PageLayout title={title}>
+    <PageLayout isSafe={true} title={title}>
       <PropDetailComponents />
     </PageLayout>
   );

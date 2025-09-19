@@ -2,21 +2,24 @@
   "author": "Ocleos",
   "description": "Infos about collection of Sabers & Props",
   "devDependencies": {
-    "@biomejs/biome": "^2.2.2",
+    "@biomejs/biome": "^2.2.4",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "@release-it/bumper": "^7.0.5",
     "auto-changelog": "^2.5.0",
     "husky": "^9.1.7",
     "patch-package": "^8.0.0",
-    "release-it": "^19.0.4",
+    "release-it": "^19.0.5",
     "turbo": "^2.5.6"
   },
   "license": "MIT",
   "name": "sabersprops",
-  "packageManager": "yarn@4.9.3",
+  "packageManager": "yarn@4.10.1",
   "private": true,
   "repository": "git@github.com:Ocleos/SabersProps.git",
+  "resolutions": {
+    "tslib": "^2.8.1"
+  },
   "scripts": {
     "build": "turbo run build",
     "check": "turbo run check",

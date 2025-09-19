@@ -32,7 +32,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       'expo-build-properties',
       {
         android: {
-          enableProguardInReleaseBuilds: true,
+          enableMinifyInReleaseBuilds: true,
           enableShrinkResourcesInReleaseBuilds: false,
         },
       },

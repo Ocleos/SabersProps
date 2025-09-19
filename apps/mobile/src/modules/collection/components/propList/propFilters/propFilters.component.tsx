@@ -1,5 +1,6 @@
 import { HStack, Text, VStack } from '@sabersprops/ui';
 import { useTranslation } from 'react-i18next';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { PropState } from '~src/models/propState.model';
 import { PropType } from '~src/models/propType.model';
 import StateFilter from './stateFilter.component';
@@ -8,8 +9,10 @@ import TypeFilter from './typeFilter.component';
 const PropFilters: React.FC = () => {
   const { t } = useTranslation(['collection']);
 
+  const { bottom } = useSafeAreaInsets();
+
   return (
-    <VStack className='gap-4 p-4'>
+    <VStack className='gap-4 p-4' style={{ marginBottom: bottom }}>
       <VStack className='gap-2'>
         <Text variant='large'>{t('collection:LABELS.TYPE')}</Text>
         <HStack className='flex-wrap gap-2'>

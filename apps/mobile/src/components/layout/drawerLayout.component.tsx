@@ -10,7 +10,7 @@ import { supabase } from '~src/utils/supabase.utils';
 const DrawerLayout: React.FC<DrawerContentComponentProps> = (props) => {
   const { t } = useTranslation(['auth']);
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView className='flex-1'>
       <HStack className='items-center gap-4 p-4'>
         <View className='h-12 w-12 items-center justify-center rounded-full border-2 border-primary bg-background'>
           <LogoIcon color={THEME.colors.primary[500]} />

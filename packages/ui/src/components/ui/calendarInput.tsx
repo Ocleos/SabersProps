@@ -10,7 +10,7 @@ const CalendarInput: React.FC<TextInputProps> = ({ className, ...props }) => {
   return (
     <View className='relative w-full'>
       <Input className={cn('pr-12', className)} readOnly {...props} />
-      <View className='absolute right-0 m-1 h-10 w-10 items-center justify-center'>
+      <View className='absolute right-0 h-10 w-10 items-center justify-center'>
         <Icon as={CalendarDaysIcon} className='text-primary' />
       </View>
     </View>

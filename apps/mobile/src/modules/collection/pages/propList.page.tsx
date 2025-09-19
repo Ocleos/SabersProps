@@ -1,14 +1,12 @@
 import { type BottomSheetModal, BottomSheetView } from '@gorhom/bottom-sheet';
 import { useIsFocused } from '@react-navigation/native';
 import { Button, Icon, VStack } from '@sabersprops/ui';
-import { FlashList } from '@shopify/flash-list';
 import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'expo-router';
 import { PlusIcon } from 'lucide-react-native';
 import { useRef } from 'react';
-import { View } from 'react-native';
-import EmptyComponent from '~src/components/empty/empty.component';
 import FilterSearchWrapper from '~src/components/list/filterSearchWrapper.component';
+import FlashListWrapper from '~src/components/list/flashListWrapper.component';
 import BottomSheetWrapper from '~src/components/menu/bottomSheetWrapper.component';
 import type { Prop } from '~src/models/prop.model';
 import PropCardComponent from '~src/modules/collection/components/propList/propCard.component';
@@ -43,17 +41,12 @@ const PropListPage: React.FC = () => {
           searchValue={filters.searchValue}
         />
 
-        <FlashList
+        <FlashListWrapper
           data={data}
-          estimatedItemSize={160}
-          ItemSeparatorComponent={() => <View className='h-4' />}
           keyExtractor={(item, index) => item.id ?? index.toString()}
-          ListEmptyComponent={() => <EmptyComponent />}
           onRefresh={() => refetch()}
           refreshing={isLoading}
           renderItem={({ item }) => <PropCardComponent prop={item} />}
-          showsHorizontalScrollIndicator={false}
-          showsVerticalScrollIndicator={false}
         />
       </VStack>
 

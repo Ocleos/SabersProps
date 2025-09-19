@@ -12,7 +12,7 @@ export default () => {
   const title = isEdit ? t('collection:FORM.EDIT_COMPONENT') : t('collection:FORM.ADD_COMPONENT');
 
   return (
-    <PageLayout isScrollable={true} title={title}>
+    <PageLayout isSafe={true} isScrollable={true} title={title}>
       <PropComponentForm />
     </PageLayout>
   );

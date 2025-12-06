@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.2.4/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.3.8/schema.json",
   "assist": {
     "actions": {
       "source": {
@@ -51,6 +51,7 @@
         "noUnusedVariables": "error"
       },
       "nursery": {
+        "noDeprecatedImports": "warn",
         "useSortedClasses": {
           "level": "warn",
           "options": {

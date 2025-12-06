@@ -33,7 +33,6 @@ const PricesChart: React.FC<IPricesChartProps> = ({ data }) => {
       backgroundColor: 'transparent',
       grid: {
         bottom: 16,
-        containLabel: true,
         left: 16,
         right: 16,
         top: 16,

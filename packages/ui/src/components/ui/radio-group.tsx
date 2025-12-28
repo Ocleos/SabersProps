@@ -6,7 +6,7 @@ function RadioGroup({
   className,
   ...props
 }: RadioGroupPrimitive.RootProps & React.RefAttributes<RadioGroupPrimitive.RootRef>) {
-  return <RadioGroupPrimitive.Root className={cn('gap-2', className)} {...props} />;
+  return <RadioGroupPrimitive.Root className={cn('gap-3', className)} {...props} />;
 }
 
 function RadioGroupItem({

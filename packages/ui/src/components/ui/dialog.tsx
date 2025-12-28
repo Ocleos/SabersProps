@@ -30,7 +30,7 @@ function DialogOverlay({
     <FullWindowOverlay>
       <DialogPrimitive.Overlay
         className={cn(
-          'absolute top-0 right-0 bottom-0 left-0 z-50 flex items-center justify-center bg-black/50 p-2',
+          'absolute top-0 right-0 bottom-0 left-0 flex items-center justify-center bg-black/50 p-2',
           Platform.select({
             web: 'fade-in-0 fixed animate-in cursor-default [&>*]:cursor-auto',
           }),
@@ -105,7 +105,12 @@ function DialogTitle({
   className,
   ...props
 }: DialogPrimitive.TitleProps & React.RefAttributes<DialogPrimitive.TitleRef>) {
-  return <DialogPrimitive.Title className={cn('font-exo2SemiBold text-foreground text-lg', className)} {...props} />;
+  return (
+    <DialogPrimitive.Title
+      className={cn('font-exo2SemiBold text-foreground text-lg leading-none', className)}
+      {...props}
+    />
+  );
 }
 
 function DialogDescription({

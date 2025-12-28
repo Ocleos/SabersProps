@@ -3,15 +3,15 @@ import { THEME } from './colors.theme';
 
 export const defaultFontFamily = 'Exo2';
 
-export const getNavigationTheme = (isDarkTheme: boolean): Theme => {
+export const getNavigationTheme = (isDarkTheme: boolean, colorScheme: 'light' | 'dark'): Theme => {
   return {
     colors: {
-      background: isDarkTheme ? THEME.dark.background : THEME.light.background,
-      border: isDarkTheme ? THEME.dark.border : THEME.light.border,
-      card: isDarkTheme ? THEME.dark.card : THEME.light.card,
-      notification: isDarkTheme ? THEME.dark.destructive : THEME.light.destructive,
-      primary: isDarkTheme ? THEME.dark.primary : THEME.light.primary,
-      text: isDarkTheme ? THEME.dark.foreground : THEME.light.foreground,
+      background: THEME[colorScheme].background,
+      border: THEME[colorScheme].border,
+      card: THEME[colorScheme].card,
+      notification: THEME[colorScheme].destructive,
+      primary: THEME[colorScheme].primary,
+      text: THEME[colorScheme].foreground,
     },
     dark: isDarkTheme,
     fonts: {

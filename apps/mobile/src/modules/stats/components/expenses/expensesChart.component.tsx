@@ -1,10 +1,9 @@
-import { fontFamily, THEME } from '@sabersprops/ui';
+import { fontFamily, THEME, useColorScheme } from '@sabersprops/ui';
 import SvgChart, { SVGRenderer } from '@wuba/react-native-echarts/svgChart';
 import type { EChartsOption } from 'echarts';
 import { LineChart } from 'echarts/charts';
 import { DataZoomComponent, GridComponent, TooltipComponent } from 'echarts/components';
 import { type ECharts, init, use } from 'echarts/core';
-import { useColorScheme } from 'nativewind';
 import { useEffect, useRef } from 'react';
 import { useWindowDimensions } from 'react-native';
 import i18n from '~src/i18n.config';

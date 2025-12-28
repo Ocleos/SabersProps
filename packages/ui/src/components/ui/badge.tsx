@@ -6,11 +6,10 @@ import { cn } from '~ui/lib/utils';
 
 const badgeVariants = cva(
   cn(
-    'group shrink-0 flex-row items-center justify-center gap-1 overflow-hidden rounded-md border border-border px-2 py-0.5',
+    'group shrink-0 flex-row items-center justify-center gap-1 overflow-hidden rounded-full border border-border px-2 py-0.5',
     Platform.select({
       web: 'w-fit whitespace-nowrap transition-[color,box-shadow] focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&>svg]:pointer-events-none [&>svg]:size-3',
     }),
-    'rounded-full', // override
   ),
   {
     defaultVariants: {

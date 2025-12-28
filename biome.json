@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.3.8/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.3.10/schema.json",
   "assist": {
     "actions": {
       "source": {
@@ -8,14 +8,18 @@
         "useSortedKeys": "on",
         "useSortedProperties": "on"
       }
-    }
+    },
+    "enabled": true
   },
   "files": {
-    "ignoreUnknown": true,
-    "includes": ["**", "!**/node_modules/**/*.*", "!**/.expo/**/*"]
+    "ignoreUnknown": false
   },
   "formatter": {
+    "attributePosition": "auto",
+    "bracketSameLine": true,
+    "bracketSpacing": true,
     "enabled": true,
+    "expand": "auto",
     "formatWithErrors": true,
     "indentStyle": "space",
     "indentWidth": 2,
@@ -28,6 +32,7 @@
       "bracketSameLine": true,
       "bracketSpacing": true,
       "jsxQuoteStyle": "single",
+      "operatorLinebreak": "after",
       "quoteProperties": "asNeeded",
       "quoteStyle": "single",
       "semicolons": "always",
@@ -69,7 +74,7 @@
   "overrides": [
     {
       "formatter": {
-        "lineWidth": 1
+        "expand": "auto"
       },
       "includes": ["**/package.json"]
     }

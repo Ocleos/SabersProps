@@ -1,7 +1,7 @@
 import { Platform, TextInput, type TextInputProps } from 'react-native';
 import { cn } from '~ui/lib/utils';
 
-function Input({ className, placeholderClassName, ...props }: TextInputProps & React.RefAttributes<TextInput>) {
+function Input({ className, ...props }: TextInputProps & React.RefAttributes<TextInput>) {
   return (
     <TextInput
       className={cn(
@@ -10,7 +10,7 @@ function Input({ className, placeholderClassName, ...props }: TextInputProps & R
         props.editable === false &&
           cn('opacity-50', Platform.select({ web: 'disabled:pointer-events-none disabled:cursor-not-allowed' })),
         Platform.select({
-          native: 'placeholder:text-muted-foreground',
+          native: 'placeholder:text-muted-foreground/50',
           web: cn(
             'outline-none transition-[color,box-shadow] selection:bg-primary selection:text-primary-foreground placeholder:text-muted-foreground md:text-sm',
             'focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50',

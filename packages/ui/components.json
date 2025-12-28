@@ -7,6 +7,7 @@
     "ui": "~ui/components/ui",
     "utils": "~ui/lib/utils"
   },
+  "iconLibrary": "lucide",
   "rsc": false,
   "style": "new-york",
   "tailwind": {

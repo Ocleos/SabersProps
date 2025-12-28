@@ -36,11 +36,11 @@ const queryClient = new QueryClient({
 
 export default () => {
   const [isFontsLoaded] = useFonts(fontToLoad);
-  const { isDarkColorScheme } = useColorScheme();
+  const { isDarkColorScheme, colorScheme } = useColorScheme();
 
   return isFontsLoaded ? (
     <SafeAreaProvider onLayout={() => SplashScreen.hideAsync()}>
-      <ThemeProvider value={getNavigationTheme(isDarkColorScheme)}>
+      <ThemeProvider value={getNavigationTheme(isDarkColorScheme, colorScheme)}>
         <QueryClientProvider client={queryClient}>
           <Try
             catch={() => (

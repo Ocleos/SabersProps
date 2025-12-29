@@ -9,6 +9,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     },
     icon: './assets/icon.png',
     package: 'fr.ocleos.sabersprops',
+    softwareKeyboardLayoutMode: 'pan',
   },
   assetBundlePatterns: ['**/*'],
   extra: {

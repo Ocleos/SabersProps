@@ -2,7 +2,7 @@ import { DrawerActions } from '@react-navigation/native';
 import { Button, fontFamily, Icon, THEME, useColorScheme } from '@sabersprops/ui';
 import { Stack, useNavigation, useRouter } from 'expo-router';
 import { ArrowLeftIcon, MenuIcon } from 'lucide-react-native';
-import { ScrollView, View, type ViewProps } from 'react-native';
+import { KeyboardAvoidingView, ScrollView, View, type ViewProps } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface IPageLayoutProps {
@@ -29,7 +29,7 @@ const PageLayout: React.FC<IPageLayoutProps> = ({
   const { bottom } = useSafeAreaInsets();
 
   return (
-    <View className='flex-1'>
+    <KeyboardAvoidingView behavior={'padding'} className='flex-1'>
       <Stack.Screen
         options={{
           headerLeft: () => {
@@ -69,7 +69,7 @@ const PageLayout: React.FC<IPageLayoutProps> = ({
           {children}
         </View>
       )}
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 

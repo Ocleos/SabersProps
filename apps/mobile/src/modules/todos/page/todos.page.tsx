@@ -1,6 +1,6 @@
-import { useIsFocused } from '@react-navigation/native';
 import { Skeleton, VStack } from '@sabersprops/ui';
 import { useQuery } from '@tanstack/react-query';
+import { useIsFocused } from 'expo-router/react-navigation';
 import { propsKeys } from '~src/utils/queryKeys.utils';
 import { getData, PROPS_ACCESSORIES_TABLE } from '~src/utils/supabase.utils';
 import TodoCard from '../components/todoCard.component';

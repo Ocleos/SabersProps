@@ -4,9 +4,9 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 interface IFilterSearchWrapper {
-  searchValue: string;
-  onSearchValue: (value: string) => void;
   onOpenFilter?: () => void;
+  onSearchValue: (value: string) => void;
+  searchValue: string;
 }
 
 const FilterSearchWrapper: React.FC<IFilterSearchWrapper> = (props) => {

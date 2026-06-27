@@ -12,8 +12,8 @@ import { formatToCurrency } from '~src/utils/format.utils';
 import { ExpensesTypes, getZoomByType } from './expenses.utils';
 
 interface IExpensesChartProps {
-  type: ExpensesTypes;
   data: ExpensesData;
+  type: ExpensesTypes;
 }
 
 use([SVGRenderer, LineChart, GridComponent, TooltipComponent, DataZoomComponent]);

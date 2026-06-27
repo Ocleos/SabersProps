@@ -4,8 +4,8 @@ import { useState } from 'react';
 import { Pressable, type View } from 'react-native';
 
 interface ICollapseCard extends React.ComponentProps<typeof View> {
-  title?: string;
   isOpened?: boolean;
+  title?: string;
 }
 
 const CollapseCard: React.FC<ICollapseCard> = (props) => {

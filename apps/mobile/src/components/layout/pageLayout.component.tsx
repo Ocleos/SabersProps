@@ -1,17 +1,17 @@
-import { DrawerActions } from '@react-navigation/native';
 import { Button, fontFamily, Icon, THEME, useColorScheme } from '@sabersprops/ui';
 import { Stack, useNavigation, useRouter } from 'expo-router';
+import { DrawerActions } from 'expo-router/react-navigation';
 import { ArrowLeftIcon, MenuIcon } from 'lucide-react-native';
 import { KeyboardAvoidingView, ScrollView, View, type ViewProps } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface IPageLayoutProps {
   children: React.ReactNode;
+  hasDrawerToggle?: boolean;
+  isSafe?: boolean;
+  isScrollable?: boolean;
   title?: string;
   viewProps?: ViewProps;
-  isScrollable?: boolean;
-  isSafe?: boolean;
-  hasDrawerToggle?: boolean;
 }
 
 const PageLayout: React.FC<IPageLayoutProps> = ({

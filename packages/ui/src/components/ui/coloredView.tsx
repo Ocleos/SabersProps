@@ -46,5 +46,5 @@ const ColoredView: React.FC<ColoredViewProps> = ({ className, variant, ref, ...p
   );
 };
 
-export { ColoredView, coloredViewTextVariants, coloredViewVariants };
 export type { ColoredViewProps };
+export { ColoredView, coloredViewTextVariants, coloredViewVariants };

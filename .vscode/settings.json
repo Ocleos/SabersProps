@@ -36,9 +36,14 @@
   ],
   "cSpell.words": ["aurebesh", "sabersprops"],
   "editor.codeActionsOnSave": {
+    "source.action.noDuplicateClasses.biome": "explicit",
     "source.action.useSortedAttributes.biome": "explicit",
+    "source.action.useSortedEnumMembers.biome": "explicit",
+    "source.action.useSortedInterfaceMembers.biome": "explicit",
     "source.action.useSortedKeys.biome": "explicit",
     "source.action.useSortedProperties.biome": "explicit",
+    "source.action.useSortedSelectionSet.biome": "explicit",
+    "source.action.useSortedTypeFields.biome": "explicit",
     "source.fixAll": "explicit",
     "source.fixAll.biome": "explicit",
     "source.organizeImports.biome": "explicit"
@@ -55,5 +60,5 @@
   },
   "files.eol": "\n",
   "files.insertFinalNewline": true,
-  "typescript.updateImportsOnFileMove.enabled": "always"
+  "js/ts.updateImportsOnFileMove.enabled": "always"
 }

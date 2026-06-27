@@ -1,9 +1,9 @@
 import { HStack, Label, RadioGroupItem } from '@sabersprops/ui';
 
 interface IRadioWrapperProps {
-  value: string;
   label: string;
   onLabelPress?: (value: string) => void;
+  value: string;
 }
 
 const RadioWrapper: React.FC<IRadioWrapperProps> = ({ value, label, onLabelPress }) => {

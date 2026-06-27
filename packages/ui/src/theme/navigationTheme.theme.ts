@@ -1,4 +1,4 @@
-import type { Theme } from '@react-navigation/native';
+import type { Theme } from 'expo-router/react-navigation';
 import { THEME } from './colors.theme';
 
 export const defaultFontFamily = 'Exo2';

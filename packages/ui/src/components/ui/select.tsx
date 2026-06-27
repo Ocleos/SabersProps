@@ -239,6 +239,7 @@ function NativeSelectScrollView({ className, ...props }: React.ComponentProps<ty
 
 export {
   NativeSelectScrollView,
+  type Option,
   Select,
   SelectContent,
   SelectGroup,
@@ -249,5 +250,4 @@ export {
   SelectSeparator,
   SelectTrigger,
   SelectValue,
-  type Option,
 };

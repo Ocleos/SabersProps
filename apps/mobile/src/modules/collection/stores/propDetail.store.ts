@@ -5,12 +5,12 @@ import type { PropDetail } from '~src/modules/collection/models/propDetail.model
 
 interface IPropDetailState {
   propDetail?: PropDetail;
-  selectedComponent?: PropComponent;
   searchValue: string;
+  selectedComponent?: PropComponent;
+  setSearchValue: (search: string) => void;
+  setSelectedComponent: (component?: PropComponent) => void;
 
   updatePropDetail: (data: PropDetail | undefined) => void;
-  setSelectedComponent: (component?: PropComponent) => void;
-  setSearchValue: (search: string) => void;
 }
 
 export const usePropDetailStore = create<IPropDetailState>()(

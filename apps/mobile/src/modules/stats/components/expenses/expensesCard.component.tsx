@@ -1,6 +1,6 @@
-import { useIsFocused } from '@react-navigation/native';
 import { Skeleton, Tabs, TabsList, TabsTrigger, Text, VStack } from '@sabersprops/ui';
 import { useQuery } from '@tanstack/react-query';
+import { useIsFocused } from 'expo-router/react-navigation';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import CollapseCard from '~src/components/card/collapseCard.component';

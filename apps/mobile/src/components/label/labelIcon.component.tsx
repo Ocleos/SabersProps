@@ -2,8 +2,8 @@ import { HStack, Icon, Text } from '@sabersprops/ui';
 import type { LucideIcon } from 'lucide-react-native';
 
 interface ILabelIcon {
-  label: string;
   icon: LucideIcon;
+  label: string;
 }
 
 const LabelIcon: React.FC<ILabelIcon> = (props) => {

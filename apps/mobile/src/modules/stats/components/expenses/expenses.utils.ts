@@ -5,9 +5,9 @@ import { FORMAT_DATE, formatDate } from '~src/utils/format.utils';
 
 export enum ExpensesTypes {
   DAYS = 'days',
+  GLOBAL_MONTHS = 'globalMonths',
   MONTHS = 'months',
   YEARS = 'years',
-  GLOBAL_MONTHS = 'globalMonths',
 }
 
 export const getZoomByType = (type: ExpensesTypes) => {

@@ -1,9 +1,9 @@
 import { useFonts } from '@expo-google-fonts/exo-2';
-import { ThemeProvider } from '@react-navigation/native';
 import { getNavigationTheme, PortalHost, useColorScheme } from '@sabersprops/ui';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Slot } from 'expo-router';
 import { Try } from 'expo-router/build/views/Try';
+import { ThemeProvider } from 'expo-router/react-navigation';
 import * as SplashScreen from 'expo-splash-screen';
 import { View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';

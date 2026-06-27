@@ -28,5 +28,5 @@ const VStack: React.FC<StackProps> = ({ className, variant, ...props }) => {
   return <Stack className={className} variant='vertical' {...props} />;
 };
 
-export { HStack, Stack, VStack, stackVariants };
 export type { StackProps };
+export { HStack, Stack, stackVariants, VStack };

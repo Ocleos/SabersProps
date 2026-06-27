@@ -1,8 +1,8 @@
 import { type BottomSheetModal, BottomSheetView } from '@gorhom/bottom-sheet';
-import { useIsFocused } from '@react-navigation/native';
 import { Button, Icon, VStack } from '@sabersprops/ui';
 import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'expo-router';
+import { useIsFocused } from 'expo-router/react-navigation';
 import { PlusIcon } from 'lucide-react-native';
 import { useRef } from 'react';
 import FilterSearchWrapper from '~src/components/list/filterSearchWrapper.component';

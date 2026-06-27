@@ -14,13 +14,13 @@ import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
 
 export interface IModalWrapperProps {
-  title?: string;
-  description?: string;
   content?: React.ReactNode;
-  isOpen: boolean;
-  onClose: () => void;
-  mainButton?: React.ReactNode;
+  description?: string;
   hasCancelButton?: boolean;
+  isOpen: boolean;
+  mainButton?: React.ReactNode;
+  onClose: () => void;
+  title?: string;
 }
 
 const ModalWrapper: React.FC<IModalWrapperProps> = (props) => {

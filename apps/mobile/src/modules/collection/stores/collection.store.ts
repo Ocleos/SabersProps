@@ -7,14 +7,14 @@ import type { PropType } from '~src/models/propType.model';
 import { addOrRemove } from '~src/utils/arrays.utils';
 
 interface ICollectionState {
-  selectedProp?: Prop;
   filters: PropFilters;
+  selectedProp?: Prop;
+  setSearchValue: (search: string) => void;
+  setSelectedProp: (prop?: Prop) => void;
 
   updateProps: (data: Prop[], filters: PropFilters) => void;
-  setSelectedProp: (prop?: Prop) => void;
-  setSearchValue: (search: string) => void;
-  updateTypeFilter: (type: PropType) => void;
   updateStateFilter: (propState: PropState) => void;
+  updateTypeFilter: (type: PropType) => void;
 }
 
 export const useCollectionStore = create<ICollectionState>()(

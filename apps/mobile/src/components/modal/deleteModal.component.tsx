@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next';
 import ModalWrapper, { type IModalWrapperProps } from './modalWrapper.component';
 
 interface IDeleteModalProps extends IModalWrapperProps {
-  onConfirm: () => void;
   isLoading?: boolean;
+  onConfirm: () => void;
 }
 
 const DeleteModal: React.FC<IDeleteModalProps> = (props) => {

@@ -1,5 +1,5 @@
-import { DrawerContent, type DrawerContentComponentProps, DrawerItem } from '@react-navigation/drawer';
 import { fontFamily, HStack, Separator, Text, THEME } from '@sabersprops/ui';
+import { DrawerContent, type DrawerContentComponentProps, DrawerItem } from 'expo-router/drawer';
 import { LogOutIcon } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';

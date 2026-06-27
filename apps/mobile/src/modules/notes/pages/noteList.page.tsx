@@ -1,7 +1,7 @@
-import { useIsFocused } from '@react-navigation/native';
 import { Button, Icon } from '@sabersprops/ui';
 import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'expo-router';
+import { useIsFocused } from 'expo-router/react-navigation';
 import { PlusIcon } from 'lucide-react-native';
 import FlashListWrapper from '~src/components/list/flashListWrapper.component';
 import NoteCardComponent from '~src/modules/notes/components/noteList/noteCard.component';

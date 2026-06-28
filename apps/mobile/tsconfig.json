@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "moduleSuffixes": ["", ".ios", ".android", ".native", ".web"],
     "paths": {
       "~assets/*": ["./assets/*"],

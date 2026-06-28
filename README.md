@@ -205,6 +205,10 @@ So if a new tag is created on git, a build pipeline is automatically launched.
 - Export / Import
 - Sync on cloud
 
+## Review and improvement plan
+
+A detailed technical review, vulnerability assessment, rendering/state-management review, and prioritized action plan are available in [PROJECT_REVIEW_AND_ACTION_PLAN.md](PROJECT_REVIEW_AND_ACTION_PLAN.md).
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)

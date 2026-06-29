@@ -1,1 +1,1 @@
-yarn biome ci .
+bun biome ci .

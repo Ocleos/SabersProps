@@ -27,7 +27,7 @@ Application to manage collection of lightsaber and props movies replica.
 - Notes management
 - Todos :
   - Props
-  - Accessory
+  - Accessories
 - Tools :
   - Aurebesh translator
 - Light / Black theme
@@ -37,17 +37,10 @@ Application to manage collection of lightsaber and props movies replica.
 
 ## Requirements
 
-- [NodeJS](https://nodejs.org/fr) : **recommended LTS (v20.15.1)**, minimum v18.18.0
-- [Yarn](https://yarnpkg.com/) v4+
+- [NodeJS](https://nodejs.org/fr) : **recommended LTS (v24.14)**
+- [Bun](https://bun.com/) v1.3+
 - IDE ([VSCode](https://code.visualstudio.com/) recommanded)
 - [Android Studio](https://developer.android.com/studio?hl=fr) and / or [xCode](https://developer.apple.com/xcode/)
-- **Corepack** activated :
-
-```bash
-corepack enable
-```
-
-Monorepo with [TurboRepo](https://turbo.build/) and [Yarn Workspaces](https://yarnpkg.com/features/workspaces)
 
 ## Environment Variables
 
@@ -66,13 +59,13 @@ git clone git@github.com:Ocleos/SabersProps.git
 - Install dependencies
 
 ```bash
-yarn install
+bun install
 ```
 
 - Start the project
 
 ```bash
-yarn dev:mobile
+bun start
 ```
 
 ## Librairies & Tech
@@ -85,13 +78,12 @@ yarn dev:mobile
 
 ### UI & Graphical
 
-- [NativeWind](https://www.nativewind.dev/) / [TailwindCSS](https://tailwindcss.com/)
-- [React Native Reusables](https://rnr-docs.vercel.app/getting-started/introduction/)
+- [Uniwind](https://uniwind.dev/) / [TailwindCSS](https://tailwindcss.com/)
+- [Hero UI Native](https://heroui.com/en/docs/native/getting-started)
 - [Lucide Icons](https://lucide.dev/icons/)
 - [React Native SVG](https://github.com/software-mansion/react-native-svg)
 - [Flashlist](https://shopify.github.io/flash-list/)
 - [Bottom-Sheet](https://ui.gorhom.dev/components/bottom-sheet)
-- [React Native Toast Message](https://github.com/calintamas/react-native-toast-message)
 - [React Native Reanimated](https://docs.swmansion.com/react-native-reanimated/)
 - [React Native UI DatePicker](https://github.com/farhoudshapouran/react-native-ui-datepicker)
 - [Font Exo2](https://github.com/expo/google-fonts/tree/master/font-packages/exo-2#readme)
@@ -122,7 +114,6 @@ yarn dev:mobile
 ### Tools
 
 - [DayJS](https://day.js.org/)
-- [Radash](https://radash-docs.vercel.app/docs/getting-started)
 - [i18next](https://www.i18next.com/)
 
 ### Deployment
@@ -136,19 +127,19 @@ yarn dev:mobile
 - Build development :
 
 ```bash
-yarn build:dev
+bun build:dev
 ```
 
 - Build Testing :
 
 ```bash
-yarn build:preview
+bun build:preview
 ```
 
 - Build Production / Store :
 
 ```bash
-yarn build:prod
+bun build:prod
 ```
 
 ## Lint
@@ -158,19 +149,19 @@ Lint and format is done with the lib [BiomeJS](https://biomejs.dev/).
 To check if there is a warning or an error :
 
 ```bash
-yarn biome ci .
+bun biome ci .
 ```
 
 To format the files :
 
 ```bash
-yarn format
+bun format
 ```
 
 To correct lint errors :
 
 ```bash
-yarn lint
+bun lint
 ```
 
 ## CI / CD
@@ -180,7 +171,7 @@ The version management is done with [Release-It](https://github.com/release-it/r
 To increase the version :
 
 ```bash
-yarn release
+bun release
 ```
 
 A tag will be created automatically.
@@ -207,7 +198,7 @@ So if a new tag is created on git, a build pipeline is automatically launched.
 
 ## Review and improvement plan
 
-A detailed technical review, vulnerability assessment, rendering/state-management review, and prioritized action plan are available in [PROJECT_REVIEW_AND_ACTION_PLAN.md](PROJECT_REVIEW_AND_ACTION_PLAN.md).
+A detailed technical review, vulnerability assessment, rendering/state-management review, and prioritized action plan are available in [AUDIT.md](AUDIT.md).
 
 ## License
 

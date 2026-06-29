@@ -1,0 +1,59 @@
+@import "tailwindcss";
+@import "uniwind";
+
+@import "heroui-native/styles";
+
+@source "../node_modules/heroui-native/lib";
+
+@theme {
+  /* Single font per variant - no fallbacks */
+  --font-normal: "Exo2_400Regular";
+  --font-medium: "Exo2_500Medium";
+  --font-semibold: "Exo2_600SemiBold";
+  --font-bold: "Exo2_700Bold";
+
+  --font-aurebesh: "Aurebesh";
+}
+
+@layer theme {
+  @variant light {
+    /* Override default colors */
+    --accent: oklch(69.6% 0.17 162.48);
+    --accent-foreground: oklch(0.2103 0.0059 285.89);
+
+    --info: oklch(0.6 0.15 210);
+    --info-foreground: oklch(0.98 0 0);
+
+    --color-primary-50: oklch(97.9% 0.021 166.113);
+    --color-primary-100: oklch(95% 0.052 163.051);
+    --color-primary-200: oklch(90.5% 0.093 164.15);
+    --color-primary-300: oklch(84.5% 0.143 164.978);
+    --color-primary-400: oklch(76.5% 0.177 163.223);
+    --color-primary-500: oklch(69.6% 0.17 162.48);
+    --color-primary-600: oklch(59.6% 0.145 163.225);
+    --color-primary-700: oklch(50.8% 0.118 165.612);
+    --color-primary-800: oklch(43.2% 0.095 166.913);
+    --color-primary-900: oklch(37.8% 0.077 168.94);
+    --color-primary-950: oklch(26.2% 0.051 172.552);
+  }
+  @variant dark {
+    /* Override dark theme colors */
+    --accent: oklch(69.6% 0.17 162.48);
+    --accent-foreground: oklch(0.2103 0.0059 285.89);
+
+    --info: oklch(0.6 0.15 210);
+    --info-foreground: oklch(0.98 0 0);
+
+    --color-primary-50: oklch(97.9% 0.021 166.113);
+    --color-primary-100: oklch(95% 0.052 163.051);
+    --color-primary-200: oklch(90.5% 0.093 164.15);
+    --color-primary-300: oklch(84.5% 0.143 164.978);
+    --color-primary-400: oklch(76.5% 0.177 163.223);
+    --color-primary-500: oklch(69.6% 0.17 162.48);
+    --color-primary-600: oklch(59.6% 0.145 163.225);
+    --color-primary-700: oklch(50.8% 0.118 165.612);
+    --color-primary-800: oklch(43.2% 0.095 166.913);
+    --color-primary-900: oklch(37.8% 0.077 168.94);
+    --color-primary-950: oklch(26.2% 0.051 172.552);
+  }
+}

@@ -14,7 +14,9 @@
     "xml",
     "svg",
     "javascript",
-    "typescript"
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
   ],
   "cSpell.ignoreRegExpList": ["/from\\\\s+(['\\\"]).*\\\\1/"],
   "cSpell.ignoreWords": [
@@ -32,7 +34,9 @@
     "supabase",
     "tailwindcss",
     "upsert",
-    "zustand"
+    "zustand",
+    "heroui",
+    "uniwind"
   ],
   "cSpell.words": ["aurebesh", "sabersprops"],
   "editor.codeActionsOnSave": {
@@ -55,8 +59,9 @@
   "editor.wordWrap": "wordWrapColumn",
   "editor.wordWrapColumn": 120,
   "explorer.fileNesting.patterns": {
-    "app.config.ts": "*.env, babel.config.*, eas.*, metro.config.*, nativewind*, tailwind*, tsconfig*",
-    "package.json": ".yarnrc*, yarn*, .release-it*, .auto-changelog, biome.*, .prettier*, commitlint.*, turbo.json"
+    "app.config.ts": "*.env, babel.config.*, eas.*, metro.config.*, tailwind*, tsconfig*",
+    "package.json": "bun.*, .release-it*, .auto-changelog, biome.*, .prettier*, commitlint.*",
+    "README.md": "CHANGELOG.md, LICENSE*, CONTRIBUTING.md, CODE_OF_CONDUCT.md, SECURITY.md, AUDIT.md, CLAUDE.md"
   },
   "files.eol": "\n",
   "files.insertFinalNewline": true,

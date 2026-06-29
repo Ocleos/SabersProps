@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "moduleSuffixes": ["", ".ios", ".android", ".native", ".web"],
+    "paths": {
+      "~assets/*": ["./assets/*"],
+      "~src/*": ["./src/*"]
+    },
+    "strict": true
+  },
+  "exclude": ["_archives/**/*"],
+  "extends": "expo/tsconfig.base",
+  "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]
+}

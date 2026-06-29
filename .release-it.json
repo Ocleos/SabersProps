@@ -8,15 +8,15 @@
     "release": false
   },
   "hooks": {
-    "after:bump": "npx auto-changelog -v preview/v${version}",
-    "before:init": ["git pull", "yarn biome ci ."]
+    "after:bump": "bunx auto-changelog -v preview/v${version}",
+    "before:init": ["git pull", "bun biome ci ."]
   },
   "npm": {
     "publish": false
   },
   "plugins": {
     "@release-it/bumper": {
-      "out": ["apps/mobile/app.config.ts", "apps/mobile/package.json"]
+      "out": ["./app.config.ts"]
     }
   }
 }

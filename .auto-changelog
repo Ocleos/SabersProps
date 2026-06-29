@@ -1,7 +1,7 @@
 {
-  "template": "compact",
-  "unreleased": true,
   "commitLimit": false,
+  "sortCommits": "date-desc",
   "tagPrefix": "preview/v",
-  "sortCommits": "date-desc"
+  "template": "compact",
+  "unreleased": true
 }

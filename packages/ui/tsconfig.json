@@ -1,9 +1,0 @@
-{
-  "compilerOptions": {
-    "paths": {
-      "~ui/*": ["./src/*"]
-    }
-  },
-  "extends": "expo/tsconfig.base",
-  "include": ["./nativewind-env.d.ts", "./src/**/*.ts", "./src/**/*.tsx"]
-}

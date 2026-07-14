@@ -55,7 +55,7 @@ export default () => {
   const { isDarkScheme, navigationTheme } = useColorScheme();
 
   return isFontsLoaded ? (
-    <GestureHandlerRootView className='flex-1'>
+    <GestureHandlerRootView className='flex-1' onLayout={() => SplashScreen.hideAsync()}>
       <HeroUINativeProvider config={config}>
         <ThemeProvider value={navigationTheme}>
           <QueryClientProvider client={queryClient}>

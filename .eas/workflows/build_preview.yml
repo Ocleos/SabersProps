@@ -1,0 +1,13 @@
+name: Build on Tag Update
+
+on:
+  push:
+    tags:
+      - 'preview/*'
+
+jobs:
+  build_preview:
+    type: build
+    params:
+      platform: android
+      profile: preview

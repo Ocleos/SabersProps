@@ -1,1 +1,2 @@
 bun biome ci .
+bun run test --ci

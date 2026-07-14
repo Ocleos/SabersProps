@@ -5,9 +5,9 @@
       "~assets/*": ["./assets/*"],
       "~src/*": ["./src/*"]
     },
-    "strict": true
+    "strict": true,
+    "types": ["jest"]
   },
-  "exclude": ["_archives/**/*"],
   "extends": "expo/tsconfig.base",
   "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]
 }

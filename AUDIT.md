@@ -165,30 +165,6 @@ The main weaknesses are not about the overall concept, but about resilience and 
 - Estimated time: 2–4 hours
 - Good follow-up to the current stats module: price trends, spend over time, and category summaries.
 
-### 16. Add a full accessories inventory dashboard
-
-- Priority: P2
-- Quick win: Yes
-- Estimated time: 2–4 hours
-- The app already has accessories and todos; this could become a dedicated dashboard with progress bars and filters.
-
----
-
-## Features already mentioned in the README that are worth keeping in the backlog
-
-- [ ] Authentication / profile improvements
-  - [ ] avatar
-  - [ ] password change
-  - [ ] update/delete user
-  - [ ] password recovery
-- [ ] Collection details
-  - [ ] pictures gallery
-- [ ] Disposition improvements
-  - [ ] grouping
-  - [ ] drag and drop
-- [ ] Export / import
-- [ ] Cloud sync
-
 ---
 
 ## Interesting observations to preserve

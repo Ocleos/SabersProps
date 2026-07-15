@@ -76,6 +76,11 @@ const collectionFr = {
       REPARTITION: 'Répartition',
     },
   },
+  TODOS: {
+    LABELS: {
+      OVERALL_PROGRESS: 'Progression globale',
+    },
+  },
   TYPE: {
     COSTUME: 'Costume',
     LIGHTSABER: 'Lightsaber',

@@ -7,6 +7,7 @@ import { VStack } from '~src/components/ui/stack.component';
 import { propsKeys } from '~src/utils/queryKeys.utils';
 import { getData, PROPS_ACCESSORIES_TABLE } from '~src/utils/supabase.utils';
 import TodoCard from '../components/todos/todoCard.component';
+import TodosOverviewCard from '../components/todos/todosOverviewCard.component';
 import type { TodoAccessories } from '../types/todoAccessories.type';
 import { TodoType } from '../types/todoType.type';
 
@@ -24,6 +25,7 @@ const TodosPage: React.FC = () => {
     <PageLayout isScrollable={true} title={t('collection:ROUTING.TODOS')}>
       {isLoading && (
         <VStack className='gap-4'>
+          <Skeleton className='h-[300] w-full' />
           <Skeleton className='h-15 w-full' />
           <Skeleton className='h-15 w-full' />
           <Skeleton className='h-15 w-full' />
@@ -32,6 +34,7 @@ const TodosPage: React.FC = () => {
       )}
       {data && (
         <VStack className='gap-4'>
+          <TodosOverviewCard data={data} />
           <TodoCard data={data} type={TodoType.PROP} />
           <TodoCard data={data} type={TodoType.BAG} />
           <TodoCard data={data} type={TodoType.KEYRING} />

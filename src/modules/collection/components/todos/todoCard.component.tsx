@@ -13,10 +13,9 @@ type TodoCardProps = {
 const TodoCard: React.FC<TodoCardProps> = ({ data, type }) => {
   const { label, propertyName } = todoTypes[type];
 
-  const total = data.length;
   const count = countPending(data, propertyName);
 
-  const title = `${label} (${count} / ${total})`;
+  const title = `${label} (${count})`;
 
   return (
     <AccordionWrapper itemValue={propertyName} title={title}>

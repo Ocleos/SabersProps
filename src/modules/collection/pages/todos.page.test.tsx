@@ -24,15 +24,15 @@ describe('TodosPage', () => {
     await renderWithProviders(<TodosPage />);
     await flushAsync();
 
-    expect(screen.getByText('Pochette (1 / 2)')).toBeTruthy();
-    expect(screen.getByText('Prop (2 / 2)')).toBeTruthy();
+    expect(screen.getByText('Pochette (1)')).toBeTruthy();
+    expect(screen.getByText('Prop (2)')).toBeTruthy();
   });
 
   it('lists the pending items once a category is opened', async () => {
     await renderWithProviders(<TodosPage />);
 
-    await waitFor(() => expect(screen.getByText('Pochette (1 / 2)')).toBeTruthy());
-    fireEvent.press(screen.getByText('Pochette (1 / 2)'));
+    await waitFor(() => expect(screen.getByText('Pochette (1)')).toBeTruthy());
+    fireEvent.press(screen.getByText('Pochette (1)'));
 
     await waitFor(() => expect(screen.getByText('Anakin')).toBeTruthy());
   });

@@ -12,13 +12,13 @@ describe('TodoCard', () => {
   it('renders the type label with the pending/total count', async () => {
     await renderWithProviders(<TodoCard data={data} type={TodoType.BAG} />);
 
-    expect(screen.getByText('Pochette (1 / 2)')).toBeTruthy();
+    expect(screen.getByText('Pochette (1)')).toBeTruthy();
   });
 
   it('lists every item once the accordion is opened', async () => {
     await renderWithProviders(<TodoCard data={data} type={TodoType.BAG} />);
 
-    fireEvent.press(screen.getByText('Pochette (1 / 2)'));
+    fireEvent.press(screen.getByText('Pochette (1)'));
 
     await waitFor(() => expect(screen.getByText('Graflex')).toBeTruthy());
     expect(screen.getByText('Anakin')).toBeTruthy();

@@ -8,7 +8,8 @@ The main weaknesses are not about the overall concept, but about resilience and 
 
 - some data-loading paths assume that data always exists and can fail silently or crash on empty results;
 - a few stateful UI components can become stale when parent data changes;
-- there is no automated testing layer yet, which makes regressions likely as features grow.
+- there is a unit/component testing layer now, but no E2E coverage yet, so full user-journey regressions (e.g. the
+  create-prop flow end to end) can still slip through.
 
 ---
 
@@ -81,9 +82,8 @@ The main weaknesses are not about the overall concept, but about resilience and 
 - Priority: P2
 - Quick win: No
 - Estimated time: 2–5 days
-- Recommended fix:
-  - add unit tests for helpers and state stores;
-  - add component tests for form flows and toggles;
+- Status: unit tests (helpers/stores) and component/page tests (Jest + `jest-expo` + React Native Testing Library,
+  see CLAUDE.md's Testing section) are done. Remaining:
   - add a small E2E suite for the most important user journeys such as creating a prop and editing prices.
 
 ### 7. Introduce a shared API/result layer and remove duplicate data logic
@@ -175,7 +175,6 @@ The main weaknesses are not about the overall concept, but about resilience and 
 
 ## Features already mentioned in the README that are worth keeping in the backlog
 
-- [ ] Automated tests (unit and E2E)
 - [ ] Authentication / profile improvements
   - [ ] avatar
   - [ ] password change

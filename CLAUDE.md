@@ -24,9 +24,11 @@ before starting speculative refactors so effort isn't duplicated.
 - `bun format` — format only (`biome format . --write`)
 - `bun build:dev` / `bun build:preview` / `bun build:prod` — EAS builds (Android; prod also auto-submits)
 - `bun release` — cut a version with release-it (creates a git tag, which triggers the EAS build pipeline)
+- `bun run test` — run the Jest suite once (**not** `bun test` — that's Bun's own reserved native test runner
+  subcommand and ignores `package.json` scripts entirely)
 
-There is no automated test suite yet (tracked in `AUDIT.md` P2 #6) — verification currently means `bun check` +
-`bun biome ci .`, plus manual exercising of the affected screen.
+Verification for a change means `bun check` + `bun biome ci .` + `bun run test`, plus manual exercising of the
+affected screen for anything UI-facing.
 
 ### Environment
 
@@ -75,6 +77,14 @@ Query keys are centralized as factory objects in `src/utils/queryKeys.utils.ts` 
 extends `propsKeys.root()`). Reuse the same query key + queryFn across components when they need the same
 underlying data (different `select` transforms are fine and share one cache entry) instead of re-fetching.
 
+### Logging
+
+`src/utils/logger.utils.ts` exports a default `LOG` instance (`react-native-logs`, `LOG.debug/info/warn/error`) —
+use it instead of raw `console.*` calls anywhere in app code (Biome's `noConsole` rule flags direct `console.x(...)`
+calls). Its default `consoleTransport` always writes through `console.log` regardless of severity, which matters if
+you ever need to intercept/override console output (e.g. in test setup) — routing `console.warn`/`console.error`
+through `LOG.warn`/`LOG.error` is safe and won't recurse.
+
 ### UI system
 
 Styling is Tailwind via `uniwind` (Tailwind-in-React-Native), configured in `src/global.css`; component variants use
@@ -100,6 +110,59 @@ strings are split per feature (`src/locales/<lang>/<feature>.locale.ts`, e.g. `c
 `common.locale.ts`) and aggregated into the `en`/`fr` namespace maps in `src/locales/<lang>/_<lang>.locale.ts`. Keys
 are uppercase and grouped by section (`LABELS`, `FORM`, `ROUTING`, `STATE`, etc.) — follow that grouping and add the
 same key to both `en` and `fr` files together. `dayjs` locale is switched alongside i18next in `changeLanguage()`.
+
+### Testing
+
+Jest (via the `jest-expo` preset) plus React Native Testing Library (RNTL) for components. Config lives in `jest.config.js`
+(including a `forceExit: true`, needed because React Query's batched `notifyManager` timers and heroui-native's
+toast auto-dismiss timer otherwise keep the process alive past test completion) and a custom `jest.resolver.js`
+(strips react-native's `exports` field and forces non-`.native` resolution for `react-native-worklets`, so Jest
+doesn't try to load real native modules). Shared test setup is `src/test/setup.ts` (`setupFilesAfterEnv`): it
+initializes i18next, mocks `react-native-safe-area-context` with the library's own official mock, and filters known
+environment-only noise (Uniwind CSS variables, react-native-svg color parsing, FlashList) out of `console.warn`/
+`console.error`, forwarding everything else through `LOG.warn`/`LOG.error` (see Logging above) instead of raw
+console.
+
+- **Unit tests** (`*.test.ts`, colocated with the file under test) target pure logic: `utils/*.utils.ts` helpers,
+  Zustand `stores/*.store.ts`, and calculation helpers under `components/**/*.utils.ts`. No providers or rendering
+  needed — plain `describe`/`it`/`expect`.
+- **Component tests** (`*.component.test.tsx`, colocated with the component) use RNTL. Render through
+  `renderWithProviders` from `src/test/render.utils.tsx` (wraps `HeroUINativeProvider` + a test-scoped
+  `QueryClientProvider`), not RNTL's bare `render` — RNTL 14's `render()` is **async** and must be awaited before
+  `screen` queries are usable. `fireEvent` does not wrap calls in `act()` in this RNTL version, so prefer
+  `waitFor()`-based assertions over immediate synchronous ones after an interaction that triggers state updates.
+  For components under test that depend on `expo-router` (`useRouter`, `useIsFocused`, `Stack.Screen`),
+  `expo-updates`, or Supabase (`~src/utils/supabase.utils`), mock only the specific named exports actually used —
+  don't `jest.requireActual` the Supabase module, it pulls in AsyncStorage and crashes under Jest.
+  - For form components, prefer a `useWatch({ control, name })` + `<Text testID="watched-value">` harness over
+    `handleSubmit`-based submit-button flows — RHF's async validation/resolver pipeline can leak state updates
+    across test boundaries when combined with RNTL 14's non-`act()`-wrapped `fireEvent`.
+  - `ref.measure()` isn't implemented by RNTL's test-renderer, so any component that opens via a `measure()`
+    callback (heroui-native `Menu.Trigger`, `Select.Trigger`) can't be driven into its open state under Jest —
+    scope those tests down to closed-state/trigger-render assertions.
+  - Chart components built on echarts/SVG canvas rendering aren't worth testing directly (no meaningful RNTL
+    assertions); mock them out (`jest.mock('./xxxChart.component', () => () => null)`) in the wrapping component's
+    test instead.
+  - Plain decorative SVG assets (`src/assets/**/*.icon.tsx`) have no conditional logic of their own — they're
+    already exercised indirectly by every component test that renders them, so they don't get a dedicated test.
+- **Page tests** (`*.page.test.tsx`, colocated with the page) cover `src/modules/<feature>/pages/*.page.tsx` the
+  same way as component tests, since pages own real logic (query wiring, add/edit branching against a Zustand
+  store, mutation submit flows, navigation). `PageLayout`'s `title` is passed to a mocked-out `Stack.Screen` (see
+  `pageLayout.component.test.tsx`), not rendered as visible text, so don't assert on it — assert on the page's
+  actual content instead. When a page reads a Zustand store directly (not via props), reset it in `beforeEach` with
+  `useXStore.setState(useXStore.getInitialState(), true)`. When a page composes child components that already have
+  their own dedicated test (e.g. `StatsPage`'s three cards, `ProfilePage`'s two sections), stub them out with
+  `jest.mock` so the page test only covers its own composition/branching, not their internals again.
+  - A query-fetching, `useWatch`/`useEffect`-cascading, or `useToast`-calling interaction can leave a pending
+    update that lands *after* the test ends and corrupts whichever test renders next (empty tree, "unable to find
+    element") — this is a stronger version of the RHF leak above and isn't always fixed by `waitFor`. Reach for
+    `flushAsync` from `render.utils.tsx` (flushes a full `setTimeout(0)` cycle inside `act`, which
+    `@tanstack/react-query`'s `notifyManager` needs — a plain microtask flush isn't enough) after the interaction.
+    If that still isn't enough, the reliable fix is structural: put the offending test last in its file (nothing
+    to corrupt), or merge the interaction into the same test as whatever assertion depended on it settling —
+    don't chase the exact framework-internal cause further than that.
+- When a test needs a placeholder manufacturer name (fixtures, mocks, examples), use `KRSabers`, not
+  `Ultrasabers`.
 
 ### Naming conventions
 

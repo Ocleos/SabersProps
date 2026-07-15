@@ -15,16 +15,6 @@ The main weaknesses are not about the overall concept, but about resilience and 
 
 ## P0 – urgent / high impact
 
-### 1. Fix the missing-data assumptions in the prop detail loader
-
-- Priority: P0
-- Quick win: Yes
-- Estimated time: 1–2 hours
-- Evidence: the prop detail loader uses `.single()` for the main prop, prices, and accessories queries. If a row is missing, this can produce runtime failures or broken screens.
-- Recommended fix:
-  - replace `.single()` with `.maybeSingle()` for optional relations such as prices and accessories;
-  - handle `null` values gracefully and show an empty state instead of crashing.
-
 ### 2. Add environment and configuration validation for Supabase
 
 - Priority: P0
@@ -45,6 +35,11 @@ The main weaknesses are not about the overall concept, but about resilience and 
 - Priority: P1
 - Quick win: Yes
 - Estimated time: 2–4 hours
+- Status: Partially done — the prop detail screen (`PropDetailInformationsPage` and its cards: `StatusDetail`,
+  `InformationsCard`, `ComponentCard`, `AccessoriesCard`, `PricesCard`) now delegates loading to each card via an
+  `isLoading` prop (`Skeleton` swapped in for the data-bearing element, keeping the Card/Surface/Icon shell in
+  place — see `StatTile` for the original pattern) and shows `EmptyComponent` when the prop isn't found. `isError`
+  handling and the same treatment for collection, notes, todos, and stats screens are still open.
 - Evidence: several screens rely on loading checks or empty fallback components, but the user experience is still inconsistent when data fetches fail or return no rows.
 - Recommended fix:
   - add `isError` handling in the query layers;
@@ -67,6 +62,12 @@ The main weaknesses are not about the overall concept, but about resilience and 
 - Priority: P1
 - Quick win: Yes
 - Estimated time: 2–3 hours
+- Status: Partially done — fixed a concrete instance where `Toggle` (`src/components/ui/toggle.component.tsx`)
+  seeded its internal `isOn` state from the `isPressed` prop via `useState` but never resynced, so
+  `AccessoriesCard`'s toggles could render stale (all-unchecked) on first load once the prop detail cards started
+  mounting before their data arrived. `Toggle` now re-syncs `isOn` via a `useEffect` on `isPressed` changes. This
+  `useState(propValue)`-without-resync shape is worth checking for in other stateful leaf components going
+  forward. Optimistic updates for mutations and updating local state from mutation responses are still open.
 - Evidence: mutations invalidate queries, but the UI still depends on local state and store values that may lag behind server data.
 - Recommended fix:
   - use optimistic updates for simple toggles (accessories, price updates);

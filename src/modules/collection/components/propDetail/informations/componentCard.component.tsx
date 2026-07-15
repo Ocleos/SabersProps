@@ -1,6 +1,7 @@
 import { useRouter } from 'expo-router';
 import { Card } from 'heroui-native/card';
 import { PressableFeedback } from 'heroui-native/pressable-feedback';
+import { Skeleton } from 'heroui-native/skeleton';
 import { ChevronRightIcon } from 'lucide-react-native';
 import type React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -9,23 +10,30 @@ import { HStack, VStack } from '~src/components/ui/stack.component';
 import type { PropDetail } from '~src/modules/collection/types/propDetail.type';
 
 type ComponentCardsProps = {
-  prop: PropDetail;
+  isLoading?: boolean;
+  prop?: PropDetail;
 };
 
-const ComponentCard: React.FC<ComponentCardsProps> = ({ prop }) => {
+const ComponentCard: React.FC<ComponentCardsProps> = ({ isLoading, prop }) => {
   const { t } = useTranslation();
   const router = useRouter();
 
   return (
-    <PressableFeedback onPress={() => router.navigate(`/(root)/collection/${prop.id}/components`)}>
+    <PressableFeedback
+      isDisabled={isLoading || !prop}
+      onPress={() => prop && router.navigate(`/(root)/collection/${prop.id}/components`)}>
       <Card>
         <Card.Body>
           <HStack className='items-center justify-between'>
             <VStack>
               <Card.Title>{t('collection:CATEGORIES.COMPONENTS')}</Card.Title>
-              <Card.Description>
-                {t('collection:LABELS.COMPONENTS', { count: prop.components.length })}
-              </Card.Description>
+              {isLoading || !prop ? (
+                <Skeleton className='h-5 w-24' />
+              ) : (
+                <Card.Description>
+                  {t('collection:LABELS.COMPONENTS', { count: prop.components.length })}
+                </Card.Description>
+              )}
             </VStack>
             <Icon as={ChevronRightIcon} className='text-accent' />
           </HStack>

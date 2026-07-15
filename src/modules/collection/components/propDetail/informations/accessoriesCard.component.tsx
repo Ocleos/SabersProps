@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { KeyRoundIcon, ShoppingBagIcon, TagIcon } from 'lucide-react-native';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import AccordionWrapper from '~src/components/ui/accordionWrapper.component';
 import { HStack } from '~src/components/ui/stack.component';
@@ -11,18 +11,25 @@ import { propsKeys } from '~src/utils/queryKeys.utils';
 import { ACCESSORIES_TABLE, upsertData } from '~src/utils/supabase.utils';
 
 type AccessoriesCardProps = {
-  prop: PropDetail;
+  isLoading?: boolean;
+  prop?: PropDetail;
 };
 
-const AccessoriesCard: React.FC<AccessoriesCardProps> = ({ prop }) => {
+const AccessoriesCard: React.FC<AccessoriesCardProps> = ({ isLoading, prop }) => {
   const { t } = useTranslation();
   const queryClient = useQueryClient();
 
-  const { accessories } = prop;
+  const accessories = prop?.accessories;
 
   const [hasBag, setHasBag] = useState<boolean>(accessories?.bag ?? false);
   const [hasKeyring, setHasKeyring] = useState<boolean>(accessories?.keyring ?? false);
   const [hasDisplayPlaque, setHasDisplayPlaque] = useState<boolean>(accessories?.displayPlaque ?? false);
+
+  useEffect(() => {
+    setHasBag(accessories?.bag ?? false);
+    setHasKeyring(accessories?.keyring ?? false);
+    setHasDisplayPlaque(accessories?.displayPlaque ?? false);
+  }, [accessories?.bag, accessories?.keyring, accessories?.displayPlaque]);
 
   const { mutate } = useMutation({
     mutationFn: (data: PropAccessory) => upsertData<PropAccessory>(ACCESSORIES_TABLE, data),
@@ -32,6 +39,10 @@ const AccessoriesCard: React.FC<AccessoriesCardProps> = ({ prop }) => {
   });
 
   const onUpdateAccessory = async (value: boolean, index: number) => {
+    if (!prop) {
+      return;
+    }
+
     const valueToSave = accessories ?? {
       bag: false,
       displayPlaque: false,
@@ -62,18 +73,21 @@ const AccessoriesCard: React.FC<AccessoriesCardProps> = ({ prop }) => {
       <HStack className='gap-4'>
         <Toggle
           icon={ShoppingBagIcon}
+          isDisabled={isLoading || !prop}
           isPressed={hasBag}
           onPressedChange={(pressed) => onUpdateAccessory(pressed, 0)}
         />
 
         <Toggle
           icon={KeyRoundIcon}
+          isDisabled={isLoading || !prop}
           isPressed={hasKeyring}
           onPressedChange={(pressed) => onUpdateAccessory(pressed, 1)}
         />
 
         <Toggle
           icon={TagIcon}
+          isDisabled={isLoading || !prop}
           isPressed={hasDisplayPlaque}
           onPressedChange={(pressed) => onUpdateAccessory(pressed, 2)}
         />

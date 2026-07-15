@@ -1,3 +1,4 @@
+import { Skeleton } from 'heroui-native/skeleton';
 import { CreditCardIcon, HardHatIcon, ShoppingCartIcon, TagsIcon, TruckIcon } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
 import LabelIcon from '~src/components/label/labelIcon.component';
@@ -8,26 +9,44 @@ import { formatToCurrency } from '~src/utils/format.utils';
 import SellingPriceButton from './sellingPriceModal/sellingPriceButton.component';
 
 type PricesCardProps = {
-  prop: PropDetail;
+  isLoading?: boolean;
+  prop?: PropDetail;
 };
 
-const PricesCard: React.FC<PricesCardProps> = ({ prop }) => {
+const PricesCard: React.FC<PricesCardProps> = ({ isLoading, prop }) => {
   const { t } = useTranslation();
 
   return (
     <AccordionWrapper isOpen={true} itemValue='prices' title={t('collection:CATEGORIES.PRICES')}>
       <VStack className='gap-2'>
-        <LabelIcon icon={CreditCardIcon} label={prop.prices?.price ? formatToCurrency(prop.prices.price) : '-'} />
-        <LabelIcon icon={TruckIcon} label={prop.prices?.fees ? formatToCurrency(prop.prices.fees) : '-'} />
-        <LabelIcon icon={ShoppingCartIcon} label={prop.prices?.total ? formatToCurrency(prop.prices.total) : '-'} />
-        <LabelIcon icon={HardHatIcon} label={prop.prices?.workPrice ? formatToCurrency(prop.prices.workPrice) : '-'} />
+        <LabelIcon
+          icon={CreditCardIcon}
+          isLoading={isLoading}
+          label={prop?.prices?.price ? formatToCurrency(prop.prices.price) : '-'}
+        />
+        <LabelIcon
+          icon={TruckIcon}
+          isLoading={isLoading}
+          label={prop?.prices?.fees ? formatToCurrency(prop.prices.fees) : '-'}
+        />
+        <LabelIcon
+          icon={ShoppingCartIcon}
+          isLoading={isLoading}
+          label={prop?.prices?.total ? formatToCurrency(prop.prices.total) : '-'}
+        />
+        <LabelIcon
+          icon={HardHatIcon}
+          isLoading={isLoading}
+          label={prop?.prices?.workPrice ? formatToCurrency(prop.prices.workPrice) : '-'}
+        />
 
         <HStack className='items-center gap-4'>
           <LabelIcon
             icon={TagsIcon}
-            label={prop.prices?.sellingPrice ? formatToCurrency(prop.prices.sellingPrice) : '-'}
+            isLoading={isLoading}
+            label={prop?.prices?.sellingPrice ? formatToCurrency(prop.prices.sellingPrice) : '-'}
           />
-          <SellingPriceButton prop={prop} />
+          {isLoading || !prop ? <Skeleton className='h-9 w-9 rounded-lg' /> : <SellingPriceButton prop={prop} />}
         </HStack>
       </VStack>
     </AccordionWrapper>

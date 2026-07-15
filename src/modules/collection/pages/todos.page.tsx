@@ -24,10 +24,10 @@ const TodosPage: React.FC = () => {
     <PageLayout isScrollable={true} title={t('collection:ROUTING.TODOS')}>
       {isLoading && (
         <VStack className='gap-4'>
-          <Skeleton className='h-14 w-full' />
-          <Skeleton className='h-14 w-full' />
-          <Skeleton className='h-14 w-full' />
-          <Skeleton className='h-14 w-full' />
+          <Skeleton className='h-15 w-full' />
+          <Skeleton className='h-15 w-full' />
+          <Skeleton className='h-15 w-full' />
+          <Skeleton className='h-15 w-full' />
         </VStack>
       )}
       {data && (

@@ -6,19 +6,20 @@ import { VStack } from '~src/components/ui/stack.component';
 import type { PropDetail } from '~src/modules/collection/types/propDetail.type';
 
 type InformationsCard = {
-  prop: PropDetail;
+  isLoading?: boolean;
+  prop?: PropDetail;
 };
 
-const InformationsCard: React.FC<InformationsCard> = ({ prop }) => {
+const InformationsCard: React.FC<InformationsCard> = ({ isLoading, prop }) => {
   const { t } = useTranslation();
 
   return (
     <AccordionWrapper isOpen={true} itemValue='informations' title={t('collection:CATEGORIES.INFORMATIONS')}>
       <VStack className='gap-2'>
-        <LabelIcon icon={WrenchIcon} label={prop.manufacturer} />
-        <LabelIcon icon={ShapesIcon} label={prop.chassisDesigner ?? ''} />
-        <LabelIcon icon={CpuIcon} label={prop.soundboard ?? ''} />
-        <LabelIcon icon={User2Icon} label={prop.character ?? ''} />
+        <LabelIcon icon={WrenchIcon} isLoading={isLoading} label={prop?.manufacturer ?? ''} />
+        <LabelIcon icon={ShapesIcon} isLoading={isLoading} label={prop?.chassisDesigner ?? ''} />
+        <LabelIcon icon={CpuIcon} isLoading={isLoading} label={prop?.soundboard ?? ''} />
+        <LabelIcon icon={User2Icon} isLoading={isLoading} label={prop?.character ?? ''} />
       </VStack>
     </AccordionWrapper>
   );

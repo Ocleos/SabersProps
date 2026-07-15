@@ -11,7 +11,10 @@ serves as a sandbox for trying new libraries during technological watch — keep
 modules rather than spreading across the codebase.
 
 A detailed technical audit, known weaknesses, and a prioritized improvement backlog live in `AUDIT.md` — check it
-before starting speculative refactors so effort isn't duplicated.
+before starting speculative refactors so effort isn't duplicated. When a change resolves, partially resolves, or
+invalidates an `AUDIT.md` item, update that item's status (add a `Status:` bullet if partialy done, following the existing items'
+pattern) as part of the change instead of leaving the backlog stale. If it's done totally, the section can be removed. If the change introduces a durable convention
+worth knowing for future work, reflect it here in `CLAUDE.md` too.
 
 ## Commands
 
@@ -26,6 +29,7 @@ before starting speculative refactors so effort isn't duplicated.
 - `bun release` — cut a version with release-it (creates a git tag, which triggers the EAS build pipeline)
 - `bun run test` — run the Jest suite once (**not** `bun test` — that's Bun's own reserved native test runner
   subcommand and ignores `package.json` scripts entirely)
+- `bun run test:coverage` - run the Jest suite once with coverage report
 
 Verification for a change means `bun check` + `bun biome ci .` + `bun run test`, plus manual exercising of the
 affected screen for anything UI-facing.
@@ -94,6 +98,8 @@ Styling is Tailwind via `uniwind` (Tailwind-in-React-Native), configured in `src
 color/size via `withUniwind`), `Stack`/`HStack`/`VStack`, `FabButton`, `AccordionWrapper` (wraps `heroui-native`
 Accordion with the app's standard trigger/title layout), `Toggle`.
 
+Use HeroUI Native documentation from https://heroui.com/native/llms.txt
+
 Domain-specific colors/icons are centralized as lookup records keyed by enum, not scattered per component — see
 `propStates` in `types/propState.type.ts` and `propTypes` in `types/propType.type.ts`, both driven by the shared
 `Colors`/`ColorScheme` definitions in `src/theme/colors.theme.ts`. Reuse these records (and add to them) rather than
@@ -102,6 +108,16 @@ inlining new color/icon mappings for the same domain concepts.
 Screens are wrapped in `PageLayout` (`src/components/layout/pageLayout.component.tsx`), which sets the
 `Stack.Screen` title and handles the scrollable/keyboard-avoiding container — pages shouldn't reimplement that
 shell.
+
+Prefer delegating loading state to the leaf component that owns the data-bearing element, rather than gating a
+whole section behind a page-level `isLoading` ternary: pass an `isLoading?`/optional-data prop down and swap in a
+`Skeleton` for just the label/value/description, keeping the surrounding Card/Surface/Icon shell always rendered
+(see `StatTile`, and the prop detail cards — `StatusDetail`, `InformationsCard`, `ComponentCard`, `AccessoriesCard`,
+`PricesCard`). This avoids nested ternaries at the page level and keeps the loading skeleton shaped like the real
+content. When a component keeps local state seeded from a prop via `useState(propValue)` (e.g. `Toggle`'s
+`isOn`/`isPressed`), and it can now mount before that prop's real value is known, add a `useEffect` to resync the
+state when the prop changes — otherwise the component silently keeps showing its initial (often default/falsy)
+value even after the real data arrives.
 
 ### i18n
 
@@ -154,7 +170,7 @@ console.
   their own dedicated test (e.g. `StatsPage`'s three cards, `ProfilePage`'s two sections), stub them out with
   `jest.mock` so the page test only covers its own composition/branching, not their internals again.
   - A query-fetching, `useWatch`/`useEffect`-cascading, or `useToast`-calling interaction can leave a pending
-    update that lands *after* the test ends and corrupts whichever test renders next (empty tree, "unable to find
+    update that lands _after_ the test ends and corrupts whichever test renders next (empty tree, "unable to find
     element") — this is a stronger version of the RHF leak above and isn't always fixed by `waitFor`. Reach for
     `flushAsync` from `render.utils.tsx` (flushes a full `setTimeout(0)` cycle inside `act`, which
     `@tanstack/react-query`'s `notifyManager` needs — a plain microtask flush isn't enough) after the interaction.

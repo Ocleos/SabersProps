@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { useLocalSearchParams } from 'expo-router';
-import { Skeleton } from 'heroui-native/skeleton';
+import EmptyComponent from '~src/components/empty/empty.component';
 import PageLayout from '~src/components/layout/pageLayout.component';
 import { VStack } from '~src/components/ui/stack.component';
 import { propsKeys } from '~src/utils/queryKeys.utils';
@@ -20,7 +20,7 @@ const PropDetailInformationsPage = () => {
   const { data: propDetail, isLoading } = useQuery({
     queryFn: async () => {
       const data = await getPropDetail(id);
-      updatePropDetail(data);
+      updatePropDetail(data ?? undefined);
       return data;
     },
     queryKey: propsKeys.detail(id),
@@ -28,23 +28,16 @@ const PropDetailInformationsPage = () => {
 
   return (
     <PageLayout isScrollable={true} title={propDetail?.name ?? ''}>
-      {isLoading ? (
-        <VStack className='gap-4'>
-          <Skeleton className='h-12 w-full' />
-          <Skeleton className='h-12 w-full' />
-          <Skeleton className='h-12 w-full' />
-          <Skeleton className='h-12 w-full' />
-        </VStack>
+      {!isLoading && !propDetail ? (
+        <EmptyComponent />
       ) : (
-        propDetail && (
-          <VStack className='gap-4'>
-            <StatusDetail prop={propDetail} />
-            <InformationsCard prop={propDetail} />
-            <ComponentCard prop={propDetail} />
-            <AccessoriesCard prop={propDetail} />
-            <PricesCard prop={propDetail} />
-          </VStack>
-        )
+        <VStack className='gap-4'>
+          <StatusDetail isLoading={isLoading} prop={propDetail ?? undefined} />
+          <InformationsCard isLoading={isLoading} prop={propDetail ?? undefined} />
+          <ComponentCard isLoading={isLoading} prop={propDetail ?? undefined} />
+          <AccessoriesCard isLoading={isLoading} prop={propDetail ?? undefined} />
+          <PricesCard isLoading={isLoading} prop={propDetail ?? undefined} />
+        </VStack>
       )}
     </PageLayout>
   );

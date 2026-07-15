@@ -62,4 +62,14 @@ describe('PropDetailInformationsPage', () => {
     expect(screen.getByText('AccessoriesCard')).toBeTruthy();
     expect(screen.getByText('PricesCard')).toBeTruthy();
   });
+
+  it('renders an empty state and clears the store when the prop is not found', async () => {
+    mockGetPropDetail.mockResolvedValueOnce(null);
+
+    await renderWithProviders(<PropDetailInformationsPage />);
+
+    await waitFor(() => expect(screen.getByText('Aucune donnée')).toBeTruthy());
+    expect(usePropDetailStore.getState().propDetail).toBeUndefined();
+    expect(screen.queryByText('StatusDetail')).toBeNull();
+  });
 });

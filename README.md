@@ -116,6 +116,11 @@ bun start
 - [DayJS](https://day.js.org/)
 - [i18next](https://www.i18next.com/)
 
+### Testing
+
+- [Jest](https://jestjs.io/)
+- [React Native Testing Library](https://oss.callstack.com/react-native-testing-library/)
+
 ### Deployment
 
 - [EAS](https://github.com/expo/eas-cli)
@@ -181,7 +186,7 @@ So if a new tag is created on git, a build pipeline is automatically launched.
 
 ## Roadmap
 
-- Automatics tests (Unit & E2E)
+- Automatics tests (E2E)
 - Authentication / Profile
   - User avatar
   - Change password

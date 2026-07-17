@@ -45,16 +45,6 @@ The main weaknesses are not about the overall concept, but about resilience and 
   see CLAUDE.md's Testing section) are done. Remaining:
   - add a small E2E suite for the most important user journeys such as creating a prop and editing prices.
 
-### 6. Introduce a shared API/result layer and remove duplicate data logic
-
-- Priority: P2
-- Quick win: No
-- Estimated time: 3–6 hours
-- Recommended fix:
-  - centralize Supabase calls behind typed service functions;
-  - return a consistent result shape with `data`, `error`, and `status`;
-  - avoid scattering table names and query logic across screens.
-
 ### 7. Improve performance for long lists and search-heavy screens
 
 - Priority: P2

@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createClient } from '@supabase/supabase-js';
 import Constants from 'expo-constants';
 import type { User } from '~src/types/user.type';
+import { toApiResult, unwrapApiResult } from '~src/utils/apiResult.utils';
 import { validateSupabaseConfig } from '~src/utils/supabaseConfig.utils';
 
 const apiUrl: string | undefined = Constants.expoConfig?.extra?.supabaseApiUrl;
@@ -34,53 +35,37 @@ type Data = {
 export const getData = async <T extends Data>(tableName: string) => {
   const { data, error } = await supabase.from(tableName).select();
 
-  if (error) {
-    throw new Error(error.message);
-  }
-
-  return data as T[];
+  return unwrapApiResult(toApiResult((data ?? []) as T[], error));
 };
 
 export const postData = async <T extends Data>(tableName: string, value: T) => {
   const { error } = await supabase.from(tableName).insert(value);
 
-  if (error) {
-    throw new Error(error.message);
-  }
+  unwrapApiResult(toApiResult(null, error));
 };
 
 export const putData = async <T extends Data>(tableName: string, value: T) => {
   const { error } = await supabase.from(tableName).update(value).eq('id', value.id);
 
-  if (error) {
-    throw new Error(error.message);
-  }
+  unwrapApiResult(toApiResult(null, error));
 };
 
 export const upsertData = async <T extends Data>(tableName: string, value: T) => {
   const { error } = await supabase.from(tableName).upsert(value);
 
-  if (error) {
-    throw new Error(error.message);
-  }
+  unwrapApiResult(toApiResult(null, error));
 };
 
 export const deleteData = async (tableName: string, id: string) => {
   const { error } = await supabase.from(tableName).delete().eq('id', id);
 
-  if (error) {
-    throw new Error(error.message);
-  }
+  unwrapApiResult(toApiResult(null, error));
 };
 
 export const getUserData = async () => {
   const { data, error } = await supabase.auth.getUser();
 
-  if (error) {
-    throw new Error(error.message);
-  }
-
-  const userData = data.user;
+  const { user: userData } = unwrapApiResult(toApiResult(data, error));
 
   let user: User | undefined;
 

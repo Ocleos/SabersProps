@@ -68,6 +68,11 @@ Each feature under `src/modules/<feature>/` follows the same shape (not every mo
   CRUD helpers (e.g. `collection/services/props.api.ts`)
 - `utils/` — pure helper/calculation functions (`*.utils.ts`)
 
+Hooks reused across more than one feature (not domain-specific) live in the top-level `src/hooks/` directory (e.g.
+`useDebounce.hooks.tsx`), following the same `*.hooks.tsx` suffix as feature-scoped hooks. Feature- or
+domain-specific hooks stay colocated under their `src/modules/<feature>/` (or, for cross-cutting non-feature
+concerns like theming, a dedicated top-level folder such as `src/theme/`).
+
 ### Data layer
 
 `src/utils/supabase.utils.ts` exports the Supabase client plus table name constants (`PROPS_TABLE`,
@@ -100,6 +105,14 @@ color/size via `withUniwind`), `Stack`/`HStack`/`VStack`, `FabButton`, `Accordio
 Accordion with the app's standard trigger/title layout), `Toggle`.
 
 Use HeroUI Native documentation from https://heroui.com/native/llms.txt
+
+Lists use `FlashListWrapper` (`src/components/list/flashListWrapper.component.tsx`), a thin wrapper around
+`@shopify/flash-list`. The app is on FlashList v2 (auto-sizing), so **don't** add `estimatedItemSize` — that's a v1
+concept and is a no-op/anti-pattern on v2. Search-driven lists pair it with `FilterSearchWrapper`
+(`src/components/list/filterSearchWrapper.component.tsx`), which already debounces its `onSearchValue` callback via
+the shared `useDebounce` hook (`src/hooks/useDebounce.hooks.tsx`) while keeping the input's own displayed value
+updating instantly — reuse `useDebounce` for any other rapid-fire input driving an expensive computation instead of
+adding a one-off debounce implementation.
 
 Domain-specific colors/icons are centralized as lookup records keyed by enum, not scattered per component — see
 `propStates` in `types/propState.type.ts` and `propTypes` in `types/propType.type.ts`, both driven by the shared

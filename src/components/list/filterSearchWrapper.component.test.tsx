@@ -1,14 +1,30 @@
-import { fireEvent, renderWithProviders, screen } from '~src/test/render.utils';
+import { fireEvent, renderWithProviders, screen, waitFor } from '~src/test/render.utils';
 import FilterSearchWrapper from './filterSearchWrapper.component';
 
 describe('FilterSearchWrapper', () => {
-  it('calls onSearchValue with the lowercased input as the user types', async () => {
+  it('does not call onSearchValue on mount', async () => {
+    const onSearchValue = jest.fn();
+    await renderWithProviders(<FilterSearchWrapper onSearchValue={onSearchValue} searchValue='' />);
+
+    expect(onSearchValue).not.toHaveBeenCalled();
+  });
+
+  it('does not call onSearchValue before the debounce delay has elapsed', async () => {
     const onSearchValue = jest.fn();
     await renderWithProviders(<FilterSearchWrapper onSearchValue={onSearchValue} searchValue='' />);
 
     fireEvent.changeText(screen.getByPlaceholderText('Rechercher'), 'Graflex');
 
-    expect(onSearchValue).toHaveBeenCalledWith('graflex');
+    expect(onSearchValue).not.toHaveBeenCalled();
+  });
+
+  it('calls onSearchValue with the lowercased input once the debounce delay has elapsed', async () => {
+    const onSearchValue = jest.fn();
+    await renderWithProviders(<FilterSearchWrapper onSearchValue={onSearchValue} searchValue='' />);
+
+    fireEvent.changeText(screen.getByPlaceholderText('Rechercher'), 'Graflex');
+
+    await waitFor(() => expect(onSearchValue).toHaveBeenCalledWith('graflex'));
   });
 
   it('clears the search when the clear button is pressed', async () => {

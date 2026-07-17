@@ -45,16 +45,6 @@ The main weaknesses are not about the overall concept, but about resilience and 
   see CLAUDE.md's Testing section) are done. Remaining:
   - add a small E2E suite for the most important user journeys such as creating a prop and editing prices.
 
-### 7. Improve performance for long lists and search-heavy screens
-
-- Priority: P2
-- Quick win: Yes
-- Estimated time: 2–4 hours
-- Recommended fix:
-  - use `estimatedItemSize` on FlashList where relevant;
-  - debounce search input updates;
-  - memoize derived values and expensive transforms.
-
 ### 8. Add offline awareness and better local persistence
 
 - Priority: P2

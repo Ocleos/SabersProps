@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import LabelValue from '~src/components/label/labelValue.component';
 import { VStack } from '~src/components/ui/stack.component';
@@ -11,10 +12,13 @@ type PricesInfosProps = {
 const PricesInfos: React.FC<PricesInfosProps> = ({ data }) => {
   const { t } = useTranslation();
 
-  const dataFilter = data.map((value) => value.total);
+  const { sumList, meanList, dataFilter } = useMemo(() => {
+    const dataFilter = data.map((value) => value.total);
+    const sumList = dataFilter.reduce((total, value) => total + value, 0);
+    const meanList = dataFilter.length > 0 ? sumList / dataFilter.length : 0;
 
-  const sumList = dataFilter.reduce((total, value) => total + value, 0);
-  const meanList = dataFilter.length > 0 ? sumList / dataFilter.length : 0;
+    return { dataFilter, meanList, sumList };
+  }, [data]);
 
   return (
     <VStack>

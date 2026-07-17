@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useIsFocused, useRouter } from 'expo-router';
 import { PlusIcon } from 'lucide-react-native';
 import type React from 'react';
-import { useRef } from 'react';
+import { useCallback, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import ErrorComponent from '~src/components/error/error.component';
 import PageLayout from '~src/components/layout/pageLayout.component';
@@ -30,10 +30,12 @@ const PropListPage: React.FC = () => {
 
   const { filters, setSelectedProp, setSearchValue } = useCollectionStore();
 
+  const selectProps = useCallback((data: Prop[]) => onFilterProps(data, filters), [filters]);
+
   const { isError, isLoading, data, refetch } = useQuery({
     queryFn: async () => await getData<Prop>(PROPS_TABLE),
     queryKey: propsKeys.root(),
-    select: (data) => onFilterProps(data, filters),
+    select: selectProps,
     subscribed: isFocused,
   });
 

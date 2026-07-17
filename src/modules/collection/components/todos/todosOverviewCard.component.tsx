@@ -1,5 +1,6 @@
 import { Surface } from 'heroui-native/surface';
 import { Typography } from 'heroui-native/text';
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Icon } from '~src/components/ui/icon.component';
 import ProgressBarWrapper from '~src/components/ui/progressBarWrapper.component';
@@ -15,7 +16,7 @@ type TodosOverviewCardProps = {
 const TodosOverviewCard: React.FC<TodosOverviewCardProps> = ({ data }) => {
   const { t } = useTranslation();
 
-  const { overall, types } = computeTodosProgress(data);
+  const { overall, types } = useMemo(() => computeTodosProgress(data), [data]);
 
   return (
     <Surface variant='secondary'>

@@ -1,5 +1,5 @@
 import type { Prop } from '~src/modules/collection/types/prop.type';
-import type { Repartition } from '~src/modules/collection/types/repartition.type';
+import type { Repartition, StateRepartition } from '~src/modules/collection/types/repartition.type';
 
 export const calculateRepartition = (data: Prop[]) => {
   const initialData: Repartition = {
@@ -29,4 +29,10 @@ export const calculateRepartition = (data: Prop[]) => {
   }, initialData);
 
   return values;
+};
+
+export const getRepartitionTotalForType = (states: StateRepartition, propType: string) => {
+  const indexType = Number(propType) - 1;
+
+  return Object.values(states).reduce((total, stateData) => total + stateData.values[indexType], 0);
 };

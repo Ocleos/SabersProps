@@ -2,14 +2,18 @@ import SvgChart, { SVGRenderer } from '@wuba/react-native-echarts/svgChart';
 import type { EChartsOption } from 'echarts';
 import { LineChart } from 'echarts/charts';
 import { DataZoomComponent, GridComponent, TooltipComponent } from 'echarts/components';
-import { type ECharts, init, use } from 'echarts/core';
-import { useEffect, useRef } from 'react';
-import { useWindowDimensions } from 'react-native';
+import { use } from 'echarts/core';
+import { Skeleton } from 'heroui-native/skeleton';
+import { useMemo, useRef } from 'react';
+import { View } from 'react-native';
+import EmptyComponent from '~src/components/empty/empty.component';
 import i18n from '~src/i18n.config';
 import type { ExpensesData } from '~src/modules/collection/types/expense.type';
 import { Colors, colors, getRGBColor } from '~src/theme/colors.theme';
 import { useColorScheme } from '~src/theme/useColorScheme.hooks';
 import { formatToCurrency } from '~src/utils/format.utils';
+import { useChartWidth } from '../useChartWidth.hooks';
+import { useEchartsLifecycle } from '../useEchartsLifecycle.hooks';
 import { ExpensesTypes, getZoomByType } from './expenses.utils';
 
 type ExpensesChartProps = {
@@ -19,17 +23,22 @@ type ExpensesChartProps = {
 
 use([SVGRenderer, LineChart, GridComponent, TooltipComponent, DataZoomComponent]);
 
+const CHART_HEIGHT = 300;
+
 const ExpensesChart: React.FC<ExpensesChartProps> = ({ type, data }) => {
-  const { width } = useWindowDimensions();
   const svgRef = useRef<HTMLElement>(null);
 
   const { colorScheme } = useColorScheme();
 
-  const paddingCard = 64; // ($4 (Layout) + $4 (Card)) * 2
-  const maxWidth = width - paddingCard;
+  const maxWidth = useChartWidth();
+  const hasData = data[type].length > 0;
 
-  useEffect(() => {
-    const option: EChartsOption = {
+  const option = useMemo<EChartsOption | undefined>(() => {
+    if (!hasData) {
+      return undefined;
+    }
+
+    return {
       animationEasing: 'circularOut',
       backgroundColor: 'transparent',
       dataZoom:
@@ -95,20 +104,24 @@ const ExpensesChart: React.FC<ExpensesChartProps> = ({ type, data }) => {
         type: 'value',
       },
     };
+  }, [data, type, hasData]);
 
-    let chart: ECharts;
-    if (svgRef.current) {
-      chart = init(svgRef.current, colorScheme, {
-        height: 300,
-        renderer: 'svg',
-        width: maxWidth,
-      });
-      chart.setOption(option);
-    }
-    return () => chart?.dispose();
-  }, [colorScheme, maxWidth, data, type]);
+  const isReady = useEchartsLifecycle(svgRef, colorScheme, { height: CHART_HEIGHT, width: maxWidth }, option);
 
-  return <SvgChart ref={svgRef} useRNGH={true} />;
+  if (!hasData) {
+    return <EmptyComponent />;
+  }
+
+  if (maxWidth === 0) {
+    return null;
+  }
+
+  return (
+    <View style={{ height: CHART_HEIGHT, width: maxWidth }}>
+      <SvgChart ref={svgRef} useRNGH={true} />
+      {!isReady && <Skeleton className='absolute inset-0 h-full w-full' />}
+    </View>
+  );
 };
 
 export default ExpensesChart;

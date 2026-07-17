@@ -2,13 +2,18 @@ import SvgChart, { SVGRenderer } from '@wuba/react-native-echarts/svgChart';
 import type { EChartsOption } from 'echarts';
 import { PieChart } from 'echarts/charts';
 import { TooltipComponent } from 'echarts/components';
-import { type ECharts, init, use } from 'echarts/core';
-import { useEffect, useRef } from 'react';
-import { useWindowDimensions } from 'react-native';
+import { use } from 'echarts/core';
+import { Skeleton } from 'heroui-native/skeleton';
+import { useMemo, useRef } from 'react';
+import { View } from 'react-native';
+import EmptyComponent from '~src/components/empty/empty.component';
 import { type PropState, propStates } from '~src/modules/collection/types/propState.type';
 import type { StateRepartition } from '~src/modules/collection/types/repartition.type';
 import { getRGBColor } from '~src/theme/colors.theme';
 import { useColorScheme } from '~src/theme/useColorScheme.hooks';
+import { useChartWidth } from '../useChartWidth.hooks';
+import { useEchartsLifecycle } from '../useEchartsLifecycle.hooks';
+import { getRepartitionTotalForType } from './repartition.utils';
 
 use([SVGRenderer, PieChart, TooltipComponent]);
 
@@ -18,16 +23,21 @@ type RepartitionChartProps = {
 };
 
 const RepartitionChart: React.FC<RepartitionChartProps> = ({ data, propType }) => {
-  const { width } = useWindowDimensions();
   const svgRef = useRef<HTMLElement>(null);
 
   const { colorScheme } = useColorScheme();
 
-  const paddingCard = 64; // ($4 (Layout) + $4 (Card)) * 2
-  const maxSize = width - paddingCard;
+  const maxSize = useChartWidth();
+  const hasData = getRepartitionTotalForType(data, propType) > 0;
 
-  useEffect(() => {
-    const option: EChartsOption = {
+  const option = useMemo<EChartsOption | undefined>(() => {
+    if (!hasData) {
+      return undefined;
+    }
+
+    const indexType = Number(propType) - 1;
+
+    return {
       animationEasing: 'circularOut',
       backgroundColor: 'transparent',
       series: [
@@ -35,8 +45,6 @@ const RepartitionChart: React.FC<RepartitionChartProps> = ({ data, propType }) =
           avoidLabelOverlap: false,
           data: Object.keys(data).map((stateData) => {
             const state: PropState = Number(stateData);
-
-            const indexType = Number(propType) - 1;
 
             return {
               itemStyle: {
@@ -74,20 +82,24 @@ const RepartitionChart: React.FC<RepartitionChartProps> = ({ data, propType }) =
         trigger: 'item',
       },
     };
+  }, [data, propType, hasData]);
 
-    let chart: ECharts;
-    if (svgRef.current) {
-      chart = init(svgRef.current, colorScheme, {
-        height: maxSize,
-        renderer: 'svg',
-        width: maxSize,
-      });
-      chart.setOption(option);
-    }
-    return () => chart?.dispose();
-  }, [colorScheme, maxSize, data, propType]);
+  const isReady = useEchartsLifecycle(svgRef, colorScheme, { height: maxSize, width: maxSize }, option);
 
-  return <SvgChart ref={svgRef} />;
+  if (!hasData) {
+    return <EmptyComponent />;
+  }
+
+  if (maxSize === 0) {
+    return null;
+  }
+
+  return (
+    <View style={{ height: maxSize, width: maxSize }}>
+      <SvgChart ref={svgRef} />
+      {!isReady && <Skeleton className='absolute inset-0 h-full w-full rounded-full' />}
+    </View>
+  );
 };
 
 export default RepartitionChart;

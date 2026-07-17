@@ -15,17 +15,6 @@ The main weaknesses are not about the overall concept, but about resilience and 
 
 ## P1 – rendering and state-management issues
 
-### 3. Improve chart robustness and lifecycle handling
-
-- Priority: P1
-- Quick win: No
-- Estimated time: 2–3 hours
-- Evidence: the chart components initialize ECharts in `useEffect` and dispose them on cleanup, but they do not guard robustly against empty datasets or zero-sized dimensions.
-- Recommended fix:
-  - guard against empty data before chart initialization;
-  - avoid chart recreation on every unrelated state change;
-  - use a stable chart container size and provide a fallback UI when there is no data.
-
 ### 4. Reduce stale UI after mutations and invalidations
 
 - Priority: P1

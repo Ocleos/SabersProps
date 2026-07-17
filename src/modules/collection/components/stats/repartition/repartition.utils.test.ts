@@ -1,5 +1,6 @@
 import type { Prop } from '~src/modules/collection/types/prop.type';
-import { calculateRepartition } from './repartition.utils';
+import type { StateRepartition } from '~src/modules/collection/types/repartition.type';
+import { calculateRepartition, getRepartitionTotalForType } from './repartition.utils';
 
 const buildProp = (overrides: Partial<Prop>): Prop => ({
   manufacturer: 'KRSabers',
@@ -33,5 +34,36 @@ describe('calculateRepartition', () => {
     expect(result.states[1]).toEqual({ total: 3, values: [2, 1, 0] });
     expect(result.states[3]).toEqual({ total: 1, values: [0, 0, 1] });
     expect(result.states[2]).toEqual({ total: 0, values: [0, 0, 0] });
+  });
+});
+
+describe('getRepartitionTotalForType', () => {
+  const buildStates = (overrides: Partial<StateRepartition>): StateRepartition => ({
+    1: { total: 0, values: [0, 0, 0] },
+    2: { total: 0, values: [0, 0, 0] },
+    3: { total: 0, values: [0, 0, 0] },
+    4: { total: 0, values: [0, 0, 0] },
+    5: { total: 0, values: [0, 0, 0] },
+    6: { total: 0, values: [0, 0, 0] },
+    7: { total: 0, values: [0, 0, 0] },
+    8: { total: 0, values: [0, 0, 0] },
+    ...overrides,
+  });
+
+  it('sums the values of every state for the given prop type', () => {
+    const states = buildStates({
+      1: { total: 3, values: [2, 1, 0] },
+      3: { total: 1, values: [0, 0, 1] },
+    });
+
+    expect(getRepartitionTotalForType(states, '1')).toBe(2);
+    expect(getRepartitionTotalForType(states, '2')).toBe(1);
+    expect(getRepartitionTotalForType(states, '3')).toBe(1);
+  });
+
+  it('returns 0 when no prop of the given type is recorded in any state', () => {
+    const states = buildStates({ 1: { total: 3, values: [3, 0, 0] } });
+
+    expect(getRepartitionTotalForType(states, '2')).toBe(0);
   });
 });

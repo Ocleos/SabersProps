@@ -2,13 +2,17 @@ import SvgChart, { SVGRenderer } from '@wuba/react-native-echarts/svgChart';
 import type { EChartsOption, SeriesOption } from 'echarts';
 import { BarChart, ScatterChart } from 'echarts/charts';
 import { GridComponent, TooltipComponent } from 'echarts/components';
-import { type ECharts, init, use } from 'echarts/core';
-import { useEffect, useRef } from 'react';
-import { useWindowDimensions } from 'react-native';
+import { use } from 'echarts/core';
+import { Skeleton } from 'heroui-native/skeleton';
+import { useMemo, useRef } from 'react';
+import { type DimensionValue, View } from 'react-native';
+import EmptyComponent from '~src/components/empty/empty.component';
 import type { PricesInfosData } from '~src/modules/collection/types/pricesInfosData.type';
 import { getRGBColor } from '~src/theme/colors.theme';
 import { useColorScheme } from '~src/theme/useColorScheme.hooks';
 import { formatToCurrency } from '~src/utils/format.utils';
+import { useChartWidth } from '../useChartWidth.hooks';
+import { useEchartsLifecycle } from '../useEchartsLifecycle.hooks';
 import { pricesChartSeries } from './pricesChart.utils';
 
 type PricesChartProps = {
@@ -17,18 +21,23 @@ type PricesChartProps = {
 
 use([SVGRenderer, BarChart, GridComponent, TooltipComponent, ScatterChart]);
 
+const ROW_HEIGHT = 50;
+
 const PricesChart: React.FC<PricesChartProps> = ({ data }) => {
-  const { width } = useWindowDimensions();
   const svgRef = useRef<HTMLElement>(null);
 
   const { colorScheme } = useColorScheme();
 
-  const paddingCard = 64; // ($4 (Layout) + $4 (Card)) * 2
-  const maxWidth = width - paddingCard;
-  const height = data.length * 50;
+  const maxWidth = useChartWidth();
+  const height = data.length * ROW_HEIGHT;
+  const hasData = data.length > 0;
 
-  useEffect(() => {
-    const option: EChartsOption = {
+  const option = useMemo<EChartsOption | undefined>(() => {
+    if (!hasData) {
+      return undefined;
+    }
+
+    return {
       animationEasing: 'circularOut',
       backgroundColor: 'transparent',
       grid: {
@@ -68,20 +77,37 @@ const PricesChart: React.FC<PricesChartProps> = ({ data }) => {
         type: 'category',
       },
     };
+  }, [data, hasData]);
 
-    let chart: ECharts;
-    if (svgRef.current) {
-      chart = init(svgRef.current, colorScheme, {
-        height: height,
-        renderer: 'svg',
-        width: maxWidth,
-      });
-      chart.setOption(option);
-    }
-    return () => chart?.dispose();
-  }, [colorScheme, maxWidth, height, data]);
+  const rowSkeletonWidths = useMemo<DimensionValue[]>(
+    () => data.map(() => `${Math.round(50 + Math.random() * 40)}%` as DimensionValue),
+    [data],
+  );
 
-  return <SvgChart ref={svgRef} />;
+  const isReady = useEchartsLifecycle(svgRef, colorScheme, { height, width: maxWidth }, option);
+
+  if (!hasData) {
+    return <EmptyComponent />;
+  }
+
+  if (maxWidth === 0) {
+    return null;
+  }
+
+  return (
+    <View style={{ height, width: maxWidth }}>
+      <SvgChart ref={svgRef} />
+      {!isReady && (
+        <View className='absolute inset-0 gap-4 pt-4'>
+          {data.map((value, index) => (
+            <View className='justify-center' key={value.id ?? index} style={{ height: ROW_HEIGHT }}>
+              <Skeleton className='h-10 rounded-md' style={{ width: rowSkeletonWidths[index] }} />
+            </View>
+          ))}
+        </View>
+      )}
+    </View>
+  );
 };
 
 export default PricesChart;

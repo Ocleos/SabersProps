@@ -13,24 +13,9 @@ The main weaknesses are not about the overall concept, but about resilience and 
 
 ---
 
-## P0 – urgent / high impact
-
-### 2. Add environment and configuration validation for Supabase
-
-- Priority: P0
-- Quick win: Yes
-- Estimated time: 30–60 minutes
-- Evidence: the app reads configuration directly from Expo config values with no guard for missing values.
-- Recommended fix:
-  - validate required keys before creating the Supabase client;
-  - fail with a clear message in development;
-  - ensure only public keys are used client-side and never service-role secrets.
-
----
-
 ## P1 – rendering and state-management issues
 
-### 3. Add explicit loading, error, and empty states for list/detail screens
+### 2. Add explicit loading, error, and empty states for list/detail screens
 
 - Priority: P1
 - Quick win: Yes
@@ -46,7 +31,7 @@ The main weaknesses are not about the overall concept, but about resilience and 
   - show dedicated empty/error cards for collection, notes, todos, and stats views;
   - keep the existing skeleton UI for loading.
 
-### 4. Improve chart robustness and lifecycle handling
+### 3. Improve chart robustness and lifecycle handling
 
 - Priority: P1
 - Quick win: No
@@ -57,7 +42,7 @@ The main weaknesses are not about the overall concept, but about resilience and 
   - avoid chart recreation on every unrelated state change;
   - use a stable chart container size and provide a fallback UI when there is no data.
 
-### 5. Reduce stale UI after mutations and invalidations
+### 4. Reduce stale UI after mutations and invalidations
 
 - Priority: P1
 - Quick win: Yes
@@ -78,7 +63,7 @@ The main weaknesses are not about the overall concept, but about resilience and 
 
 ## P2 – medium-term architecture and quality improvements
 
-### 6. Add automated tests
+### 5. Add automated tests
 
 - Priority: P2
 - Quick win: No
@@ -87,7 +72,7 @@ The main weaknesses are not about the overall concept, but about resilience and 
   see CLAUDE.md's Testing section) are done. Remaining:
   - add a small E2E suite for the most important user journeys such as creating a prop and editing prices.
 
-### 7. Introduce a shared API/result layer and remove duplicate data logic
+### 6. Introduce a shared API/result layer and remove duplicate data logic
 
 - Priority: P2
 - Quick win: No
@@ -97,7 +82,7 @@ The main weaknesses are not about the overall concept, but about resilience and 
   - return a consistent result shape with `data`, `error`, and `status`;
   - avoid scattering table names and query logic across screens.
 
-### 8. Improve performance for long lists and search-heavy screens
+### 7. Improve performance for long lists and search-heavy screens
 
 - Priority: P2
 - Quick win: Yes
@@ -107,7 +92,7 @@ The main weaknesses are not about the overall concept, but about resilience and 
   - debounce search input updates;
   - memoize derived values and expensive transforms.
 
-### 9. Add offline awareness and better local persistence
+### 8. Add offline awareness and better local persistence
 
 - Priority: P2
 - Quick win: No
@@ -117,7 +102,7 @@ The main weaknesses are not about the overall concept, but about resilience and 
   - support conflict resolution for edits made while offline;
   - optionally sync later when the connection returns.
 
-### 10. Add observability and crash reporting
+### 9. Add observability and crash reporting
 
 - Priority: P2
 - Quick win: No
@@ -130,35 +115,35 @@ The main weaknesses are not about the overall concept, but about resilience and 
 
 ## Product improvements to consider
 
-### 11. Add a picture gallery for prop details
+### 10. Add a picture gallery for prop details
 
 - Priority: P1
 - Quick win: No
 - Estimated time: 3–5 days
 - This is already mentioned in the README roadmap and would significantly improve the detail experience.
 
-### 12. Add grouping, ordering, and drag-and-drop for collection display
+### 11. Add grouping, ordering, and drag-and-drop for collection display
 
 - Priority: P1
 - Quick win: No
 - Estimated time: 2–4 days
 - Useful for organizing props by shelf, display theme, or collection groups.
 
-### 13. Add import/export for collection data
+### 12. Add import/export for collection data
 
 - Priority: P1
 - Quick win: No
 - Estimated time: 1–2 days
 - CSV/JSON export would be valuable for backups and migration.
 
-### 14. Add cloud sync and profile features
+### 13. Add cloud sync and profile features
 
 - Priority: P1
 - Quick win: No
 - Estimated time: 3–7 days
 - This covers the existing roadmap items around authentication/profile management and sync.
 
-### 15. Add richer stats and price-history views
+### 14. Add richer stats and price-history views
 
 - Priority: P2
 - Quick win: Yes

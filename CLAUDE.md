@@ -37,8 +37,9 @@ affected screen for anything UI-facing.
 ### Environment
 
 Requires a `.env.local` with `supabaseApiKey` (public anon key only — never the service-role key). The Supabase URL
-is currently hardcoded in `app.config.ts`. Config is read via `expo-constants` in `src/utils/supabase.utils.ts` with
-no validation of missing values yet (see `AUDIT.md` P0 #2).
+is currently hardcoded in `app.config.ts`. Config is read via `expo-constants` in `src/utils/supabase.utils.ts`,
+which validates required keys via `validateSupabaseConfig` (`src/utils/supabaseConfig.utils.ts`) before creating the
+client, throwing with a message naming the missing key(s) if `supabaseApiUrl`/`supabaseApiKey` aren't set.
 
 ## Architecture
 

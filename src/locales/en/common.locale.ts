@@ -22,6 +22,7 @@ const commonEn = {
     ON: 'On',
     PROP: 'Prop',
     RENAME: 'Rename',
+    RETRY: 'Retry',
     SAVE: 'Save',
     SEARCH: 'Search',
     SEE_MORE: 'See more',

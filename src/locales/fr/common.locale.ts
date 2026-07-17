@@ -22,6 +22,7 @@ const commonFr = {
     ON: 'On',
     PROP: 'Prop',
     RENAME: 'Renommer',
+    RETRY: 'Réessayer',
     SAVE: 'Enregistrer',
     SEARCH: 'Rechercher',
     SEE_MORE: 'Voir plus',

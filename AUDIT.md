@@ -15,22 +15,6 @@ The main weaknesses are not about the overall concept, but about resilience and 
 
 ## P1 – rendering and state-management issues
 
-### 2. Add explicit loading, error, and empty states for list/detail screens
-
-- Priority: P1
-- Quick win: Yes
-- Estimated time: 2–4 hours
-- Status: Partially done — the prop detail screen (`PropDetailInformationsPage` and its cards: `StatusDetail`,
-  `InformationsCard`, `ComponentCard`, `AccessoriesCard`, `PricesCard`) now delegates loading to each card via an
-  `isLoading` prop (`Skeleton` swapped in for the data-bearing element, keeping the Card/Surface/Icon shell in
-  place — see `StatTile` for the original pattern) and shows `EmptyComponent` when the prop isn't found. `isError`
-  handling and the same treatment for collection, notes, todos, and stats screens are still open.
-- Evidence: several screens rely on loading checks or empty fallback components, but the user experience is still inconsistent when data fetches fail or return no rows.
-- Recommended fix:
-  - add `isError` handling in the query layers;
-  - show dedicated empty/error cards for collection, notes, todos, and stats views;
-  - keep the existing skeleton UI for loading.
-
 ### 3. Improve chart robustness and lifecycle handling
 
 - Priority: P1

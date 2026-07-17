@@ -4,6 +4,8 @@ import { Skeleton } from 'heroui-native/skeleton';
 import { Tabs } from 'heroui-native/tabs';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import EmptyComponent from '~src/components/empty/empty.component';
+import ErrorComponent from '~src/components/error/error.component';
 import AccordionWrapper from '~src/components/ui/accordionWrapper.component';
 import { VStack } from '~src/components/ui/stack.component';
 import type { Prop } from '~src/modules/collection/types/prop.type';
@@ -18,7 +20,12 @@ const RepartitionCard = () => {
   const { t } = useTranslation();
   const isFocused = useIsFocused();
 
-  const { data: repartition, isLoading } = useQuery({
+  const {
+    data: repartition,
+    isError,
+    isLoading,
+    refetch,
+  } = useQuery({
     queryFn: async () => await getData<Prop>(PROPS_TABLE),
     queryKey: propsKeys.statsRepartition(),
     select: (data) => calculateRepartition(data),
@@ -37,7 +44,11 @@ const RepartitionCard = () => {
         </VStack>
       )}
 
-      {repartition && (
+      {isError && <ErrorComponent onRetry={() => refetch()} />}
+
+      {!isLoading && !isError && repartition && repartition.total === 0 && <EmptyComponent />}
+
+      {repartition && repartition.total > 0 && (
         <VStack className='gap-4'>
           <RepartitionTable data={repartition} />
 

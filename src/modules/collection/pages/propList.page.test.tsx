@@ -72,4 +72,16 @@ describe('PropListPage', () => {
     expect(useCollectionStore.getState().selectedProp).toBeUndefined();
     expect(mockPush).toHaveBeenCalledWith('/(root)/collection/formProp');
   });
+
+  it('shows an error state and retries the query when the fetch fails', async () => {
+    mockGetData.mockRejectedValueOnce(new Error('network error'));
+    await renderPage();
+
+    await waitFor(() => expect(screen.getByText('Une erreur inconnue est survenue.')).toBeTruthy());
+
+    mockGetData.mockResolvedValueOnce(props);
+    fireEvent.press(screen.getByText('Réessayer'));
+
+    await waitFor(() => expect(screen.getByText('Graflex')).toBeTruthy());
+  });
 });

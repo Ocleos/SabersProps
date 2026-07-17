@@ -2,6 +2,8 @@ import { useQuery } from '@tanstack/react-query';
 import { useIsFocused } from 'expo-router';
 import { Skeleton } from 'heroui-native/skeleton';
 import { useTranslation } from 'react-i18next';
+import EmptyComponent from '~src/components/empty/empty.component';
+import ErrorComponent from '~src/components/error/error.component';
 import PageLayout from '~src/components/layout/pageLayout.component';
 import { VStack } from '~src/components/ui/stack.component';
 import { propsKeys } from '~src/utils/queryKeys.utils';
@@ -15,7 +17,7 @@ const TodosPage: React.FC = () => {
   const { t } = useTranslation();
   const isFocused = useIsFocused();
 
-  const { data, isLoading } = useQuery({
+  const { data, isError, isLoading, refetch } = useQuery({
     queryFn: async () => await getData<TodoAccessories>(PROPS_ACCESSORIES_TABLE),
     queryKey: propsKeys.todos(),
     subscribed: isFocused,
@@ -32,15 +34,20 @@ const TodosPage: React.FC = () => {
           <Skeleton className='h-15 w-full' />
         </VStack>
       )}
-      {data && (
-        <VStack className='gap-4'>
-          <TodosOverviewCard data={data} />
-          <TodoCard data={data} type={TodoType.PROP} />
-          <TodoCard data={data} type={TodoType.BAG} />
-          <TodoCard data={data} type={TodoType.KEYRING} />
-          <TodoCard data={data} type={TodoType.DISPLAY_PLAQUE} />
-        </VStack>
-      )}
+      {isError && <ErrorComponent onRetry={() => refetch()} />}
+      {!isLoading &&
+        !isError &&
+        (data && data.length > 0 ? (
+          <VStack className='gap-4'>
+            <TodosOverviewCard data={data} />
+            <TodoCard data={data} type={TodoType.PROP} />
+            <TodoCard data={data} type={TodoType.BAG} />
+            <TodoCard data={data} type={TodoType.KEYRING} />
+            <TodoCard data={data} type={TodoType.DISPLAY_PLAQUE} />
+          </VStack>
+        ) : (
+          <EmptyComponent />
+        ))}
     </PageLayout>
   );
 };

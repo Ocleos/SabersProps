@@ -37,4 +37,26 @@ describe('PricesCard', () => {
     // A single-item dataset means total, minimum, maximum and average are all 105 €.
     await waitFor(() => expect(screen.getAllByText('105,00 €').length).toBe(4));
   });
+
+  it('shows an error state and retries the query when the fetch fails', async () => {
+    mockGetData.mockRejectedValueOnce(new Error('network error'));
+    await renderWithProviders(<PricesCard />);
+
+    fireEvent.press(screen.getByText('Prix'));
+    await waitFor(() => expect(screen.getByText('Une erreur inconnue est survenue.')).toBeTruthy());
+
+    mockGetData.mockResolvedValueOnce(data);
+    fireEvent.press(screen.getByText('Réessayer'));
+
+    await waitFor(() => expect(screen.getAllByText('105,00 €').length).toBe(4));
+  });
+
+  it('shows the empty state when there are no prices recorded', async () => {
+    mockGetData.mockResolvedValueOnce([]);
+    await renderWithProviders(<PricesCard />);
+
+    fireEvent.press(screen.getByText('Prix'));
+
+    await waitFor(() => expect(screen.getByText('Aucune donnée')).toBeTruthy());
+  });
 });

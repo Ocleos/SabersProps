@@ -48,4 +48,16 @@ describe('NoteListPage', () => {
     expect(useNotesStore.getState().selectedNote).toBeUndefined();
     expect(mockPush).toHaveBeenCalledWith('/notes/form');
   });
+
+  it('shows an error state and retries the query when the fetch fails', async () => {
+    mockGetData.mockRejectedValueOnce(new Error('network error'));
+    await renderWithProviders(<NoteListPage />);
+
+    await waitFor(() => expect(screen.getByText('Une erreur inconnue est survenue.')).toBeTruthy());
+
+    mockGetData.mockResolvedValueOnce(notes);
+    fireEvent.press(screen.getByText('Réessayer'));
+
+    await waitFor(() => expect(screen.getByText('Graflex maintenance')).toBeTruthy());
+  });
 });

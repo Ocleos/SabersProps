@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useIsFocused, useRouter } from 'expo-router';
 import { PlusIcon } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
+import ErrorComponent from '~src/components/error/error.component';
 import PageLayout from '~src/components/layout/pageLayout.component';
 import FlashListWrapper from '~src/components/list/flashListWrapper.component';
 import FabButton from '~src/components/ui/fabButton.component';
@@ -17,7 +18,7 @@ const NoteListPage: React.FC = () => {
   const isFocused = useIsFocused();
   const { t } = useTranslation();
 
-  const { isLoading, data, refetch } = useQuery({
+  const { isError, isLoading, data, refetch } = useQuery({
     queryFn: async () => await getData<Note>(NOTES_TABLE),
     queryKey: notesKeys.root(),
     subscribed: isFocused,
@@ -27,13 +28,17 @@ const NoteListPage: React.FC = () => {
 
   return (
     <PageLayout isScrollable={false} title={t('notes:ROUTING.TITLE')}>
-      <FlashListWrapper
-        data={data}
-        keyExtractor={(item, index) => item.id ?? index.toString()}
-        onRefresh={() => refetch()}
-        refreshing={isLoading}
-        renderItem={({ item }) => <NoteCard note={item} />}
-      />
+      {isError ? (
+        <ErrorComponent onRetry={() => refetch()} />
+      ) : (
+        <FlashListWrapper
+          data={data}
+          keyExtractor={(item, index) => item.id ?? index.toString()}
+          onRefresh={() => refetch()}
+          refreshing={isLoading}
+          renderItem={({ item }) => <NoteCard note={item} />}
+        />
+      )}
 
       <FabButton
         onPress={() => {

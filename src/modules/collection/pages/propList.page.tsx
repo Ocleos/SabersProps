@@ -5,6 +5,7 @@ import { PlusIcon } from 'lucide-react-native';
 import type React from 'react';
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import ErrorComponent from '~src/components/error/error.component';
 import PageLayout from '~src/components/layout/pageLayout.component';
 import FilterSearchWrapper from '~src/components/list/filterSearchWrapper.component';
 import FlashListWrapper from '~src/components/list/flashListWrapper.component';
@@ -29,7 +30,7 @@ const PropListPage: React.FC = () => {
 
   const { filters, setSelectedProp, setSearchValue } = useCollectionStore();
 
-  const { isLoading, data, refetch } = useQuery({
+  const { isError, isLoading, data, refetch } = useQuery({
     queryFn: async () => await getData<Prop>(PROPS_TABLE),
     queryKey: propsKeys.root(),
     select: (data) => onFilterProps(data, filters),
@@ -45,13 +46,17 @@ const PropListPage: React.FC = () => {
           searchValue={filters.searchValue}
         />
 
-        <FlashListWrapper
-          data={data}
-          keyExtractor={(item, index) => item.id ?? index.toString()}
-          onRefresh={() => refetch()}
-          refreshing={isLoading}
-          renderItem={({ item }) => <PropCard prop={item} />}
-        />
+        {isError ? (
+          <ErrorComponent onRetry={() => refetch()} />
+        ) : (
+          <FlashListWrapper
+            data={data}
+            keyExtractor={(item, index) => item.id ?? index.toString()}
+            onRefresh={() => refetch()}
+            refreshing={isLoading}
+            renderItem={({ item }) => <PropCard prop={item} />}
+          />
+        )}
       </VStack>
 
       <FabButton

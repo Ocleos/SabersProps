@@ -40,4 +40,26 @@ describe('RepartitionCard', () => {
     expect(screen.getByText('Prop')).toBeTruthy();
     expect(screen.getByText('Costume')).toBeTruthy();
   });
+
+  it('shows an error state and retries the query when the fetch fails', async () => {
+    mockGetData.mockRejectedValueOnce(new Error('network error'));
+    await renderWithProviders(<RepartitionCard />);
+
+    fireEvent.press(screen.getByText('Répartition'));
+    await waitFor(() => expect(screen.getByText('Une erreur inconnue est survenue.')).toBeTruthy());
+
+    mockGetData.mockResolvedValueOnce(props);
+    fireEvent.press(screen.getByText('Réessayer'));
+
+    await waitFor(() => expect(screen.getByText('Lightsaber')).toBeTruthy());
+  });
+
+  it('shows the empty state when there are no props recorded', async () => {
+    mockGetData.mockResolvedValueOnce([]);
+    await renderWithProviders(<RepartitionCard />);
+
+    fireEvent.press(screen.getByText('Répartition'));
+
+    await waitFor(() => expect(screen.getByText('Aucune donnée')).toBeTruthy());
+  });
 });

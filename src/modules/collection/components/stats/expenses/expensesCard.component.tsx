@@ -5,6 +5,8 @@ import { Tabs } from 'heroui-native/tabs';
 import { Typography } from 'heroui-native/text';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import EmptyComponent from '~src/components/empty/empty.component';
+import ErrorComponent from '~src/components/error/error.component';
 import AccordionWrapper from '~src/components/ui/accordionWrapper.component';
 import { VStack } from '~src/components/ui/stack.component';
 import type { Expense } from '~src/modules/collection/types/expense.type';
@@ -17,7 +19,12 @@ const ExpensesCard = () => {
   const { t } = useTranslation();
   const isFocused = useIsFocused();
 
-  const { data: expenses, isLoading } = useQuery({
+  const {
+    data: expenses,
+    isError,
+    isLoading,
+    refetch,
+  } = useQuery({
     queryFn: async () => await getData<Expense>(PROPS_EXPENSE_TABLE),
     queryKey: propsKeys.statsExpenses(),
     select: (data) => calculateExpenses(data),
@@ -37,7 +44,11 @@ const ExpensesCard = () => {
         </VStack>
       )}
 
-      {expenses && (
+      {isError && <ErrorComponent onRetry={() => refetch()} />}
+
+      {!isLoading && !isError && expenses && expenses.days.length === 0 && <EmptyComponent />}
+
+      {expenses && expenses.days.length > 0 && (
         <VStack className='gap-4'>
           <Tabs onValueChange={(value) => setExpensesType(value as ExpensesTypes)} value={expensesType}>
             <Tabs.List>

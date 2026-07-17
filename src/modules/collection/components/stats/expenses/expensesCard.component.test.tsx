@@ -37,4 +37,26 @@ describe('ExpensesCard', () => {
     expect(screen.getByText('Journalières')).toBeTruthy();
     expect(screen.getByText('Mensuelles')).toBeTruthy();
   });
+
+  it('shows an error state and retries the query when the fetch fails', async () => {
+    mockGetData.mockRejectedValueOnce(new Error('network error'));
+    await renderWithProviders(<ExpensesCard />);
+
+    fireEvent.press(screen.getByText('Dépenses'));
+    await waitFor(() => expect(screen.getByText('Une erreur inconnue est survenue.')).toBeTruthy());
+
+    mockGetData.mockResolvedValueOnce(expenses);
+    fireEvent.press(screen.getByText('Réessayer'));
+
+    await waitFor(() => expect(screen.getByText('Annuelles')).toBeTruthy());
+  });
+
+  it('shows the empty state when there are no expenses recorded', async () => {
+    mockGetData.mockResolvedValueOnce([]);
+    await renderWithProviders(<ExpensesCard />);
+
+    fireEvent.press(screen.getByText('Dépenses'));
+
+    await waitFor(() => expect(screen.getByText('Aucune donnée')).toBeTruthy());
+  });
 });

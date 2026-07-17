@@ -13,7 +13,7 @@ import type { PropDetail } from '~src/modules/collection/types/propDetail.type';
 import { type PropSellingPrice, propSellingPriceSchema } from '~src/modules/collection/types/propSellingPrice.type';
 import { propsKeys } from '~src/utils/queryKeys.utils';
 import { PROPS_SELLING_PRICE_TABLE, upsertData } from '~src/utils/supabase.utils';
-import { getToastSuccessConfig } from '~src/utils/toast.utils';
+import { getToastErrorConfig, getToastSuccessConfig } from '~src/utils/toast.utils';
 
 type SellingPriceButtonProps = {
   prop: PropDetail;
@@ -28,11 +28,20 @@ const SellingPriceButton: React.FC<SellingPriceButtonProps> = ({ prop }) => {
 
   const { mutate, isPending } = useMutation({
     mutationFn: (data: PropSellingPrice) => upsertData<PropSellingPrice>(PROPS_SELLING_PRICE_TABLE, data),
-    onSuccess: () => {
+    onError: () => {
+      toast.show(getToastErrorConfig({ description: t('common:FORMS.EDIT_ERROR') }));
+    },
+    onSuccess: (_data, newSellingPrice) => {
+      // The mutation already succeeded, so this value is confirmed — write it in directly instead of
+      // waiting for the invalidation below to refetch, so the underlying totals don't flash stale.
       if (prop.id) {
+        queryClient.setQueryData<PropDetail | null | undefined>(propsKeys.detail(prop.id), (old) =>
+          old?.prices ? { ...old, prices: { ...old.prices, sellingPrice: newSellingPrice.sellingPrice } } : old,
+        );
         queryClient.invalidateQueries({ queryKey: propsKeys.detail(prop.id) });
       }
       queryClient.invalidateQueries({ queryKey: propsKeys.statsPrices() });
+
       toast.show(getToastSuccessConfig({ description: t('common:FORMS.EDIT_SUCCESS') }));
       reset();
       setIsOpen(false);

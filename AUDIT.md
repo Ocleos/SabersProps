@@ -13,30 +13,9 @@ The main weaknesses are not about the overall concept, but about resilience and 
 
 ---
 
-## P1 – rendering and state-management issues
-
-### 4. Reduce stale UI after mutations and invalidations
-
-- Priority: P1
-- Quick win: Yes
-- Estimated time: 2–3 hours
-- Status: Partially done — fixed a concrete instance where `Toggle` (`src/components/ui/toggle.component.tsx`)
-  seeded its internal `isOn` state from the `isPressed` prop via `useState` but never resynced, so
-  `AccessoriesCard`'s toggles could render stale (all-unchecked) on first load once the prop detail cards started
-  mounting before their data arrived. `Toggle` now re-syncs `isOn` via a `useEffect` on `isPressed` changes. This
-  `useState(propValue)`-without-resync shape is worth checking for in other stateful leaf components going
-  forward. Optimistic updates for mutations and updating local state from mutation responses are still open.
-- Evidence: mutations invalidate queries, but the UI still depends on local state and store values that may lag behind server data.
-- Recommended fix:
-  - use optimistic updates for simple toggles (accessories, price updates);
-  - update local state from the mutation response when available;
-  - keep invalidations for consistency but avoid visible flicker.
-
----
-
 ## P2 – medium-term architecture and quality improvements
 
-### 5. Add automated tests
+### 1. Add automated tests
 
 - Priority: P2
 - Quick win: No
@@ -45,7 +24,7 @@ The main weaknesses are not about the overall concept, but about resilience and 
   see CLAUDE.md's Testing section) are done. Remaining:
   - add a small E2E suite for the most important user journeys such as creating a prop and editing prices.
 
-### 8. Add offline awareness and better local persistence
+### 2. Add offline awareness and better local persistence
 
 - Priority: P2
 - Quick win: No
@@ -55,7 +34,7 @@ The main weaknesses are not about the overall concept, but about resilience and 
   - support conflict resolution for edits made while offline;
   - optionally sync later when the connection returns.
 
-### 9. Add observability and crash reporting
+### 3. Add observability and crash reporting
 
 - Priority: P2
 - Quick win: No
@@ -68,35 +47,35 @@ The main weaknesses are not about the overall concept, but about resilience and 
 
 ## Product improvements to consider
 
-### 10. Add a picture gallery for prop details
+### 4. Add a picture gallery for prop details
 
 - Priority: P1
 - Quick win: No
 - Estimated time: 3–5 days
 - This is already mentioned in the README roadmap and would significantly improve the detail experience.
 
-### 11. Add grouping, ordering, and drag-and-drop for collection display
+### 5. Add grouping, ordering, and drag-and-drop for collection display
 
 - Priority: P1
 - Quick win: No
 - Estimated time: 2–4 days
 - Useful for organizing props by shelf, display theme, or collection groups.
 
-### 12. Add import/export for collection data
+### 6. Add import/export for collection data
 
 - Priority: P1
 - Quick win: No
 - Estimated time: 1–2 days
 - CSV/JSON export would be valuable for backups and migration.
 
-### 13. Add cloud sync and profile features
+### 7. Add cloud sync and profile features
 
 - Priority: P1
 - Quick win: No
 - Estimated time: 3–7 days
 - This covers the existing roadmap items around authentication/profile management and sync.
 
-### 14. Add richer stats and price-history views
+### 8. Add richer stats and price-history views
 
 - Priority: P2
 - Quick win: Yes

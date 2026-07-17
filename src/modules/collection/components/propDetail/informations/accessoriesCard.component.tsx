@@ -1,4 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useToast } from 'heroui-native/toast';
 import { KeyRoundIcon, ShoppingBagIcon, TagIcon } from 'lucide-react-native';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -9,6 +10,7 @@ import type { PropAccessory } from '~src/modules/collection/types/propAccessory.
 import type { PropDetail } from '~src/modules/collection/types/propDetail.type';
 import { propsKeys } from '~src/utils/queryKeys.utils';
 import { ACCESSORIES_TABLE, upsertData } from '~src/utils/supabase.utils';
+import { getToastErrorConfig } from '~src/utils/toast.utils';
 
 type AccessoriesCardProps = {
   isLoading?: boolean;
@@ -18,6 +20,7 @@ type AccessoriesCardProps = {
 const AccessoriesCard: React.FC<AccessoriesCardProps> = ({ isLoading, prop }) => {
   const { t } = useTranslation();
   const queryClient = useQueryClient();
+  const { toast } = useToast();
 
   const accessories = prop?.accessories;
 
@@ -33,7 +36,17 @@ const AccessoriesCard: React.FC<AccessoriesCardProps> = ({ isLoading, prop }) =>
 
   const { mutate } = useMutation({
     mutationFn: (data: PropAccessory) => upsertData<PropAccessory>(ACCESSORIES_TABLE, data),
-    onSuccess: () => {
+    onError: () => {
+      setHasBag(accessories?.bag ?? false);
+      setHasKeyring(accessories?.keyring ?? false);
+      setHasDisplayPlaque(accessories?.displayPlaque ?? false);
+
+      toast.show(getToastErrorConfig({ description: t('common:FORMS.EDIT_ERROR') }));
+    },
+    onSettled: () => {
+      if (prop?.id) {
+        queryClient.invalidateQueries({ queryKey: propsKeys.detail(prop.id) });
+      }
       queryClient.invalidateQueries({ queryKey: propsKeys.todos() });
     },
   });

@@ -63,4 +63,36 @@ describe('AccessoriesCard', () => {
       }),
     );
   });
+
+  it('reverts the toggle back to its previous state when the mutation fails', async () => {
+    mockUpsertData.mockRejectedValueOnce(new Error('network error'));
+
+    await renderWithProviders(<AccessoriesCard prop={propWithoutAccessories} />);
+
+    // buttons[0] is the accordion's own trigger; the accessory toggles start at index 1.
+    const buttons = screen.getAllByRole('button');
+    fireEvent.press(buttons[1]);
+
+    await waitFor(() =>
+      expect(mockUpsertData).toHaveBeenLastCalledWith('accessories', {
+        bag: true,
+        displayPlaque: false,
+        id: 'prop-1',
+        keyring: false,
+      }),
+    );
+
+    // If the toggle had rolled back to unpressed, pressing it again sends `bag: true` once more;
+    // if it stayed stuck on the optimistic (unrolled-back) pressed state, it would send `bag: false`.
+    fireEvent.press(buttons[1]);
+
+    await waitFor(() =>
+      expect(mockUpsertData).toHaveBeenLastCalledWith('accessories', {
+        bag: true,
+        displayPlaque: false,
+        id: 'prop-1',
+        keyring: false,
+      }),
+    );
+  });
 });

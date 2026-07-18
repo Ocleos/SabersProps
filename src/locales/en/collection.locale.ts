@@ -60,7 +60,7 @@ const collectionEn = {
     SOLD: 'Sold',
   },
   STATS: {
-    LABEL: {
+    LABELS: {
       EXPENSES: 'Expenses',
       EXPENSES_TABS: {
         DAILY: 'Daily',
@@ -69,11 +69,13 @@ const collectionEn = {
       },
       EXPENSES_TOTAL_MONTHLY: 'Total expenses by months',
       FEES: 'Fees',
+      MANUFACTURERS: 'Manufacturers',
       PRICE: 'Price',
       PRICE_SELL: 'Selling price',
       PRICE_WORK: 'Working price',
       PRICES: 'Prices',
       REPARTITION: 'Repartition',
+      SOUNDBOARDS: 'Soundboards',
     },
   },
   TODOS: {

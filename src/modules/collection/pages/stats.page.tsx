@@ -2,8 +2,10 @@ import { useTranslation } from 'react-i18next';
 import PageLayout from '~src/components/layout/pageLayout.component';
 import { VStack } from '~src/components/ui/stack.component';
 import ExpensesCard from '../components/stats/expenses/expensesCard.component';
+import ManufacturersCard from '../components/stats/manufacturers/manufacturersCard.component';
 import PricesCard from '../components/stats/prices/pricesCard.component';
 import RepartitionCard from '../components/stats/repartition/repartitionCard.component';
+import SoundboardsCard from '../components/stats/soundboards/soundboardsCard.component';
 
 const StatsPage: React.FC = () => {
   const { t } = useTranslation();
@@ -14,6 +16,8 @@ const StatsPage: React.FC = () => {
         <RepartitionCard />
         <PricesCard />
         <ExpensesCard />
+        <ManufacturersCard />
+        <SoundboardsCard />
       </VStack>
     </PageLayout>
   );

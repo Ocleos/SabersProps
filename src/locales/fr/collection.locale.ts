@@ -69,11 +69,13 @@ const collectionFr = {
       },
       EXPENSES_TOTAL_MONTHLY: 'Dépenses totales par mois',
       FEES: 'Frais',
+      MANUFACTURERS: 'Créateurs',
       PRICE: 'Prix',
       PRICE_SELL: 'Prix de vente',
       PRICE_WORK: 'Prix de revient',
       PRICES: 'Prix',
       REPARTITION: 'Répartition',
+      SOUNDBOARDS: 'Cartes son',
     },
   },
   TODOS: {

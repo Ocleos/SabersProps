@@ -22,12 +22,24 @@ jest.mock('../components/stats/expenses/expensesCard.component', () => {
   return () => <Text>ExpensesCard</Text>;
 });
 
+jest.mock('../components/stats/manufacturers/manufacturersCard.component', () => {
+  const { Text } = require('react-native');
+  return () => <Text>ManufacturersCard</Text>;
+});
+
+jest.mock('../components/stats/soundboards/soundboardsCard.component', () => {
+  const { Text } = require('react-native');
+  return () => <Text>SoundboardsCard</Text>;
+});
+
 describe('StatsPage', () => {
-  it('renders the repartition, prices and expenses cards', async () => {
+  it('renders the repartition, manufacturers, soundboards, prices and expenses cards', async () => {
     await renderWithProviders(<StatsPage />);
 
     expect(screen.getByText('RepartitionCard')).toBeTruthy();
     expect(screen.getByText('PricesCard')).toBeTruthy();
     expect(screen.getByText('ExpensesCard')).toBeTruthy();
+    expect(screen.getByText('ManufacturersCard')).toBeTruthy();
+    expect(screen.getByText('SoundboardsCard')).toBeTruthy();
   });
 });

@@ -75,13 +75,6 @@ The main weaknesses are not about the overall concept, but about resilience and 
 - Estimated time: 3–7 days
 - This covers the existing roadmap items around authentication/profile management and sync.
 
-### 8. Add richer stats and price-history views
-
-- Priority: P2
-- Quick win: Yes
-- Estimated time: 2–4 hours
-- Good follow-up to the current stats module: price trends, spend over time, and category summaries.
-
 ---
 
 ## Interesting observations to preserve

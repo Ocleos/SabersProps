@@ -21,6 +21,7 @@ export const supabase = createClient(validatedApiUrl, validatedApiKey, {
 
 export const ACCESSORIES_TABLE = 'accessories';
 export const COMPONENTS_TABLE = 'components';
+export const FOLDERS_TABLE = 'folders';
 export const NOTES_TABLE = 'notes';
 export const PROPS_TABLE = 'props';
 export const PROPS_ACCESSORIES_TABLE = 'propsAccessories';

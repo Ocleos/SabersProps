@@ -28,6 +28,9 @@ Application to manage collection of lightsaber and props movies replica.
 - Todos :
   - Props
   - Accessories
+- Disposition :
+  - Group
+  - Drag & Drop
 - Tools :
   - Aurebesh translator
 - Light / Black theme
@@ -195,9 +198,6 @@ So if a new tag is created on git, a build pipeline is automatically launched.
 - Collection
   - Props' detail
     - Pictures gallery
-- Disposition
-  - Group
-  - Drag & Drop
 - Export / Import
 - Sync on cloud
 

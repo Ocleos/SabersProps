@@ -5,6 +5,32 @@ const collectionEn = {
     INFORMATIONS: 'Informations',
     PRICES: 'Prices',
   },
+  COLUMN: {
+    LEFT: 'Left',
+    MIDDLE: 'Middle',
+    RIGHT: 'Right',
+  },
+  FOLDERS: {
+    ACTIONS: {
+      ADD_PROPS: 'Add props',
+      REMOVE_FROM_FOLDER: 'Remove from folder',
+      REORDER: 'Reorder',
+    },
+    EMPTY_UNASSIGNED_PROPS: 'No unassigned props left',
+    FORM: {
+      ADD_TITLE: 'Add a folder',
+      EDIT_TITLE: 'Edit a folder',
+      LABELS: {
+        NAME: 'Name',
+      },
+    },
+    LABELS: {
+      PREVIEW: 'Preview',
+      PROPS_COUNT_one: '{{count}} prop',
+      PROPS_COUNT_other: '{{count}} props',
+      PROPS_COUNT_zero: '{{count}} prop',
+    },
+  },
   FORM: {
     COMPONENT_ADD: 'Add a component',
     COMPONENT_EDIT: 'Edit a component',
@@ -15,6 +41,7 @@ const collectionEn = {
   HOME: {
     DESCRIPTIONS: {
       COLLECTION: 'Browse and manage your props',
+      FOLDERS: 'Organize your props',
       STATS: 'Statistiques, prices and expenses',
       TODOS: 'Track waiting projects',
     },
@@ -28,9 +55,9 @@ const collectionEn = {
   LABELS: {
     CHARACTER: 'Character',
     CHASSIS_DESIGNER: 'Chassis designer',
-    COMPONENTS_one: '{{count}} components',
+    COMPONENTS_one: '{{count}} component',
     COMPONENTS_other: '{{count}} components',
-    COMPONENTS_zero: '{{count}} components',
+    COMPONENTS_zero: '{{count}} component',
     DATE: 'Date',
     FEES: 'Fees',
     LABEL: 'Label',
@@ -46,6 +73,7 @@ const collectionEn = {
   },
   ROUTING: {
     COLLECTION: 'Collection',
+    FOLDERS: 'Folders',
     STATS: 'Stats',
     TODOS: 'Todos',
   },

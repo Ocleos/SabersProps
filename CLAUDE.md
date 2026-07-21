@@ -114,6 +114,44 @@ the shared `useDebounce` hook (`src/hooks/useDebounce.hooks.tsx`) while keeping 
 updating instantly — reuse `useDebounce` for any other rapid-fire input driving an expensive computation instead of
 adding a one-off debounce implementation.
 
+Drag-and-drop reordering (folder list, and props within a folder) uses `DraggableFlatListWrapper`
+(`src/components/list/draggableFlatListWrapper.component.tsx`), a hand-rolled implementation over a plain
+(non-virtualized) `ScrollView`, mirroring `FlashListWrapper`'s separator/empty/footer defaults — reserved for small,
+flat lists (folder counts and props-per-folder are both personal-collection scale, ~10-20 items) rather than a
+`FlashListWrapper` replacement. This replaced the `react-native-draggable-flatlist` library (see `FOLDERS_FEATURE.md`
+Phase 6): that library's `CellRendererComponent` issued a native `measureLayout` bridge call per row on every
+render, which made `folderDetail.page.tsx` noticeably slow to mount. The replacement drags via
+`react-native-gesture-handler`'s `Gesture.LongPress().simultaneousWithExternalGesture(...)` combined with
+`Gesture.Pan()` (attached to each row's grip handle through `GestureDetector`, exposed to `renderItem` as a `drag:
+ComposedGesture` prop), animating only the dragged row's own offset via a Reanimated `useAnimatedStyle`/shared
+value — sibling rows don't live-shift to "make room". Instead, each row's static position is captured once via a
+plain `onLayout` (not a bridge call), and at drag-end that position plus the finger's accumulated translation is
+compared against every other row's captured layout (`computeDropIndex` in
+`draggableFlatListWrapper.utils.ts`) to compute the drop index, after which `data` is reordered
+(`moveItem`) and handed to `onDragEnd`. Scrolling is disabled for the duration of a drag so a row's static layout
+stays valid without also having to track scroll offset. On every reorder (also delete/removal from the list), the
+affected list's `order` values are fully rewritten sequentially as `0..N-1` rather than using fractional/gap-based
+ordering — see `src/modules/collection/utils/reorder.utils.ts`'s `toSequentialOrder(items)` — cheap and simple at
+this scale (single user, no concurrent editors). Unlike the old library, this implementation mounts fine under
+Jest (no `useAnimatedScrollHandler`/`useAnimatedReaction` involved) — `draggableFlatListWrapper.component.test.tsx`
+renders the real thing — but RNTL's `fireEvent` still can't drive a real gesture-handler touch sequence, so the
+drag interaction itself stays a manual-verification-only gap (same category as this codebase's `ref.measure()`
+Jest limitation); the drop-index math it depends on is covered directly by
+`draggableFlatListWrapper.utils.test.ts`, and pages using the wrapper mock the wrapper component itself in tests
+(same convention as any other child component with its own dedicated test), capturing `onDragEnd` to simulate a
+completed drag directly.
+
+The folder panel preview (`src/modules/collection/components/folderDetail/folderPanelPreview.component.tsx`) is the
+app's first multi-column layout — everywhere else uses a single-column `FlashListWrapper`/`DraggableFlatListWrapper`
+(`numColumns` is unused). Rather than a grid component, it's a plain `computeFolderLayout(props)` pure function
+(`src/modules/collection/utils/folderPanel.utils.ts`) that turns a flat, `order`-sorted prop list into a row-based
+`FolderRow[]` (`{ type: 'pair'; left?; right? } | { type: 'full'; prop }`, one row per pair or full-width item, per
+each prop's `columnPlacement`), which the component then maps straight to `HStack`/full-width rows — no actual CSS
+grid/columns involved. Reuse this row-computation-then-map pattern for any other feature needing a fixed-column,
+non-virtualized visual layout derived from an ordered list. The preview is collapsed by default behind
+`AccordionWrapper` (`title` from `collection:FOLDERS.LABELS.PREVIEW`) so it doesn't push the editable/draggable prop
+list below the fold on an already-tall folder detail screen.
+
 Domain-specific colors/icons are centralized as lookup records keyed by enum, not scattered per component — see
 `propStates` in `types/propState.type.ts` and `propTypes` in `types/propType.type.ts`, both driven by the shared
 `Colors`/`ColorScheme` definitions in `src/theme/colors.theme.ts`. Reuse these records (and add to them) rather than

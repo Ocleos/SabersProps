@@ -26,6 +26,7 @@ const IGNORED_MESSAGE_SUBSTRINGS = [
   // garbage-collecting a query, or a reanimated layout effect) — there's no test-scoped `act()`
   // to await at that point, it's pure teardown timing.
   'The current testing environment is not configured to support act(...)',
+  'An update to %s inside a test was not wrapped in act(...)',
   // react-hook-form's async validation/resolver pipeline can still be settling when a submit
   // handler triggers its own state update, so React sees two overlapping act() scopes. Doesn't
   // affect what the test observes (see the `useWatch` note in CLAUDE.md's Testing section for

@@ -5,6 +5,32 @@ const collectionFr = {
     INFORMATIONS: 'Informations',
     PRICES: 'Prix',
   },
+  COLUMN: {
+    LEFT: 'Gauche',
+    MIDDLE: 'Milieu',
+    RIGHT: 'Droite',
+  },
+  FOLDERS: {
+    ACTIONS: {
+      ADD_PROPS: 'Ajouter des props',
+      REMOVE_FROM_FOLDER: 'Retirer du dossier',
+      REORDER: 'Réordonner',
+    },
+    EMPTY_UNASSIGNED_PROPS: 'Aucun prop non assigné restant',
+    FORM: {
+      ADD_TITLE: 'Ajouter un dossier',
+      EDIT_TITLE: 'Éditer un dossier',
+      LABELS: {
+        NAME: 'Nom',
+      },
+    },
+    LABELS: {
+      PREVIEW: 'Rendu',
+      PROPS_COUNT_one: '{{count}} prop',
+      PROPS_COUNT_other: '{{count}} props',
+      PROPS_COUNT_zero: '{{count}} prop',
+    },
+  },
   FORM: {
     COMPONENT_ADD: 'Ajouter un composant',
     COMPONENT_EDIT: 'Éditer un composant',
@@ -15,6 +41,7 @@ const collectionFr = {
   HOME: {
     DESCRIPTIONS: {
       COLLECTION: 'Parcourir et gérer vos props',
+      FOLDERS: 'Organiser vos props',
       STATS: 'Statistiques, prix et dépenses',
       TODOS: 'Suivre les projets en attente',
     },
@@ -46,6 +73,7 @@ const collectionFr = {
   },
   ROUTING: {
     COLLECTION: 'Collection',
+    FOLDERS: 'Dossiers',
     STATS: 'Stats',
     TODOS: 'Todos',
   },

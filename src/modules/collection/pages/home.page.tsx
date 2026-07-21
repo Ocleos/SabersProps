@@ -1,6 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 import { useIsFocused, useRouter } from 'expo-router';
-import { ChartColumnIcon, ClipboardListIcon, ListChecksIcon, SwordIcon, SwordsIcon } from 'lucide-react-native';
+import {
+  ChartColumnIcon,
+  ClipboardListIcon,
+  FolderIcon,
+  ListChecksIcon,
+  SwordIcon,
+  SwordsIcon,
+} from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
 import PageLayout from '~src/components/layout/pageLayout.component';
 import { HStack, VStack } from '~src/components/ui/stack.component';
@@ -86,6 +93,13 @@ const HomePage = () => {
           icon={ListChecksIcon}
           onPress={() => router.navigate('/(root)/collection/todos')}
           title={t('collection:ROUTING.TODOS')}
+        />
+
+        <DashboardNavCard
+          description={t('collection:HOME.DESCRIPTIONS.FOLDERS')}
+          icon={FolderIcon}
+          onPress={() => router.navigate('/(root)/collection/folders')}
+          title={t('collection:ROUTING.FOLDERS')}
         />
       </VStack>
     </PageLayout>

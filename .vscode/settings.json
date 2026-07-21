@@ -25,6 +25,7 @@
     "commitlint",
     "dayjs",
     "echarts",
+    "flatlist",
     "hookform",
     "pressable",
     "pressables",

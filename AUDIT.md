@@ -54,21 +54,14 @@ The main weaknesses are not about the overall concept, but about resilience and 
 - Estimated time: 3–5 days
 - This is already mentioned in the README roadmap and would significantly improve the detail experience.
 
-### 5. Add grouping, ordering, and drag-and-drop for collection display
-
-- Priority: P1
-- Quick win: No
-- Estimated time: 2–4 days
-- Useful for organizing props by shelf, display theme, or collection groups.
-
-### 6. Add import/export for collection data
+### 5. Add import/export for collection data
 
 - Priority: P1
 - Quick win: No
 - Estimated time: 1–2 days
 - CSV/JSON export would be valuable for backups and migration.
 
-### 7. Add cloud sync and profile features
+### 6. Add cloud sync and profile features
 
 - Priority: P1
 - Quick win: No
